@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Brand Audit — Raquel Mendoza</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #7B6FE8;
+    --purple-dark: #3D3492;
+    --purple-light: #EEF0FF;
+    --gold: #C9943A;
+    --gold-light: #FDF6E9;
+    --black: #0E0E0E;
+    --white: #FAFAFA;
+    --gray: #6B6B6B;
+    --gray-light: #F2F2F0;
+    --border: #E4E4E0;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 0%, rgba(123,111,232,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(201,148,58,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .brand-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(123,111,232,0.15);
+    border: 1px solid rgba(123,111,232,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--purple);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .brand-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+    animation: pulse 2s infinite;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  h1 span {
+    color: var(--purple);
+  }
+
+  .subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(250,250,250,0.6);
+    line-height: 1.6;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  /* Progress */
+  .progress-wrap {
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(250,250,250,0.4);
+  }
+
+  .progress-count {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--purple);
+  }
+
+  .progress-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--purple), var(--gold));
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* Card */
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 36px;
+    animation: fadeUp 0.5s 0.15s ease both;
+    backdrop-filter: blur(10px);
+  }
+
+  .question-number {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .question-text {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(18px, 3.5vw, 22px);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 28px;
+    letter-spacing: -0.3px;
+  }
+
+  /* Options */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    position: relative;
+    padding: 16px 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.02);
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(250,250,250,0.8);
+  }
+
+  .option:hover {
+    border-color: rgba(123,111,232,0.4);
+    background: rgba(123,111,232,0.06);
+    color: var(--white);
+    transform: translateX(4px);
+  }
+
+  .option.selected {
+    border-color: var(--purple);
+    background: rgba(123,111,232,0.12);
+    color: var(--white);
+  }
+
+  .option-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .option.selected .option-letter {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 14px 28px;
+  }
+
+  .btn-back {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(250,250,250,0.5);
+  }
+
+  .btn-back:hover {
+    border-color: rgba(255,255,255,0.3);
+    color: var(--white);
+  }
+
+  .btn-next {
+    background: var(--purple);
+    color: white;
+    flex: 1;
+    max-width: 200px;
+    margin-left: auto;
+  }
+
+  .btn-next:hover:not(:disabled) {
+    background: #8f84f0;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(123,111,232,0.35);
+  }
+
+  .btn-next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--purple), #9B8FF5);
+    color: white;
+    width: 100%;
+    padding: 18px 32px;
+    font-size: 15px;
+    border-radius: 14px;
+    margin-top: 8px;
+    box-shadow: 0 8px 32px rgba(123,111,232,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(123,111,232,0.4);
+  }
+
+  /* Result */
+  .result { display: none; }
+
+  .score-display {
+    text-align: center;
+    padding: 40px 0 32px;
+  }
+
+  .score-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 24px;
+  }
+
+  .score-ring svg {
+    transform: rotate(-90deg);
+    width: 140px;
+    height: 140px;
+  }
+
+  .score-ring circle {
+    fill: none;
+    stroke-width: 8;
+  }
+
+  .score-bg { stroke: rgba(255,255,255,0.06); }
+  .score-fill {
+    stroke: url(#scoreGrad);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .score-number {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .score-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .score-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(250,250,250,0.4);
+    margin-top: 2px;
+  }
+
+  .result-level {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .result-desc {
+    font-size: 14px;
+    color: rgba(250,250,250,0.55);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* Gaps */
+  .gaps-section {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .gap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .gap-item:last-child { border-bottom: none; }
+
+  .gap-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(123,111,232,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .gap-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+
+  .gap-text span {
+    font-size: 12px;
+    color: rgba(250,250,250,0.45);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* Offer */
+  .offer-card {
+    margin-top: 28px;
+    background: linear-gradient(135deg, rgba(123,111,232,0.12), rgba(201,148,58,0.06));
+    border: 1px solid rgba(123,111,232,0.25);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--gold));
+  }
+
+  .offer-badge {
+    display: inline-block;
+    background: rgba(201,148,58,0.15);
+    border: 1px solid rgba(201,148,58,0.3);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  .offer-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .offer-desc {
+    font-size: 13px;
+    color: rgba(250,250,250,0.55);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .offer-includes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .offer-include {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(250,250,250,0.75);
+  }
+
+  .offer-include::before {
+    content: '✓';
+    color: var(--purple);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .offer-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .price-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .price-note {
+    font-size: 13px;
+    color: rgba(250,250,250,0.4);
+    font-weight: 300;
+  }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(250,250,250,0.25);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: rgba(250,250,250,0.2);
+    letter-spacing: 0.5px;
+  }
+
+  .footer strong { color: rgba(250,250,250,0.4); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .slide-in { animation: slideIn 0.4s ease both; }
+
+  /* Intro screen */
+  .intro {
+    text-align: center;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .intro-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 13px;
+    color: rgba(250,250,250,0.4);
+    margin-bottom: 32px;
+  }
+
+  .intro-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 32px 0;
+    text-align: left;
+  }
+
+  .intro-feature {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .intro-feature-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .intro-feature-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .intro-feature-desc {
+    font-size: 11px;
+    color: rgba(250,250,250,0.4);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 32px 16px 60px; }
+    .card { padding: 24px; }
+    .intro-features { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="brand-tag">Raquel Mendoza · IA</div>
+    <h1>AI Brand <span>Audit</span></h1>
+    <p class="subtitle">Descubre en qué nivel está tu marca personal y cuáles son los 3 huecos que te están costando clientes.</p>
+  </div>
+
+  <!-- Intro Screen -->
+  <div id="introScreen" class="intro">
+    <div class="intro-time">⏱ 3 minutos · 10 preguntas · Diagnóstico personalizado</div>
+
+    <div class="card">
+      <div class="intro-features">
+        <div class="intro-feature">
+          <div class="intro-feature-icon">🎯</div>
+          <div class="intro-feature-title">Diagnóstico real</div>
+          <div class="intro-feature-desc">Evaluamos 5 áreas críticas de tu marca</div>
+        </div>
+        <div class="intro-feature">
+          <div class="intro-feature-icon">⚡</div>
+          <div class="intro-feature-title">Resultado inmediato</div>
+          <div class="intro-feature-desc">Score + 3 huecos específicos al instante</div>
+        </div>
+        <div class="intro-feature">
+          <div class="intro-feature-icon">🗺️</div>
+          <div class="intro-feature-title">Plan de acción</div>
+          <div class="intro-feature-desc">Qué necesitas para pasar al siguiente nivel</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="startAudit()">Iniciar mi diagnóstico →</button>
+    </div>
+  </div>
+
+  <!-- Quiz Screen -->
+  <div id="quizScreen" style="display:none;">
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="progress-label">Progreso</span>
+        <span class="progress-count" id="progressCount">1 / 10</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width:10%"></div>
+      </div>
+    </div>
+
+    <div class="card slide-in" id="questionCard">
+      <div class="question-number" id="questionNum">Pregunta 01</div>
+      <div class="question-text" id="questionText"></div>
+      <div class="options" id="optionsContainer"></div>
+      <div class="nav">
+        <button class="btn btn-back" id="backBtn" onclick="prevQuestion()">← Atrás</button>
+        <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()" disabled>Continuar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Screen -->
+  <div id="resultScreen" class="result">
+
+    <div class="card">
+      <div class="score-display">
+        <div class="score-ring">
+          <svg viewBox="0 0 140 140">
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7B6FE8"/>
+                <stop offset="100%" stop-color="#C9943A"/>
+              </linearGradient>
+            </defs>
+            <circle class="score-bg" cx="70" cy="70" r="60" stroke-dasharray="377" stroke-dashoffset="0"/>
+            <circle class="score-fill" cx="70" cy="70" r="60" stroke-dasharray="377" stroke-dashoffset="377" id="scoreCircle"/>
+          </svg>
+          <div class="score-number">
+            <div class="score-value" id="scoreValue">0</div>
+            <div class="score-label">/ 10</div>
+          </div>
+        </div>
+        <div class="result-level" id="resultLevel"></div>
+        <div class="result-desc" id="resultDesc"></div>
+      </div>
+
+      <div class="gaps-section">
+        <div class="section-label">Tus 3 huecos críticos</div>
+        <div id="gapsList"></div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-badge">Recomendado para ti</div>
+        <div class="offer-title">AI Growth Partner Program</div>
+        <div class="offer-desc">4 sesiones estratégicas 1 a 1 para construir el sistema que tu marca necesita — con IA, sin improvisación.</div>
+        <div class="offer-includes">
+          <div class="offer-include">Mentoría totalmente personalizada</div>
+          <div class="offer-include">Estrategia de contenido para tu marca personal</div>
+          <div class="offer-include">Aprendes a usar la IA para tu negocio</div>
+          <div class="offer-include">Guiones + planificación de 30 días de contenido</div>
+        </div>
+        <div class="offer-price">
+          <div class="price-amount">$327</div>
+          <div class="price-note">· 4 sesiones estratégicas · Precio de lanzamiento</div>
+        </div>
+        <button class="btn btn-primary" onclick="window.open('https://wa.me/584227163477?text=Hice el Brand Audit y quiero saber más sobre el AI Growth Partner Program', '_blank')">
+          Quiero mi sesión estratégica →
+        </button>
+        <div class="disclaimer">Cupos limitados · Precio de lanzamiento por tiempo limitado</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <strong>Raquel Mendoza</strong> · Marketing con IA · Sistemas de Crecimiento
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    category: "nicho",
+    text: "¿Tienes definido a quién le hablas exactamente?",
+    options: [
+      { text: "No, creo contenido para todos en general", score: 0 },
+      { text: "Tengo una idea general pero no es específico", score: 1 },
+      { text: "Sé mi nicho pero no lo comunico claramente", score: 2 },
+      { text: "Tengo nicho claro y todo mi contenido lo refleja", score: 3 }
+    ]
+  },
+  {
+    category: "contenido",
+    text: "¿Con qué frecuencia publicas contenido actualmente?",
+    options: [
+      { text: "Casi no publico o publico sin regularidad", score: 0 },
+      { text: "Publico 1-2 veces por semana cuando puedo", score: 1 },
+      { text: "Tengo un calendario pero no siempre lo cumplo", score: 2 },
+      { text: "Publico todos los días con un sistema definido", score: 3 }
+    ]
+  },
+  {
+    category: "sistema",
+    text: "¿Tienes un lead magnet activo que capture contactos?",
+    options: [
+      { text: "No sé qué es un lead magnet", score: 0 },
+      { text: "Sé que necesito uno pero no lo he creado", score: 1 },
+      { text: "Tengo uno pero no está bien configurado", score: 2 },
+      { text: "Sí, y está generando leads automáticamente", score: 3 }
+    ]
+  },
+  {
+    category: "automatizacion",
+    text: "¿Cómo gestionas los mensajes y prospectos que llegan?",
+    options: [
+      { text: "Los respondo manualmente cuando puedo", score: 0 },
+      { text: "Tengo plantillas pero todo es manual", score: 1 },
+      { text: "Tengo algo configurado pero no es completo", score: 2 },
+      { text: "Tengo automatizaciones activas 24/7 con Manychat o CRM", score: 3 }
+    ]
+  },
+  {
+    category: "autoridad",
+    text: "¿Tu audiencia te ve claramente como referente en tu área?",
+    options: [
+      { text: "No, apenas estoy comenzando a construir presencia", score: 0 },
+      { text: "Algunas personas me conocen pero no hay consistencia", score: 1 },
+      { text: "Me reconocen pero todavía me comparan con otros", score: 2 },
+      { text: "Sí, me buscan directamente por mi expertise", score: 3 }
+    ]
+  },
+  {
+    category: "ia",
+    text: "¿Usas herramientas de IA en tu proceso de marketing?",
+    options: [
+      { text: "No, no sé por dónde empezar", score: 0 },
+      { text: "Lo he probado pero sin una metodología clara", score: 1 },
+      { text: "Uso IA ocasionalmente para crear contenido", score: 2 },
+      { text: "Tengo un sistema con IA que trabaja en múltiples áreas", score: 3 }
+    ]
+  },
+  {
+    category: "sistema",
+    text: "¿Puedes medir cuántos leads genera tu contenido cada semana?",
+    options: [
+      { text: "No, solo veo likes y seguidores", score: 0 },
+      { text: "A veces me llegan mensajes pero no los mido", score: 1 },
+      { text: "Tengo una idea aproximada pero no datos exactos", score: 2 },
+      { text: "Sí, tengo métricas claras de conversión semanales", score: 3 }
+    ]
+  },
+  {
+    category: "contenido",
+    text: "¿Tienes una estrategia de contenido con pilares definidos?",
+    options: [
+      { text: "Publico lo que se me ocurre en el momento", score: 0 },
+      { text: "Tengo temas pero no están organizados como estrategia", score: 1 },
+      { text: "Tengo pilares pero no siempre los sigo", score: 2 },
+      { text: "Sí, tengo pilares claros y un calendario que ejecuto", score: 3 }
+    ]
+  },
+  {
+    category: "autoridad",
+    text: "¿Tu perfil de Instagram comunica claramente tu propuesta de valor?",
+    options: [
+      { text: "No, necesita trabajo — no refleja lo que hago", score: 0 },
+      { text: "Dice lo que hago pero no por qué elegirme a mí", score: 1 },
+      { text: "Está bien pero le falta impacto y CTA claro", score: 2 },
+      { text: "Sí, en 3 segundos queda claro quién soy y qué resuelvo", score: 3 }
+    ]
+  },
+  {
+    category: "sistema",
+    text: "¿Tienes un proceso claro para convertir seguidores en clientes?",
+    options: [
+      { text: "No, no sé cómo conectar el contenido con las ventas", score: 0 },
+      { text: "Hago posts y espero que alguien me escriba", score: 1 },
+      { text: "Tengo algo pero no es un sistema completo", score: 2 },
+      { text: "Sí, tengo un embudo con contenido, captura y seguimiento", score: 3 }
+    ]
+  }
+];
+
+const gaps = {
+  nicho: {
+    icon: "🎯",
+    title: "Nicho sin definir",
+    desc: "Hablarle a todos es no hablarle a nadie. Sin nicho claro, tu contenido no convierte."
+  },
+  contenido: {
+    icon: "📱",
+    title: "Contenido sin sistema",
+    desc: "Publicar cuando hay inspiración no es estrategia. La consistencia construye confianza."
+  },
+  sistema: {
+    icon: "⚙️",
+    title: "Sin sistema de conversión",
+    desc: "Tienes atención pero no tienes dónde llevarla. Necesitas lead magnet + embudo."
+  },
+  automatizacion: {
+    icon: "🤖",
+    title: "Sin automatización",
+    desc: "Respondiendo todo manualmente estás dejando leads caer. El sistema trabaja cuando tú no puedes."
+  },
+  autoridad: {
+    icon: "⭐",
+    title: "Autoridad sin consolidar",
+    desc: "Tu audiencia todavía no te ve como la referencia clara. El contenido de valor constante lo construye."
+  },
+  ia: {
+    icon: "✨",
+    title: "Sin herramientas de IA",
+    desc: "La IA no reemplaza tu criterio — lo multiplica. Sin usarla, trabajas el doble para la mitad."
+  }
+};
+
+let current = 0;
+let answers = [];
+let selectedOption = null;
+
+function startAudit() {
+  document.getElementById('introScreen').style.display = 'none';
+  document.getElementById('quizScreen').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  const card = document.getElementById('questionCard');
+  card.classList.remove('slide-in');
+  void card.offsetWidth;
+  card.classList.add('slide-in');
+
+  document.getElementById('questionNum').textContent = `Pregunta ${String(current + 1).padStart(2, '0')}`;
+  document.getElementById('questionText').textContent = q.text;
+  document.getElementById('progressCount').textContent = `${current + 1} / ${questions.length}`;
+  document.getElementById('progressFill').style.width = `${((current + 1) / questions.length) * 100}%`;
+  document.getElementById('backBtn').style.visibility = current === 0 ? 'hidden' : 'visible';
+
+  const letters = ['A', 'B', 'C', 'D'];
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[current] === i ? ' selected' : '');
+    div.innerHTML = `<div class="option-letter">${letters[i]}</div><span>${opt.text}</span>`;
+    div.onclick = () => selectOption(i, div);
+    container.appendChild(div);
+  });
+
+  selectedOption = answers[current] !== undefined ? answers[current] : null;
+  document.getElementById('nextBtn').disabled = selectedOption === null;
+}
+
+function selectOption(index, el) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedOption = index;
+  answers[current] = index;
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextQuestion() {
+  if (selectedOption === null) return;
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function prevQuestion() {
+  if (current > 0) { current--; renderQuestion(); }
+}
+
+function showResult() {
+  document.getElementById('quizScreen').style.display = 'none';
+  const resultScreen = document.getElementById('resultScreen');
+  resultScreen.style.display = 'block';
+  resultScreen.style.animation = 'fadeUp 0.6s ease both';
+
+  // Calculate score
+  let total = 0;
+  const categoryScores = {};
+  answers.forEach((ans, i) => {
+    const q = questions[i];
+    const score = q.options[ans].score;
+    total += score;
+    if (!categoryScores[q.category]) categoryScores[q.category] = [];
+    categoryScores[q.category].push(score);
+  });
+
+  const maxScore = questions.length * 3;
+  const percentage = total / maxScore;
+  const scoreOut10 = Math.round(percentage * 10 * 10) / 10;
+
+  // Animate score
+  const circumference = 2 * Math.PI * 60;
+  const offset = circumference - (percentage * circumference);
+  setTimeout(() => {
+    document.getElementById('scoreCircle').style.strokeDashoffset = offset;
+    animateNumber(document.getElementById('scoreValue'), 0, scoreOut10, 1200);
+  }, 100);
+
+  // Level
+  let level, desc, levelColor;
+  if (scoreOut10 < 3) {
+    level = "Marca en construcción";
+    desc = "Tienes la visión pero los cimientos aún no están. Es el momento perfecto para construir el sistema correcto desde el inicio.";
+  } else if (scoreOut10 < 5) {
+    level = "Marca con potencial";
+    desc = "Estás publicando y tienes presencia, pero sin un sistema detrás el esfuerzo no se traduce en clientes. Pequeños cambios generan grandes resultados.";
+  } else if (scoreOut10 < 7) {
+    level = "Marca en crecimiento";
+    desc = "Tienes bases sólidas. Lo que te falta es conectar las piezas en un ecosistema que convierta de forma consistente.";
+  } else {
+    level = "Marca con sistema";
+    desc = "Tienes un sistema funcionando. El siguiente paso es escalarlo con IA y automatizaciones más avanzadas.";
+  }
+
+  document.getElementById('resultLevel').textContent = level;
+  document.getElementById('resultDesc').textContent = desc;
+
+  // Find 3 worst categories
+  const avgByCategory = {};
+  Object.keys(categoryScores).forEach(cat => {
+    const scores = categoryScores[cat];
+    avgByCategory[cat] = scores.reduce((a, b) => a + b, 0) / scores.length;
+  });
+
+  const sorted = Object.entries(avgByCategory).sort((a, b) => a[1] - b[1]);
+  const worst3 = sorted.slice(0, 3).map(([cat]) => cat);
+
+  const gapsList = document.getElementById('gapsList');
+  gapsList.innerHTML = '';
+  worst3.forEach(cat => {
+    const g = gaps[cat];
+    const div = document.createElement('div');
+    div.className = 'gap-item';
+    div.innerHTML = `
+      <div class="gap-icon">${g.icon}</div>
+      <div class="gap-text">
+        <strong>${g.title}</strong>
+        <span>${g.desc}</span>
+      </div>`;
+    gapsList.appendChild(div);
+  });
+}
+
+function animateNumber(el, from, to, duration) {
+  const start = performance.now();
+  const isDecimal = to % 1 !== 0;
+  function update(time) {
+    const progress = Math.min((time - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = from + (to - from) * eased;
+    el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+</script>
+</body>
+</html>
