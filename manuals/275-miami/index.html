@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>House Manual · Oasis Private Pool | Hospitality Kings</title>
-<meta name="description" content="Your complete house manual for the Oasis Private Pool near Beach & Dolphin Stadium. Managed by Hospitality Kings — Luxury Short Term Rentals.">
+<title>Manual of Instructions · 245 NE 175th St | Hospitality Kings</title>
+<meta name="description" content="Your complete house manual for the Oasis Private Pool near Beach & Dolphin Stadium. Managed by Hospitality Kings, Luxury Short Term Rentals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ivory: #F7F3EC;
-    --ivory-warm: #EFE8DC;
-    --cream: #FBF8F2;
-    --gold: #B8935A;
-    --gold-dark: #8F6E3E;
-    --gold-light: #E4D2AC;
+    --white: #FFFFFF;
+    --off-white: #FBF6F7;
+    --cream: #FDFAFB;
+    --burgundy: #6B1F2E;
+    --burgundy-dark: #4A1420;
+    --burgundy-deep: #3D0F16;
+    --burgundy-glow: #F0D5D9;
+    --rose: #E8B8BF;
     --ink: #1A1613;
     --ink-soft: #3A3530;
-    --muted: #7A6F63;
-    --line: #D9CFBE;
-    --white: #FFFFFF;
+    --muted: #6B6B6B;
+    --line: #EADFE0;
     --whatsapp: #25D366;
     --whatsapp-dark: #128C7E;
   }
@@ -31,7 +32,7 @@
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    background: var(--ivory);
+    background: var(--white);
     color: var(--ink);
     min-height: 100vh;
     line-height: 1.65;
@@ -62,57 +63,33 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(247, 243, 236, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid transparent;
     transition: all 0.3s ease;
   }
-  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav.scrolled { border-bottom-color: var(--line); background: rgba(255,255,255,0.96); }
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 32px;
+    padding: 14px 32px;
     max-width: 1400px;
     margin: 0 auto;
+    gap: 20px;
   }
   .brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink);
   }
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--gold-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0;
-  }
-  .brand-name small {
+  .brand-logo {
+    height: 50px;
+    width: auto;
     display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--muted);
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-top: 2px;
   }
-  .nav-actions { display: flex; align-items: center; gap: 16px; }
+  .nav-actions { display: flex; align-items: center; gap: 14px; }
   .lang-toggle {
     display: flex;
     align-items: center;
@@ -138,23 +115,23 @@
     letter-spacing: inherit;
   }
   .lang-toggle button.active {
-    background: var(--ink);
-    color: var(--gold-light);
+    background: var(--burgundy);
+    color: var(--white);
   }
   .nav-wa {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: var(--ink);
-    color: var(--gold-light);
+    background: var(--burgundy);
+    color: var(--white);
     padding: 10px 18px;
     border-radius: 999px;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.05em;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
   }
-  .nav-wa:hover { transform: translateY(-1px); }
+  .nav-wa:hover { background: var(--burgundy-dark); transform: translateY(-1px); }
   .nav-wa svg { width: 14px; height: 14px; }
 
   /* ============ HERO ============ */
@@ -172,7 +149,7 @@
     background-size: cover;
     background-position: center;
     background-image: url('https://lh3.googleusercontent.com/d/1PtOd-5quqxFhotQSu8ajp-CH8RwluiSr=w2400');
-    filter: brightness(0.55);
+    filter: brightness(0.5);
     transform: scale(1.05);
     transition: transform 8s ease;
   }
@@ -180,7 +157,7 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(26,22,19,0.2) 0%, rgba(26,22,19,0.7) 100%);
+    background: linear-gradient(180deg, rgba(29,10,15,0.15) 0%, rgba(29,10,15,0.75) 100%);
   }
   .hero-inner {
     position: relative;
@@ -189,7 +166,7 @@
     margin: 0 auto;
     padding: 0 32px;
     width: 100%;
-    color: var(--ivory);
+    color: var(--white);
   }
   .hero-eyebrow {
     font-family: 'Inter', sans-serif;
@@ -197,8 +174,8 @@
     font-weight: 500;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 24px;
+    color: var(--burgundy-glow);
+    margin-bottom: 28px;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -207,24 +184,34 @@
     content: '';
     width: 40px;
     height: 1px;
-    background: var(--gold-light);
+    background: var(--burgundy-glow);
   }
   .hero h1 {
-    font-size: clamp(48px, 8vw, 96px);
+    font-size: clamp(50px, 8vw, 104px);
     font-weight: 400;
     max-width: 900px;
-    color: var(--ivory);
-    margin-bottom: 32px;
+    color: var(--white);
+    margin-bottom: 18px;
+    line-height: 1.05;
   }
   .hero h1 em {
     font-style: italic;
-    color: var(--gold-light);
+    color: var(--burgundy-glow);
     font-weight: 300;
+  }
+  .hero-address {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 30px);
+    color: var(--burgundy-glow);
+    font-weight: 400;
+    margin-bottom: 32px;
+    letter-spacing: 0.01em;
   }
   .hero-sub {
     max-width: 560px;
     font-size: 17px;
-    color: rgba(247, 243, 236, 0.8);
+    color: rgba(255, 255, 255, 0.82);
     margin-bottom: 40px;
     line-height: 1.7;
     font-weight: 300;
@@ -234,7 +221,7 @@
     gap: 40px;
     flex-wrap: wrap;
     padding-top: 32px;
-    border-top: 1px solid rgba(228, 210, 172, 0.25);
+    border-top: 1px solid rgba(240, 213, 217, 0.28);
   }
   .hero-meta-item {
     display: flex;
@@ -245,21 +232,21 @@
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gold-light);
+    color: var(--burgundy-glow);
     font-weight: 500;
   }
   .hero-meta-item .value {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 500;
-    color: var(--ivory);
+    color: var(--white);
   }
   .scroll-hint {
     position: absolute;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--gold-light);
+    color: var(--burgundy-glow);
     font-size: 10px;
     letter-spacing: 0.4em;
     text-transform: uppercase;
@@ -274,7 +261,7 @@
     content: '';
     width: 1px;
     height: 40px;
-    background: var(--gold-light);
+    background: var(--burgundy-glow);
     animation: scrollLine 2.5s ease-in-out infinite;
   }
   @keyframes scrollLine {
@@ -292,21 +279,21 @@
     font-weight: 500;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: var(--gold-dark);
+    color: var(--burgundy);
     margin-bottom: 20px;
   }
   .section-eyebrow::before {
     content: '';
     width: 32px;
     height: 1px;
-    background: var(--gold);
+    background: var(--burgundy);
   }
   .section-title {
     font-size: clamp(36px, 5vw, 56px);
     margin-bottom: 20px;
     max-width: 780px;
   }
-  .section-title em { font-style: italic; color: var(--gold-dark); font-weight: 400; }
+  .section-title em { font-style: italic; color: var(--burgundy); font-weight: 400; }
   .section-lead {
     font-size: 18px;
     color: var(--muted);
@@ -317,7 +304,7 @@
   .section-header { margin-bottom: 60px; }
 
   /* ============ WELCOME ============ */
-  .welcome { background: var(--cream); position: relative; }
+  .welcome { background: var(--off-white); position: relative; }
   .welcome-grid {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -330,7 +317,7 @@
     background-position: center;
     background-image: url('https://lh3.googleusercontent.com/d/1q1LmWI9JbSgyDn2pHCT0adba1g7y6T58=w1400');
     border-radius: 2px;
-    box-shadow: 0 30px 80px rgba(26, 22, 19, 0.15);
+    box-shadow: 0 30px 80px rgba(107, 31, 46, 0.18);
   }
   .welcome-content .section-lead { margin-bottom: 32px; }
   .property-facts {
@@ -350,7 +337,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 42px;
     font-weight: 500;
-    color: var(--ink);
+    color: var(--burgundy);
     line-height: 1;
   }
   .fact-label {
@@ -361,9 +348,85 @@
     font-weight: 500;
   }
 
+  /* ============ CHECK-IN / CHECK-OUT ============ */
+  .stay-times {
+    background: var(--white);
+    padding: 100px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stay-times-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .stay-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 48px 40px;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .stay-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--burgundy);
+  }
+  .stay-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(107, 31, 46, 0.15);
+    border-color: var(--burgundy);
+  }
+  .stay-card-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    color: var(--burgundy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .stay-card-icon svg { width: 40px; height: 40px; stroke-width: 1.3; }
+  .stay-card .label {
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .stay-card .time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 500;
+    color: var(--burgundy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stay-card .time small {
+    font-size: 32px;
+    color: var(--burgundy);
+    margin-left: 4px;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .stay-card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
   /* ============ GALLERY ============ */
   .gallery {
-    background: var(--ivory);
+    background: var(--white);
   }
   .gallery-grid {
     display: grid;
@@ -384,7 +447,7 @@
   .gallery-item.tall { grid-row: span 2; }
 
   /* ============ ESSENTIALS ============ */
-  .essentials { background: var(--cream); }
+  .essentials { background: var(--off-white); }
   .essentials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -402,15 +465,15 @@
   }
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(26,22,19,0.08);
-    border-color: var(--gold-light);
+    box-shadow: 0 20px 50px rgba(107,31,46,0.1);
+    border-color: var(--burgundy);
   }
   .card-icon {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--ivory-warm);
-    color: var(--gold-dark);
+    background: var(--burgundy-glow);
+    color: var(--burgundy);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -427,28 +490,28 @@
     line-height: 1.7;
   }
   .card .highlight {
-    background: var(--ivory-warm);
+    background: var(--off-white);
     padding: 14px 18px;
     border-radius: 2px;
     font-family: 'Inter', monospace;
     font-size: 14px;
     color: var(--ink);
     margin-top: 12px;
-    border-left: 2px solid var(--gold);
+    border-left: 2px solid var(--burgundy);
   }
   .card .highlight strong {
     display: block;
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold-dark);
+    color: var(--burgundy);
     margin-bottom: 6px;
     font-weight: 600;
   }
   .card .highlight span { font-weight: 500; word-break: break-all; }
 
   /* ============ AMENITIES ============ */
-  .amenities { background: var(--ivory); }
+  .amenities { background: var(--white); }
   .amenities-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -463,14 +526,15 @@
     transition: all 0.3s ease;
   }
   .amenity:hover {
-    border-color: var(--gold);
+    border-color: var(--burgundy);
     transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(107,31,46,0.08);
   }
   .amenity-icon {
     width: 48px;
     height: 48px;
     margin: 0 auto 16px;
-    color: var(--gold-dark);
+    color: var(--burgundy);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -489,12 +553,12 @@
   }
 
   /* ============ RULES ============ */
-  .rules { background: var(--ink); color: var(--ivory); }
-  .rules .section-eyebrow { color: var(--gold-light); }
-  .rules .section-eyebrow::before { background: var(--gold-light); }
-  .rules .section-title { color: var(--ivory); }
-  .rules .section-title em { color: var(--gold-light); }
-  .rules .section-lead { color: rgba(247,243,236,0.7); }
+  .rules { background: var(--burgundy-deep); color: var(--white); }
+  .rules .section-eyebrow { color: var(--burgundy-glow); }
+  .rules .section-eyebrow::before { background: var(--burgundy-glow); }
+  .rules .section-title { color: var(--white); }
+  .rules .section-title em { color: var(--burgundy-glow); }
+  .rules .section-lead { color: rgba(255,255,255,0.7); }
   .rules-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -504,13 +568,13 @@
     display: flex;
     gap: 24px;
     padding: 24px 0;
-    border-bottom: 1px solid rgba(228,210,172,0.12);
+    border-bottom: 1px solid rgba(240,213,217,0.14);
   }
   .rule-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 40px;
     font-weight: 400;
-    color: var(--gold-light);
+    color: var(--burgundy-glow);
     line-height: 1;
     font-style: italic;
     min-width: 50px;
@@ -520,18 +584,18 @@
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 6px;
-    color: var(--ivory);
+    color: var(--white);
     letter-spacing: 0.01em;
   }
   .rule-text p {
-    color: rgba(247,243,236,0.65);
+    color: rgba(255,255,255,0.65);
     font-size: 14px;
     line-height: 1.6;
   }
 
   /* ============ TRASH ============ */
   .trash {
-    background: var(--cream);
+    background: var(--off-white);
     padding: 80px 0;
   }
   .trash-inner {
@@ -550,7 +614,9 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    transition: all 0.25s ease;
   }
+  .day-card:hover { border-color: var(--burgundy); }
   .day-card .day-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 24px;
@@ -561,15 +627,15 @@
     font-size: 12px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gold-dark);
+    color: var(--burgundy);
     font-weight: 600;
-    background: var(--ivory-warm);
+    background: var(--burgundy-glow);
     padding: 6px 12px;
     border-radius: 999px;
   }
 
   /* ============ NEARBY ============ */
-  .nearby { background: var(--ivory); }
+  .nearby { background: var(--white); }
   .filter-bar {
     display: flex;
     gap: 8px;
@@ -589,11 +655,11 @@
     cursor: pointer;
     transition: all 0.25s ease;
   }
-  .filter-btn:hover { color: var(--ink); border-color: var(--gold); }
+  .filter-btn:hover { color: var(--burgundy); border-color: var(--burgundy); }
   .filter-btn.active {
-    background: var(--ink);
-    color: var(--gold-light);
-    border-color: var(--ink);
+    background: var(--burgundy);
+    color: var(--white);
+    border-color: var(--burgundy);
   }
   .nearby-grid {
     display: grid;
@@ -611,9 +677,9 @@
     gap: 12px;
   }
   .place:hover {
-    border-color: var(--gold);
+    border-color: var(--burgundy);
     transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(26,22,19,0.06);
+    box-shadow: 0 15px 40px rgba(107,31,46,0.08);
   }
   .place-head {
     display: flex;
@@ -632,8 +698,8 @@
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold-dark);
-    background: var(--ivory-warm);
+    color: var(--burgundy);
+    background: var(--burgundy-glow);
     padding: 5px 10px;
     border-radius: 2px;
     font-weight: 600;
@@ -654,11 +720,12 @@
     border-top: 1px solid var(--line);
   }
   .place-meta span { display: flex; align-items: center; gap: 6px; }
-  .place-meta svg { width: 12px; height: 12px; stroke-width: 1.8; color: var(--gold-dark); }
+  .place-meta svg { width: 12px; height: 12px; stroke-width: 1.8; color: var(--burgundy); }
+  .place-meta a { color: var(--burgundy); font-weight: 500; }
 
   /* ============ EMERGENCY ============ */
   .emergency {
-    background: var(--cream);
+    background: var(--off-white);
   }
   .emergency-grid {
     display: grid;
@@ -667,8 +734,8 @@
     align-items: start;
   }
   .emergency-call {
-    background: var(--ink);
-    color: var(--ivory);
+    background: var(--burgundy-dark);
+    color: var(--white);
     padding: 60px 44px;
     border-radius: 4px;
     text-align: center;
@@ -677,7 +744,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 96px;
     font-weight: 500;
-    color: var(--gold-light);
+    color: var(--white);
     line-height: 1;
     margin: 20px 0;
     letter-spacing: -0.02em;
@@ -686,11 +753,11 @@
     font-size: 11px;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: rgba(228,210,172,0.7);
+    color: var(--burgundy-glow);
     font-weight: 500;
   }
   .emergency-call p {
-    color: rgba(247,243,236,0.7);
+    color: rgba(255,255,255,0.72);
     font-size: 14px;
     margin-top: 16px;
   }
@@ -706,7 +773,7 @@
     gap: 20px;
     transition: all 0.25s ease;
   }
-  .hospital:hover { border-color: var(--gold); }
+  .hospital:hover { border-color: var(--burgundy); }
   .hospital-info h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
@@ -723,13 +790,13 @@
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gold-dark);
+    color: var(--burgundy);
     font-weight: 600;
     margin-top: 6px;
   }
   .hospital-call {
-    background: var(--ivory-warm);
-    color: var(--ink);
+    background: var(--burgundy-glow);
+    color: var(--burgundy);
     padding: 10px 16px;
     border-radius: 999px;
     font-size: 13px;
@@ -740,13 +807,13 @@
     align-items: center;
     gap: 6px;
   }
-  .hospital-call:hover { background: var(--gold); color: var(--white); }
+  .hospital-call:hover { background: var(--burgundy); color: var(--white); }
   .hospital-call svg { width: 12px; height: 12px; }
 
   /* ============ CTA ============ */
   .cta {
-    background: var(--ink);
-    color: var(--ivory);
+    background: var(--burgundy);
+    color: var(--white);
     text-align: center;
     padding: 140px 0;
     position: relative;
@@ -759,22 +826,23 @@
     background-image: url('https://lh3.googleusercontent.com/d/17WWnKbPEHzVz_PKxbzv8su7ZW7gV8soD=w2000');
     background-size: cover;
     background-position: center;
-    opacity: 0.12;
+    opacity: 0.15;
+    mix-blend-mode: overlay;
   }
   .cta-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 0 32px; }
   .cta .section-eyebrow {
-    color: var(--gold-light);
+    color: var(--burgundy-glow);
     justify-content: center;
   }
-  .cta .section-eyebrow::before { background: var(--gold-light); }
+  .cta .section-eyebrow::before { background: var(--burgundy-glow); }
   .cta h2 {
     font-size: clamp(40px, 6vw, 68px);
-    color: var(--ivory);
+    color: var(--white);
     margin-bottom: 24px;
   }
-  .cta h2 em { color: var(--gold-light); font-style: italic; font-weight: 300; }
+  .cta h2 em { color: var(--burgundy-glow); font-style: italic; font-weight: 300; }
   .cta p {
-    color: rgba(247,243,236,0.75);
+    color: rgba(255,255,255,0.8);
     font-size: 18px;
     margin-bottom: 48px;
     line-height: 1.7;
@@ -806,14 +874,14 @@
     margin-top: 24px;
     font-family: 'Cormorant Garamond', serif;
     font-size: 24px;
-    color: var(--gold-light);
+    color: var(--burgundy-glow);
     font-style: italic;
   }
 
   /* ============ FOOTER ============ */
   footer {
-    background: #0F0C0A;
-    color: var(--ivory);
+    background: #1A0A0F;
+    color: var(--white);
     padding: 80px 0 40px;
   }
   .footer-inner {
@@ -822,18 +890,19 @@
     padding: 0 32px;
     text-align: center;
   }
-  .footer-brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    color: var(--gold-light);
-    margin-bottom: 6px;
-    letter-spacing: 0.05em;
+  .footer-logo {
+    background: var(--white);
+    display: inline-block;
+    padding: 16px 24px;
+    border-radius: 4px;
+    margin-bottom: 30px;
   }
+  .footer-logo img { height: 56px; width: auto; display: block; }
   .footer-tag {
     font-size: 11px;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: rgba(247,243,236,0.5);
+    color: var(--burgundy-glow);
     margin-bottom: 40px;
   }
   .footer-links {
@@ -843,15 +912,15 @@
     margin-bottom: 40px;
     flex-wrap: wrap;
     font-size: 13px;
-    color: rgba(247,243,236,0.7);
+    color: rgba(255,255,255,0.75);
   }
   .footer-links a { transition: color 0.2s ease; }
-  .footer-links a:hover { color: var(--gold-light); }
+  .footer-links a:hover { color: var(--burgundy-glow); }
   .footer-copy {
     padding-top: 30px;
-    border-top: 1px solid rgba(228,210,172,0.1);
+    border-top: 1px solid rgba(240,213,217,0.12);
     font-size: 12px;
-    color: rgba(247,243,236,0.4);
+    color: rgba(255,255,255,0.45);
     letter-spacing: 0.05em;
   }
 
@@ -878,7 +947,7 @@
   }
   .floating-wa svg { width: 28px; height: 28px; }
 
-  /* ============ REVEAL ANIMATION ============ */
+  /* ============ REVEAL ============ */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -889,8 +958,8 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px) {
     .container { padding: 0 24px; }
-    .nav-inner { padding: 14px 20px; }
-    .brand-name { display: none; }
+    .nav-inner { padding: 10px 20px; }
+    .brand-logo { height: 40px; }
     .nav-wa span { display: none; }
     .nav-wa { padding: 10px; }
     section { padding: 70px 0; }
@@ -899,6 +968,10 @@
     .hero-meta-item .value { font-size: 22px; }
     .welcome-grid { grid-template-columns: 1fr; gap: 40px; }
     .welcome-image { aspect-ratio: 4/3; }
+    .stay-times { padding: 70px 0; }
+    .stay-times-grid { grid-template-columns: 1fr; }
+    .stay-card { padding: 40px 32px; }
+    .stay-card .time { font-size: 60px; }
     .property-facts { grid-template-columns: repeat(2, 1fr); }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
     .gallery-item.wide { grid-column: span 2; }
@@ -918,12 +991,11 @@
   }
 
   @media (max-width: 480px) {
-    .hero-meta { flex-direction: column; gap: 16px; }
+    .hero-meta { gap: 20px; }
+    .hero-meta-item { flex: 1 1 45%; }
     .amenities-grid { grid-template-columns: 1fr 1fr; }
     .property-facts { grid-template-columns: 1fr 1fr; }
   }
-
-  [data-lang-hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -931,12 +1003,8 @@
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="brand">
-      <span class="brand-mark">HK</span>
-      <span class="brand-name">
-        Hospitality Kings
-        <small data-en="Luxury Short Term Rentals" data-es="Alquileres Vacacionales de Lujo">Luxury Short Term Rentals</small>
-      </span>
+    <a href="#" class="brand" aria-label="Hospitality Kings">
+      <img src="https://lh3.googleusercontent.com/d/1H4dj5ReVLHEICeVQQZuwwW3TKBcAm-89=w300" alt="Hospitality Kings, Experts in Vacation Rental Management" class="brand-logo">
     </a>
     <div class="nav-actions">
       <div class="lang-toggle" role="tablist">
@@ -956,9 +1024,10 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow" data-en="Hospitality Kings · Guest Manual" data-es="Hospitality Kings · Manual del Huésped">Hospitality Kings · Guest Manual</div>
-    <h1 data-en="Welcome to your private <em>Miami oasis.</em>" data-es="Bienvenidos a tu oasis <em>privado en Miami.</em>">Welcome to your private <em>Miami oasis.</em></h1>
-    <p class="hero-sub" data-en="Everything you need for an effortless, unforgettable stay — check-in details, house rules, Wi-Fi, a curated local guide, and 24/7 support from your dedicated hosts." data-es="Todo lo que necesitas para una estadía impecable e inolvidable — detalles de check-in, normas de la casa, Wi-Fi, una guía local seleccionada, y soporte 24/7 de tus anfitriones dedicados.">Everything you need for an effortless, unforgettable stay — check-in details, house rules, Wi-Fi, a curated local guide, and 24/7 support from your dedicated hosts.</p>
+    <div class="hero-eyebrow" data-en="Hospitality Kings" data-es="Hospitality Kings">Hospitality Kings</div>
+    <h1 data-en="Manual of <em>Instructions</em>" data-es="Manual de <em>Instrucciones</em>">Manual of <em>Instructions</em></h1>
+    <div class="hero-address">245 NE 175th Street, North Miami Beach, FL 33162</div>
+    <p class="hero-sub" data-en="Welcome to your private Miami oasis. Everything you need for an effortless, unforgettable stay, check-in details, house rules, Wi-Fi, a curated local guide, and 24/7 support from your dedicated hosts." data-es="Bienvenidos a tu oasis privado en Miami. Todo lo que necesitas para una estadía impecable e inolvidable, detalles de check-in, normas de la casa, Wi-Fi, una guía local seleccionada, y soporte 24/7 de tus anfitriones dedicados.">Welcome to your private Miami oasis. Everything you need for an effortless, unforgettable stay, check-in details, house rules, Wi-Fi, a curated local guide, and 24/7 support from your dedicated hosts.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="label" data-en="Bedrooms" data-es="Habitaciones">Bedrooms</span>
@@ -969,12 +1038,12 @@
         <span class="value">6</span>
       </div>
       <div class="hero-meta-item">
-        <span class="label" data-en="Private Pool" data-es="Piscina Privada">Private Pool</span>
-        <span class="value" data-en="Yes" data-es="Sí">Yes</span>
+        <span class="label" data-en="Check In" data-es="Check In">Check In</span>
+        <span class="value">4:00 PM</span>
       </div>
       <div class="hero-meta-item">
-        <span class="label" data-en="Location" data-es="Ubicación">Location</span>
-        <span class="value">North Miami Beach</span>
+        <span class="label" data-en="Check Out" data-es="Check Out">Check Out</span>
+        <span class="value">11:00 AM</span>
       </div>
     </div>
   </div>
@@ -989,7 +1058,7 @@
       <div class="welcome-content reveal">
         <div class="section-eyebrow" data-en="The Property" data-es="La Propiedad">The Property</div>
         <h2 class="section-title" data-en="Oasis Private Pool <em>near Beach & Dolphin Stadium</em>" data-es="Oasis Piscina Privada <em>cerca de la playa y el Dolphin Stadium</em>">Oasis Private Pool <em>near Beach & Dolphin Stadium</em></h2>
-        <p class="section-lead" data-en="A serene resort-style retreat designed for gatherings, celebrations, and effortless relaxation. Six generously appointed bedrooms, a heated private pool, an outdoor grill, and thoughtful touches throughout — all just minutes from the shoreline." data-es="Un refugio sereno estilo resort diseñado para reuniones, celebraciones y descanso absoluto. Seis habitaciones amplias, piscina privada climatizada, parrilla al aire libre y detalles curados en cada rincón — todo a minutos de la orilla del mar.">A serene resort-style retreat designed for gatherings, celebrations, and effortless relaxation. Six generously appointed bedrooms, a heated private pool, an outdoor grill, and thoughtful touches throughout — all just minutes from the shoreline.</p>
+        <p class="section-lead" data-en="A serene resort-style retreat designed for gatherings, celebrations, and effortless relaxation. Six generously appointed bedrooms, a heated private pool, an outdoor grill, and thoughtful touches throughout, all just minutes from the shoreline." data-es="Un refugio sereno estilo resort diseñado para reuniones, celebraciones y descanso absoluto. Seis habitaciones amplias, piscina privada climatizada, parrilla al aire libre y detalles curados en cada rincón, todo a minutos de la orilla del mar.">A serene resort-style retreat designed for gatherings, celebrations, and effortless relaxation. Six generously appointed bedrooms, a heated private pool, an outdoor grill, and thoughtful touches throughout, all just minutes from the shoreline.</p>
         <div class="property-facts">
           <div class="fact">
             <span class="fact-num">6</span>
@@ -1008,6 +1077,38 @@
             <span class="fact-label" data-en="Miami Sunshine" data-es="Sol de Miami">Miami Sunshine</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAY TIMES ============ -->
+<section class="stay-times">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom: 60px;">
+      <div class="section-eyebrow" style="justify-content:center;" data-en="Arrival & Departure" data-es="Llegada y Salida">Arrival & Departure</div>
+      <h2 class="section-title" style="margin: 0 auto 16px;" data-en="Your <em>stay times.</em>" data-es="Tus <em>horarios de estadía.</em>">Your <em>stay times.</em></h2>
+    </div>
+    <div class="stay-times-grid">
+      <div class="stay-card reveal">
+        <div class="stay-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+          </svg>
+        </div>
+        <div class="label" data-en="Check In" data-es="Check In">Check In</div>
+        <div class="time">4<small>:00 PM</small></div>
+        <p data-en="Arrive anytime after 4:00 PM. Access instructions will be shared 24 hours before your arrival." data-es="Llega en cualquier momento después de las 4:00 PM. Las instrucciones de acceso se enviarán 24 horas antes de tu llegada.">Arrive anytime after 4:00 PM. Access instructions will be shared 24 hours before your arrival.</p>
+      </div>
+      <div class="stay-card reveal">
+        <div class="stay-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div class="label" data-en="Check Out" data-es="Check Out">Check Out</div>
+        <div class="time">11<small>:00 AM</small></div>
+        <p data-en="Please depart by 11:00 AM. Leave used towels in the laundry room, we'll handle the rest." data-es="Por favor sal antes de las 11:00 AM. Deja las toallas usadas en la lavandería, nosotros nos encargamos del resto.">Please depart by 11:00 AM. Leave used towels in the laundry room, we'll handle the rest.</p>
       </div>
     </div>
   </div>
@@ -1042,7 +1143,7 @@
     <div class="section-header reveal">
       <div class="section-eyebrow" data-en="Essentials" data-es="Lo Esencial">Essentials</div>
       <h2 class="section-title" data-en="The details <em>that matter most.</em>" data-es="Los detalles <em>que más importan.</em>">The details <em>that matter most.</em></h2>
-      <p class="section-lead" data-en="Wi-Fi, address and daily rhythm — bookmark this page and you'll never need to hunt for a password again." data-es="Wi-Fi, dirección y ritmo diario — guarda esta página y nunca más buscarás una contraseña.">Wi-Fi, address and daily rhythm — bookmark this page and you'll never need to hunt for a password again.</p>
+      <p class="section-lead" data-en="Wi-Fi, address and daily rhythm, bookmark this page and you'll never need to hunt for a password again." data-es="Wi-Fi, dirección y ritmo diario, guarda esta página y nunca más buscarás una contraseña.">Wi-Fi, address and daily rhythm, bookmark this page and you'll never need to hunt for a password again.</p>
     </div>
     <div class="essentials-grid">
       <div class="card reveal">
@@ -1066,12 +1167,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
         </div>
         <h3 data-en="Address" data-es="Dirección">Address</h3>
-        <p data-en="Your Miami escape is located in the heart of North Miami Beach — minutes from the shoreline, dining, and shopping." data-es="Tu escape en Miami está en el corazón de North Miami Beach — a minutos de la playa, restaurantes y compras.">Your Miami escape is located in the heart of North Miami Beach — minutes from the shoreline, dining, and shopping.</p>
+        <p data-en="Your Miami escape is located in the heart of North Miami Beach, minutes from the shoreline, dining, and shopping." data-es="Tu escape en Miami está en el corazón de North Miami Beach, a minutos de la playa, restaurantes y compras.">Your Miami escape is located in the heart of North Miami Beach, minutes from the shoreline, dining, and shopping.</p>
         <div class="highlight">
           <strong data-en="Property" data-es="Propiedad">Property</strong>
           <span>245 NE 175th St<br>North Miami Beach, FL 33162</span>
         </div>
-        <a href="https://maps.google.com/?q=245+NE+175th+St,+North+Miami+Beach,+FL+33162" target="_blank" rel="noopener" style="font-size: 13px; color: var(--gold-dark); font-weight: 500; text-decoration: underline; text-underline-offset: 4px;" data-en="Open in Maps →" data-es="Abrir en Maps →">Open in Maps →</a>
+        <a href="https://maps.google.com/?q=245+NE+175th+St,+North+Miami+Beach,+FL+33162" target="_blank" rel="noopener" style="font-size: 13px; color: var(--burgundy); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;" data-en="Open in Maps →" data-es="Abrir en Maps →">Open in Maps →</a>
       </div>
 
       <div class="card reveal">
@@ -1205,7 +1306,7 @@
         <div class="rule-num">02</div>
         <div class="rule-text">
           <h4 data-en="No parties or events" data-es="Sin fiestas ni eventos">No parties or events</h4>
-          <p data-en="This is a residential neighborhood — loud parties are not permitted at any time." data-es="Este es un vecindario residencial — no se permiten fiestas ruidosas en ningún momento.">This is a residential neighborhood — loud parties are not permitted at any time.</p>
+          <p data-en="This is a residential neighborhood, loud parties are not permitted at any time." data-es="Este es un vecindario residencial, no se permiten fiestas ruidosas en ningún momento.">This is a residential neighborhood, loud parties are not permitted at any time.</p>
         </div>
       </div>
       <div class="rule reveal">
@@ -1219,7 +1320,7 @@
         <div class="rule-num">04</div>
         <div class="rule-text">
           <h4 data-en="Guests on the reservation" data-es="Huéspedes registrados">Guests on the reservation</h4>
-          <p data-en="Only registered guests may stay overnight. Day visitors are welcome — please let us know in advance." data-es="Solo los huéspedes registrados pueden pernoctar. Los visitantes durante el día son bienvenidos — por favor avísanos con antelación.">Only registered guests may stay overnight. Day visitors are welcome — please let us know in advance.</p>
+          <p data-en="Only registered guests may stay overnight. Day visitors are welcome, please let us know in advance." data-es="Solo los huéspedes registrados pueden pernoctar. Los visitantes durante el día son bienvenidos, por favor avísanos con antelación.">Only registered guests may stay overnight. Day visitors are welcome, please let us know in advance.</p>
         </div>
       </div>
       <div class="rule reveal">
@@ -1233,14 +1334,14 @@
         <div class="rule-num">06</div>
         <div class="rule-text">
           <h4 data-en="Leave used towels in the laundry" data-es="Deja las toallas usadas en la lavandería">Leave used towels in the laundry</h4>
-          <p data-en="On the day of departure, please place all used towels in the laundry room. Leave the beds — we'll handle the linens." data-es="El día de salida, por favor deja todas las toallas usadas en la lavandería. Deja las camas — nosotros nos encargamos.">On the day of departure, please place all used towels in the laundry room. Leave the beds — we'll handle the linens.</p>
+          <p data-en="On the day of departure, please place all used towels in the laundry room. Leave the beds, we'll handle the linens." data-es="El día de salida, por favor deja todas las toallas usadas en la lavandería. Deja las camas, nosotros nos encargamos.">On the day of departure, please place all used towels in the laundry room. Leave the beds, we'll handle the linens.</p>
         </div>
       </div>
       <div class="rule reveal">
         <div class="rule-num">07</div>
         <div class="rule-text">
           <h4 data-en="Treat the space with care" data-es="Cuida el espacio">Treat the space with care</h4>
-          <p data-en="If anything breaks or malfunctions, contact us right away — we'll never charge for honest wear and tear." data-es="Si algo se rompe o falla, contáctanos de inmediato — nunca cobramos por el uso normal.">If anything breaks or malfunctions, contact us right away — we'll never charge for honest wear and tear.</p>
+          <p data-en="If anything breaks or malfunctions, contact us right away, we'll never charge for honest wear and tear." data-es="Si algo se rompe o falla, contáctanos de inmediato, nunca cobramos por el uso normal.">If anything breaks or malfunctions, contact us right away, we'll never charge for honest wear and tear.</p>
         </div>
       </div>
       <div class="rule reveal">
@@ -1291,7 +1392,7 @@
     <div class="section-header reveal">
       <div class="section-eyebrow" data-en="Local Guide" data-es="Guía Local">Local Guide</div>
       <h2 class="section-title" data-en="Handpicked <em>neighborhood favorites.</em>" data-es="Selección <em>de favoritos del barrio.</em>">Handpicked <em>neighborhood favorites.</em></h2>
-      <p class="section-lead" data-en="From cozy taquerías to sleek cocktail bars — everything worth exploring within a short drive." data-es="Desde acogedoras taquerías hasta bares de cócteles sofisticados — todo lo que vale la pena explorar a corta distancia.">From cozy taquerías to sleek cocktail bars — everything worth exploring within a short drive.</p>
+      <p class="section-lead" data-en="From cozy taquerías to sleek cocktail bars, everything worth exploring within a short drive." data-es="Desde acogedoras taquerías hasta bares de cócteles sofisticados, todo lo que vale la pena explorar a corta distancia.">From cozy taquerías to sleek cocktail bars, everything worth exploring within a short drive.</p>
     </div>
     <div class="filter-bar reveal">
       <button class="filter-btn active" data-filter="all" data-en="All" data-es="Todos">All</button>
@@ -1309,7 +1410,7 @@
         <p class="place-desc" data-en="Nightlife bar with cocktails, pool tables and live music." data-es="Bar nocturno con cócteles, mesas de pool y música en vivo.">Nightlife bar with cocktails, pool tables and live music.</p>
         <div class="place-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>18145 NE 19th Ave</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-en="8–10 min" data-es="8–10 min">8–10 min</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>8 to 10 min</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg><a href="tel:+13059745229">(305) 974-5229</a></span>
         </div>
       </div>
@@ -1319,10 +1420,10 @@
           <h4>Tap Beer Miami</h4>
           <span class="place-tag" data-en="Bar" data-es="Bar">Bar</span>
         </div>
-        <p class="place-desc" data-en="Craft beer taproom with sports on TV and a laid-back crowd." data-es="Cervecería artesanal con deportes en TV y ambiente relajado.">Craft beer taproom with sports on TV and a laid-back crowd.</p>
+        <p class="place-desc" data-en="Craft beer taproom with sports on TV and a laid back crowd." data-es="Cervecería artesanal con deportes en TV y ambiente relajado.">Craft beer taproom with sports on TV and a laid back crowd.</p>
         <div class="place-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>17850 W Dixie Hwy</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-en="10–12 min" data-es="10–12 min">10–12 min</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>10 to 12 min</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg><a href="tel:+13054540337">(305) 454-0337</a></span>
         </div>
       </div>
@@ -1335,7 +1436,7 @@
         <p class="place-desc" data-en="Casual restaurant, perfect for lunch or a relaxed dinner." data-es="Restaurante casual, perfecto para almuerzo o una cena tranquila.">Casual restaurant, perfect for lunch or a relaxed dinner.</p>
         <div class="place-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>18145 NE 19th Ave</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-en="8–10 min" data-es="8–10 min">8–10 min</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>8 to 10 min</span>
         </div>
       </div>
 
@@ -1347,7 +1448,7 @@
         <p class="place-desc" data-en="Peruvian restaurant with a full bar and standout desserts." data-es="Restaurante peruano con bar completo y postres destacados.">Peruvian restaurant with a full bar and standout desserts.</p>
         <div class="place-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>1127 NE 163rd St</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-en="6–8 min" data-es="6–8 min">6–8 min</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>6 to 8 min</span>
         </div>
       </div>
 
@@ -1359,7 +1460,7 @@
         <p class="place-desc" data-en="Family-friendly Mexican taquería with authentic street-style tacos." data-es="Taquería mexicana familiar con auténticos tacos estilo callejero.">Family-friendly Mexican taquería with authentic street-style tacos.</p>
         <div class="place-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>15455 W Dixie Hwy</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-en="9–11 min" data-es="9–11 min">9–11 min</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>9 to 11 min</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg><a href="tel:+13054293973">(305) 429-3973</a></span>
         </div>
       </div>
@@ -1372,7 +1473,7 @@
         <p class="place-desc" data-en="Convenient plaza with stores, dining and everyday essentials." data-es="Plaza comercial con tiendas, restaurantes y todo lo esencial.">Convenient plaza with stores, dining and everyday essentials.</p>
         <div class="place-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>14681 Biscayne Blvd</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-en="5–7 min" data-es="5–7 min">5–7 min</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>5 to 7 min</span>
         </div>
       </div>
 
@@ -1381,10 +1482,10 @@
           <h4>Shops at Skylake</h4>
           <span class="place-tag" data-en="Shopping" data-es="Compras">Shopping</span>
         </div>
-        <p class="place-desc" data-en="Open-air shopping center with retailers and a variety of eateries." data-es="Centro comercial al aire libre con tiendas y variedad gastronómica.">Open-air shopping center with retailers and a variety of eateries.</p>
+        <p class="place-desc" data-en="Open air shopping center with retailers and a variety of eateries." data-es="Centro comercial al aire libre con tiendas y variedad gastronómica.">Open air shopping center with retailers and a variety of eateries.</p>
         <div class="place-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>1650 NE Miami Gardens Dr</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-en="6–8 min" data-es="6–8 min">6–8 min</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>6 to 8 min</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg><a href="tel:+13059471664">(305) 947-1664</a></span>
         </div>
       </div>
@@ -1406,14 +1507,14 @@
         <a href="tel:911" style="text-decoration:none;">
           <div class="num">911</div>
         </a>
-        <p data-en="Fire, police, or medical — anywhere in the U.S." data-es="Bomberos, policía o médica — en todo Estados Unidos.">Fire, police, or medical — anywhere in the U.S.</p>
+        <p data-en="Fire, police, or medical, anywhere in the U.S." data-es="Bomberos, policía o médica, en todo Estados Unidos.">Fire, police, or medical, anywhere in the U.S.</p>
       </div>
       <div class="hospitals reveal">
         <div class="hospital">
           <div class="hospital-info">
             <h4>Jackson North Medical Center</h4>
             <p>160 NW 170th St, North Miami Beach, FL 33169</p>
-            <div class="drive" data-en="~ 5–7 min drive · 24 hr" data-es="~ 5–7 min · 24 hs">~ 5–7 min drive · 24 hr</div>
+            <div class="drive" data-en="5 to 7 min drive · 24 hr" data-es="5 a 7 min · 24 hs">5 to 7 min drive · 24 hr</div>
           </div>
           <a href="tel:+13056511100" class="hospital-call">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
@@ -1424,7 +1525,7 @@
           <div class="hospital-info">
             <h4>UHealth SoLé Mia</h4>
             <p>2111 Sole Mia Way, North Miami, FL 33181</p>
-            <div class="drive" data-en="~ 7–10 min drive" data-es="~ 7–10 min">~ 7–10 min drive</div>
+            <div class="drive" data-en="7 to 10 min drive" data-es="7 a 10 min">7 to 10 min drive</div>
           </div>
           <a href="tel:+17863927653" class="hospital-call">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
@@ -1435,7 +1536,7 @@
           <div class="hospital-info">
             <h4>Aventura Hospital & Medical Center</h4>
             <p>20900 Biscayne Blvd, Aventura, FL 33180</p>
-            <div class="drive" data-en="~ 12–15 min · 24 hr ER" data-es="~ 12–15 min · Emergencias 24 hs">~ 12–15 min · 24 hr ER</div>
+            <div class="drive" data-en="12 to 15 min · 24 hr ER" data-es="12 a 15 min · Emergencias 24 hs">12 to 15 min · 24 hr ER</div>
           </div>
           <a href="tel:+13056827000" class="hospital-call">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
@@ -1446,7 +1547,7 @@
           <div class="hospital-info">
             <h4>Mount Sinai Medical Center Aventura</h4>
             <p>2845 NE 199th St, Aventura, FL 33180</p>
-            <div class="drive" data-en="~ 10–13 min · ER" data-es="~ 10–13 min · Emergencias">~ 10–13 min · ER</div>
+            <div class="drive" data-en="10 to 13 min · ER" data-es="10 a 13 min · Emergencias">10 to 13 min · ER</div>
           </div>
         </div>
       </div>
@@ -1459,7 +1560,7 @@
   <div class="cta-inner">
     <div class="section-eyebrow" data-en="24 / 7 Concierge" data-es="Conserjería 24 / 7">24 / 7 Concierge</div>
     <h2 data-en="Any questions? <em>We're just a message away.</em>" data-es="¿Alguna duda? <em>Estamos a un mensaje de distancia.</em>">Any questions? <em>We're just a message away.</em></h2>
-    <p data-en="Whether it's a broken light bulb, a restaurant recommendation, or an early check-in — we're here around the clock, in English and Spanish." data-es="Ya sea un bombillo fundido, una recomendación de restaurante, o un check-in temprano — estamos disponibles todo el día, en inglés y español.">Whether it's a broken light bulb, a restaurant recommendation, or an early check-in — we're here around the clock, in English and Spanish.</p>
+    <p data-en="Whether it's a broken light bulb, a restaurant recommendation, or an early check-in, we're here around the clock, in English and Spanish." data-es="Ya sea un bombillo fundido, una recomendación de restaurante, o un check-in temprano, estamos disponibles todo el día, en inglés y español.">Whether it's a broken light bulb, a restaurant recommendation, or an early check-in, we're here around the clock, in English and Spanish.</p>
     <a href="https://wa.me/13059672439?text=Hi%20Hospitality%20Kings%2C%20I%20have%20a%20question%20about%20my%20stay%20at%20the%20Oasis%20property." target="_blank" rel="noopener" class="wa-btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       <span data-en="Any questions? Contact us here" data-es="¿Alguna duda? Contáctanos aquí">Any questions? Contact us here</span>
@@ -1471,7 +1572,9 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">Hospitality Kings</div>
+    <div class="footer-logo">
+      <img src="https://lh3.googleusercontent.com/d/1H4dj5ReVLHEICeVQQZuwwW3TKBcAm-89=w400" alt="Hospitality Kings">
+    </div>
     <div class="footer-tag" data-en="Luxury Short Term Rentals" data-es="Alquileres Vacacionales de Lujo">Luxury Short Term Rentals</div>
     <div class="footer-links">
       <a href="https://www.hospitalitykings.net" target="_blank" rel="noopener">www.hospitalitykings.net</a>
@@ -1490,23 +1593,12 @@
 </a>
 
 <script>
-  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Language toggle
   const setLang = (lang) => {
     document.querySelectorAll('[data-en]').forEach(el => {
       const val = el.getAttribute('data-' + lang);
-      if (val !== null) {
-        if (el.children.length && /<em>/.test(val)) {
-          el.innerHTML = val;
-        } else if (el.children.length && !/<[a-z]/i.test(val)) {
-          // element has children — only replace text nodes at top level
-          el.innerHTML = val;
-        } else {
-          el.innerHTML = val;
-        }
-      }
+      if (val !== null) el.innerHTML = val;
     });
     document.querySelectorAll('.lang-toggle button').forEach(b => {
       b.classList.toggle('active', b.dataset.lang === lang);
@@ -1517,19 +1609,16 @@
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.dataset.lang));
   });
-  // Initial: try localStorage, else English
   try {
     const saved = localStorage.getItem('hk-lang');
     if (saved === 'es') setLang('es');
   } catch(e) {}
 
-  // Nav scroll state
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1540,7 +1629,6 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Nearby filter
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
