@@ -18,11 +18,11 @@ OUT_HTML = BASE_DIR / "manual-standalone.html"
 
 # each file → (max_width, jpeg_quality) for the embedded version
 TARGETS = {
-    "hero.jpg":    (1400, 78),
-    "welcome.jpg": (1000, 78),
-    "cta.jpg":     (1200, 65),
-    "bedroom.jpg": (800,  78),
-    "kitchen.jpg": (800,  78),
+    "hero.jpg":    (1400, 82),
+    "welcome.jpg": (1000, 82),
+    "cta.jpg":     (1200, 70),
+    "outdoor.jpg": (800,  82),
+    "lounge.jpg":  (800,  82),
 }
 
 

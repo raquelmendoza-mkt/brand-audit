@@ -6,6 +6,8 @@ Usage: resize.py <base64_input_file> <output_jpeg_path> <max_width> [quality=82]
 import base64
 import sys
 from pathlib import Path
+
+import pillow_avif  # noqa: F401 — registers the AVIF decoder with Pillow
 from PIL import Image, ImageOps
 
 b64_path = Path(sys.argv[1])
