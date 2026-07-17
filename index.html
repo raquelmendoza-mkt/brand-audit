@@ -309,6 +309,83 @@
     transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
   }
   .mockup-wrap:hover img { transform: rotate(0deg) scale(1.03); }
+
+  .mockup-fallback {
+    display: none;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 8px;
+    background: linear-gradient(160deg, #0F2A54 0%, #0A1F3D 60%, #050F26 100%);
+    border: 1px solid rgba(200,161,92,0.35);
+    padding: 24px 18px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-3deg);
+    box-shadow: 0 30px 60px rgba(5,15,38,0.9);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .mockup-fallback::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(200,161,92,0.25);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .mf-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .mf-guide-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--gold-400);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .mf-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .mf-divider {
+    width: 24px;
+    height: 1px;
+    background: var(--gold-500);
+    margin: 10px auto;
+  }
+  .mf-sub {
+    font-size: 7px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    margin-bottom: 30px;
+  }
+  .mf-signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .mf-role {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+  }
+
   .mockup-glow {
     position: absolute;
     inset: -20px;
@@ -719,7 +796,19 @@
     <div class="form-card">
       <div class="mockup-wrap">
         <div class="mockup-glow"></div>
-        <img src="mockup-guia.png" alt="Guía 2026 · Primeros Compradores de Vivienda">
+        <img src="mockup-guia.png" alt="Guía 2026 · Primeros Compradores de Vivienda"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="mockup-fallback">
+          <div class="mockup-fallback-inner">
+            <div class="mf-eyebrow">The Elite Experience · LPT Realty</div>
+            <div class="mf-guide-label">Guía 2026</div>
+            <div class="mf-title">Guía para primeros compradores de vivienda</div>
+            <div class="mf-divider"></div>
+            <div class="mf-sub">Del sueño a las llaves · Florida Central</div>
+            <div class="mf-signature">Marileen Nieves</div>
+            <div class="mf-role">Tu realtor de confianza</div>
+          </div>
+        </div>
       </div>
 
       <div id="formView">
