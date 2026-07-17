@@ -730,12 +730,12 @@
           id="registroForm"
           name="registro-guia-compradores"
           method="POST"
+          action="/"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          netlify
         >
           <input type="hidden" name="form-name" value="registro-guia-compradores" />
-          <p class="honeypot">
+          <p class="honeypot" hidden>
             <label>No llenar: <input name="bot-field" /></label>
           </p>
 
@@ -829,33 +829,29 @@
   const successView = document.getElementById('successView');
   const submitBtn = document.getElementById('submitBtn');
 
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  };
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
 
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => { data[key] = value; });
+    const body = new URLSearchParams(new FormData(form)).toString();
 
     try {
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode(data)
+        body: body
       });
+
+      if (!response.ok) {
+        throw new Error('Netlify respondió ' + response.status);
+      }
 
       formView.style.display = 'none';
       successView.classList.add('show');
       successView.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
-      console.error(err);
+      console.error('Error enviando el formulario:', err);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Obtener mi guía gratis';
       alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
