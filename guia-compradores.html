@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Gratuita para Primeros Compradores de Vivienda | Raquel Mendoza</title>
+<meta name="description" content="Descarga gratis la guía definitiva para comprar tu primera vivienda. Todo lo que necesitas saber, paso a paso.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-950: #030B26;
+    --blue-900: #061539;
+    --blue-800: #0B2559;
+    --blue-700: #123A82;
+    --blue-600: #1E56C7;
+    --blue-500: #2D7BFF;
+    --blue-400: #5B99FF;
+    --blue-300: #8FBAFF;
+    --blue-100: #DCE8FF;
+    --blue-50: #F0F6FF;
+    --cyan: #22D3EE;
+    --cyan-glow: #67E8F9;
+    --white: #FFFFFF;
+    --gray-100: #F1F5F9;
+    --gray-300: #CBD5E1;
+    --gray-500: #64748B;
+    --success: #10B981;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--blue-950);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ANIMATED BACKGROUND */
+  .bg-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 60% 80% at 15% 10%, rgba(45,123,255,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 60% at 90% 20%, rgba(34,211,238,0.20) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 60% at 50% 100%, rgba(30,86,199,0.30) 0%, transparent 55%),
+      var(--blue-950);
+  }
+  .bg-canvas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(143,186,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(143,186,255,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.55;
+    animation: float 18s ease-in-out infinite;
+  }
+  .blob-1 { width: 480px; height: 480px; background: var(--blue-500); top: -120px; left: -120px; }
+  .blob-2 { width: 380px; height: 380px; background: var(--cyan); top: 40%; right: -80px; animation-delay: -6s; }
+  .blob-3 { width: 420px; height: 420px; background: var(--blue-600); bottom: -140px; left: 30%; animation-delay: -12s; }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(40px, -30px) scale(1.05); }
+    66%      { transform: translate(-30px, 40px) scale(0.95); }
+  }
+
+  /* LAYOUT */
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--blue-500), var(--cyan));
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 100px;
+    background: rgba(45,123,255,0.12);
+    border: 1px solid rgba(143,186,255,0.25);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue-100);
+    backdrop-filter: blur(10px);
+  }
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 0 0 rgba(34,211,238,0.7);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(34,211,238,0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(34,211,238,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,211,238,0); }
+  }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    color: var(--blue-100);
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+  }
+  .eyebrow-tag {
+    padding: 4px 10px;
+    background: linear-gradient(135deg, var(--blue-500), var(--cyan));
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 5.5vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  h1 .grad {
+    background: linear-gradient(120deg, var(--cyan-glow) 0%, var(--blue-400) 50%, var(--blue-300) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    font-size: 19px;
+    color: var(--blue-100);
+    opacity: 0.85;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+
+  .benefits {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .benefits li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--blue-100);
+  }
+  .check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--blue-500));
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(143,186,255,0.15);
+  }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    background: linear-gradient(135deg, var(--cyan-glow), var(--blue-400));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: var(--gray-300); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* FORM CARD */
+  .form-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 1px solid rgba(143,186,255,0.25);
+    border-radius: 24px;
+    padding: 40px 36px;
+    backdrop-filter: blur(20px);
+    box-shadow:
+      0 30px 60px -20px rgba(3,11,38,0.6),
+      0 0 0 1px rgba(143,186,255,0.06) inset,
+      0 -10px 40px -20px rgba(45,123,255,0.4) inset;
+  }
+  .form-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(103,232,249,0.5), transparent 40%, rgba(45,123,255,0.5));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .mockup-wrap {
+    position: relative;
+    margin: -80px auto 24px;
+    width: 190px;
+    height: 240px;
+    display: block;
+  }
+  .mockup-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow:
+      0 25px 50px -12px rgba(3,11,38,0.8),
+      0 0 40px rgba(45,123,255,0.4);
+    transform: rotate(-4deg);
+    transition: transform 0.4s ease;
+  }
+  .mockup-wrap:hover img { transform: rotate(0deg) scale(1.02); }
+  .mockup-fallback {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue-700), var(--blue-500), var(--cyan));
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 20px;
+    transform: rotate(-4deg);
+    box-shadow: 0 25px 50px -12px rgba(3,11,38,0.8), 0 0 40px rgba(45,123,255,0.4);
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .mockup-fallback strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 10px;
+  }
+  .mockup-fallback span { font-size: 20px; line-height: 1.15; font-weight: 700; }
+
+  .form-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .form-sub {
+    text-align: center;
+    font-size: 14px;
+    color: var(--blue-100);
+    opacity: 0.75;
+    margin-bottom: 28px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue-300);
+    margin-bottom: 8px;
+  }
+  .field input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(3,11,38,0.5);
+    border: 1px solid rgba(143,186,255,0.25);
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .field input::placeholder { color: rgba(220,232,255,0.35); }
+  .field input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    background: rgba(3,11,38,0.8);
+    box-shadow: 0 0 0 4px rgba(34,211,238,0.15);
+  }
+
+  .honeypot { position: absolute; left: -9999px; }
+
+  .cta {
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--blue-500) 0%, var(--cyan) 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 15px 30px -10px rgba(45,123,255,0.5);
+  }
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -10px rgba(45,123,255,0.7);
+  }
+  .cta:active { transform: translateY(0); }
+  .cta:disabled { opacity: 0.7; cursor: not-allowed; }
+  .cta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.6s ease;
+  }
+  .cta:hover::after { left: 100%; }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 16px;
+  }
+
+  /* SUCCESS STATE */
+  .success {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .success.show { display: block; animation: fadeUp 0.5s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--success), var(--cyan));
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 34px;
+    box-shadow: 0 20px 40px -10px rgba(16,185,129,0.5);
+  }
+  .success h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .success p {
+    color: var(--blue-100);
+    opacity: 0.85;
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--cyan), var(--blue-500));
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    box-shadow: 0 15px 30px -10px rgba(34,211,238,0.5);
+  }
+  .download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -10px rgba(34,211,238,0.7);
+  }
+  .download-icon {
+    width: 22px;
+    height: 22px;
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(3px); }
+  }
+
+  /* FEATURES SECTION */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 80px;
+  }
+  .feature {
+    padding: 28px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(143,186,255,0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  .feature:hover {
+    transform: translateY(-4px);
+    border-color: rgba(103,232,249,0.4);
+    background: rgba(255,255,255,0.06);
+  }
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(45,123,255,0.2), rgba(34,211,238,0.1));
+    border: 1px solid rgba(103,232,249,0.3);
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+  }
+  .feature h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .feature p {
+    font-size: 14px;
+    color: var(--blue-100);
+    opacity: 0.75;
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 60px 0 20px;
+    font-size: 13px;
+    color: var(--gray-500);
+  }
+  .footer a { color: var(--blue-300); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .stats { gap: 20px; }
+    .features { grid-template-columns: 1fr; }
+    .form-card { padding: 30px 24px; }
+    .mockup-wrap { margin: -70px auto 20px; width: 160px; height: 200px; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 24px 18px; }
+    .nav { margin-bottom: 40px; }
+    .badge { font-size: 11px; padding: 6px 10px; }
+    .stats { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div class="wrap">
+
+  <nav class="nav">
+    <div class="logo">
+      <div class="logo-mark">🏠</div>
+      Raquel Mendoza
+    </div>
+    <div class="badge">
+      <span class="pulse"></span>
+      Guía 100% Gratuita
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">
+        <span class="eyebrow-tag">Nuevo</span>
+        Edición 2026 · Actualizada
+      </div>
+
+      <h1>
+        Tu <span class="grad">primera vivienda</span><br>
+        empieza con una decisión inteligente.
+      </h1>
+
+      <p class="subtitle">
+        Descarga la guía completa que te enseña, paso a paso, cómo comprar tu primera casa sin cometer los errores más comunes de los principiantes.
+      </p>
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Checklist financiero antes de comprar</li>
+        <li><span class="check">✓</span> Cómo calcular cuánto puedes pagar realmente</li>
+        <li><span class="check">✓</span> Los 7 errores que arruinan al comprador nuevo</li>
+        <li><span class="check">✓</span> Documentos, trámites y tiempos explicados</li>
+      </ul>
+
+      <div class="stats">
+        <div>
+          <span class="stat-num">+2K</span>
+          <span class="stat-label">Descargas</span>
+        </div>
+        <div>
+          <span class="stat-num">4.9★</span>
+          <span class="stat-label">Valoración</span>
+        </div>
+        <div>
+          <span class="stat-num">42</span>
+          <span class="stat-label">Páginas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="mockup-wrap">
+        <img src="mockup-guia.png" alt="Portada de la Guía para Primeros Compradores"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+        <div class="mockup-fallback" style="display:none;">
+          <div>
+            <strong>Guía Gratuita</strong>
+            <span>Primeros Compradores de Vivienda</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="formView">
+        <h2 class="form-title">Descarga tu guía ahora</h2>
+        <p class="form-sub">Completa tus datos y recibe acceso inmediato.</p>
+
+        <form
+          id="registroForm"
+          name="registro-guia-compradores"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          netlify
+        >
+          <input type="hidden" name="form-name" value="registro-guia-compradores" />
+          <p class="honeypot">
+            <label>No llenar: <input name="bot-field" /></label>
+          </p>
+
+          <div class="field">
+            <label for="nombre">Nombre y apellido</label>
+            <input type="text" id="nombre" name="nombre" placeholder="María García" required autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" placeholder="tu@correo.com" required autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="telefono">Número de teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+1 (555) 000-0000" required autocomplete="tel" />
+          </div>
+
+          <button type="submit" class="cta" id="submitBtn">
+            Obtener mi guía gratis →
+          </button>
+
+          <p class="disclaimer">🔒 Tus datos están seguros. No hacemos spam.</p>
+        </form>
+      </div>
+
+      <div class="success" id="successView">
+        <div class="success-icon">✓</div>
+        <h3>¡Listo, tu guía está aquí!</h3>
+        <p>Gracias por registrarte. Haz clic abajo para descargar tu guía al instante.</p>
+        <a href="guia-primeros-compradores.pdf" download class="download-btn" id="downloadBtn">
+          <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Descargar la guía aquí
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h4>Análisis financiero real</h4>
+      <p>Aprende a calcular tu presupuesto de compra sin sorpresas ni deudas ocultas.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔑</div>
+      <h4>Proceso paso a paso</h4>
+      <p>Desde la búsqueda hasta la firma. Cada etapa explicada con claridad total.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💡</div>
+      <h4>Tips de experta</h4>
+      <p>Consejos de negociación y errores comunes que te ahorrarán miles de dólares.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2026 Raquel Mendoza · Todos los derechos reservados<br>
+    <a href="#">Política de privacidad</a> · <a href="#">Términos</a>
+  </footer>
+
+</div>
+
+<script>
+  const form = document.getElementById('registroForm');
+  const formView = document.getElementById('formView');
+  const successView = document.getElementById('successView');
+  const submitBtn = document.getElementById('submitBtn');
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => { data[key] = value; });
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode(data)
+      });
+
+      formView.style.display = 'none';
+      successView.classList.add('show');
+      successView.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      console.error(err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Obtener mi guía gratis →';
+      alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+    }
+  });
+</script>
+
+</body>
+</html>
