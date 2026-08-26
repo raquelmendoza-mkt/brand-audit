@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Way Realty OS · Propuesta Comercial — RM Marketing IA</title>
+<meta name="description" content="La plataforma propia de First Way Realty: CRM con branding propio, MLS de Miami integrado, matching con IA y estudio de plantillas. Autofinanciable desde el primer año vía Technology Fee.">
+<meta name="theme-color" content="#490F18">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="First Way Realty OS — Propuesta Comercial para First Way Realty">
+<meta property="og:description" content="CRM propio, MLS de Miami integrado y producción de marketing con IA. Un activo que se paga solo desde el primer año.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     FIRST WAY REALTY OS — Sistema de marca de la propuesta
+     Paleta tomada del PDF: vino #490F18 · #6B1D2A
+     Dorado #B8934F / #D8BF89 · Crema #FBF6F4 · Tinta #1A1315
+     Títulos: Poppins · Texto editorial: Source Serif 4
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --wine:        #490F18;
+    --wine-2:      #6B1D2A;
+    --wine-deep:   #34090F;
+    --wine-soft:   #7C2A38;
+    --gold:        #B8934F;
+    --gold-light:  #D8BF89;
+    --gold-pale:   #F6EEDD;
+    --cream:       #FBF6F4;
+    --cream-2:     #F3EAE7;
+    --ink:         #1A1315;
+    --ink-soft:    #5A4B4E;
+    --line:        #E6D9D6;
+    --line-dark:   rgba(216,191,137,0.22);
+
+    --maxw: 1120px;
+    --radius: 18px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 78px; }
+
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.62;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  section { position: relative; padding: 92px 0; }
+  @media (max-width: 640px){ section { padding: 68px 0; } }
+
+  /* ---------- Tipografía ---------- */
+  h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; letter-spacing: -0.03em; line-height: 1.1; font-weight: 700; }
+  h1 { font-size: clamp(38px, 6.4vw, 76px); font-weight: 800; }
+  h2 { font-size: clamp(27px, 4.1vw, 44px); }
+  h3 { font-size: clamp(17px, 2.1vw, 21px); letter-spacing: -0.015em; line-height: 1.3; font-weight: 600; }
+
+  p { font-size: clamp(15.5px, 1.6vw, 17px); }
+
+  .serif {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(16.5px, 1.8vw, 19px);
+    line-height: 1.7;
+  }
+
+  .lead { color: var(--ink-soft); max-width: 66ch; }
+  .lead strong { color: var(--ink); font-weight: 600; }
+
+  .eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.4em;
+    color: var(--wine-soft);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .rule { height: 2px; background: var(--wine); width: 100%; margin-bottom: 22px; }
+
+  .head { margin-bottom: 44px; }
+  .head h2 { margin-bottom: 16px; }
+
+  /* ---------- Navegación ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+    background: rgba(73,15,24,0.92);
+    backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line-dark);
+    transform: translateY(-100%);
+    transition: transform .45s var(--ease);
+  }
+  .nav.on { transform: translateY(0); }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 20px; }
+  .nav-logo { font-weight: 700; font-size: 14px; letter-spacing: -0.02em; color: var(--cream); text-decoration: none; white-space: nowrap; }
+  .nav-logo span { color: var(--gold-light); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a {
+    font-size: 12.5px; font-weight: 500; color: rgba(251,246,244,0.7);
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  @media (max-width: 900px){ .nav-links { display: none; } }
+
+  /* ---------- Botones ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 14px 26px; border-radius: 999px;
+    font-family: 'Poppins', sans-serif; font-size: 14.5px; font-weight: 600;
+    text-decoration: none; border: 1.5px solid transparent; cursor: pointer;
+    transition: transform .25s var(--ease), background .25s, color .25s, border-color .25s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-gold { background: var(--gold); color: #2B1206; }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-wine { background: var(--wine); color: var(--cream); }
+  .btn-wine:hover { background: var(--wine-2); }
+  .btn-ghost { border-color: rgba(251,246,244,0.32); color: var(--cream); }
+  .btn-ghost:hover { border-color: var(--gold-light); color: var(--gold-light); }
+  .btn-ghost-dark { border-color: var(--line); color: var(--wine); background: #fff; }
+  .btn-ghost-dark:hover { border-color: var(--wine); }
+  .btn-lg { padding: 17px 34px; font-size: 15.5px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* ---------- Portada ---------- */
+  .cover {
+    background: var(--wine);
+    color: var(--cream);
+    padding: 128px 0 96px;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 12% 0%, rgba(184,147,79,0.16) 0%, transparent 62%),
+      radial-gradient(ellipse 60% 50% at 92% 96%, rgba(107,29,42,0.85) 0%, transparent 58%);
+    pointer-events: none;
+  }
+  .cover .wrap { position: relative; z-index: 1; }
+  .cover h1 { margin: 22px 0 4px; }
+  .cover h1 .os { display: block; font-weight: 400; color: var(--gold-light); }
+  .cover .claim {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(17px, 2.1vw, 22px);
+    line-height: 1.62;
+    color: rgba(251,246,244,0.85);
+    max-width: 34ch;
+    margin-top: 26px;
+  }
+  .cover-line { height: 1px; background: var(--line-dark); margin: 46px 0 32px; }
+
+  .pills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+  @media (max-width: 760px){ .pills { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
+  .pill-t { border-top: 1.5px solid var(--gold-light); padding-top: 12px; }
+  .pill-t b { display: block; font-size: 14px; font-weight: 600; color: var(--cream); }
+  .pill-t span { font-size: 13px; color: rgba(251,246,244,0.62); }
+
+  .meta { display: flex; flex-wrap: wrap; gap: 56px; margin-top: 56px; }
+  .meta .k { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .meta .n { font-weight: 600; font-size: 16px; }
+  .meta .d { font-size: 13.5px; color: rgba(251,246,244,0.62); }
+
+  .cover .cta-row { margin-top: 48px; }
+
+  /* ---------- Bloques de superficie ---------- */
+  .band-dark { background: var(--wine); color: var(--cream); }
+  .band-dark .lead { color: rgba(251,246,244,0.76); }
+  .band-dark .lead strong { color: var(--cream); }
+  .band-dark .rule { background: var(--gold-light); }
+  .band-dark .num { color: var(--gold-light); }
+  .band-deep { background: var(--wine-deep); color: var(--cream); }
+  .band-cream2 { background: var(--cream-2); }
+
+  /* ---------- Carta ---------- */
+  .letter { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(28px, 4.5vw, 56px); }
+  .letter .serif + .serif { margin-top: 18px; }
+  .letter .serif { color: #2E2426; }
+  .letter b { color: var(--wine); font-weight: 600; }
+  .letter .hi {
+    background: linear-gradient(transparent 62%, var(--gold-pale) 62%);
+    font-weight: 600; color: var(--wine);
+  }
+  .sign { margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--line); }
+  .sign .n { font-family:'Poppins',sans-serif; font-weight: 700; font-size: 17px; color: var(--wine); }
+  .sign .d { font-size: 13.5px; color: var(--ink-soft); }
+
+  /* ---------- Tablas ---------- */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: 14.5px; }
+  thead th {
+    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 600; color: var(--wine-soft); text-align: left;
+    padding: 0 14px 12px; border-bottom: 2px solid var(--wine); white-space: nowrap;
+  }
+  tbody td { padding: 15px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.n, th.n { text-align: right; white-space: nowrap; }
+  tbody tr.total td { font-weight: 600; color: var(--wine); background: rgba(184,147,79,0.07); }
+  .t-name { font-weight: 600; color: var(--wine); }
+  .t-sub { display: block; font-size: 12.5px; color: var(--ink-soft); font-weight: 400; }
+  .t-note { font-family:'Source Serif 4',Georgia,serif; font-style: italic; font-size: 14px; color: var(--ink-soft); margin-top: 14px; }
+
+  .band-dark thead th { color: var(--gold-light); border-bottom-color: var(--gold-light); }
+  .band-dark tbody td { border-bottom-color: var(--line-dark); }
+  .band-dark .t-name { color: var(--cream); }
+  .band-dark .t-sub { color: rgba(251,246,244,0.6); }
+  .band-dark .t-note { color: rgba(251,246,244,0.6); }
+  .band-dark tbody tr.total td { color: var(--gold-light); background: rgba(184,147,79,0.1); }
+  .row-star td { background: rgba(184,147,79,0.14); }
+
+  /* ---------- Tarjetas ---------- */
+  .grid { display: grid; gap: 18px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px){ .g3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px){ .g2, .g3 { grid-template-columns: 1fr; } }
+
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 24px; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 18px 44px rgba(73,15,24,0.09); }
+  .card .mod { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .card h3 { margin: 8px 0 14px; color: var(--wine); }
+
+  .ticks { list-style: none; display: grid; gap: 10px; }
+  .ticks li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+  .ticks li::before {
+    content: ''; position: absolute; left: 0; top: 7px;
+    width: 13px; height: 7px; border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+    transform: rotate(-45deg);
+  }
+  .ticks li b { color: var(--ink); font-weight: 600; }
+  .band-dark .ticks li { color: rgba(251,246,244,0.78); }
+  .band-dark .ticks li b { color: var(--cream); }
+  .band-dark .ticks li::before { border-color: var(--gold-light); }
+
+  /* ---------- KPI ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  @media (max-width: 760px){ .kpis { grid-template-columns: 1fr; gap: 20px; } }
+  .kpi { border-top: 2px solid var(--gold); padding-top: 16px; }
+  .kpi .v { font-family:'Poppins',sans-serif; font-weight: 700; font-size: clamp(30px, 4vw, 42px); letter-spacing: -0.035em; color: var(--wine); line-height: 1; }
+  .kpi p { font-size: 14px; color: var(--ink-soft); margin-top: 10px; }
+  .band-dark .kpi .v { color: var(--gold-light); }
+  .band-dark .kpi p { color: rgba(251,246,244,0.72); }
+
+  /* ---------- Nota / callout ---------- */
+  .note {
+    border-left: 3px solid var(--gold); background: rgba(184,147,79,0.08);
+    border-radius: 0 12px 12px 0; padding: 22px 24px; margin-top: 30px;
+  }
+  .note .k { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+  .note p { font-size: 15px; color: var(--ink-soft); }
+  .band-dark .note { background: rgba(184,147,79,0.13); }
+  .band-dark .note p { color: rgba(251,246,244,0.82); }
+
+  /* ---------- Motores ---------- */
+  .engine { border-radius: var(--radius); padding: 30px 28px; }
+  .engine .k { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+  .engine h3 { margin: 10px 0 14px; }
+  .engine p { font-size: 15px; }
+  .e1 { background: #fff; border: 1px solid var(--line); }
+  .e1 .k { color: var(--ink-soft); } .e1 h3 { color: var(--wine); } .e1 p { color: var(--ink-soft); }
+  .e2 { background: var(--wine); color: var(--cream); }
+  .e2 .k { color: var(--gold-light); } .e2 p { color: rgba(251,246,244,0.8); }
+
+  /* ---------- Timeline ---------- */
+  .tl { display: grid; gap: 0; position: relative; }
+  .tl-item { display: grid; grid-template-columns: 132px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid var(--line-dark); }
+  .tl-item:first-child { border-top: none; }
+  @media (max-width: 700px){ .tl-item { grid-template-columns: 1fr; gap: 8px; } }
+  .tl-when { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--gold-light); padding-top: 3px; }
+  .tl-body h3 { color: var(--cream); margin-bottom: 8px; }
+  .tl-body p { font-size: 14.5px; color: rgba(251,246,244,0.72); }
+
+  /* ---------- Precio ---------- */
+  .price {
+    background: var(--wine); color: var(--cream); border-radius: var(--radius);
+    padding: clamp(28px, 4vw, 44px); position: relative; overflow: hidden;
+  }
+  .price::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 88% 10%, rgba(184,147,79,0.2), transparent 60%);
+    pointer-events: none;
+  }
+  .price > * { position: relative; z-index: 1; }
+  .price .k { font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-light); }
+  .price .v { font-family:'Poppins',sans-serif; font-weight: 800; font-size: clamp(44px, 7vw, 68px); letter-spacing: -0.04em; line-height: 1.05; margin: 12px 0 6px; }
+  .price .v small { font-size: 0.42em; font-weight: 600; letter-spacing: 0; opacity: .8; }
+  .price p { font-size: 14.5px; color: rgba(251,246,244,0.76); }
+
+  .price-alt { background: #fff; border: 1.5px solid var(--gold); color: var(--ink); }
+  .price-alt .k { color: var(--gold); }
+  .price-alt .v { color: var(--wine); }
+  .price-alt p { color: var(--ink-soft); }
+  .price-alt::after { display: none; }
+
+  /* ---------- Cierre ---------- */
+  .final { background: var(--wine-deep); color: var(--cream); text-align: center; padding: 110px 0; }
+  .final::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(184,147,79,0.16), transparent 62%);
+    pointer-events: none;
+  }
+  .final .wrap { position: relative; z-index: 1; }
+  .final h2 { max-width: 18ch; margin: 16px auto 18px; }
+  .final .lead { margin: 0 auto 34px; color: rgba(251,246,244,0.76); max-width: 56ch; }
+  .final .cta-row { justify-content: center; }
+  .resume {
+    display: inline-block; margin-top: 46px; padding: 22px 30px;
+    border: 1px solid var(--line-dark); border-radius: 14px;
+  }
+  .resume .v { font-family:'Poppins',sans-serif; font-weight: 700; font-size: clamp(22px, 3.2vw, 32px); letter-spacing: -0.03em; color: var(--gold-light); }
+  .resume .d { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(251,246,244,0.6); margin-top: 8px; }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--wine); color: var(--cream); padding: 46px 0 34px; border-top: 1px solid var(--line-dark); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 26px; align-items: flex-start; }
+  .foot .name { font-weight: 700; font-size: 16px; }
+  .foot .tagline { font-family:'Source Serif 4',Georgia,serif; font-style: italic; font-size: 15px; color: rgba(251,246,244,0.7); margin-top: 4px; }
+  .foot-contact { display: grid; gap: 6px; }
+  .foot-contact a { font-size: 14px; color: rgba(251,246,244,0.75); text-decoration: none; }
+  .foot-contact a:hover { color: var(--gold-light); }
+  .foot-legal { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-dark); font-size: 12.5px; color: rgba(251,246,244,0.5); }
+
+  /* ---------- FAB ---------- */
+  .fab {
+    position: fixed; right: 20px; bottom: 20px; z-index: 95;
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--gold); color: #2B1206; text-decoration: none;
+    padding: 13px 20px; border-radius: 999px; font-size: 14px; font-weight: 600;
+    box-shadow: 0 12px 30px rgba(52,9,15,0.35);
+    opacity: 0; transform: translateY(14px); pointer-events: none;
+    transition: opacity .35s var(--ease), transform .35s var(--ease), background .25s;
+  }
+  .fab.on { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .fab:hover { background: var(--gold-light); }
+  @media (max-width: 520px){ .fab span { display: none; } .fab { padding: 14px; } }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="#top">First Way Realty <span>OS</span></a>
+    <nav class="nav-links">
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#solucion">Solución</a>
+      <a href="#motores">Los dos motores</a>
+      <a href="#modelo">Modelo económico</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#inversion">Inversión</a>
+    </nav>
+    <a class="btn btn-gold" id="ctaNav" href="#" target="_blank" rel="noopener" style="padding:10px 20px;font-size:13.5px">Conversar la propuesta</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== PORTADA ===================== -->
+<section class="cover">
+  <div class="wrap">
+    <div class="eyebrow">Propuesta comercial · Agosto 2026</div>
+    <h1>First Way<br>Realty <span class="os">OS</span></h1>
+    <p class="claim">La plataforma propia de First Way Realty: CRM, MLS de Miami integrado y producción de marketing con inteligencia artificial, autofinanciable desde el primer año.</p>
+
+    <div class="cover-line"></div>
+
+    <div class="pills">
+      <div class="pill-t"><b>CRM propio</b><span>con branding First Way</span></div>
+      <div class="pill-t"><b>MLS Miami</b><span>vía Bridge API</span></div>
+      <div class="pill-t"><b>Estudio de plantillas</b><span>stories, flyers y PDF</span></div>
+      <div class="pill-t"><b>Modelo</b><span>que se paga solo</span></div>
+    </div>
+
+    <div class="meta">
+      <div>
+        <div class="k">Preparado para</div>
+        <div class="n">Eugenio Vélez</div>
+        <div class="d">CEO · First Way Realty</div>
+      </div>
+      <div>
+        <div class="k">Presentado por</div>
+        <div class="n">Raquel Mendoza</div>
+        <div class="d">Fundadora · RM Marketing IA</div>
+        <div class="d">Estratega de Marcas Personales con IA</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-gold btn-lg" id="ctaHero" href="#" target="_blank" rel="noopener">Conversar la propuesta</a>
+      <a class="btn btn-ghost btn-lg" href="#inversion">Ver la inversión</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CARTA ===================== -->
+<section id="carta">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <div class="eyebrow">Carta de presentación</div>
+    </div>
+
+    <div class="letter reveal">
+      <p class="serif">Eugenio,</p>
+      <p class="serif">Después de dos años construyendo la estrategia digital de First Way Realty, conozco al equipo, los flujos y las propiedades. Y hay algo que no se resuelve con más contenido.</p>
+      <p class="serif">First Way tiene <b>25 años de trayectoria y 40 asesores</b>. Avanti Way, fundada en 2007, hoy opera con 1.800 agentes en 15 oficinas de Florida, y su principal argumento de reclutamiento no es el split de comisión: es su plataforma propia con IA integrada. eXp compite igual, cobrándole a cada agente una cuota tecnológica mensual. <span class="hi">La tecnología dejó de ser un gasto administrativo y pasó a ser el activo con el que se retiene y se recluta talento.</span></p>
+      <p class="serif">Esta propuesta plantea construir <b>First Way Realty OS</b>: una plataforma con el branding de First Way, integración nativa al MLS de Miami, matching de propiedades con IA y un estudio que le permite a cada asesor generar stories, flyers y PDF de cualquier propiedad en segundos.</p>
+      <p class="serif">Quiero ser precisa en algo, porque es la pregunta que naturalmente surge: esto no reemplaza el trabajo de marketing que ya hacemos juntos, <b>lo multiplica</b>. Son dos motores distintos: uno construye la autoridad de la marca First Way Realty, el otro le da a los 40 asesores la capacidad de producir todos los días.</p>
+      <p class="serif">Y la estructura económica es lo que convierte esto en una decisión sencilla. La plataforma no se sostiene con el presupuesto de First Way: se financia con un <b>Technology Fee</b> que First Way le cobra a cada asesor, exactamente como lo hacen Avanti y eXp.</p>
+      <p class="serif">Con 40 asesores a $49 mensuales, First Way recauda <b>$23.520 al año</b>, paga <b>$15.360</b> de suscripción y retiene <b>$8.160 de margen anual</b>. El primer año la plataforma cuesta menos de $100 netos al mes, y a partir del segundo genera utilidad para la empresa.</p>
+      <p class="serif">No te propongo un gasto. Te propongo <span class="hi">un activo que se paga solo</span>, que le pertenece a First Way y que se convierte en tu mejor respuesta frente al asesor que hoy está evaluando irse.</p>
+
+      <div class="sign">
+        <div class="n">Raquel Mendoza</div>
+        <div class="d">Fundadora · RM Marketing IA</div>
+        <div class="d">Estratega de Marcas Personales con IA · Marketing Strategist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 01 DIAGNÓSTICO ===================== -->
+<section id="diagnostico" class="band-dark">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 1</span>
+      <h2>El diagnóstico</h2>
+      <p class="lead serif">First Way no compite solamente por listings. <strong>Compite por asesores.</strong> Y en Miami el estándar contra el que se mide ya está definido.</p>
+    </div>
+
+    <div class="table-scroll reveal">
+      <table>
+        <thead>
+          <tr><th>Competidor</th><th>Escala</th><th>Su argumento tecnológico</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="t-name">Avanti Way</td>
+            <td>1.800 agentes<span class="t-sub">15 oficinas</span></td>
+            <td>Plataforma propia AVEX con capa de IA. Cobra cuota anual por agente y hoy franquicia su tecnología a otras inmobiliarias.</td>
+          </tr>
+          <tr>
+            <td class="t-name">eXp Realty</td>
+            <td>Nacional</td>
+            <td>Stack tecnológico como núcleo del modelo. Technology fee mensual por agente.</td>
+          </tr>
+          <tr class="row-star">
+            <td class="t-name">First Way Realty</td>
+            <td>40 asesores<span class="t-sub">25 años</span></td>
+            <td>Sitio web y MLS. Sin CRM activo, sin capa de IA, sin sistema propio.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid g2 reveal" style="margin-top:52px">
+      <div>
+        <h3 style="margin-bottom:18px;color:var(--gold-light)">Fricción operativa detectada</h3>
+        <ul class="ticks">
+          <li>Los leads llegan mayormente por referido, sin centralización ni trazabilidad de seguimiento.</li>
+          <li>El inventario vive en el MLS pero no se conecta con ninguna herramienta interna del equipo.</li>
+          <li>No existe matching automático entre el perfil de un lead y el inventario disponible.</li>
+          <li>Cada pieza de marketing se produce manualmente, por asesor y por propiedad, multiplicando tiempo y costo.</li>
+          <li>Los reportes de actividad y conversión se calculan a mano o no se calculan.</li>
+          <li><b>Perfil del equipo:</b> la adopción digital es dispar. Cualquier herramienta que exija aprender una interfaz nueva desde cero va a fracasar, y ese es el riesgo real del proyecto, no el desarrollo.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:18px;color:var(--gold-light)">Dónde está el costo real</h3>
+        <p class="lead" style="font-size:15px;margin-bottom:16px">No está principalmente en la comisión perdida. Está en tres lugares que impactan el patrimonio de la empresa:</p>
+        <ul class="ticks">
+          <li><b>Rotación.</b> Reemplazar un asesor productivo cuesta reclutamiento más una rampa de seis a nueve meses. La tecnología es hoy la primera pregunta en una entrevista de reclutamiento.</li>
+          <li><b>Fuga de datos.</b> Los leads y el historial de relación viven en teléfonos personales. Cuando el asesor se va, se lleva la base de la casa consigo.</li>
+          <li><b>Gasto disperso.</b> Herramientas sueltas contratadas asesor por asesor, sin visibilidad ni control central del broker.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note reveal">
+      <div class="k">Nota de honestidad sobre el retorno</div>
+      <p>No voy a argumentar que la plataforma se paga con un solo cierre adicional. Ese cálculo aplica al bolsillo del asesor, no al del broker, que solo captura su split. El retorno de First Way está en el modelo de financiamiento de la sección 04, en la retención de talento y en la propiedad de los datos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02 SOLUCIÓN ===================== -->
+<section id="solucion">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 2</span>
+      <h2>La solución</h2>
+      <p class="lead serif">Una aplicación propia de First Way Realty, en URL dedicada, con <strong>login individual por asesor</strong>, accesible desde computadora, tableta y celular, con el logo, la paleta y la tipografía de First Way en cada pantalla.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="card reveal">
+        <div class="mod">Módulo 01</div>
+        <h3>Gestión de leads y pipeline visual</h3>
+        <ul class="ticks">
+          <li>Captura de leads desde Instagram, WhatsApp, web y referidos, con registro de la fuente</li>
+          <li>Pipeline Kanban de cinco etapas y asignación de leads por reglas de la dirección</li>
+          <li>Historial completo de conversaciones, notas y recordatorios, propiedad de First Way</li>
+          <li>Etiquetas de presupuesto, zona, tipo y urgencia, con alertas por lead sin contacto</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="mod">Módulo 02</div>
+        <h3>Inventario con MLS de Miami integrado</h3>
+        <ul class="ticks">
+          <li>Sincronización automática con MIAMI MLS vía Bridge API, estándar RESO Web API</li>
+          <li>Actualización del inventario cada 10 a 30 minutos, 24 horas al día</li>
+          <li>Filtros avanzados, galería con CDN, mapa interactivo y listings propios de First Way</li>
+          <li>Cumplimiento de las reglas de display IDX de MiamiRE, con atribución al listing broker</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="mod">Módulo 03</div>
+        <h3>Matching automático con inteligencia artificial</h3>
+        <ul class="ticks">
+          <li>Algoritmo que cruza las preferencias de cada lead contra todo el inventario disponible</li>
+          <li>Score de coincidencia con porcentaje y razones explícitas del match</li>
+          <li>Aviso automático cuando entra una propiedad nueva que calza con un lead activo</li>
+          <li>Sugerencias proactivas: «Estas 3 propiedades son ideales para María González»</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="mod">Módulo 04</div>
+        <h3>Asistente de contenido con IA</h3>
+        <ul class="ticks">
+          <li>Guiones para reels y stories con estructura Hook, Desarrollo y CTA</li>
+          <li>Descripciones de propiedades en español e inglés, en segundos</li>
+          <li>Mensajes de WhatsApp y correos personalizados según el perfil y la etapa del lead</li>
+          <li>Biblioteca de respuestas a objeciones frecuentes del comprador en Miami</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="mod">Módulo 05</div>
+        <h3>Estudio de Plantillas y piezas descargables</h3>
+        <ul class="ticks">
+          <li>Plantillas de stories en 9:16 que se rellenan solas con las fotos, el precio y los datos del listing</li>
+          <li>Flyers en un clic: Just Listed, Open House, Precio Reducido, Just Sold, Tour Virtual</li>
+          <li>Descarga en PDF para WhatsApp o correo, y en PNG de alta resolución para redes</li>
+          <li>Branding de First Way bloqueado en cada plantilla, con espacio para la foto y contacto del asesor</li>
+          <li>Atribución automática al listing broker cuando la propiedad no es de First Way</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="mod">Módulo 06</div>
+        <h3>Dashboard y reportes de performance</h3>
+        <ul class="ticks">
+          <li>Métricas clave y evolución mensual de leads, propiedades vendidas y comisiones</li>
+          <li>Reporte por asesor y análisis de fuentes: qué canales generan cierres reales</li>
+          <li>Exportación a Excel y PDF para reuniones de equipo</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 LOS DOS MOTORES ===================== -->
+<section id="motores" class="band-cream2">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 3</span>
+      <h2>Los dos motores</h2>
+      <p class="lead serif">First Way Realty ya tiene un motor de marketing funcionando. Esta plataforma no lo sustituye, <strong>le da un segundo motor que hoy no existe.</strong> Vale la pena separarlos con precisión, porque son cosas distintas y es su combinación la que produce el salto.</p>
+    </div>
+
+    <div class="grid g2 reveal">
+      <div class="engine e1">
+        <div class="k">Motor 1 · Vigente</div>
+        <h3>Marketing de marca corporativa</h3>
+        <p>El servicio estratégico que RM Marketing IA ya ejecuta para First Way Realty: contenido, SEO/SEM y guiones de video para la marca de la empresa. Es un servicio gestionado, lo hace un equipo especializado, con criterio editorial y dirección estratégica.</p>
+      </div>
+      <div class="engine e2">
+        <div class="k">Motor 2 · Nuevo</div>
+        <h3>Producción de los 40 asesores</h3>
+        <p>La plataforma que se propone aquí. Es un sistema de autoservicio: cada asesor produce su propio contenido, genera sus piezas y trabaja su cartera, con IA que le resuelve la parte difícil.</p>
+      </div>
+    </div>
+
+    <div class="table-scroll reveal" style="margin-top:38px">
+      <table>
+        <thead>
+          <tr><th></th><th>Motor 1 · Marca corporativa (vigente)</th><th>Motor 2 · Plataforma (nuevo)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="t-name">Qué es</td><td>Servicio estratégico gestionado por RM Marketing IA</td><td>Herramienta de autoservicio para el asesor</td></tr>
+          <tr><td class="t-name">A quién sirve</td><td>First Way Realty como empresa</td><td>Los 40 asesores, individualmente</td></tr>
+          <tr><td class="t-name">Quién ejecuta</td><td>RM Marketing IA y su equipo</td><td>Cada asesor, asistido por IA</td></tr>
+          <tr><td class="t-name">Dónde se publica</td><td>Cuentas corporativas de First Way</td><td>Cuentas personales de cada asesor</td></tr>
+          <tr><td class="t-name">Objetivo</td><td>Autoridad, posicionamiento, reclutamiento</td><td>Volumen de contenido y conversión de leads</td></tr>
+          <tr><td class="t-name">Ritmo</td><td>Calendario editorial mensual</td><td>Bajo demanda, todos los días</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid g2 reveal" style="margin-top:48px;align-items:start">
+      <div>
+        <h3 style="margin-bottom:18px;color:var(--wine)">Por qué juntos hacen el salto</h3>
+        <ul class="ticks">
+          <li><b>La marca corporativa da credibilidad al asesor.</b> Cuando un comprador ve el contenido de un asesor y detrás encuentra una marca sólida, la conversión sube.</li>
+          <li><b>Los asesores dan alcance a la marca.</b> Cuarenta cuentas personales publicando con criterio multiplican el alcance de una sola cuenta corporativa. Ningún presupuesto de pauta compra esa distribución orgánica.</li>
+          <li><b>La plataforma alimenta la estrategia con datos reales.</b> El CRM muestra qué zonas, rangos de precio y tipos de propiedad convierten de verdad. Eso deja de ser intuición y pasa a ser insumo del calendario editorial.</li>
+          <li><b>La marca recluta y la plataforma cierra.</b> El contenido corporativo atrae al asesor, y la plataforma es lo que le hace decir que sí.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="letter" style="background:#fff">
+          <p class="serif"><b>Sin Motor 2:</b> una marca fuerte y cuarenta asesores invisibles, produciendo poco y de forma desigual.</p>
+          <p class="serif"><b>Sin Motor 1:</b> cuarenta asesores produciendo mucho, sin una marca detrás que le dé peso a lo que publican.</p>
+          <p class="serif"><span class="hi">Con los dos: una marca que abre la puerta y cuarenta personas capaces de atravesarla todos los días.</span></p>
+        </div>
+        <div class="note">
+          <div class="k">El retainer vigente no se toca</div>
+          <p>El retainer mensual de marketing corporativo es un servicio independiente de esta propuesta. No se sustituye, no se absorbe y no se ve afectado por la implementación de la plataforma.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 MODELO ECONÓMICO ===================== -->
+<section id="modelo" class="band-dark">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 4</span>
+      <h2>El modelo económico</h2>
+      <p class="lead serif">First Way Realty OS no se sostiene con el presupuesto de la inmobiliaria: se financia con un <strong>Technology Fee mensual</strong> que First Way le cobra a cada asesor por el acceso a la plataforma. Es el modelo de Avanti Way y de eXp Realty, con una diferencia: <strong>aquí el margen se queda en First Way.</strong></p>
+    </div>
+
+    <div class="table-scroll reveal">
+      <table>
+        <thead>
+          <tr><th>Concepto</th><th class="n">25 asesores</th><th class="n">32 asesores</th><th class="n">40 asesores</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="t-name">Technology Fee cobrado al asesor, $49/mes</td><td class="n">$1.225</td><td class="n">$1.568</td><td class="n">$1.960</td></tr>
+          <tr><td class="t-name">Suscripción a RM Marketing IA, $32/asiento</td><td class="n">$800</td><td class="n">$1.024</td><td class="n">$1.280</td></tr>
+          <tr class="total"><td>Margen mensual de First Way</td><td class="n">$425</td><td class="n">$544</td><td class="n">$680</td></tr>
+          <tr class="total"><td>Margen anual de First Way</td><td class="n">$5.100</td><td class="n">$6.528</td><td class="n">$8.160</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="t-note reveal">Cifras en USD. El Technology Fee de $49 es una recomendación; First Way define libremente el monto que cobra a sus asesores.</p>
+
+    <div class="kpis reveal" style="margin-top:52px">
+      <div class="kpi">
+        <div class="v">12 meses</div>
+        <p>Recuperación completa de la inversión de desarrollo con 40 asesores activos, solo con el margen del Technology Fee.</p>
+      </div>
+      <div class="kpi">
+        <div class="v">$8.160</div>
+        <p>Utilidad neta anual que la plataforma le genera a First Way a partir del año dos, con el equipo completo activo.</p>
+      </div>
+      <div class="kpi">
+        <div class="v">$49</div>
+        <p>Costo mensual para el asesor. eXp cobra $85 de cuota tecnológica. Es menos del 0,4% de una comisión promedio en Miami.</p>
+      </div>
+    </div>
+
+    <div class="grid g2 reveal" style="margin-top:52px;align-items:start">
+      <div>
+        <h3 style="margin-bottom:18px;color:var(--gold-light)">Por qué esto alinea a las dos partes</h3>
+        <ul class="ticks">
+          <li><b>First Way gana con cada asiento activo.</b> Cada asesor que adopta la plataforma le deja $17 mensuales de margen, así que la dirección tiene un incentivo directo a impulsar la adopción interna.</li>
+          <li><b>RM Marketing IA cobra por uso real, no por promesa.</b> Si la plataforma no se adopta, no se cobra por esos asientos. El riesgo de adopción lo compartimos.</li>
+          <li><b>Piso contractual de 25 asientos.</b> Garantiza que hosting, sincronización MLS, soporte e IA sean sostenibles y no se degraden. Es protección de First Way tanto como mía.</li>
+        </ul>
+      </div>
+      <div class="note" style="margin-top:0">
+        <div class="k">Argumento de venta interna hacia el asesor</div>
+        <p>El asesor no está pagando por un software. Está recibiendo, por $49 al mes, el inventario completo de Miami organizado, un asistente que le escribe guiones y descripciones, un estudio que le genera stories y flyers de cualquier propiedad, alertas cuando entra algo para su cliente, y su base de datos ordenada. Comprado por separado, cada pieza de eso cuesta <b>entre $70 y $500 mensuales por agente</b> en el mercado abierto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 05 MERCADO ===================== -->
+<section id="mercado">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 5</span>
+      <h2>El mercado</h2>
+      <p class="lead serif">La comparación honesta no es por precio de licencia, es por <strong>costo total para una inmobiliaria de 40 asesores</strong> y por lo que queda fuera en cada caso. Números públicos verificados a agosto de 2026.</p>
+    </div>
+
+    <div class="table-scroll reveal">
+      <table>
+        <thead>
+          <tr><th>Plataforma</th><th>Costo mensual estimado, 40 asesores</th><th>Lo que seguiría quedando fuera</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="t-name">BoldTrail<span class="t-sub">antes kvCORE</span></td>
+            <td>$1.000 a $2.500, más implementación de $500 a $2.000. Cotización cerrada y contrato anual.</td>
+            <td>Producción de stories y flyers, IA en español, y cualquier adaptación a los flujos propios de First Way.</td>
+          </tr>
+          <tr>
+            <td class="t-name">Follow Up Boss<span class="t-sub">Zillow Group</span></td>
+            <td>$1.000 hasta 30 usuarios, más $41 a $49 por usuario adicional. Cerca de $1.490 con el equipo completo.</td>
+            <td>MLS propio, matching con IA y generación de piezas. Habría que sumar tres proveedores más.</td>
+          </tr>
+          <tr>
+            <td class="t-name">Lofty<span class="t-sub">antes Chime</span></td>
+            <td>Cotización cerrada, en rango comparable a BoldTrail, con implementación aparte.</td>
+            <td>Interfaz compleja y en inglés, con la misma curva de adopción para un equipo senior.</td>
+          </tr>
+          <tr>
+            <td class="t-name">AVEX<span class="t-sub">Avanti Way</span></td>
+            <td>No licenciable de forma independiente.</td>
+            <td>Es la plataforma de una inmobiliaria competidora. Acceder a ella implica entrar a su franquicia.</td>
+          </tr>
+          <tr class="row-star">
+            <td class="t-name">First Way Realty OS</td>
+            <td>$1.280, recuperables vía Technology Fee</td>
+            <td><b>Nada.</b> Los seis módulos vienen incluidos.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid g2 reveal" style="margin-top:40px">
+      <div class="note" style="margin-top:0">
+        <div class="k">Por qué se justifica</div>
+        <p>No por ser el más barato. Por cuatro cosas: <b>español nativo</b> de punta a punta, incluida la IA; <b>diseño pensado para un equipo que todavía no está digitalizado</b>, mientras las demás asumen lo contrario; <b>producción de piezas incluida en el núcleo</b> y no como add-on; y <b>adaptabilidad real</b>, porque cuando First Way necesita algo se construye.</p>
+      </div>
+      <div class="note" style="margin-top:0">
+        <div class="k">La diferencia que ninguna tabla muestra</div>
+        <p>Las cuatro primeras <b>se alquilan</b>. Al final del contrato First Way no tiene nada. La quinta es <b>un activo de la empresa</b>, con sus datos y su marca, y es la única que además le genera margen mensual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 06 ADOPCIÓN ===================== -->
+<section id="adopcion" class="band-cream2">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 6</span>
+      <h2>Plan de adopción</h2>
+      <p class="lead serif">Construir la plataforma es la parte predecible. Lograr que cuarenta asesores la usen todas las semanas es donde fracasan la mayoría de las implementaciones inmobiliarias. Por eso <strong>la adopción no es un anexo, es un compromiso contractual.</strong></p>
+    </div>
+
+    <div class="grid g2 reveal" style="align-items:start">
+      <ul class="ticks">
+        <li><b>Onboarding individual de 30 minutos por asesor</b>, agendado uno a uno y grabado. No sesiones grupales, porque con este perfil generan asistencia y no adopción.</li>
+        <li><b>Un campeón interno por oficina</b>, capacitado a fondo, que resuelve el 70% de las dudas cotidianas sin escalar.</li>
+        <li><b>Biblioteca de micro-videos de 60 segundos en español</b>, uno por tarea, y soporte por WhatsApp en el canal donde el equipo ya trabaja. Sin tickets, sin portales, sin inglés.</li>
+        <li><b>Reporte mensual de adopción con nombres y frecuencia de uso.</b> Eugenio ve exactamente quién usa la plataforma y quién no.</li>
+      </ul>
+      <div class="note" style="margin-top:0">
+        <div class="k">Compromiso contractual de adopción</div>
+        <p>Si al cierre del <b>mes 3</b> posterior al lanzamiento la adopción activa es inferior al <b>50% del equipo habilitado</b>, RM Marketing IA ejecuta un sprint completo de rediseño del onboarding <b>sin costo adicional</b>, y la facturación de los asientos inactivos queda suspendida hasta resolverlo. Asesor activo, definido por escrito: al menos cuatro interacciones en un mes calendario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 07 CRONOGRAMA ===================== -->
+<section id="cronograma" class="band-dark">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 7</span>
+      <h2>Cronograma de ejecución</h2>
+      <p class="lead serif"><strong>Catorce semanas</strong> desde la firma hasta el lanzamiento, en cinco fases. La solicitud de acceso al MLS corre en paralelo desde la semana 1, por lo que su aprobación no genera retraso.</p>
+    </div>
+
+    <div class="tl reveal">
+      <div class="tl-item">
+        <div class="tl-when">Semanas 1–5 · Piloto</div>
+        <div class="tl-body">
+          <h3>Piloto con 10 asesores</h3>
+          <p>Asistente de contenido y panel base: leads, listings propios y generador de piezas. Entregable: sistema funcionando con diez asesores reales y datos reales.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Semanas 6–9 · Core</div>
+        <div class="tl-body">
+          <h3>CRM completo</h3>
+          <p>Pipeline Kanban, roles y permisos, asignación de leads, historial, etiquetas, alertas y dashboard inicial con el branding de First Way aplicado.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Semanas 9–11 · MLS</div>
+        <div class="tl-body">
+          <h3>Integración con MIAMI MLS</h3>
+          <p>Sincronización automática vía Bridge API, filtros avanzados, galería con CDN, mapa interactivo y cumplimiento de reglas de display IDX.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Semanas 11–13 · IA</div>
+        <div class="tl-body">
+          <h3>Matching y Estudio de Plantillas</h3>
+          <p>Algoritmo de matching con score explicado, avisos proactivos, y motor de generación de stories, flyers y PDF con datos del MLS y branding bloqueado.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Semanas 13–14 · Salida</div>
+        <div class="tl-body">
+          <h3>QA, onboarding y lanzamiento</h3>
+          <p>Pruebas finales, onboarding individual a los 40 asesores, capacitación de campeones y puesta en producción.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-scroll reveal" style="margin-top:48px">
+      <table>
+        <thead>
+          <tr><th>Semana</th><th>Hito</th><th class="n">Pago</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="t-name">1</td><td>Firma del contrato, solicitud de acceso a Bridge API, reunión de branding y wireframes</td><td class="n">$2.999</td></tr>
+          <tr><td class="t-name">5</td><td>Puerta de decisión: revisión de KPIs del piloto con la dirección</td><td class="n">—</td></tr>
+          <tr><td class="t-name">11</td><td>Demo funcional con el MLS de Miami integrado y operativo</td><td class="n">$2.500</td></tr>
+          <tr><td class="t-name">14</td><td>Lanzamiento oficial y equipo completo capacitado</td><td class="n">$2.500</td></tr>
+          <tr><td class="t-name">15</td><td>Inicio de la suscripción mensual por asiento</td><td class="n">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid g2 reveal" style="margin-top:36px">
+      <div class="note" style="margin-top:0">
+        <div class="k">Puerta de salida del piloto · Protección para First Way</div>
+        <p>En la semana 5 se revisan dos KPIs acordados por escrito: al menos <b>7 de los 10 asesores</b> del piloto usando la plataforma dos o más veces por semana, y <b>60 o más piezas generadas</b>. Si no se cumplen, First Way no está obligada a continuar: los hitos 2 y 3 no se emiten y el proyecto se detiene sin penalidad para ninguna de las partes. La decisión de avanzar se toma con el sistema ya funcionando y con datos de uso reales sobre la mesa, nunca sobre una promesa.</p>
+      </div>
+      <div class="note" style="margin-top:0">
+        <div class="k">Acceso al MLS</div>
+        <p>First Way, como broker licenciado ante MiamiRE, inicia la solicitud a Bridge Interactive en la semana 1. La aprobación toma de 2 a 6 semanas y el desarrollo avanza en paralelo. Bridge no cobra al vendor por el dataset de MiamiRE; la licencia se firma entre First Way y la asociación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 08 INVERSIÓN ===================== -->
+<section id="inversion">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 8</span>
+      <h2>Inversión</h2>
+    </div>
+
+    <div class="grid g2 reveal">
+      <div class="price">
+        <div class="k">Desarrollo e implementación · Inversión única</div>
+        <div class="v">$7.999 <small>USD</small></div>
+        <p>Plataforma completa · 6 módulos · MLS Miami · Matching IA · Estudio de Plantillas</p>
+        <p style="margin-top:14px;color:var(--gold-light);font-weight:600">Pagadero en tres hitos de $2.999, $2.500 y $2.500</p>
+      </div>
+      <div class="price price-alt">
+        <div class="k">Suscripción mensual</div>
+        <div class="v">$32 <small>/ asiento activo</small></div>
+        <p>Mínimo 25 asientos · Inicia en la semana 15</p>
+        <p style="margin-top:14px;color:var(--gold);font-weight:600">Tarifa de cliente ancla congelada por 24 meses</p>
+      </div>
+    </div>
+
+    <div class="table-scroll reveal" style="margin-top:48px">
+      <table>
+        <thead>
+          <tr><th>Componente</th><th>Alcance</th><th class="n">Valor</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="t-name">Arquitectura y accesos</td><td>Infraestructura, modelo de datos, roles y permisos, branding First Way</td><td class="n">$1.100</td></tr>
+          <tr><td class="t-name">CRM core</td><td>Leads, pipeline, asignación, historial, etiquetas, alertas y dashboard</td><td class="n">$1.600</td></tr>
+          <tr><td class="t-name">Integración MIAMI MLS</td><td>Conector Bridge API, sincronización continua, filtros, galería, mapa, IDX</td><td class="n">$1.500</td></tr>
+          <tr><td class="t-name">Motor de matching con IA</td><td>Algoritmo de coincidencia, score explicado, avisos proactivos</td><td class="n">$900</td></tr>
+          <tr><td class="t-name">Asistente de contenido con IA</td><td>Guiones, descripciones bilingües, mensajes, biblioteca de objeciones</td><td class="n">$1.100</td></tr>
+          <tr><td class="t-name">Estudio de Plantillas</td><td>Generación de stories, flyers y PDF con datos del MLS y branding bloqueado</td><td class="n">$1.000</td></tr>
+          <tr><td class="t-name">Implementación y capacitación</td><td>QA, onboarding individual a los 40 asesores, campeones, micro-videos</td><td class="n">$799</td></tr>
+          <tr class="total"><td>Total</td><td>Pagadero en tres hitos de $2.999, $2.500 y $2.500</td><td class="n">$7.999</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="reveal" style="margin:52px 0 20px;color:var(--wine)">Cuadro completo con 40 asesores</h3>
+    <div class="table-scroll reveal">
+      <table>
+        <thead>
+          <tr><th>Concepto</th><th class="n">Año 1</th><th class="n">Año 2 en adelante</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="t-name">Desarrollo e implementación, pago único</td><td class="n">$7.999</td><td class="n">$0</td></tr>
+          <tr><td class="t-name">Suscripción<span class="t-sub">10 meses año 1 · 12 meses año 2</span></td><td class="n">$12.800</td><td class="n">$15.360</td></tr>
+          <tr><td class="t-name">Technology Fee recaudado a los asesores</td><td class="n">($19.600)</td><td class="n">($23.520)</td></tr>
+          <tr class="total"><td>Resultado neto para First Way Realty</td><td class="n">$1.199 de costo</td><td class="n">$8.160 de utilidad</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="t-note reveal">El primer año la plataforma cuesta $1.199 netos, menos de $100 al mes. Desde el segundo genera $8.160 anuales de utilidad.</p>
+  </div>
+</section>
+
+<!-- ===================== 09 POR QUÉ RM + PRÓXIMOS PASOS ===================== -->
+<section id="rm" class="band-cream2">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="rule"></div>
+      <span class="num">0 9</span>
+      <h2>Por qué RM Marketing IA</h2>
+      <p class="lead serif">First Way Realty no contrata a una desarrolladora externa que entrega un software y desaparece. Contrata a <strong>la estratega que ya conoce la marca desde adentro</strong>, con más de cuatro años trabajando con Realtors en Florida.</p>
+    </div>
+
+    <ul class="ticks reveal" style="max-width:80ch">
+      <li><b>Dos años trabajando ya con First Way Realty.</b> Conozco el equipo, las propiedades, los flujos y la voz de la marca. No hay curva de descubrimiento que facturar.</li>
+      <li><b>Continuidad entre los dos motores.</b> La misma persona que dirige la estrategia de marca diseña la herramienta que usan los asesores, lo que garantiza coherencia entre lo que produce el equipo y lo que publica la empresa. Ningún proveedor externo puede ofrecer eso.</li>
+      <li><b>Especialización en el mercado hispano de Miami.</b> La plataforma habla el idioma del asesor y del cliente final, con los matices del comprador latinoamericano.</li>
+      <li><b>Marketing como columna vertebral, no como complemento.</b> El módulo de contenido no es un extra, es la razón por la que el asesor abre la plataforma cada mañana.</li>
+      <li><b>Contacto directo y disponibilidad real</b>, no un soporte técnico tercerizado en otro huso horario. Construido sobre modelos de frontera de Anthropic y OpenAI, con arquitectura moderna sobre Vercel y Supabase.</li>
+    </ul>
+
+    <div class="note reveal">
+      <div class="k">Clientes y proyectos relacionados</div>
+      <p>Carlos Visbal Real Estate, gestión completa de marca personal y marketing. Visbal &amp; Mejía Development Group, identidad de marca y posicionamiento. First Way Realty, contenido digital, SEO/SEM y guiones de video desde hace más de dos años.</p>
+    </div>
+
+    <h3 class="reveal" style="margin:52px 0 20px;color:var(--wine)">Secuencia de activación</h3>
+    <div class="table-scroll reveal">
+      <table>
+        <thead>
+          <tr><th>Acción</th><th>Responsable</th><th class="n">Tiempo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="t-name">Confirmación por escrito de aceptación de la propuesta</td><td>First Way Realty</td><td class="n">Día 1</td></tr>
+          <tr><td class="t-name">Firma del contrato comercial y NDA mutuo</td><td>Ambas partes</td><td class="n">Día 1 a 3</td></tr>
+          <tr><td class="t-name">Primer pago de $2.999 vía wire transfer o Zelle</td><td>First Way Realty</td><td class="n">Día 3</td></tr>
+          <tr><td class="t-name">Solicitud de acceso a Bridge API ante MiamiRE</td><td>First Way Realty</td><td class="n">Semana 1</td></tr>
+          <tr><td class="t-name">Reunión técnica: branding, wireframes y selección de los 10 asesores del piloto</td><td>Ambas partes</td><td class="n">Semana 1</td></tr>
+          <tr><td class="t-name">Definición del Technology Fee interno hacia los asesores</td><td>First Way Realty</td><td class="n">Semana 4</td></tr>
+          <tr><td class="t-name">Revisión de KPIs del piloto y decisión de continuidad</td><td>Ambas partes</td><td class="n">Semana 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CIERRE ===================== -->
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow reveal">Resumen ejecutivo</div>
+    <h2 class="reveal">No es un gasto. Es un activo que se paga solo.</h2>
+    <p class="lead serif reveal">First Way Realty OS le da a la empresa su propia plataforma, sus propios datos y una respuesta concreta frente al asesor que hoy está evaluando irse.</p>
+
+    <div class="cta-row reveal">
+      <a class="btn btn-gold btn-lg" id="ctaFinal" href="#" target="_blank" rel="noopener">Conversar la propuesta por WhatsApp</a>
+      <a class="btn btn-ghost btn-lg" href="#inversion">Volver a la inversión</a>
+    </div>
+
+    <div class="resume reveal">
+      <div class="v">$7.999 + $32 por asiento activo</div>
+      <div class="d">14 semanas · 6 módulos · MLS Miami · Estudio de plantillas · Autofinanciable</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="name">Lcda. Raquel Mendoza</div>
+        <div class="tagline">“El contenido atrae. El sistema convierte.”</div>
+      </div>
+      <div class="foot-contact">
+        <a href="https://instagram.com/raquelmendoza.mkt" target="_blank" rel="noopener">@raquelmendoza.mkt</a>
+        <a href="https://wa.me/584227163477" target="_blank" rel="noopener">0422-716.34.77</a>
+        <a href="mailto:raquelmendozamarketing@gmail.com">raquelmendozamarketing@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      RM Marketing IA · Propuesta comercial First Way Realty OS preparada para Eugenio Vélez, CEO de First Way Realty · Agosto 2026
+    </div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.18 4.22-9.4 9.42-9.4a9.36 9.36 0 016.65 2.76 9.32 9.32 0 012.75 6.65c0 5.18-4.22 9.4-9.41 9.4zM20.5 3.49A11.75 11.75 0 0012.04 0C5.5 0 .2 5.3.2 11.82c0 2.08.55 4.11 1.59 5.9L.1 24l6.42-1.68a11.83 11.83 0 005.51 1.4h.01c6.54 0 11.85-5.3 11.85-11.82 0-3.16-1.23-6.13-3.39-8.41z"/>
+  </svg>
+  <span>Hablar por WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---- WhatsApp ---- */
+  var WHATSAPP = '584227163477';
+  var MSG = 'Hola Raquel, vi la propuesta de First Way Realty OS y quiero conversarla.';
+  var link = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(MSG);
+  ['ctaNav','ctaHero','ctaFinal','fab'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.href = link;
+  });
+
+  /* ---- Nav + FAB al hacer scroll ---- */
+  var nav = document.getElementById('nav');
+  var fab = document.getElementById('fab');
+  var ticking = false;
+  function onScroll(){
+    var y = window.scrollY || window.pageYOffset;
+    nav.classList.toggle('on', y > 520);
+    fab.classList.toggle('on', y > 700);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  /* ---- Reveal ---- */
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
