@@ -20,7 +20,7 @@ Sube estos 5 archivos, **con estos nombres exactos**:
 
 | Nombre del archivo | Cuál es | Dónde aparece |
 |---|---|---|
-| `raquel-1.jpg` | `IMG_6093.JPG` de tu Drive | Sección "¿Quién es Raquel Mendoza?" |
+| `raquel-1.jpg` | `IMG_6093 (2).jpg` de tu Drive (la comprimida) | Sección "¿Quién es Raquel Mendoza?" |
 
 ### `assets/testimonios/`
 
