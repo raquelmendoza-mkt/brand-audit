@@ -1,45 +1,73 @@
-# Imágenes de la landing `propuesta-meta-ads.html`
+# Imágenes de la landing
 
-Las imágenes se cargan directamente desde **Google Drive**, igual que en la propuesta
-de Sky Group. No hace falta subirlas al repositorio.
+La landing carga cada imagen en **dos intentos**:
 
-## 📁 Carpeta en Drive
+1. **Primero** el archivo de este repositorio (`assets/...`) → público y permanente.
+2. **Si no está**, la copia de Google Drive → solo funciona si la carpeta de Drive
+   está compartida con "Cualquier persona con el enlace".
+3. Si ninguna carga, se muestra un marco de respaldo (el diseño no se rompe).
 
-**Carpeta principal:**
-https://drive.google.com/drive/folders/18kRKw7Lq583wFsrMGSURv_k0AQaFzsDB
+Basta con que funcione **una** de las dos. La opción 1 es la recomendada:
+no depende de permisos y no se rompe nunca.
 
-| Subcarpeta | Enlace |
-|---|---|
-| 1 · FOTOS RAQUEL | https://drive.google.com/drive/folders/19VH4v_ciYRu40DK7s_6EnjcKV-sG2GRg |
-| 2 · TESTIMONIOS ADS | https://drive.google.com/drive/folders/1ehVj6odzncB7Q4BHHTbZkRk6EeiVMQRv |
+---
 
-## ⚠️ Paso obligatorio: compartir la carpeta
+## ✅ Opción recomendada: subir las imágenes a este repositorio
 
-Para que las imágenes se vean en la landing, la carpeta principal debe estar compartida
-públicamente (igual que hiciste con las de Sky Group):
+Sube estos 5 archivos, **con estos nombres exactos**:
 
-1. Clic derecho sobre **"Landing Meta Ads — Imágenes (Raquel Mendoza)"** en Drive.
+### `assets/fotos/`
+
+| Nombre del archivo | Cuál es | Dónde aparece |
+|---|---|---|
+| `raquel-1.jpg` | `IMG_6093.JPG` de tu Drive | Sección "¿Quién es Raquel Mendoza?" |
+
+### `assets/testimonios/`
+
+| Nombre del archivo | Cuál es | Qué muestra |
+|---|---|---|
+| `testimonio-1.jpg` | `IMG_7926.jpg` | 103 clientes potenciales · US$2,61 por lead |
+| `testimonio-2.jpg` | `IMG_7925.jpg` | 269 clientes potenciales · US$2,83 por lead |
+| `testimonio-3.jpg` | `IMG_7922.jpg` | Mensaje de la clienta: "todo un éxito" |
+| `testimonio-4.jpg` | `IMG_7923.jpg` | Agradecimiento tras el cierre |
+
+**Cómo subirlas (desde el navegador, sin instalar nada):**
+
+1. Descarga las 5 imágenes de tu carpeta de Drive a tu computadora.
+2. Renómbralas según la tabla de arriba.
+3. En GitHub, entra a la carpeta `assets/fotos` → **Add file → Upload files** → arrastra `raquel-1.jpg` → **Commit changes**.
+4. Repite en `assets/testimonios` con las cuatro capturas.
+
+> **Comprime la foto antes de subirla.** `IMG_6093.JPG` pesa 6,3 MB y haría la página
+> muy lenta. Pásala por [squoosh.app](https://squoosh.app) o similar y déjala por
+> debajo de 500 KB. Las cuatro capturas ya están livianas (entre 28 y 74 KB).
+
+---
+
+## Opción alternativa: dejarlas en Drive
+
+Si prefieres no subirlas al repositorio, comparte la carpeta:
+
+1. Clic derecho en **"Landing Meta Ads — Imágenes (Raquel Mendoza)"** en Drive.
 2. **Compartir → Acceso general**.
 3. Cambiar de *Restringido* a **"Cualquier persona con el enlace"** · rol **Lector**.
 
-Si no está compartida, la landing muestra un marco de respaldo en vez de la imagen
-(el diseño no se rompe, pero no se ve la foto).
+Carpeta: https://drive.google.com/drive/folders/18kRKw7Lq583wFsrMGSURv_k0AQaFzsDB
 
-## Imágenes conectadas actualmente
+Ten en cuenta que algunos navegadores y clientes de correo bloquean las imágenes
+servidas desde Drive, por eso esta opción es el respaldo y no la principal.
 
-| Archivo en Drive | Dónde aparece |
-|---|---|
-| `IMG_6093.JPG` | Foto principal — sección "¿Quién es Raquel Mendoza?" |
-| `IMG_7926.jpg` | Captura: 103 clientes potenciales · US$2,61 por lead |
-| `IMG_7925.jpg` | Captura: 269 clientes potenciales · US$2,83 por lead |
-| `IMG_7922.jpg` | Mensaje de la clienta durante la campaña |
-| `IMG_7923.jpg` | Agradecimiento de la clienta tras un cierre |
+---
 
-Todas corresponden a campañas gestionadas para **Marileen Nieves · LPT Realty · Florida, EE. UU.**
+## Publicar la landing en internet (GitHub Pages)
 
-## Cómo cambiar o agregar una imagen
+Para que cualquiera pueda abrirla con un enlace:
 
-1. Sube el archivo nuevo a la subcarpeta de Drive que corresponda.
-2. Copia su ID: en el enlace `https://drive.google.com/file/d/**ESTE_ES_EL_ID**/view`.
-3. En `propuesta-meta-ads.html`, reemplaza el ID viejo por el nuevo. Cada imagen aparece
-   dos veces: en `src=` (miniatura, `sz=w800`) y en `data-full=` (versión grande, `sz=w1600`).
+1. En este repositorio: **Settings → Pages**.
+2. En *Source*, elige **Deploy from a branch**.
+3. Branch: `main` (o la rama que uses) · carpeta: `/ (root)` → **Save**.
+4. En un par de minutos queda publicada en:
+   `https://raquelmendoza-mkt.github.io/brand-audit/propuesta-meta-ads.html`
+
+Con las imágenes subidas al repositorio (opción recomendada), ese enlace funciona
+para todo el mundo sin configurar ningún permiso extra.
