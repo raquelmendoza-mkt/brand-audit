@@ -1,61 +1,45 @@
 # Imágenes de la landing `propuesta-meta-ads.html`
 
-Tienes **dos formas** de subir las imágenes. Usa la que prefieras.
+Las imágenes se cargan directamente desde **Google Drive**, igual que en la propuesta
+de Sky Group. No hace falta subirlas al repositorio.
 
----
+## 📁 Carpeta en Drive
 
-## ✅ Opción A (recomendada): Google Drive
-
-Ya creé las carpetas en tu Drive:
-
-📁 **Carpeta principal**
+**Carpeta principal:**
 https://drive.google.com/drive/folders/18kRKw7Lq583wFsrMGSURv_k0AQaFzsDB
 
-| Sube aquí | Enlace |
+| Subcarpeta | Enlace |
 |---|---|
-| 📸 Tus fotos | https://drive.google.com/drive/folders/19VH4v_ciYRu40DK7s_6EnjcKV-sG2GRg |
-| 💬 Testimonios de ads | https://drive.google.com/drive/folders/1ehVj6odzncB7Q4BHHTbZkRk6EeiVMQRv |
+| 1 · FOTOS RAQUEL | https://drive.google.com/drive/folders/19VH4v_ciYRu40DK7s_6EnjcKV-sG2GRg |
+| 2 · TESTIMONIOS ADS | https://drive.google.com/drive/folders/1ehVj6odzncB7Q4BHHTbZkRk6EeiVMQRv |
 
-**Qué subir:**
+## ⚠️ Paso obligatorio: compartir la carpeta
 
-- **1 · FOTOS RAQUEL** → 2 o 3 fotos tuyas. Ideal en vertical (4:5), tipo retrato profesional.
-- **2 · TESTIMONIOS ADS** → las 2 capturas de testimonios / resultados de campañas.
+Para que las imágenes se vean en la landing, la carpeta principal debe estar compartida
+públicamente (igual que hiciste con las de Sky Group):
 
-**Después de subirlas:** avísame y yo las conecto a la landing (leo los archivos de esas
-carpetas, saco los enlaces y los dejo puestos en el HTML). Es el mismo método que usa
-la propuesta de Sky Group.
+1. Clic derecho sobre **"Landing Meta Ads — Imágenes (Raquel Mendoza)"** en Drive.
+2. **Compartir → Acceso general**.
+3. Cambiar de *Restringido* a **"Cualquier persona con el enlace"** · rol **Lector**.
 
----
+Si no está compartida, la landing muestra un marco de respaldo en vez de la imagen
+(el diseño no se rompe, pero no se ve la foto).
 
-## Opción B: subirlas al repositorio
+## Imágenes conectadas actualmente
 
-Si prefieres tenerlas dentro del proyecto, súbelas a estas carpetas con **estos nombres exactos**:
-
-### `fotos/`
-
-| Archivo | Dónde aparece | Recomendación |
-|---|---|---|
-| `raquel-1.jpg` | Sección "¿Quién es Raquel Mendoza?" | Vertical 4:5 · ej. 1200×1500 px |
-| `raquel-2.jpg` | Sección "El objetivo" | Vertical 4:5 · ej. 1000×1250 px |
-
-### `testimonios/`
-
-| Archivo | Dónde aparece |
+| Archivo en Drive | Dónde aparece |
 |---|---|
-| `testimonio-1.jpg` | Primera captura de "Resultados reales" |
-| `testimonio-2.jpg` | Segunda captura de "Resultados reales" |
+| `IMG_6093.JPG` | Foto principal — sección "¿Quién es Raquel Mendoza?" |
+| `IMG_7926.jpg` | Captura: 103 clientes potenciales · US$2,61 por lead |
+| `IMG_7925.jpg` | Captura: 269 clientes potenciales · US$2,83 por lead |
+| `IMG_7922.jpg` | Mensaje de la clienta durante la campaña |
+| `IMG_7923.jpg` | Agradecimiento de la clienta tras un cierre |
 
-**Cómo subirlas desde GitHub (sin instalar nada):**
-1. Entra a la carpeta (`assets/fotos` o `assets/testimonios`) en GitHub.
-2. **Add file → Upload files**.
-3. Arrastra las imágenes ya renombradas → **Commit changes**.
+Todas corresponden a campañas gestionadas para **Marileen Nieves · LPT Realty · Florida, EE. UU.**
 
----
+## Cómo cambiar o agregar una imagen
 
-## Notas
-
-- Peso ideal: menos de 500 KB por imagen para que la página cargue rápido.
-- Si una imagen todavía no está, la landing muestra un marco elegante en su lugar
-  (no se rompe el diseño), así que puedes compartirla desde ya.
-- El texto que acompaña cada testimonio se edita en `propuesta-meta-ads.html`,
-  en la sección `RESULTADOS`, dentro de `<figcaption class="cap">`.
+1. Sube el archivo nuevo a la subcarpeta de Drive que corresponda.
+2. Copia su ID: en el enlace `https://drive.google.com/file/d/**ESTE_ES_EL_ID**/view`.
+3. En `propuesta-meta-ads.html`, reemplaza el ID viejo por el nuevo. Cada imagen aparece
+   dos veces: en `src=` (miniatura, `sz=w800`) y en `data-full=` (versión grande, `sz=w1600`).
