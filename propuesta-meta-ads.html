@@ -343,11 +343,15 @@
 
   /* ---------- Resultados / testimonios ---------- */
   .result-stats {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
     background: var(--border); border: 1px solid var(--border);
     border-radius: 18px; overflow: hidden; margin-bottom: 26px;
   }
   .result-stats div { background: rgba(14,14,14,0.72); padding: 30px 20px; text-align: center; }
+  .result-stats div.hero-stat { background: linear-gradient(160deg, rgba(201,148,58,0.16), rgba(14,14,14,0.72)); }
+  .result-stats div.hero-stat .v { background: linear-gradient(140deg, var(--gold) 0%, #F0CE8E 55%, #FFFFFF 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .result-stats div.hero-stat .l { color: rgba(227,185,110,0.85); font-weight: 600; }
   .result-stats .v {
     font-size: clamp(30px, 4.6vw, 46px); font-weight: 900; letter-spacing: -0.04em; line-height: 1;
     background: linear-gradient(140deg, #FFFFFF 0%, #C6BEFF 45%, var(--gold) 100%);
@@ -357,7 +361,8 @@
     font-size: 12.5px; letter-spacing: 0.04em; color: rgba(250,250,250,0.5);
     margin-top: 10px; font-weight: 500; line-height: 1.45;
   }
-  @media (max-width: 760px) { .result-stats { grid-template-columns: 1fr; } }
+  @media (max-width: 940px) { .result-stats { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .result-stats { grid-template-columns: 1fr; } }
 
   .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 26px; }
   @media (max-width: 780px) { .quotes { grid-template-columns: 1fr; } }
@@ -733,7 +738,8 @@
       <h2>Campañas que sí generan prospectos</h2>
       <p class="sub">
         Resultados de campañas de Meta Ads gestionadas para <strong>Marileen Nieves</strong>,
-        asesora de LPT Realty en Florida, Estados Unidos.
+        asesora de LPT Realty en Florida, Estados Unidos. Una sola campaña terminó en
+        <strong>cuatro ventas cerradas</strong>.
       </p>
     </div>
 
@@ -749,6 +755,10 @@
       <div>
         <div class="v">US$1.030</div>
         <div class="l">Inversión publicitaria total de esas campañas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v">4</div>
+        <div class="l">Ventas cerradas a partir de una sola campaña</div>
       </div>
     </div>
 
@@ -839,12 +849,12 @@
             <div class="t">Captura</div>
             <div class="f">Comparte la carpeta de Drive para verla</div>
           </div>
-          <img src="https://drive.google.com/thumbnail?id=1MGg7MK7i5tdmfW_fLTA7vAnYUdk47FLz&sz=w800" alt="Agradecimiento de la clienta tras concretar un cierre"
+          <img src="https://drive.google.com/thumbnail?id=1MGg7MK7i5tdmfW_fLTA7vAnYUdk47FLz&sz=w800" alt="Agradecimiento de la clienta tras cerrar una venta originada por la campaña"
                loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
         </div>
         <figcaption class="cap">
-          <b>De cita a cierre</b>
-          Agradecimiento de la clienta tras concretar un cierre
+          <b>De anuncio a venta</b>
+          Cierre concretado con una cita generada por la campaña
         </figcaption>
       </figure>
     </div>
