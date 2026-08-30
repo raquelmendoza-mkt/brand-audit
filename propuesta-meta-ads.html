@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta de Gestión de Meta Ads — Lcda. Raquel Mendoza · RM Marketing IA</title>
+<meta name="description" content="Propuesta de estrategia y gestión de publicidad digital en Meta Ads para asesores e inmobiliarias. Más visibilidad para tus listings, prospectos calificados y nuevas oportunidades de negocio.">
+<meta name="theme-color" content="#0E0E0E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Propuesta de Gestión de Meta Ads — Raquel Mendoza">
+<meta property="og:description" content="Estrategia y gestión de publicidad digital para el sector inmobiliario. Que cada listing llegue al público correcto.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     RM MARKETING IA — Sistema de marca
+     Títulos: Inter · Subtítulos: Playfair Display
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple:       #7B6FE8;
+    --purple-dark:  #3D3492;
+    --purple-light: #EEF0FF;
+    --gold:         #C9943A;
+    --gold-light:   #FDF6E9;
+    --black:        #0E0E0E;
+    --black-soft:   #141414;
+    --white:        #FAFAFA;
+    --gray:         #6B6B6B;
+    --gray-light:   #F2F2F0;
+    --border:       rgba(255,255,255,0.10);
+
+    --maxw: 1120px;
+    --radius: 20px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  section { position: relative; padding: 96px 0; }
+  @media (max-width: 640px) { section { padding: 70px 0; } }
+
+  /* ---------- Tipografía ---------- */
+  h1, h2, h3, h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.03em; line-height: 1.08; font-weight: 800; }
+  h1 { font-size: clamp(34px, 5.6vw, 66px); }
+  h2 { font-size: clamp(28px, 4.2vw, 46px); }
+  h3 { font-size: clamp(19px, 2.2vw, 23px); letter-spacing: -0.02em; line-height: 1.25; }
+
+  .sub {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(17px, 1.9vw, 21px);
+    line-height: 1.65;
+    color: rgba(250,250,250,0.80);
+    letter-spacing: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 18px; display: block;
+  }
+
+  p { color: rgba(250,250,250,0.66); font-size: 16.5px; font-weight: 300; }
+  strong { color: var(--white); font-weight: 600; }
+
+  .accent { color: var(--purple); }
+  .accent-gold { color: var(--gold); }
+
+  /* ---------- Fondo ---------- */
+  .bg-fx {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 45% at 12% -5%,  rgba(123,111,232,0.20) 0%, transparent 62%),
+      radial-gradient(ellipse 55% 40% at 92% 12%,  rgba(201,148,58,0.10) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 45% at 50% 105%, rgba(61,52,146,0.28) 0%, transparent 65%);
+  }
+  .grid-fx {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.30;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 75%);
+  }
+  main, header, footer { position: relative; z-index: 1; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(14,14,14,0.72);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s var(--ease), background .3s var(--ease);
+  }
+  .nav.scrolled { border-bottom-color: var(--border); background: rgba(14,14,14,0.90); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; }
+  .nav-brand { display: flex; align-items: baseline; gap: 9px; font-weight: 800; font-size: 15px; letter-spacing: -0.02em; }
+  .nav-brand .rm {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 9px; flex: 0 0 auto;
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    font-size: 12px; font-weight: 800; letter-spacing: 0; color: #fff; align-self: center;
+  }
+  .nav-brand span { color: rgba(250,250,250,0.45); font-weight: 400; font-size: 13px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { color: rgba(250,250,250,0.55); text-decoration: none; font-size: 13.5px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--white); }
+  @media (max-width: 940px) { .nav-links { display: none; } }
+  @media (max-width: 600px) {
+    .nav-inner { height: 62px; gap: 12px; }
+    .nav-brand { font-size: 14px; white-space: nowrap; }
+    .nav-brand span { display: none; }
+    .nav .btn-sm { padding: 10px 15px; font-size: 12.5px; white-space: nowrap; }
+  }
+
+  /* ---------- Botones ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 15px 28px; border-radius: 100px; border: 1px solid transparent;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    text-decoration: none; cursor: pointer; text-align: center;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+    color: #fff; box-shadow: 0 10px 34px -12px rgba(123,111,232,0.85);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -12px rgba(123,111,232,0.95); }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, #A8762A 100%);
+    color: #17110A; box-shadow: 0 10px 34px -12px rgba(201,148,58,0.8);
+  }
+  .btn-gold:hover { transform: translateY(-2px); }
+  .btn-ghost { background: rgba(255,255,255,0.04); border-color: var(--border); color: var(--white); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.09); transform: translateY(-2px); }
+  .btn-sm { padding: 11px 20px; font-size: 13.5px; }
+  .btn-lg { padding: 18px 36px; font-size: 16.5px; }
+
+  /* ---------- Píldoras / tarjetas ---------- */
+  .pill {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: rgba(123,111,232,0.13); border: 1px solid rgba(123,111,232,0.32);
+    border-radius: 100px; padding: 8px 18px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #B9B1F5;
+  }
+  .pill::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple); box-shadow: 0 0 0 0 rgba(123,111,232,0.7);
+    animation: pulse 2.4s infinite;
+  }
+  .pill-gold { background: rgba(201,148,58,0.12); border-color: rgba(201,148,58,0.34); color: #E3B96E; }
+  .pill-gold::before { background: var(--gold); animation: none; box-shadow: none; }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(123,111,232,0.7); }
+    70%  { box-shadow: 0 0 0 9px rgba(123,111,232,0); }
+    100% { box-shadow: 0 0 0 0 rgba(123,111,232,0); }
+  }
+
+  .card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.022) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+    transition: transform .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(123,111,232,0.40); }
+
+  /* ---------- Marco de foto con respaldo ---------- */
+  .photo {
+    position: relative; overflow: hidden; border-radius: 26px;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(123,111,232,0.16);
+    background: linear-gradient(160deg, rgba(123,111,232,0.20), rgba(14,14,14,0.75));
+    aspect-ratio: 4 / 5;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; position: relative; z-index: 1; }
+  .photo .ph {
+    position: absolute; inset: 0; z-index: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    text-align: center; padding: 24px;
+  }
+  .photo .ph .ic {
+    width: 54px; height: 54px; border-radius: 50%;
+    border: 1px solid rgba(123,111,232,0.45); background: rgba(123,111,232,0.15);
+    display: flex; align-items: center; justify-content: center; color: #B9B1F5;
+  }
+  .photo .ph .t { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,250,250,0.42); font-weight: 600; }
+  .photo .ph .f { font-size: 12px; color: rgba(250,250,250,0.28); font-family: 'Inter', monospace; }
+  .photo .tag {
+    position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 3;
+    background: rgba(14,14,14,0.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border); border-radius: 15px; padding: 14px 16px;
+  }
+  .photo .tag .n { font-weight: 700; font-size: 15px; letter-spacing: -0.02em; }
+  .photo .tag .r { font-family: 'Playfair Display', serif; font-size: 13.5px; color: rgba(250,250,250,0.62); margin-top: 2px; }
+  .photo::after {
+    content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(to top, rgba(14,14,14,0.85) 0%, transparent 45%);
+  }
+
+  /* ---------- PORTADA ---------- */
+  .cover {
+    min-height: calc(100vh - 68px);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 80px 0 70px; border-bottom: 1px solid var(--border);
+  }
+  .cover-inner { max-width: 960px; margin: 0 auto; }
+  .cover .kicker {
+    font-size: clamp(11px, 1.4vw, 13px); font-weight: 700;
+    letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold); margin-bottom: 30px;
+  }
+  .cover h1 { font-size: clamp(38px, 7.4vw, 88px); font-weight: 900; letter-spacing: -0.045em; line-height: 1.02; }
+  .cover h1 .nb { white-space: nowrap; }
+  .cover h1 .line2 {
+    display: block; margin-top: 10px;
+    background: linear-gradient(115deg, var(--purple) 0%, #B3A9FF 48%, var(--gold) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .cover .rule { width: 92px; height: 3px; margin: 38px auto 32px; border-radius: 100px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+  .cover .lead {
+    font-family: 'Playfair Display', Georgia, serif; font-weight: 500;
+    font-size: clamp(17px, 2vw, 23px); line-height: 1.6;
+    color: rgba(250,250,250,0.78); max-width: 640px; margin: 0 auto;
+  }
+  .cover-meta {
+    margin-top: 46px; padding-top: 28px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 40px;
+    max-width: 780px; margin-left: auto; margin-right: auto;
+  }
+  .cover-meta div { text-align: center; }
+  .cover-meta .k { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,250,250,0.35); font-weight: 600; }
+  .cover-meta .v { font-size: 15px; font-weight: 600; color: rgba(250,250,250,0.88); margin-top: 5px; letter-spacing: -0.01em; }
+  .cover-scroll {
+    margin-top: 52px; display: inline-flex; flex-direction: column; align-items: center; gap: 10px;
+    color: rgba(250,250,250,0.38); font-size: 11.5px; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 600; text-decoration: none; transition: color .25s;
+  }
+  .cover-scroll:hover { color: var(--white); }
+  .cover-scroll .arrow {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @media (max-width: 640px) {
+    .cover { min-height: auto; padding: 60px 0 56px; }
+    .cover-meta { gap: 20px 26px; }
+  }
+
+  /* ---------- Saludo ---------- */
+  .greeting { padding: 84px 0 76px; }
+  .greet-card {
+    max-width: 860px; margin: 0 auto; border-radius: 26px; padding: 46px 48px;
+    background: linear-gradient(150deg, rgba(123,111,232,0.13) 0%, rgba(14,14,14,0.45) 60%, rgba(201,148,58,0.07) 100%);
+    border: 1px solid rgba(123,111,232,0.28); border-left: 3px solid var(--gold);
+  }
+  .greet-card .hi {
+    font-size: clamp(26px, 4.2vw, 40px); font-weight: 800; letter-spacing: -0.035em; margin-bottom: 20px;
+  }
+  .greet-card .hi .nm {
+    background: linear-gradient(115deg, var(--purple) 0%, #B3A9FF 50%, var(--gold) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .greet-card p { font-size: clamp(16px, 1.9vw, 18.5px); line-height: 1.72; color: rgba(250,250,250,0.86); font-weight: 300; }
+  .greet-goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 34px; }
+  .greet-goals div { background: rgba(14,14,14,0.72); padding: 20px 18px; text-align: center; }
+  .greet-goals .l { font-size: 13.5px; color: rgba(250,250,250,0.72); font-weight: 500; }
+  @media (max-width: 700px) {
+    .greet-card { padding: 34px 26px; }
+    .greet-goals { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Cabecera de sección ---------- */
+  .sec-head { max-width: 780px; margin-bottom: 54px; }
+  .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .sec-head h2 { margin-bottom: 18px; }
+
+  /* ---------- Sobre Raquel ---------- */
+  .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 54px; align-items: center; }
+  @media (max-width: 940px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .cred { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 30px; }
+  .cred span {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em;
+    padding: 8px 15px; border-radius: 100px;
+    background: rgba(255,255,255,0.045); border: 1px solid var(--border); color: rgba(250,250,250,0.72);
+  }
+  .about-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
+  @media (max-width: 760px) { .about-cols { grid-template-columns: 1fr; } }
+  .about-col { padding: 22px; border-radius: 15px; background: rgba(255,255,255,0.035); border: 1px solid var(--border); }
+  .about-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-weight: 700; }
+  .about-col p { font-size: 14px; line-height: 1.55; }
+
+  .highlight {
+    margin-top: 34px; border-radius: var(--radius); padding: 32px 34px;
+    background: linear-gradient(120deg, rgba(123,111,232,0.16) 0%, rgba(201,148,58,0.08) 100%);
+    border: 1px solid rgba(123,111,232,0.30); border-left: 3px solid var(--gold);
+  }
+  .highlight p {
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: clamp(16.5px, 2vw, 20px); line-height: 1.65; color: rgba(250,250,250,0.90); letter-spacing: -0.01em;
+  }
+
+  /* ---------- Trayectoria / logos ---------- */
+  .logos-label { text-align: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(250,250,250,0.32); margin-bottom: 22px; font-weight: 600; }
+  .logos {
+    padding: 26px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px 40px;
+  }
+  .logos .lg { font-size: 13.5px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(250,250,250,0.36); transition: color .25s; }
+  .logos .lg:hover { color: rgba(250,250,250,0.75); }
+  .logos-now { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 26px; }
+  .logos-now .now {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 14px;
+    background: rgba(201,148,58,0.10); border: 1px solid rgba(201,148,58,0.30);
+  }
+  .logos-now .now .k { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(227,185,110,0.9); font-weight: 700; }
+  .logos-now .now .v { font-size: 14.5px; font-weight: 700; letter-spacing: -0.01em; color: var(--white); }
+
+  /* ---------- Resultados / testimonios ---------- */
+  .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 780px) { .shots { grid-template-columns: 1fr; } }
+  .shot {
+    border-radius: 18px; overflow: hidden; border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03); cursor: zoom-in; position: relative;
+    transition: transform .3s var(--ease), border-color .3s var(--ease);
+  }
+  .shot:hover { transform: translateY(-3px); border-color: rgba(123,111,232,0.45); }
+  .shot .imgbox { position: relative; height: 420px; background: linear-gradient(160deg, rgba(123,111,232,0.14), rgba(14,14,14,0.7)); }
+  .shot .imgbox img { width: 100%; height: 100%; object-fit: cover; object-position: top center; position: relative; z-index: 1; }
+  .shot .ph {
+    position: absolute; inset: 0; z-index: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 24px;
+  }
+  .shot .ph .ic {
+    width: 54px; height: 54px; border-radius: 50%;
+    border: 1px solid rgba(123,111,232,0.45); background: rgba(123,111,232,0.15);
+    display: flex; align-items: center; justify-content: center; color: #B9B1F5;
+  }
+  .shot .ph .t { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,250,250,0.42); font-weight: 600; }
+  .shot .ph .f { font-size: 12px; color: rgba(250,250,250,0.28); }
+  .shot .cap { padding: 14px 16px; font-size: 12.5px; color: rgba(250,250,250,0.58); border-top: 1px solid var(--border); }
+  .shot .cap b { color: rgba(250,250,250,0.9); font-weight: 600; display: block; font-size: 13.5px; margin-bottom: 2px; letter-spacing: -0.01em; }
+  .shots-note { margin-top: 18px; font-size: 13.5px; color: rgba(250,250,250,0.48); text-align: center; font-weight: 300; }
+  @media (max-width: 560px) { .shot .imgbox { height: 340px; } }
+
+  /* ---------- Opciones / precios ---------- */
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+  @media (max-width: 900px) { .plans { grid-template-columns: 1fr; } }
+  .plan { position: relative; overflow: hidden; padding: 36px 34px; border-radius: 24px; }
+  .plan::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--purple), transparent 70%); }
+  .plan.featured {
+    background: linear-gradient(160deg, rgba(201,148,58,0.14) 0%, rgba(14,14,14,0.5) 55%, rgba(123,111,232,0.12) 100%);
+    border-color: rgba(201,148,58,0.38);
+    box-shadow: 0 40px 90px -45px rgba(201,148,58,0.5);
+  }
+  .plan.featured::before { background: linear-gradient(90deg, var(--gold), transparent 70%); }
+  .plan .badge {
+    position: absolute; top: 22px; right: 22px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 100px;
+    background: rgba(201,148,58,0.18); border: 1px solid rgba(201,148,58,0.4); color: #E3B96E;
+  }
+  .plan .opt { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+  .plan.featured .opt { color: var(--gold); }
+  .plan h3 { font-size: clamp(21px, 2.6vw, 26px); margin-bottom: 18px; }
+  .plan .price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .plan .price .amt {
+    font-size: clamp(44px, 6.4vw, 62px); font-weight: 900; letter-spacing: -0.05em; line-height: 1;
+    background: linear-gradient(140deg, #FFFFFF 0%, #C6BEFF 45%, var(--gold) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .plan .price .per { font-size: 15px; color: rgba(250,250,250,0.5); font-weight: 500; }
+  .plan .for { font-family: 'Playfair Display', serif; font-size: 16px; line-height: 1.55; color: rgba(250,250,250,0.74); margin-bottom: 26px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .plan .inc-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,250,250,0.42); font-weight: 700; margin-bottom: 16px; }
+  .plan ul { list-style: none; }
+  .plan li { display: flex; gap: 12px; align-items: flex-start; padding: 9px 0; font-size: 14.8px; font-weight: 300; color: rgba(250,250,250,0.76); line-height: 1.5; }
+  .plan li .ck {
+    flex: 0 0 auto; width: 19px; height: 19px; border-radius: 50%; margin-top: 3px;
+    background: rgba(123,111,232,0.18); border: 1px solid rgba(123,111,232,0.45);
+    display: flex; align-items: center; justify-content: center; color: var(--purple); font-size: 10px; font-weight: 800;
+  }
+  .plan.featured li .ck { background: rgba(201,148,58,0.18); border-color: rgba(201,148,58,0.45); color: var(--gold); }
+  .plan .plus {
+    margin: 22px 0 4px; padding: 12px 16px; border-radius: 12px;
+    background: rgba(201,148,58,0.12); border: 1px solid rgba(201,148,58,0.3);
+    font-size: 13.5px; font-weight: 600; color: #E3B96E; letter-spacing: -0.01em;
+  }
+  .plan .note { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 13.5px; color: rgba(250,250,250,0.5); }
+  .plan .cap6 {
+    margin-top: 20px; padding: 14px 16px; border-radius: 12px; text-align: center;
+    background: rgba(123,111,232,0.12); border: 1px solid rgba(123,111,232,0.30);
+    font-size: 13.5px; font-weight: 600; color: #B9B1F5;
+  }
+  .plan .btn { width: 100%; margin-top: 24px; }
+  @media (max-width: 560px) { .plan { padding: 30px 24px; } }
+
+  /* ---------- Inversión publicitaria ---------- */
+  .invest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 880px) { .invest-grid { grid-template-columns: 1fr; } }
+  .invest-card { padding: 34px; border-radius: 22px; }
+  .invest-card .ic-top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .invest-card .ic-top .ic {
+    width: 42px; height: 42px; border-radius: 12px; flex: 0 0 auto;
+    background: rgba(123,111,232,0.16); border: 1px solid rgba(123,111,232,0.34);
+    display: flex; align-items: center; justify-content: center; color: #B9B1F5; font-size: 18px;
+  }
+  .invest-card.gold { background: linear-gradient(140deg, rgba(201,148,58,0.13), rgba(255,255,255,0.02)); border-color: rgba(201,148,58,0.32); }
+  .invest-card.gold .ic-top .ic { background: rgba(201,148,58,0.16); border-color: rgba(201,148,58,0.36); color: #E3B96E; }
+  .invest-card h3 { margin-bottom: 4px; }
+  .invest-card p { font-size: 15.5px; line-height: 1.65; }
+  .setup-list { list-style: none; margin-top: 22px; }
+  .setup-list li {
+    position: relative; padding-left: 22px; margin-bottom: 10px;
+    font-size: 14.8px; font-weight: 300; color: rgba(250,250,250,0.72); line-height: 1.55;
+  }
+  .setup-list li::before { content: ''; position: absolute; left: 3px; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: .9; }
+
+  /* ---------- Condiciones ---------- */
+  .terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 880px) { .terms { grid-template-columns: 1fr; } }
+  .term .n { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--purple); margin-bottom: 14px; }
+  .term h3 { font-size: 17.5px; font-weight: 700; margin-bottom: 9px; }
+  .term p { font-size: 14.5px; line-height: 1.6; }
+
+  /* ---------- CTA final ---------- */
+  .final { text-align: center; padding: 110px 0 96px; }
+  .final h2 { max-width: 900px; margin: 22px auto 22px; font-size: clamp(31px, 5vw, 56px); }
+  .final .sub { max-width: 660px; margin: 0 auto 40px; }
+  .final-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .sign {
+    margin-top: 54px; padding-top: 30px; border-top: 1px solid var(--border);
+    max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+  .sign .n { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
+  .sign .r { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--gold); margin-top: 6px; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 52px 0 44px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 26px; align-items: flex-start; }
+  .foot .name { font-weight: 800; font-size: 17px; letter-spacing: -0.02em; }
+  .foot .tagline { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 14.5px; margin-top: 5px; }
+  .foot-contact { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+  @media (max-width: 620px) { .foot-contact { text-align: left; } }
+  .foot-contact a { color: rgba(250,250,250,0.55); text-decoration: none; font-size: 14px; }
+  .foot-contact a:hover { color: var(--white); }
+  .foot-legal { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 12.5px; color: rgba(250,250,250,0.30); text-align: center; }
+
+  /* ---------- WhatsApp flotante ---------- */
+  .fab {
+    position: fixed; right: 20px; bottom: 20px; z-index: 70;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;
+    padding: 14px 22px; border-radius: 100px; text-decoration: none;
+    font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em;
+    box-shadow: 0 14px 36px -10px rgba(18,140,126,0.85);
+    transition: transform .25s var(--ease);
+  }
+  .fab:hover { transform: translateY(-3px) scale(1.02); }
+  @media (max-width: 600px) { .fab { padding: 13px 18px; font-size: 13.5px; right: 14px; bottom: 14px; } }
+
+  /* ---------- Lightbox ---------- */
+  .lb {
+    position: fixed; inset: 0; z-index: 100; background: rgba(6,6,6,0.94);
+    display: none; align-items: center; justify-content: center; padding: 28px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .lb.on { display: flex; animation: fadeIn .25s ease both; }
+  .lb img { max-width: min(980px, 94vw); max-height: 88vh; border-radius: 14px; border: 1px solid var(--border); }
+  .lb .x {
+    position: absolute; top: 20px; right: 24px; width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); border: 1px solid var(--border); color: #fff;
+    font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ---------- Animaciones ---------- */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .75s var(--ease), transform .75s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+
+  @media print {
+    .nav, .fab, .lb, .cover-scroll { display: none !important; }
+    body { background: #fff; color: #111; }
+  }
+</style>
+</head>
+
+<body>
+<div class="bg-fx"></div>
+<div class="grid-fx"></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <div class="nav-brand">
+      <span class="rm">RM</span>
+      Raquel Mendoza <span>· Marketing IA</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#quien-soy">Quién soy</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#opciones">Opciones</a>
+      <a href="#inversion">Inversión</a>
+      <a href="#condiciones">Condiciones</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" id="ctaNav" href="#contacto">Conversemos</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== PORTADA ===================== -->
+<section class="cover">
+  <div class="wrap cover-inner">
+    <div class="kicker">Propuesta</div>
+
+    <h1>
+      Gestión de <span class="nb">Meta Ads</span>
+      <span class="line2">para tus propiedades</span>
+    </h1>
+
+    <div class="rule"></div>
+
+    <p class="lead">
+      Marketing digital para el sector inmobiliario. Estrategia y gestión de publicidad
+      para que cada listing llegue al público correcto.
+    </p>
+
+    <div class="cover-meta">
+      <div>
+        <div class="k">Preparada para</div>
+        <div class="v" id="metaCliente">Asesor inmobiliario</div>
+      </div>
+      <div>
+        <div class="k">Presentada por</div>
+        <div class="v">Lcda. Raquel Mendoza</div>
+      </div>
+      <div>
+        <div class="k">Servicio</div>
+        <div class="v">Meta Ads · Mensual</div>
+      </div>
+    </div>
+
+    <a class="cover-scroll" href="#saludo">
+      Ver la propuesta
+      <span class="arrow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== SALUDO ===================== -->
+<section class="greeting" id="saludo">
+  <div class="wrap">
+    <div class="greet-card reveal">
+      <div class="hi">Hola, <span class="nm" id="nombreCliente">[Nombre]</span>.</div>
+      <p>
+        Te comparto la propuesta para trabajar la <strong>estrategia y gestión de publicidad digital</strong>
+        de tus propiedades, con el objetivo de aumentar la visibilidad de tus listings, atraer prospectos
+        potenciales y generar nuevas oportunidades de negocio a través de Meta Ads.
+      </p>
+      <div class="greet-goals">
+        <div><div class="l">Más visibilidad para tus listings</div></div>
+        <div><div class="l">Prospectos potenciales</div></div>
+        <div><div class="l">Nuevas oportunidades de negocio</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== QUIÉN SOY ===================== -->
+<section id="quien-soy">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Quién es</span>
+      <h2>Raquel Mendoza</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="photo">
+          <div class="ph">
+            <div class="ic">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="9" r="1.8"/><path d="M21 15l-5-5L5 21"/>
+              </svg>
+            </div>
+            <div class="t">Foto principal</div>
+            <div class="f">assets/fotos/raquel-1.jpg</div>
+          </div>
+          <img src="assets/fotos/raquel-1.jpg"
+               alt="Lcda. Raquel Mendoza, estratega de marketing digital para el sector inmobiliario"
+               loading="eager" onerror="this.style.display='none'">
+          <div class="tag">
+            <div class="n">Lcda. Raquel Mendoza</div>
+            <div class="r">Estratega de Marketing Digital &amp; IA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="pill">Marketing inmobiliario con IA</div>
+
+        <div class="cred">
+          <span>+4 años en el sector inmobiliario</span>
+          <span>Florida · LATAM</span>
+          <span>Meta Ads · Contenido · IA</span>
+        </div>
+
+        <p style="font-size: 17px; line-height: 1.72;">
+          Soy Raquel Mendoza, <strong>estratega de marketing digital</strong> especializada en el crecimiento
+          de marcas personales y profesionales del sector inmobiliario mediante estrategias de contenido,
+          publicidad digital e Inteligencia Artificial.
+        </p>
+
+        <div class="highlight">
+          <p>
+            Mi enfoque no es simplemente crear campañas, sino <strong>entender el objetivo comercial de cada
+            propiedad</strong> y convertirlo en una estrategia publicitaria capaz de llegar al público correcto.
+          </p>
+        </div>
+
+        <div class="about-cols">
+          <div class="about-col">
+            <h4>Trayectoria</h4>
+            <p>Más de 4 años trabajando con inmobiliarias de Florida y asesores de firmas internacionales.</p>
+          </div>
+          <div class="about-col">
+            <h4>Rol actual</h4>
+            <p>Directiva de Marketing de First Way Realty y Hospitality Kings.</p>
+          </div>
+          <div class="about-col">
+            <h4>Especialidad</h4>
+            <p>Estrategia de contenido, publicidad en Meta Ads e Inteligencia Artificial aplicada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px;" class="reveal">
+      <div class="logos-label">Experiencia trabajando con</div>
+      <div class="logos">
+        <div class="lg">EXP Realty</div>
+        <div class="lg">LPT Realty</div>
+        <div class="lg">Miami Wave Realty</div>
+        <div class="lg">Inmobiliarias de Florida</div>
+      </div>
+      <div class="logos-now">
+        <div class="now">
+          <div>
+            <div class="k">Actualmente · Directiva de Marketing</div>
+            <div class="v">First Way Realty</div>
+          </div>
+        </div>
+        <div class="now">
+          <div>
+            <div class="k">Actualmente · Directiva de Marketing</div>
+            <div class="v">Hospitality Kings</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULTADOS / TESTIMONIOS ===================== -->
+<section id="resultados">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Resultados reales</span>
+      <h2>Lo que dicen los asesores</h2>
+      <p class="sub">
+        Capturas reales de campañas y resultados de clientes con los que he trabajado la publicidad
+        de sus propiedades.
+      </p>
+    </div>
+
+    <div class="shots">
+      <figure class="shot reveal" data-full="assets/testimonios/testimonio-1.jpg">
+        <div class="imgbox">
+          <div class="ph">
+            <div class="ic">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="t">Testimonio 1</div>
+            <div class="f">assets/testimonios/testimonio-1.jpg</div>
+          </div>
+          <img src="assets/testimonios/testimonio-1.jpg"
+               alt="Testimonio de un cliente sobre los resultados de sus campañas de Meta Ads"
+               loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <figcaption class="cap">
+          <b>Resultados de campañas de Meta Ads</b>
+          Clic para ver la captura completa
+        </figcaption>
+      </figure>
+
+      <figure class="shot reveal" data-full="assets/testimonios/testimonio-2.jpg">
+        <div class="imgbox">
+          <div class="ph">
+            <div class="ic">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="t">Testimonio 2</div>
+            <div class="f">assets/testimonios/testimonio-2.jpg</div>
+          </div>
+          <img src="assets/testimonios/testimonio-2.jpg"
+               alt="Testimonio de un cliente sobre la gestión de publicidad de sus propiedades"
+               loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <figcaption class="cap">
+          <b>Gestión de publicidad de propiedades</b>
+          Clic para ver la captura completa
+        </figcaption>
+      </figure>
+    </div>
+
+    <p class="shots-note">Capturas reales. Los datos de contacto de los clientes se mantienen reservados.</p>
+  </div>
+</section>
+
+<!-- ===================== OPCIONES ===================== -->
+<section id="opciones">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">La propuesta</span>
+      <h2>Dos formas de trabajar juntos</h2>
+      <p class="sub">
+        Elige la opción según si ya cuentas con tus creativos listos o prefieres delegar
+        también la preparación del contenido publicitario.
+      </p>
+    </div>
+
+    <div class="plans">
+      <!-- OPCIÓN 1 -->
+      <div class="card plan reveal">
+        <div class="opt">Opción 1</div>
+        <h3>Gestión de campañas</h3>
+        <div class="price">
+          <span class="amt">US$400</span>
+          <span class="per">/ mes</span>
+        </div>
+        <p class="for">
+          Pensada para asesores que ya cuentan con sus fotografías, videos
+          y piezas publicitarias listas.
+        </p>
+
+        <div class="inc-label">Incluye</div>
+        <ul>
+          <li><span class="ck">✓</span> Estrategia publicitaria para los listings.</li>
+          <li><span class="ck">✓</span> Configuración y gestión de campañas en Meta Ads.</li>
+          <li><span class="ck">✓</span> Segmentación estratégica de audiencias.</li>
+          <li><span class="ck">✓</span> Creación y configuración de conjuntos de anuncios.</li>
+          <li><span class="ck">✓</span> Copywriting de los anuncios.</li>
+          <li><span class="ck">✓</span> Monitoreo y optimización de campañas.</li>
+          <li><span class="ck">✓</span> Pruebas y ajustes de públicos y anuncios.</li>
+          <li><span class="ck">✓</span> Análisis del rendimiento.</li>
+          <li><span class="ck">✓</span> Reporte mensual de resultados.</li>
+        </ul>
+
+        <div class="cap6">Hasta 6 listings / campañas activos al mes</div>
+        <div class="note">Los creativos son proporcionados por el cliente.</div>
+
+        <a class="btn btn-ghost" id="ctaOpt1" href="#contacto">Quiero la Opción 1</a>
+      </div>
+
+      <!-- OPCIÓN 2 -->
+      <div class="card plan featured reveal">
+        <div class="badge">Integral</div>
+        <div class="opt">Opción 2</div>
+        <h3>Gestión + Creativos</h3>
+        <div class="price">
+          <span class="amt">US$600</span>
+          <span class="per">/ mes</span>
+        </div>
+        <p class="for">
+          Una opción integral para quienes desean delegar tanto la gestión de la publicidad
+          como la preparación de los contenidos publicitarios.
+        </p>
+
+        <div class="plus">Todo lo de la Opción 1, más:</div>
+
+        <ul>
+          <li><span class="ck">✓</span> Edición y adaptación de videos para publicidad.</li>
+          <li><span class="ck">✓</span> Edición y adaptación de fotografías.</li>
+          <li><span class="ck">✓</span> Diseño / adaptación de piezas publicitarias.</li>
+          <li><span class="ck">✓</span> Creación de diferentes versiones de anuncios para testing.</li>
+          <li><span class="ck">✓</span> Desarrollo de conceptos creativos orientados a conversión.</li>
+        </ul>
+
+        <div class="cap6">Hasta 6 listings / campañas activos al mes</div>
+
+        <a class="btn btn-gold" id="ctaOpt2" href="#contacto">Quiero la Opción 2</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INVERSIÓN PUBLICITARIA ===================== -->
+<section id="inversion">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Inversión publicitaria</span>
+      <h2>El presupuesto de pauta va aparte</h2>
+    </div>
+
+    <div class="invest-grid">
+      <div class="card invest-card reveal">
+        <div class="ic-top">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>
+            </svg>
+          </div>
+          <h3>Presupuesto de Meta</h3>
+        </div>
+        <p>
+          El presupuesto destinado a Meta Ads <strong>no está incluido dentro de la mensualidad</strong>.
+          Este monto será pagado directamente por el cliente a Meta y se establecerá de acuerdo con
+          los objetivos, la cantidad de propiedades y la estrategia de cada campaña.
+        </p>
+      </div>
+
+      <div class="card invest-card gold reveal">
+        <div class="ic-top">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6 1.65 1.65 0 0 0 10 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <h3>Puesta en marcha</h3>
+        </div>
+        <p>Incluye la preparación y configuración inicial necesaria para comenzar a trabajar:</p>
+        <ul class="setup-list">
+          <li>Estructuración de la cuenta publicitaria.</li>
+          <li>Configuración inicial de campañas.</li>
+          <li>Organización de activos.</li>
+          <li>Definición de públicos.</li>
+          <li>Estructura estratégica de lanzamiento.</li>
+          <li>Preparación de la cuenta para comenzar la gestión.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONDICIONES ===================== -->
+<section id="condiciones">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Condiciones</span>
+      <h2>Claras desde el primer día</h2>
+    </div>
+
+    <div class="terms">
+      <div class="card term reveal">
+        <div class="n">01</div>
+        <h3>Alcance de la mensualidad</h3>
+        <p>La mensualidad corresponde exclusivamente a la gestión y ejecución del servicio de marketing.</p>
+      </div>
+      <div class="card term reveal">
+        <div class="n">02</div>
+        <h3>Pauta independiente</h3>
+        <p>El presupuesto de pauta publicitaria es independiente y se paga directamente a Meta.</p>
+      </div>
+      <div class="card term reveal">
+        <div class="n">03</div>
+        <h3>Trabajo adicional</h3>
+        <p>Cualquier trabajo que exceda el alcance establecido en esta propuesta podrá cotizarse por separado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OBJETIVO ===================== -->
+<section id="objetivo">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="photo">
+          <div class="ph">
+            <div class="ic">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="9" r="1.8"/><path d="M21 15l-5-5L5 21"/>
+              </svg>
+            </div>
+            <div class="t">Foto secundaria</div>
+            <div class="f">assets/fotos/raquel-2.jpg</div>
+          </div>
+          <img src="assets/fotos/raquel-2.jpg"
+               alt="Raquel Mendoza trabajando la estrategia publicitaria de propiedades"
+               loading="lazy" onerror="this.style.display='none'">
+        </div>
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow">El objetivo</span>
+        <h2>Más que promocionar propiedades</h2>
+        <p class="sub" style="margin-top: 20px;">
+          Buscamos construir una estrategia que permita que cada listing tenga una exposición adecuada
+          frente al público correcto y que la inversión publicitaria tenga una dirección comercial clara.
+        </p>
+        <div class="highlight">
+          <p>“El contenido atrae. El sistema convierte.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="final" id="contacto">
+  <div class="wrap">
+    <div class="pill pill-gold reveal">Siguiente paso</div>
+    <h2 class="reveal">Empecemos a mover tus <span class="accent-gold">listings</span></h2>
+    <p class="sub reveal">
+      Conversemos sobre tus propiedades, tus objetivos y cuál de las dos opciones se ajusta
+      mejor a lo que necesitas ahora mismo.
+    </p>
+    <div class="final-cta reveal">
+      <a class="btn btn-primary btn-lg" id="ctaFinal" href="#" target="_blank" rel="noopener">Conversemos por WhatsApp →</a>
+      <a class="btn btn-ghost btn-lg" href="#opciones">Ver las opciones otra vez</a>
+    </div>
+
+    <div class="sign reveal">
+      <div class="n">Raquel Mendoza</div>
+      <div class="r">Estratega de Marketing Digital &amp; IA para el sector inmobiliario</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="name">Lcda. Raquel Mendoza</div>
+        <div class="tagline">“El contenido atrae. El sistema convierte.”</div>
+      </div>
+      <div class="foot-contact">
+        <a href="https://instagram.com/raquelmendoza.mkt" target="_blank" rel="noopener">@raquelmendoza.mkt</a>
+        <a href="https://wa.me/584227163477" target="_blank" rel="noopener">0422-716.34.77</a>
+        <a href="mailto:raquelmendozamarketing@gmail.com">raquelmendozamarketing@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      RM Marketing IA · Propuesta de Gestión de Meta Ads para el sector inmobiliario · 2026
+    </div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.18 4.22-9.4 9.42-9.4a9.36 9.36 0 016.65 2.76 9.32 9.32 0 012.75 6.65c0 5.18-4.22 9.4-9.41 9.4zM20.5 3.49A11.75 11.75 0 0012.04 0C5.5 0 .2 5.3.2 11.82c0 2.08.55 4.11 1.59 5.9L.1 24l6.42-1.68a11.83 11.83 0 005.51 1.4h.01c6.54 0 11.85-5.3 11.85-11.82 0-3.16-1.23-6.13-3.39-8.41z"/>
+  </svg>
+  Hablar por WhatsApp
+</a>
+
+<div class="lb" id="lb">
+  <button class="x" id="lbX" aria-label="Cerrar">×</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =========================================================
+     CONFIGURACIÓN — editable en un solo lugar
+     ========================================================= */
+  var WHATSAPP = '584227163477';
+
+  // Nombre del cliente. Se puede cambiar aquí, o pasarlo por la URL:
+  //   propuesta-meta-ads.html?nombre=Carlos
+  var NOMBRE_CLIENTE = '';
+
+  var MSG_GENERAL = 'Hola Raquel, vi tu propuesta de gestión de Meta Ads y quiero conversar sobre la publicidad de mis propiedades.';
+  var MSG_FINAL   = 'Hola Raquel, vi tu propuesta de Meta Ads y quiero avanzar. ¿Conversamos?';
+  var MSG_OPT1    = 'Hola Raquel, me interesa la Opción 1 — Gestión de campañas (US$400/mes). ¿Conversamos?';
+  var MSG_OPT2    = 'Hola Raquel, me interesa la Opción 2 — Gestión + Creativos (US$600/mes). ¿Conversamos?';
+
+  /* =========================================================
+     Personalización del nombre (?nombre=... en la URL)
+     ========================================================= */
+  function getParam(k) {
+    try {
+      return new URLSearchParams(window.location.search).get(k);
+    } catch (e) { return null; }
+  }
+  var nombre = (getParam('nombre') || NOMBRE_CLIENTE || '').trim();
+  if (nombre) {
+    var elNombre = document.getElementById('nombreCliente');
+    var elMeta   = document.getElementById('metaCliente');
+    if (elNombre) elNombre.textContent = nombre;
+    if (elMeta) elMeta.textContent = nombre;
+    document.title = 'Propuesta de Meta Ads para ' + nombre + ' — Raquel Mendoza';
+  }
+
+  /* =========================================================
+     Enlaces de WhatsApp
+     ========================================================= */
+  function wa(msg) {
+    return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+  }
+  function link(id, msg) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.href = wa(msg);
+    el.target = '_blank';
+    el.rel = 'noopener';
+  }
+  link('fab', MSG_GENERAL);
+  link('ctaNav', MSG_GENERAL);
+  link('ctaFinal', MSG_FINAL);
+  link('ctaOpt1', MSG_OPT1);
+  link('ctaOpt2', MSG_OPT2);
+
+  /* =========================================================
+     Nav con borde al hacer scroll
+     ========================================================= */
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    if (!nav) return;
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* =========================================================
+     Animaciones de entrada
+     ========================================================= */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e, i) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function () { el.classList.add('in'); }, Math.min(i * 70, 350));
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* =========================================================
+     Lightbox de testimonios (solo si la imagen existe)
+     ========================================================= */
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lbImg');
+  var lbX = document.getElementById('lbX');
+
+  document.querySelectorAll('.shot').forEach(function (fig) {
+    fig.addEventListener('click', function () {
+      var img = fig.querySelector('img');
+      if (!img || img.style.display === 'none' || !img.naturalWidth) return;
+      lbImg.src = fig.getAttribute('data-full');
+      lbImg.alt = img.alt || '';
+      lb.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLb() {
+    lb.classList.remove('on');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+  if (lbX) lbX.addEventListener('click', closeLb);
+  if (lb) lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+
+})();
+</script>
+</body>
+</html>
