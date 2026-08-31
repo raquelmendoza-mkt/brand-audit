@@ -308,7 +308,7 @@
 
   /* ---------- Métricas hero ---------- */
   .hero-stats {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
     background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
     margin-top: 54px;
   }
@@ -318,7 +318,7 @@
     font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
     color: rgba(250,250,250,0.42); margin-top: 5px; font-weight: 500;
   }
-  @media (max-width: 720px) { .hero-stats { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .hero-stats { grid-template-columns: 1fr; } }
 
   /* ---------- Cabecera de sección ---------- */
   .sec-head { max-width: 760px; margin-bottom: 54px; }
@@ -393,12 +393,6 @@
   .module::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, var(--purple), transparent 70%);
-  }
-  .module .mnum {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 38px; height: 38px; border-radius: 11px; margin-bottom: 18px;
-    background: rgba(123,111,232,0.16); border: 1px solid rgba(123,111,232,0.34);
-    font-weight: 800; font-size: 15px; color: #B9B1F5;
   }
   .module h3 { margin-bottom: 16px; }
   .module ul { list-style: none; }
@@ -784,7 +778,6 @@
     <div class="hero-stats reveal">
       <div><div class="v">5 h</div><div class="l">Presenciales</div></div>
       <div><div class="v">20</div><div class="l">Asesores</div></div>
-      <div><div class="v">4</div><div class="l">Módulos</div></div>
       <div><div class="v">1</div><div class="l">Sola tarde</div></div>
     </div>
   </div>
@@ -882,13 +875,12 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Contenido del entrenamiento</span>
-      <h2>Cuatro módulos, cero relleno</h2>
-      <p class="sub">Cada módulo termina con algo hecho, no con algo explicado.</p>
+      <h2>Cero relleno, todo aplicable</h2>
+      <p class="sub">Cada bloque termina con algo hecho, no con algo explicado.</p>
     </div>
 
     <div class="modules">
       <div class="card module reveal">
-        <div class="mnum">1</div>
         <h3>Estrategia y contenido que capta</h3>
         <ul>
           <li>Los 7 tipos de cliente inmobiliario y cómo hablarle a cada uno</li>
@@ -899,7 +891,16 @@
       </div>
 
       <div class="card module reveal">
-        <div class="mnum">2</div>
+        <h3>Estrategia de captación de propiedades y de ventas</h3>
+        <ul>
+          <li>Estrategia de marketing inmobiliario enfocada en <strong>captar propiedades</strong>, no solo en publicarlas</li>
+          <li>Cómo presentar la propuesta de valor al propietario y ganar la exclusiva</li>
+          <li>Argumentos de venta y manejo de las objeciones más comunes del mercado venezolano</li>
+          <li>Del primer contacto al cierre: qué decir en cada etapa de la negociación</li>
+        </ul>
+      </div>
+
+      <div class="card module reveal">
         <h3>La IA como asistente de marketing</h3>
         <ul>
           <li>Cómo dar instrucciones correctas a la IA para resultados de alto nivel</li>
@@ -910,17 +911,25 @@
       </div>
 
       <div class="card module reveal">
-        <div class="mnum">3</div>
         <h3>Presentación de propiedades con IA</h3>
         <ul>
           <li>Virtual Staging: transformar una propiedad vacía en un espacio que enamora</li>
-          <li>Videomarketing profesional con IA, transiciones de alto impacto</li>
-          <li>Grabado desde el teléfono, sin equipo ni productora</li>
+          <li>Cómo mostrar una propiedad para que se venda antes de la visita</li>
+          <li>Todo desde el teléfono, sin equipo ni productora</li>
         </ul>
       </div>
 
       <div class="card module reveal">
-        <div class="mnum">4</div>
+        <h3>Videomarketing con IA</h3>
+        <ul>
+          <li>Videos de propiedades con <strong>calidad profesional</strong>, grabados desde el teléfono</li>
+          <li>Transiciones y efectos de alto impacto hechos con IA</li>
+          <li>Guiones de video que retienen la atención y llevan a la acción</li>
+          <li>Sin equipo, sin productora y sin experiencia previa en edición</li>
+        </ul>
+      </div>
+
+      <div class="card module reveal">
         <h3>Captación y automatización de leads</h3>
         <ul>
           <li>Automatización del DM de Instagram</li>
@@ -1117,8 +1126,7 @@
       <div class="pill pill-gold" style="margin-bottom:6px;">Para 20 asesores</div>
       <div class="amount">$600</div>
       <div class="amount-sub">
-        Formación completa + Certificación en Marketing Inmobiliario con IA
-        + material digital para los 20 asesores.
+        Formación completa + material digital para los 20 asesores.
       </div>
 
       <div class="perspective">
