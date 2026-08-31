@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formación In-Company con IA · Propuesta para RE/MAX Alcanza Valencia — RM Marketing IA</title>
+<meta name="description" content="Formación presencial in-company en marketing inmobiliario con Inteligencia Artificial. Una tarde. El equipo sale con el sistema instalado. Propuesta preparada para RE/MAX Alcanza Valencia.">
+<meta name="theme-color" content="#0E0E0E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Convierte a tu equipo en captadores de clientes con IA — Propuesta RE/MAX Alcanza Valencia">
+<meta property="og:description" content="Formación presencial in-company para equipos inmobiliarios. Una tarde. El equipo sale con el sistema instalado — no con teoría.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     RM MARKETING IA — Sistema de marca
+     Títulos: Inter · Subtítulos: Playfair Display
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple:       #7B6FE8;
+    --purple-dark:  #3D3492;
+    --purple-light: #EEF0FF;
+    --gold:         #C9943A;
+    --gold-light:   #FDF6E9;
+    --black:        #0E0E0E;
+    --black-soft:   #141414;
+    --white:        #FAFAFA;
+    --gray:         #6B6B6B;
+    --gray-light:   #F2F2F0;
+    --border:       rgba(255,255,255,0.10);
+
+    --maxw: 1120px;
+    --radius: 20px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  section { position: relative; padding: 96px 0; }
+
+  /* ---------- Tipografía ---------- */
+  h1, h2, h3, h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.03em; line-height: 1.08; font-weight: 800; }
+  h1 { font-size: clamp(34px, 5.6vw, 66px); }
+  h2 { font-size: clamp(28px, 4.2vw, 46px); }
+  h3 { font-size: clamp(19px, 2.2vw, 23px); letter-spacing: -0.02em; line-height: 1.25; }
+
+  /* Subtítulo: Playfair Display recta, con peso y contraste suficientes para leerse cómoda. */
+  .sub {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: clamp(17px, 1.9vw, 21px);
+    line-height: 1.65;
+    color: rgba(250,250,250,0.80);
+    letter-spacing: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  p { color: rgba(250,250,250,0.66); font-size: 16.5px; font-weight: 300; }
+  strong { color: var(--white); font-weight: 600; }
+  em { font-style: normal; color: rgba(250,250,250,0.55); }
+
+  .accent { color: var(--purple); }
+  .accent-gold { color: var(--gold); }
+
+  /* ---------- Fondo ---------- */
+  .bg-fx {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 45% at 12% -5%,  rgba(123,111,232,0.20) 0%, transparent 62%),
+      radial-gradient(ellipse 55% 40% at 92% 12%,  rgba(201,148,58,0.10) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 45% at 50% 105%, rgba(61,52,146,0.28) 0%, transparent 65%);
+  }
+  .grid-fx {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.30;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 20%, transparent 75%);
+  }
+  main, header, footer { position: relative; z-index: 1; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(14,14,14,0.72);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s var(--ease), background .3s var(--ease);
+  }
+  .nav.scrolled { border-bottom-color: var(--border); background: rgba(14,14,14,0.90); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; }
+  .nav-brand { display: flex; align-items: baseline; gap: 9px; font-weight: 800; font-size: 15px; letter-spacing: -0.02em; }
+  .nav-brand .rm {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 9px; flex: 0 0 auto;
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    font-size: 12px; font-weight: 800; letter-spacing: 0; color: #fff;
+    align-self: center;
+  }
+  .nav-brand span { color: rgba(250,250,250,0.45); font-weight: 400; font-size: 13px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    color: rgba(250,250,250,0.55); text-decoration: none; font-size: 13.5px; font-weight: 500;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  @media (max-width: 900px) { .nav-links { display: none; } }
+  @media (max-width: 600px) {
+    .nav-inner { height: 62px; gap: 12px; }
+    .nav-brand { font-size: 14px; white-space: nowrap; }
+    .nav-brand span { display: none; }
+    .nav .btn-sm { padding: 10px 15px; font-size: 12.5px; white-space: nowrap; }
+  }
+
+  /* ---------- Botones ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 15px 28px; border-radius: 100px; border: 1px solid transparent;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    text-decoration: none; cursor: pointer; text-align: center;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+    color: #fff; box-shadow: 0 10px 34px -12px rgba(123,111,232,0.85);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -12px rgba(123,111,232,0.95); }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, #A8762A 100%);
+    color: #17110A; box-shadow: 0 10px 34px -12px rgba(201,148,58,0.8);
+  }
+  .btn-gold:hover { transform: translateY(-2px); }
+  .btn-ghost { background: rgba(255,255,255,0.04); border-color: var(--border); color: var(--white); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.09); transform: translateY(-2px); }
+  .btn-sm { padding: 11px 20px; font-size: 13.5px; }
+  .btn-lg { padding: 18px 36px; font-size: 16.5px; }
+
+  /* ---------- Píldoras / tarjetas ---------- */
+  .pill {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: rgba(123,111,232,0.13); border: 1px solid rgba(123,111,232,0.32);
+    border-radius: 100px; padding: 8px 18px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #B9B1F5;
+  }
+  .pill::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple); box-shadow: 0 0 0 0 rgba(123,111,232,0.7);
+    animation: pulse 2.4s infinite;
+  }
+  .pill-gold { background: rgba(201,148,58,0.12); border-color: rgba(201,148,58,0.34); color: #E3B96E; }
+  .pill-gold::before { background: var(--gold); animation: none; box-shadow: none; }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(123,111,232,0.7); }
+    70%  { box-shadow: 0 0 0 9px rgba(123,111,232,0); }
+    100% { box-shadow: 0 0 0 0 rgba(123,111,232,0); }
+  }
+
+  .card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.022) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+    transition: transform .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(123,111,232,0.40); }
+
+  /* ---------- PORTADA ---------- */
+  .cover {
+    min-height: calc(100vh - 68px);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 80px 0 70px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cover-inner { max-width: 940px; margin: 0 auto; }
+
+  .cover .kicker {
+    font-size: clamp(11px, 1.4vw, 13px); font-weight: 700;
+    letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 30px;
+  }
+  .cover h1 {
+    font-size: clamp(40px, 8vw, 96px);
+    font-weight: 900; letter-spacing: -0.045em; line-height: 1.02;
+  }
+  .cover h1 .nb { white-space: nowrap; }
+  .cover h1 .line2 {
+    display: block; margin-top: 10px;
+    background: linear-gradient(115deg, var(--purple) 0%, #B3A9FF 48%, var(--gold) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .cover .rule {
+    width: 92px; height: 3px; margin: 38px auto 32px; border-radius: 100px;
+    background: linear-gradient(90deg, var(--purple), var(--gold));
+  }
+  .cover .lead {
+    font-family: 'Playfair Display', Georgia, serif; font-weight: 500;
+    font-size: clamp(17px, 2vw, 23px); line-height: 1.6;
+    color: rgba(250,250,250,0.78); max-width: 620px; margin: 0 auto;
+  }
+  .cover-meta {
+    margin-top: 46px; padding-top: 28px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 40px;
+    max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+  .cover-meta div { text-align: center; }
+  .cover-meta .k {
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(250,250,250,0.35); font-weight: 600;
+  }
+  .cover-meta .v { font-size: 15px; font-weight: 600; color: rgba(250,250,250,0.88); margin-top: 5px; letter-spacing: -0.01em; }
+
+  .cover-scroll {
+    margin-top: 52px; display: inline-flex; flex-direction: column; align-items: center; gap: 10px;
+    color: rgba(250,250,250,0.38); font-size: 11.5px; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 600; text-decoration: none;
+    transition: color .25s;
+  }
+  .cover-scroll:hover { color: var(--white); }
+  .cover-scroll .arrow {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @media (max-width: 640px) {
+    .cover { min-height: auto; padding: 64px 0 56px; }
+    .cover-meta { gap: 20px 26px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 72px 0 90px; }
+  .hero-grid { display: grid; grid-template-columns: 1.18fr 0.82fr; gap: 60px; align-items: center; }
+  @media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } }
+
+  .hero h1 { margin: 22px 0 22px; }
+  .hero h1 .grad {
+    background: linear-gradient(115deg, var(--purple) 0%, #A99BFF 45%, var(--gold) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .sub { max-width: 560px; }
+
+  .brandline {
+    margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+    font-size: 14px; color: rgba(250,250,250,0.50);
+  }
+  .brandline b { color: var(--white); font-weight: 700; letter-spacing: -0.01em; }
+  .brandline .quote { font-family: 'Playfair Display', serif; font-style: normal; color: var(--gold); }
+
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+
+  .hero-photo { position: relative; }
+  .hero-photo .frame {
+    position: relative; border-radius: 26px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(123,111,232,0.16);
+    background: linear-gradient(160deg, rgba(123,111,232,0.16), rgba(14,14,14,0.6));
+    aspect-ratio: 4 / 5;
+  }
+  .hero-photo .frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .hero-photo .frame::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,14,14,0.85) 0%, transparent 45%);
+  }
+  .hero-photo .tag {
+    position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2;
+    background: rgba(14,14,14,0.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border); border-radius: 15px; padding: 14px 16px;
+  }
+  .hero-photo .tag .n { font-weight: 700; font-size: 15px; letter-spacing: -0.02em; }
+  .hero-photo .tag .r {
+    font-family: 'Playfair Display', serif; font-style: normal;
+    font-size: 13.5px; color: rgba(250,250,250,0.62); margin-top: 2px;
+  }
+
+  /* ---------- Métricas hero ---------- */
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    margin-top: 54px;
+  }
+  .hero-stats div { background: rgba(14,14,14,0.72); padding: 22px 18px; text-align: center; }
+  .hero-stats .v { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); }
+  .hero-stats .l {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(250,250,250,0.42); margin-top: 5px; font-weight: 500;
+  }
+  @media (max-width: 720px) { .hero-stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---------- Cabecera de sección ---------- */
+  .sec-head { max-width: 760px; margin-bottom: 54px; }
+  .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .sec-head h2 { margin-bottom: 18px; }
+
+  /* ---------- Problemas ---------- */
+  .problems { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 980px) { .problems { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .problems { grid-template-columns: 1fr; } }
+  .problem .num {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--purple); margin-bottom: 14px;
+  }
+  .problem h3 { margin-bottom: 9px; font-size: 17.5px; font-weight: 700; }
+  .problem p { font-size: 14.5px; line-height: 1.6; }
+
+  .highlight {
+    margin-top: 34px; border-radius: var(--radius); padding: 34px 36px;
+    background: linear-gradient(120deg, rgba(123,111,232,0.16) 0%, rgba(201,148,58,0.08) 100%);
+    border: 1px solid rgba(123,111,232,0.30);
+    border-left: 3px solid var(--gold);
+  }
+  /* Frases destacadas: texto largo → Inter, que se lee mucho mejor en bloque. */
+  .highlight p {
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: clamp(16.5px, 2vw, 20px); line-height: 1.65; color: rgba(250,250,250,0.90);
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- Solución ---------- */
+  .bignums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 34px; }
+  @media (max-width: 760px) { .bignums { grid-template-columns: 1fr; } }
+  .bignum { text-align: center; padding: 38px 24px; }
+  .bignum .n {
+    font-size: clamp(46px, 7vw, 68px); font-weight: 900; letter-spacing: -0.05em; line-height: 1;
+    background: linear-gradient(150deg, var(--purple) 0%, #ADA2FF 55%, var(--gold) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .bignum .t {
+    font-family: 'Playfair Display', serif; font-style: normal;
+    font-size: 16px; color: rgba(250,250,250,0.78); margin-top: 12px;
+  }
+
+  /* ---------- Foto destacada ---------- */
+  .feature {
+    margin-top: 24px; position: relative; border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border); background: rgba(255,255,255,0.03);
+    box-shadow: 0 40px 90px -40px rgba(0,0,0,0.9);
+  }
+  .feature img {
+    width: 100%; height: clamp(300px, 46vw, 520px); object-fit: cover; object-position: center 46%;
+  }
+  .feature figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 42px 30px 26px;
+    background: linear-gradient(to top, rgba(14,14,14,0.94) 12%, transparent 100%);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .feature .fc-k {
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+  }
+  .feature .fc-v {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: clamp(15px, 2vw, 19px); color: rgba(250,250,250,0.92);
+  }
+
+  /* ---------- Módulos ---------- */
+  .modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 880px) { .modules { grid-template-columns: 1fr; } }
+  .module { position: relative; overflow: hidden; }
+  .module::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--purple), transparent 70%);
+  }
+  .module .mnum {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 11px; margin-bottom: 18px;
+    background: rgba(123,111,232,0.16); border: 1px solid rgba(123,111,232,0.34);
+    font-weight: 800; font-size: 15px; color: #B9B1F5;
+  }
+  .module h3 { margin-bottom: 16px; }
+  .module ul { list-style: none; }
+  .module li {
+    position: relative; padding-left: 24px; margin-bottom: 11px;
+    font-size: 14.8px; font-weight: 300; color: rgba(250,250,250,0.68); line-height: 1.55;
+  }
+  .module li::before {
+    content: ''; position: absolute; left: 4px; top: 9px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--purple); opacity: .85;
+  }
+
+  .differentiator {
+    margin-top: 22px; border-radius: var(--radius); padding: 34px 36px;
+    background: linear-gradient(125deg, rgba(201,148,58,0.15) 0%, rgba(123,111,232,0.10) 100%);
+    border: 1px solid rgba(201,148,58,0.36);
+  }
+  .differentiator h3 { color: var(--gold); margin: 14px 0 12px; }
+  .differentiator p { color: rgba(250,250,250,0.82); font-size: 16px; }
+
+  /* ---------- Entregables ---------- */
+  .deliver-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 880px) { .deliver-grid { grid-template-columns: 1fr; } }
+  .deliver-list { list-style: none; }
+  .deliver-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 15.5px; font-weight: 300; color: rgba(250,250,250,0.76);
+  }
+  .deliver-list li:last-child { border-bottom: none; }
+  .deliver-list .ck {
+    flex: 0 0 auto; width: 21px; height: 21px; border-radius: 50%; margin-top: 2px;
+    background: rgba(123,111,232,0.18); border: 1px solid rgba(123,111,232,0.45);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--purple); font-size: 11px; font-weight: 800;
+  }
+  .gift {
+    background: linear-gradient(140deg, rgba(201,148,58,0.14), rgba(255,255,255,0.02));
+    border-color: rgba(201,148,58,0.34);
+  }
+  .gift .val {
+    font-size: clamp(30px, 4.4vw, 42px); font-weight: 900; letter-spacing: -0.04em;
+    color: var(--gold); line-height: 1;
+  }
+  .gift .lbl { font-family: 'Playfair Display', serif; font-style: normal; color: rgba(250,250,250,0.74); margin-top: 10px; font-size: 16px; }
+
+  /* ---------- Testimonios ---------- */
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 26px; }
+  @media (max-width: 900px) { .cases { grid-template-columns: 1fr; } }
+  .case .qmark { font-family: 'Playfair Display', serif; font-size: 52px; line-height: 1; color: var(--purple); opacity: .55; }
+  .case .q {
+    font-family: 'Playfair Display', serif; font-style: normal;
+    font-size: 18.5px; line-height: 1.5; color: rgba(250,250,250,0.92); margin: 6px 0 20px;
+  }
+  .case .who { font-weight: 700; font-size: 14.5px; letter-spacing: -0.01em; }
+  .case .role { font-size: 13px; color: rgba(250,250,250,0.48); margin-top: 3px; }
+
+  .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 8px; }
+  @media (max-width: 980px) { .shots { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .shots { grid-template-columns: 1fr; } }
+  .shot {
+    border-radius: 15px; overflow: hidden; border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03); cursor: zoom-in; position: relative;
+    transition: transform .3s var(--ease), border-color .3s var(--ease);
+  }
+  .shot:hover { transform: translateY(-3px); border-color: rgba(123,111,232,0.45); }
+  .shot img { width: 100%; height: 260px; object-fit: cover; object-position: top center; }
+  .shot .cap {
+    padding: 11px 14px; font-size: 12px; color: rgba(250,250,250,0.55);
+    border-top: 1px solid var(--border); letter-spacing: 0.01em;
+  }
+  .shots-note {
+    margin-top: 16px; font-size: 13.5px; color: rgba(250,250,250,0.48); text-align: center;
+    font-family: 'Inter', sans-serif; font-weight: 300;
+  }
+
+  .logos {
+    margin-top: 44px; padding: 26px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px 40px;
+  }
+  .logos .lg {
+    font-size: 13.5px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase;
+    color: rgba(250,250,250,0.36); transition: color .25s;
+  }
+  .logos .lg:hover { color: rgba(250,250,250,0.75); }
+  .logos-label {
+    text-align: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(250,250,250,0.32); margin-bottom: 22px; font-weight: 600;
+  }
+
+  /* ---------- Sobre Raquel ---------- */
+  .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 54px; align-items: center; }
+  @media (max-width: 940px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about-photo {
+    border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.13);
+    box-shadow: 0 34px 80px -30px rgba(0,0,0,0.9); aspect-ratio: 4/5;
+    background: linear-gradient(160deg, rgba(123,111,232,0.14), rgba(14,14,14,0.6));
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .about-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 34px; }
+  @media (max-width: 760px) { .about-cols { grid-template-columns: 1fr; } }
+  .about-col { padding: 22px; border-radius: 15px; background: rgba(255,255,255,0.035); border: 1px solid var(--border); }
+  .about-col h4 {
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px; font-weight: 700;
+  }
+  .about-col p { font-size: 14px; line-height: 1.55; }
+
+  /* ---------- Inversión ---------- */
+  .price-card {
+    max-width: 760px; margin: 0 auto; text-align: center; padding: 52px 40px;
+    background: linear-gradient(160deg, rgba(123,111,232,0.16) 0%, rgba(14,14,14,0.5) 60%, rgba(201,148,58,0.09) 100%);
+    border: 1px solid rgba(123,111,232,0.34); border-radius: 26px;
+    box-shadow: 0 40px 90px -40px rgba(123,111,232,0.5);
+  }
+  .price-card .amount {
+    font-size: clamp(64px, 11vw, 104px); font-weight: 900; letter-spacing: -0.055em; line-height: 1; margin: 14px 0 6px;
+    background: linear-gradient(140deg, #FFFFFF 0%, #C6BEFF 45%, var(--gold) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .price-card .amount-sub {
+    font-family: 'Playfair Display', serif; font-style: normal;
+    font-size: 17px; color: rgba(250,250,250,0.74); max-width: 480px; margin: 0 auto 30px;
+  }
+  .perspective {
+    background: rgba(201,148,58,0.11); border: 1px solid rgba(201,148,58,0.34);
+    border-radius: 16px; padding: 24px 26px; margin: 30px 0;
+  }
+  .perspective .big { font-size: clamp(24px, 3.6vw, 34px); font-weight: 800; letter-spacing: -0.03em; color: var(--gold); }
+  .perspective p { margin-top: 8px; font-size: 15px; }
+  /* ---------- Tramos por volumen ---------- */
+  .tiers-label {
+    margin-top: 34px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(250,250,250,0.42); font-weight: 600;
+  }
+  .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  @media (max-width: 560px) { .tiers { grid-template-columns: 1fr; } }
+  .tier {
+    position: relative; padding: 24px 20px; border-radius: 16px; text-align: center;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  }
+  .tier-on {
+    background: linear-gradient(150deg, rgba(123,111,232,0.20), rgba(201,148,58,0.10));
+    border-color: rgba(123,111,232,0.50);
+    box-shadow: 0 16px 40px -20px rgba(123,111,232,0.8);
+  }
+  .tier-badge {
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--gold), #A8762A); color: #17110A;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 100px; white-space: nowrap;
+  }
+  .tier-n {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(250,250,250,0.55); font-weight: 600;
+  }
+  .tier-p {
+    font-size: clamp(30px, 5vw, 40px); font-weight: 900; letter-spacing: -0.04em;
+    color: var(--white); margin: 10px 0 4px; line-height: 1;
+  }
+  .tier-on .tier-p { color: #CFC8FF; }
+  .tier-p span { font-size: 14px; font-weight: 500; letter-spacing: -0.01em; color: rgba(250,250,250,0.50); }
+  .tier-t { font-size: 13.5px; color: rgba(250,250,250,0.58); font-weight: 500; }
+  .tiers-note {
+    margin-top: 18px; font-size: 14.5px; line-height: 1.6;
+    color: rgba(250,250,250,0.62); max-width: 560px; margin-left: auto; margin-right: auto;
+  }
+
+  .pay { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 26px; }
+  @media (max-width: 620px) { .pay { grid-template-columns: repeat(2, 1fr); } }
+  .pay div {
+    padding: 13px 8px; border-radius: 11px; background: rgba(255,255,255,0.045);
+    border: 1px solid var(--border); font-size: 13px; font-weight: 600; color: rgba(250,250,250,0.78);
+  }
+  .pay-note { margin-top: 18px; font-size: 14px; color: rgba(250,250,250,0.55); }
+
+  /* ---------- Pasos ---------- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 940px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+  .step { position: relative; }
+  .step .sn {
+    font-size: 42px; font-weight: 900; letter-spacing: -0.05em; line-height: 1;
+    color: rgba(123,111,232,0.30); margin-bottom: 12px;
+  }
+  .step h3 { font-size: 16.5px; margin-bottom: 7px; }
+  .step p { font-size: 14px; }
+
+  /* ---------- CTA final ---------- */
+  .final { text-align: center; padding: 110px 0 96px; }
+  .final h2 { max-width: 900px; margin: 22px auto 22px; font-size: clamp(31px, 5vw, 56px); }
+  .final .sub { max-width: 620px; margin: 0 auto 40px; }
+  .final-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 52px 0 44px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 26px; align-items: flex-start; }
+  .foot .name { font-weight: 800; font-size: 17px; letter-spacing: -0.02em; }
+  .foot .tagline { font-family: 'Playfair Display', serif; font-style: normal; color: var(--gold); font-size: 14.5px; margin-top: 5px; }
+  .foot-contact { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+  @media (max-width: 620px) { .foot-contact { text-align: left; } }
+  .foot-contact a, .foot-contact span { color: rgba(250,250,250,0.55); text-decoration: none; font-size: 14px; }
+  .foot-contact a:hover { color: var(--white); }
+  .foot-legal {
+    margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--border);
+    font-size: 12.5px; color: rgba(250,250,250,0.30); text-align: center;
+  }
+
+  /* ---------- WhatsApp flotante ---------- */
+  .fab {
+    position: fixed; right: 20px; bottom: 20px; z-index: 70;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;
+    padding: 14px 22px; border-radius: 100px; text-decoration: none;
+    font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em;
+    box-shadow: 0 14px 36px -10px rgba(18,140,126,0.85);
+    transition: transform .25s var(--ease);
+  }
+  .fab:hover { transform: translateY(-3px) scale(1.02); }
+  @media (max-width: 600px) { .fab { padding: 13px 18px; font-size: 13.5px; right: 14px; bottom: 14px; } }
+
+  /* ---------- Lightbox ---------- */
+  .lb {
+    position: fixed; inset: 0; z-index: 100; background: rgba(6,6,6,0.94);
+    display: none; align-items: center; justify-content: center; padding: 28px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .lb.on { display: flex; animation: fadeIn .25s ease both; }
+  .lb img { max-width: min(980px, 94vw); max-height: 88vh; border-radius: 14px; border: 1px solid var(--border); }
+  .lb .x {
+    position: absolute; top: 20px; right: 24px; width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); border: 1px solid var(--border); color: #fff;
+    font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ---------- Animaciones ---------- */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .75s var(--ease), transform .75s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+
+  @media print {
+    .nav, .fab, .lb { display: none !important; }
+    body { background: #fff; color: #111; }
+  }
+</style>
+</head>
+
+<body>
+<div class="bg-fx"></div>
+<div class="grid-fx"></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <div class="nav-brand">
+      <span class="rm">RM</span>
+      Raquel Mendoza <span>· Marketing IA</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#solucion">La formación</a>
+      <a href="#modulos">Contenido</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#inversion">Inversión</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#agenda">Reservar la tarde</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== 0. PORTADA ===================== -->
+<section class="cover">
+  <div class="wrap cover-inner">
+    <div class="kicker">Propuesta</div>
+
+    <h1>
+      Formación <span class="nb">In-Company</span>
+      <span class="line2">RE/MAX Alcanza Valencia</span>
+    </h1>
+
+    <div class="rule"></div>
+
+    <p class="lead">
+      Marketing inmobiliario con Inteligencia Artificial.
+      Una tarde de formación presencial para los 20 asesores del equipo.
+    </p>
+
+    <div class="cover-meta">
+      <div>
+        <div class="k">Preparada para</div>
+        <div class="v">María Gabriela · RE/MAX Alcanza, Valencia</div>
+      </div>
+      <div>
+        <div class="k">Presentada por</div>
+        <div class="v">Lcda. Raquel Mendoza</div>
+      </div>
+      <div>
+        <div class="k">Modalidad</div>
+        <div class="v">Presencial · 5 horas</div>
+      </div>
+    </div>
+
+    <a class="cover-scroll" href="#mercado">
+      Ver la propuesta
+      <span class="arrow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== 1. HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="pill">Propuesta preparada para RE/MAX Alcanza · Valencia</div>
+
+        <h1>Convierte a tu equipo en <span class="grad">captadores de clientes</span> con Inteligencia Artificial</h1>
+
+        <p class="sub">
+          Formación presencial in-company para equipos inmobiliarios. Una tarde.
+          El equipo sale con el sistema instalado — no con teoría.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#agenda">Quiero esta formación para mi equipo →</a>
+          <a class="btn btn-ghost btn-lg" href="#modulos">Ver el contenido</a>
+        </div>
+
+        <div class="brandline">
+          <b>RM Marketing IA</b>
+          <span>·</span>
+          <span class="quote">“El contenido atrae. El sistema convierte.”</span>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <div class="frame">
+          <img src="assets/raquel-1.jpg"
+               alt="Lcda. Raquel Mendoza, estratega de marketing inmobiliario con IA" loading="eager"
+               width="720" height="1080">
+          <div class="tag">
+            <div class="n">Lcda. Raquel Mendoza</div>
+            <div class="r">Estratega de Marketing Inmobiliario con IA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats reveal">
+      <div><div class="v">5 h</div><div class="l">Presenciales</div></div>
+      <div><div class="v">20</div><div class="l">Asesores</div></div>
+      <div><div class="v">4</div><div class="l">Módulos</div></div>
+      <div><div class="v">1</div><div class="l">Sola tarde</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2. EL MOMENTO DEL MERCADO ===================== -->
+<section id="mercado">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">El momento del mercado</span>
+      <h2>La forma de captar y vender propiedades ya cambió</h2>
+      <p class="sub">
+        Hoy la mayoría de los compradores llegan por redes sociales, comparan en minutos y eligen
+        al asesor que mejor comunica… no necesariamente al que tiene la mejor propiedad.
+      </p>
+    </div>
+
+    <div class="problems">
+      <div class="card problem reveal">
+        <div class="num">01</div>
+        <h3>Perfiles “catálogo”</h3>
+        <p>Publican foto tras foto de propiedades, sin estrategia. No generan leads.</p>
+      </div>
+      <div class="card problem reveal">
+        <div class="num">02</div>
+        <h3>Dependencia del referido</h3>
+        <p>Cero captación orgánica; cuando el referido baja, baja la facturación.</p>
+      </div>
+      <div class="card problem reveal">
+        <div class="num">03</div>
+        <h3>Tiempo perdido</h3>
+        <p>Horas en tareas que la IA resuelve en minutos.</p>
+      </div>
+      <div class="card problem reveal">
+        <div class="num">04</div>
+        <h3>Leads que se enfrían</h3>
+        <p>Mensajes sin responder, citas olvidadas, oportunidades perdidas en el DM.</p>
+      </div>
+    </div>
+
+    <div class="highlight reveal">
+      <p>
+        No es un problema de esfuerzo. Los asesores trabajan mucho. Es un problema de <strong>sistema</strong>.
+        Cada mes sin corregirlo son captaciones que se van con la competencia.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3. LA SOLUCIÓN ===================== -->
+<section id="solucion">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">La solución</span>
+      <h2>Una tarde. El equipo sale con el sistema instalado.</h2>
+    </div>
+
+    <div class="bignums">
+      <div class="card bignum reveal">
+        <div class="n">5 h</div>
+        <div class="t">de formación presencial en sus oficinas</div>
+      </div>
+      <div class="card bignum reveal">
+        <div class="n">1</div>
+        <div class="t">sola tarde, sin perder la jornada comercial</div>
+      </div>
+      <div class="card bignum reveal">
+        <div class="n">20</div>
+        <div class="t">asesores formados en simultáneo</div>
+      </div>
+    </div>
+
+    <div class="highlight reveal">
+      <p>
+        No es una charla motivacional. Es <strong>implementación acompañada</strong>: cada asesor sale con
+        las herramientas instaladas, contenido ya creado y un sistema listo para usar.
+        No salen con apuntes — salen con activos.
+      </p>
+    </div>
+
+    <figure class="feature reveal">
+      <img src="assets/raquel-2.jpg"
+           alt="Raquel Mendoza dictando el taller presencial «IA que vende» ante un equipo inmobiliario en Valencia"
+           loading="lazy" width="720" height="1080">
+      <figcaption>
+        <span class="fc-k">Así se ve una tarde</span>
+        <span class="fc-v">Taller presencial «IA que vende» — Valencia, agosto 2026</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== 4. CONTENIDO DEL ENTRENAMIENTO ===================== -->
+<section id="modulos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Contenido del entrenamiento</span>
+      <h2>Cuatro módulos, cero relleno</h2>
+      <p class="sub">Cada módulo termina con algo hecho, no con algo explicado.</p>
+    </div>
+
+    <div class="modules">
+      <div class="card module reveal">
+        <div class="mnum">1</div>
+        <h3>Estrategia y contenido que capta</h3>
+        <ul>
+          <li>Los 7 tipos de cliente inmobiliario y cómo hablarle a cada uno</li>
+          <li>Método CLAVE (incluye 40/40/20 y Sistema de Captación 180°) para entender realmente la estrategia del marketing inmobiliario real</li>
+          <li>Del “perfil catálogo” al “perfil imán” que genera leads</li>
+          <li>Los 6 tipos de gancho que detienen el scroll en 3 segundos</li>
+        </ul>
+      </div>
+
+      <div class="card module reveal">
+        <div class="mnum">2</div>
+        <h3>La IA como asistente de marketing</h3>
+        <ul>
+          <li>Cómo dar instrucciones correctas a la IA para resultados de alto nivel</li>
+          <li>Guiones, descripciones de propiedades y respuestas a clientes con IA</li>
+          <li>Acceso a las herramientas desde Venezuela, paso a paso</li>
+          <li>Carruseles y piezas gráficas con IA que no parecen hechas con IA</li>
+        </ul>
+      </div>
+
+      <div class="card module reveal">
+        <div class="mnum">3</div>
+        <h3>Presentación de propiedades con IA</h3>
+        <ul>
+          <li>Virtual Staging: transformar una propiedad vacía en un espacio que enamora</li>
+          <li>Videomarketing profesional con IA, transiciones de alto impacto</li>
+          <li>Grabado desde el teléfono, sin equipo ni productora</li>
+        </ul>
+      </div>
+
+      <div class="card module reveal">
+        <div class="mnum">4</div>
+        <h3>Captación y automatización de leads</h3>
+        <ul>
+          <li>Automatización del DM de Instagram</li>
+          <li>Sistema de seguimiento simple, adaptado a la realidad venezolana</li>
+          <li>Cómo no perder un solo lead aunque el equipo esté en la calle</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="differentiator reveal">
+      <div class="pill pill-gold">El diferenciador</div>
+      <h3>Cierre: Diagnóstico en vivo</h3>
+      <p>
+        Auditoría en vivo de <strong>5 perfiles reales del equipo de RE/MAX Alcanza</strong>, para determinar qué
+        funciona, qué les cuesta leads y cómo corregirlo. Esto ninguna clase grabada lo ofrece.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. QUÉ SE LLEVA EL EQUIPO ===================== -->
+<section id="entregables">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Qué se lleva el equipo</span>
+      <h2>No salen con apuntes. Salen con activos.</h2>
+    </div>
+
+    <div class="deliver-grid">
+      <div class="card reveal">
+        <ul class="deliver-list">
+          <li><span class="ck">✓</span><span>Formación presencial de <strong>5 horas</strong> en sus oficinas</span></li>
+          <li><span class="ck">✓</span><span><strong>REGALO INCLUIDO:</strong> Playbook “Realtor Pro Max” para cada asesor <em>(valor comercial de $17 c/u — para ustedes, gratis)</em></span></li>
+          <li><span class="ck">✓</span><span>Librería de <strong>prompts y ganchos</strong> para inmobiliarias</span></li>
+          <li><span class="ck">✓</span><span><strong>Plantillas de contenido</strong> listas para usar</span></li>
+          <li><span class="ck">✓</span><span><strong>Diagnóstico</strong> de perfiles del equipo</span></li>
+          <li><span class="ck">✓</span><span>Guía de <strong>acceso a herramientas desde Venezuela</strong></span></li>
+        </ul>
+      </div>
+
+      <div class="card gift reveal" style="display:flex; flex-direction:column; justify-content:center; text-align:center;">
+        <div class="pill pill-gold" style="align-self:center; margin-bottom:22px;">Material incluido</div>
+        <div class="val">+$340</div>
+        <div class="lbl">
+          en material de trabajo incluido, sin costo adicional,<br>para tu equipo de 20 asesores.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6. PRUEBA SOCIAL ===================== -->
+<section id="resultados">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Casos de éxito</span>
+      <h2>Resultados reales, no promesas</h2>
+    </div>
+
+    <div class="cases">
+      <div class="card case reveal">
+        <div class="qmark">“</div>
+        <div class="q">+4 propiedades de $200.000 vendidas en un solo mes aplicando el sistema.</div>
+        <div class="who">Marileen Nieves</div>
+        <div class="role">Realtor · LPT Realty · Orlando, Florida Central</div>
+      </div>
+
+      <div class="card case reveal">
+        <div class="qmark">“</div>
+        <div class="q">La IA no reemplaza al agente, lo potencia. Claridad y enfoque 100% práctico: sin teoría vacía, solo herramientas concretas para captar y vender mejor.</div>
+        <div class="who">Alicia Cubillos</div>
+        <div class="role">Asesora inmobiliaria · Formación Método 180</div>
+      </div>
+
+      <div class="card case reveal">
+        <div class="qmark">“</div>
+        <div class="q">El verdadero valor del curso es que la IA nos libera tiempo para estar en la calle, negociando y conectando con las personas.</div>
+        <div class="who">Suhayl Román</div>
+        <div class="role">Asesora inmobiliaria · Formación Método 180</div>
+      </div>
+    </div>
+
+    <div class="shots">
+      <!-- Capturas reales alojadas en Google Drive (carpeta compartida por enlace) -->
+      <figure class="shot reveal" data-full="https://drive.google.com/thumbnail?id=1Vf7XGI901ACFCSqGa0m7nZdm3zfffYgi&sz=w1600">
+        <img src="https://drive.google.com/thumbnail?id=1Vf7XGI901ACFCSqGa0m7nZdm3zfffYgi&sz=w800"
+             alt="Comentarios de asesoras tras la masterclass de IA aplicada al sector inmobiliario"
+             loading="lazy" referrerpolicy="no-referrer">
+        <figcaption class="cap">Realtor Premier · Century 21</figcaption>
+      </figure>
+
+      <figure class="shot reveal" data-full="https://drive.google.com/thumbnail?id=1XSJzRsMeUZlWJxdmHtJoMrGCoM1jVx-x&sz=w1600">
+        <img src="https://drive.google.com/thumbnail?id=1XSJzRsMeUZlWJxdmHtJoMrGCoM1jVx-x&sz=w800"
+             alt="Comentarios de asesores de RE/MAX y otras agencias sobre la formación"
+             loading="lazy" referrerpolicy="no-referrer">
+        <figcaption class="cap">RE/MAX Innova · RE/MAX Cosmo House</figcaption>
+      </figure>
+
+      <figure class="shot reveal" data-full="https://drive.google.com/thumbnail?id=1NOoGRlctKRQ00c-D_gYmSSiBsp72QXDF&sz=w1600">
+        <img src="https://drive.google.com/thumbnail?id=1NOoGRlctKRQ00c-D_gYmSSiBsp72QXDF&sz=w800"
+             alt="Testimonios sobre el enfoque práctico de la masterclass IA que vende"
+             loading="lazy" referrerpolicy="no-referrer">
+        <figcaption class="cap">Masterclass “IA que vende”</figcaption>
+      </figure>
+
+      <figure class="shot reveal" data-full="https://drive.google.com/thumbnail?id=1QU2RNEpRpnd-OQ5lu7QsPbv9FZezghd0&sz=w1600">
+        <img src="https://drive.google.com/thumbnail?id=1QU2RNEpRpnd-OQ5lu7QsPbv9FZezghd0&sz=w800"
+             alt="Asesoras inmobiliarias recomendando la formación al 100%"
+             loading="lazy" referrerpolicy="no-referrer">
+        <figcaption class="cap">Bienes Raíces Capital · Lo Presti</figcaption>
+      </figure>
+    </div>
+
+    <p class="shots-note">Capturas reales de asesores formados. Toca cualquiera para ampliarla.</p>
+
+    <div class="logos-label reveal" style="margin-top:44px;">Confían en esta metodología</div>
+    <div class="logos reveal" style="margin-top:0;">
+      <span class="lg">First Way Realty</span>
+      <span class="lg">LPT Realty</span>
+      <span class="lg">eXp Realty</span>
+      <span class="lg">Miami Wave Realty</span>
+      <span class="lg">Kavela</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7. QUIÉN ES RAQUEL ===================== -->
+<section id="raquel">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="assets/raquel-1.jpg"
+             alt="Lcda. Raquel Mendoza, estratega de marketing inmobiliario con IA"
+             loading="lazy" width="720" height="1080">
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow">Quién dicta la formación</span>
+        <h2>La misma metodología que aplico cada día con mis clientes</h2>
+        <p class="sub" style="margin-top:18px;">
+          Licenciada en Mercadeo y estratega de marketing con IA, con 4 años especializada en el sector
+          inmobiliario. No es teoría: es lo que aplico con inmobiliarias y asesores activos.
+        </p>
+
+        <div class="about-cols">
+          <div class="about-col">
+            <h4>Mercado venezolano</h4>
+            <p>Growth Partner de inmobiliarias. Actualmente dirigiendo formación de asesoras en Caracas, Valencia, San Cristóbal y Barinitas.</p>
+          </div>
+          <div class="about-col">
+            <h4>Experiencia internacional</h4>
+            <p>Realtors y brokerages en Florida: First Way Realty, LPT Realty y eXp Realty.</p>
+          </div>
+          <div class="about-col">
+            <h4>Metodología propia</h4>
+            <p>Sistema de Captación 180° y Método CLAVE, probados en el sector.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 8. INVERSIÓN ===================== -->
+<section id="inversion">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Inversión</span>
+      <h2>Una tarde que se paga con una sola captación</h2>
+    </div>
+
+    <div class="price-card reveal">
+      <div class="pill pill-gold" style="margin-bottom:6px;">Para 20 asesores</div>
+      <div class="amount">$600</div>
+      <div class="amount-sub">
+        Formación completa + Certificación en Marketing Inmobiliario con IA
+        + material digital para los 20 asesores.
+      </div>
+
+      <div class="perspective">
+        <div class="big">$30 por asesor</div>
+        <p>Una sola captación lograda con lo aprendido cubre toda la inversión varias veces.</p>
+      </div>
+
+      <div class="tiers-label">A mayor equipo, mejor precio por asesor</div>
+      <div class="tiers">
+        <div class="tier">
+          <div class="tier-n">15 asesores</div>
+          <div class="tier-p">$35 <span>/ asesor</span></div>
+          <div class="tier-t">Total $525</div>
+        </div>
+        <div class="tier tier-on">
+          <div class="tier-badge">Su equipo</div>
+          <div class="tier-n">20 asesores</div>
+          <div class="tier-p">$30 <span>/ asesor</span></div>
+          <div class="tier-t">Total $600</div>
+        </div>
+      </div>
+      <p class="tiers-note">
+        El precio por asesor baja según el tamaño del equipo. Con 20 asesores, RE/MAX Alcanza
+        entra directo en la mejor tarifa: <strong>$5 menos por asesor</strong> que un grupo de 15.
+      </p>
+
+      <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(250,250,250,0.42); font-weight:600; margin-top:30px;">
+        Formas de pago
+      </div>
+      <div class="pay">
+        <div>Zelle</div>
+        <div>USDT</div>
+        <div>Pago móvil · tasa euro del día</div>
+        <div>Efectivo</div>
+      </div>
+      <div class="pay-note">
+        <strong>50%</strong> para reservar fecha · <strong>50%</strong> el día de la formación.
+      </div>
+
+      <a class="btn btn-primary btn-lg" href="#agenda" style="margin-top:32px;">Reservar la tarde para RE/MAX Alcanza →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 9. PRÓXIMOS PASOS ===================== -->
+<section id="agenda">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Próximos pasos</span>
+      <h2>Cómo reservamos la tarde</h2>
+    </div>
+
+    <div class="steps">
+      <div class="card step reveal">
+        <div class="sn">01</div>
+        <h3>Confirmación de interés</h3>
+        <p>Nos escribes por WhatsApp y validamos el alcance para el equipo.</p>
+      </div>
+      <div class="card step reveal">
+        <div class="sn">02</div>
+        <h3>Llamada de 15 minutos</h3>
+        <p>Ajustamos el énfasis del contenido a la realidad de tu equipo.</p>
+      </div>
+      <div class="card step reveal">
+        <div class="sn">03</div>
+        <h3>Reserva de la tarde</h3>
+        <p>Se bloquea la fecha con el 50% de la inversión.</p>
+      </div>
+      <div class="card step reveal">
+        <div class="sn">04</div>
+        <h3>Ejecución + entrega</h3>
+        <p>Formación en sus oficinas y entrega completa del material.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== 10. CTA FINAL ===================== -->
+<section class="final">
+  <div class="wrap">
+    <div class="pill reveal">RE/MAX Alcanza · Valencia, Venezuela</div>
+    <h2 class="reveal">Tu equipo puede estar captando con IA en una sola tarde</h2>
+    <p class="sub reveal">
+      El sistema ya existe y ya está probado. Solo falta instalarlo en tu equipo.
+    </p>
+    <div class="final-cta reveal">
+      <a class="btn btn-gold btn-lg" id="ctaFinal" href="#" target="_blank" rel="noopener">
+        Reservar la formación para RE/MAX Alcanza Valencia →
+      </a>
+      <a class="btn btn-ghost btn-lg" href="#agenda">Ver los próximos pasos</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="name">Lcda. Raquel Mendoza</div>
+        <div class="tagline">“El contenido atrae. El sistema convierte.”</div>
+      </div>
+      <div class="foot-contact">
+        <a href="https://instagram.com/raquelmendoza.mkt" target="_blank" rel="noopener">@raquelmendoza.mkt</a>
+        <a href="https://wa.me/584227163477" target="_blank" rel="noopener">0422-716.34.77</a>
+        <a href="mailto:raquelmendozamarketing@gmail.com">raquelmendozamarketing@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      RM Marketing IA · Propuesta de Formación In-Company preparada para RE/MAX Alcanza Valencia · 2026
+    </div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.18 4.22-9.4 9.42-9.4a9.36 9.36 0 016.65 2.76 9.32 9.32 0 012.75 6.65c0 5.18-4.22 9.4-9.41 9.4zM20.5 3.49A11.75 11.75 0 0012.04 0C5.5 0 .2 5.3.2 11.82c0 2.08.55 4.11 1.59 5.9L.1 24l6.42-1.68a11.83 11.83 0 005.51 1.4h.01c6.54 0 11.85-5.3 11.85-11.82 0-3.16-1.23-6.13-3.39-8.41z"/>
+  </svg>
+  Hablar por WhatsApp
+</a>
+
+<div class="lb" id="lb">
+  <button class="x" id="lbX" aria-label="Cerrar">×</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =========================================================
+     CONFIGURACIÓN — editable en un solo lugar
+     ========================================================= */
+  var WHATSAPP = '584227163477';
+
+  var MSG_GENERAL = 'Hola Raquel, soy de RE/MAX Alcanza Valencia. Vi la propuesta de la Formación In-Company con IA y quiero conversar sobre llevarla a nuestro equipo.';
+  var MSG_FINAL   = 'Hola Raquel, soy de RE/MAX Alcanza Valencia. Queremos reservar la Formación In-Company con IA para nuestro equipo de asesores.';
+
+  /* =========================================================
+     Enlaces de WhatsApp
+     ========================================================= */
+  function wa(msg) {
+    return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+  }
+  var fab = document.getElementById('fab');
+  var ctaFinal = document.getElementById('ctaFinal');
+  if (fab) fab.href = wa(MSG_GENERAL);
+  if (ctaFinal) ctaFinal.href = wa(MSG_FINAL);
+
+  /* =========================================================
+     Nav con borde al hacer scroll
+     ========================================================= */
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    if (!nav) return;
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* =========================================================
+     Animaciones de entrada
+     ========================================================= */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e, i) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function () { el.classList.add('in'); }, Math.min(i * 70, 350));
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* =========================================================
+     Lightbox de testimonios
+     ========================================================= */
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lbImg');
+  var lbX = document.getElementById('lbX');
+
+  document.querySelectorAll('.shot').forEach(function (fig) {
+    fig.addEventListener('click', function () {
+      var full = fig.getAttribute('data-full');
+      var img = fig.querySelector('img');
+      lbImg.src = full;
+      lbImg.alt = img ? img.alt : '';
+      lb.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLb() {
+    lb.classList.remove('on');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+  if (lbX) lbX.addEventListener('click', closeLb);
+  if (lb) lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+
+})();
+</script>
+</body>
+</html>
