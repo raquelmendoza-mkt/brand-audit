@@ -26,4 +26,4 @@ Fotos de la landing (`carlos-visbal.html`). Si un archivo no existe, su espacio 
 - Si cambias un listing, edita la dirección y el precio en `carlos-visbal.html` (capítulo 05 · Portafolio) y reemplaza su foto.
 
 ## Datos de contacto
-Edita el bloque `CONFIG` al final de `carlos-visbal.html` con el WhatsApp y el email reales de Carlos.
+WhatsApp y teléfono de Carlos: +1 305-967-2439. Se cambian en el bloque `CONFIG` al final de `carlos-visbal.html`.

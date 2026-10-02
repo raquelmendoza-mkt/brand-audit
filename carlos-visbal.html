@@ -286,6 +286,13 @@
   .contact .btn:hover { background: transparent; color: #F2EFE9; }
   .form-note { font-size: 12px; color: rgba(242,239,233,0.4); }
 
+  /* ---------- WhatsApp flotante ---------- */
+  .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 55; width: 58px; height: 58px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(0,0,0,.25); transition: transform .3s, background .3s; }
+  .wa-float::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--accent); animation: ping 2.4s ease-out infinite; }
+  .wa-float:hover { transform: scale(1.08); background: #7E6340; }
+  @keyframes ping { from { transform: scale(1); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .wa-float::before { animation: none; } }
+
   /* ---------- Footer ---------- */
   footer { background: var(--dark); color: rgba(242,239,233,0.45); border-top: 1px solid var(--dark-line); padding: 40px 0; font-size: 12px; }
   footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -511,7 +518,7 @@
       </div>
       <div class="hero-meta intro" style="--d:1s">
         <div><strong>Managing Partner</strong>First Way Realty</div>
-        <div><strong>Co-fundador</strong>Hospitality Kings</div>
+        <div><strong>CEO & Co-fundador</strong>Hospitality Kings</div>
         <div><strong>Bilingüe</strong>Español · English</div>
       </div>
     </div>
@@ -751,7 +758,7 @@
       <h2 class="reveal">Real Estate + <em>Hospitality</em>.</h2>
     </div>
     <div class="prose reveal">
-      <p>Carlos es además <strong>cofundador de Hospitality Kings</strong>, compañía especializada en el mercado de alquileres de corta duración y administración de propiedades vacacionales en South Florida.</p>
+      <p>Carlos es además <strong>CEO y cofundador de Hospitality Kings</strong>, compañía especializada en el mercado de alquileres de corta duración y administración de propiedades vacacionales en South Florida.</p>
       <p>A través de Hospitality Kings, participa en un modelo que integra la <strong>adquisición, remodelación, posicionamiento y administración de propiedades</strong>, incorporando tecnología y estrategias de comercialización para conectar los activos de su portafolio con huéspedes y mercados a nivel global.</p>
       <div class="browser float">
         <div class="browser-bar"><i></i><i></i><i></i><span>hospitalitykings</span></div>
@@ -877,9 +884,9 @@
       <h2>Hablemos de tu propiedad o proyecto.</h2>
       <p class="lead">Agenda una conversación con Carlos. Analizamos tu propiedad o proyecto, el mercado actual y la estrategia para venderlo al mejor precio posible.</p>
       <div class="contact-direct">
-        <!-- EDITAR: reemplaza el número y el correo en CONFIG (al final del archivo) -->
-        <a href="#" data-wa><span>WhatsApp</span><span data-phone-label>+1 (000) 000-0000</span></a>
-        <a href="#" data-mail><span>Email</span><span data-email-label>correo@firstwayrealty.com</span></a>
+        <!-- Datos de contacto: se editan en CONFIG (al final del archivo) -->
+        <a href="#" data-wa><span>WhatsApp</span><span data-phone-label>+1 305-967-2439</span></a>
+        <a href="#" data-tel><span>Llamar</span><span data-phone-label>+1 305-967-2439</span></a>
       </div>
     </div>
     <form class="reveal" id="lead-form">
@@ -906,6 +913,8 @@
   </div>
 </section>
 
+<a href="#" class="wa-float" data-wa aria-label="Escribir a Carlos por WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+
 <footer>
   <div class="wrap">
     <span>© 2026 Carlos Visbal · First Way Realty</span>
@@ -916,17 +925,15 @@
 <script>
   // ===== CONFIG: edita estos datos de contacto =====
   const CONFIG = {
-    whatsapp: '10000000000',              // solo dígitos, con código de país (ej. 13055551234)
-    phoneLabel: '+1 (000) 000-0000',
-    email: 'correo@firstwayrealty.com'
+    whatsapp: '13059672439',              // solo dígitos, con código de país
+    phoneLabel: '+1 305-967-2439'
   };
 
   document.querySelectorAll('[data-phone-label]').forEach(el => el.textContent = CONFIG.phoneLabel);
-  document.querySelectorAll('[data-email-label]').forEach(el => el.textContent = CONFIG.email);
   document.querySelectorAll('[data-wa]').forEach(a => {
     a.href = 'https://wa.me/' + CONFIG.whatsapp; a.target = '_blank'; a.rel = 'noopener';
   });
-  document.querySelectorAll('[data-mail]').forEach(a => a.href = 'mailto:' + CONFIG.email);
+  document.querySelectorAll('[data-tel]').forEach(a => a.href = 'tel:+' + CONFIG.whatsapp);
 
   document.getElementById('lead-form').addEventListener('submit', e => {
     e.preventDefault();
