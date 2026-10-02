@@ -610,8 +610,9 @@
 <!-- ============ 03 · BRICKELL ============ -->
 <section class="brickell" id="brickell">
   <div class="brickell-hero">
-    <!-- Imagen generada con IA: brickell.jpg (skyline panorámico) -->
-    <img class="brickell-bg" src="assets/carlos-visbal/brickell.jpg" alt="Skyline de Brickell, Miami, al atardecer" onerror="this.remove()">
+    <!-- Skyline generado con IA + video animado (si el video no carga, queda la imagen) -->
+    <img class="brickell-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_afc1c107-da48-446a-b028-8d19a7f41b1f.png" alt="Skyline de Brickell, Miami, al atardecer" onerror="this.remove()">
+    <video class="brickell-bg" autoplay muted loop playsinline preload="auto" poster="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_afc1c107-da48-446a-b028-8d19a7f41b1f.png"><source src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_180250_8da6d709-083c-4fb5-8987-9192563001a0.mp4" type="video/mp4" onerror="this.parentNode.remove()"></video>
     <div class="brickell-shade"></div>
     <div class="wrap brickell-hero-inner">
       <div class="eyebrow reveal">03 · Mercado de especialización</div>
@@ -638,9 +639,9 @@
     </div>
     <!-- Collage de Brickell (imágenes generadas con IA). Las que falten se ocultan. -->
     <div class="wrap collage">
-      <div class="ph c-tall img-reveal" data-speed="0.06"><img src="assets/carlos-visbal/brickell-torre.jpg" alt="Torre residencial de lujo en Brickell" onerror="this.closest('.ph').remove()"></div>
-      <div class="ph c-wide img-reveal" data-speed="-0.04"><img src="assets/carlos-visbal/brickell-avenida.jpg" alt="Brickell Avenue de noche" onerror="this.closest('.ph').remove()"></div>
-      <div class="ph c-wide img-reveal" data-speed="0.03"><img src="assets/carlos-visbal/brickell-interior.jpg" alt="Condominio con vista a la bahía en Brickell" onerror="this.closest('.ph').remove()"></div>
+      <div class="ph c-tall img-reveal" data-speed="0.06"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_900f773c-038f-4274-8367-0dae9baca31e.png" alt="Torre residencial de lujo en Brickell" onerror="this.closest('.ph').remove()"></div>
+      <div class="ph c-wide img-reveal" data-speed="-0.04"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_80ee9c11-c8e0-4bc5-9426-ee146432bc92.png" alt="Brickell Avenue de noche" onerror="this.closest('.ph').remove()"></div>
+      <div class="ph c-wide img-reveal" data-speed="0.03"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_b97ad2ce-0e36-49b8-8d93-e89d370dcc89.png" alt="Condominio con vista a la bahía en Brickell" onerror="this.closest('.ph').remove()"></div>
     </div>
   </div>
 </section>
@@ -1004,8 +1005,7 @@
     if (bHero) {
       const r = bHero.getBoundingClientRect();
       const p = Math.min(1, Math.max(0, 1 - r.bottom / (vh + r.height)));
-      const bg = bHero.querySelector('.brickell-bg');
-      if (bg) bg.style.transform = `translateY(${(p - .5) * 12}%) scale(${1.05 + p * .1})`;
+      bHero.querySelectorAll('.brickell-bg').forEach(bg => bg.style.transform = `translateY(${(p - .5) * 12}%) scale(${1.05 + p * .1})`);
       if (bWord) bWord.style.transform = `translateX(${(0.5 - p) * 12}vw) scale(${0.85 + p * .3})`;
     }
     parallax.forEach(el => {
