@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlos Visbal — Vende tu propiedad en Brickell</title>
+<title>Carlos Visbal — Real Estate, Inversión, Preconstrucción y Hospitality</title>
 <meta name="description" content="Carlos Visbal, Managing Partner de First Way Realty. Más de 20 años y más de $150M en ventas brutas reportadas. Estrategia y negociación para vender tu propiedad o proyecto en Brickell y Miami.">
-<meta property="og:title" content="Carlos Visbal — Vende tu propiedad en Brickell">
+<meta property="og:title" content="Carlos Visbal — Real Estate, Inversión, Preconstrucción y Hospitality">
 <meta property="og:description" content="Estrategia, negociación y red internacional para vender tu propiedad o proyecto en Brickell y Miami.">
 <meta property="og:image" content="assets/carlos-visbal/og-image.jpg">
 <meta property="og:type" content="website">
@@ -148,7 +148,7 @@
   /* ---------- Hero ---------- */
   .hero { padding: 150px 0 100px; }
   .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 72px; align-items: end; }
-  .hero h1 { margin-bottom: 32px; }
+  .hero h1 { font-size: clamp(64px, 9vw, 136px); margin-bottom: 36px; }
   .hero .lead { margin-bottom: 44px; }
   .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
   .hero-meta {
@@ -228,7 +228,6 @@
   .brickell-photo.ph { background-color: #2A2826; }
   .brickell-photo.ph::after { color: rgba(255,255,255,0.45); }
   .brickell-body { padding: 100px 0 120px; }
-  .brickell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
   .brickell .eyebrow { color: rgba(242,239,233,0.55); }
   .brickell p { color: rgba(242,239,233,0.7); font-weight: 300; margin-bottom: 20px; font-size: 16px; }
   .brickell-list { list-style: none; margin-top: 12px; }
@@ -245,31 +244,35 @@
   .card h4 { font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.15; margin-bottom: 8px; }
   .card-price { font-size: 14px; color: var(--ink-2); }
 
-  .closings { margin-top: 80px; display: grid; grid-template-columns: 220px 1fr; gap: 40px; border-top: 1px solid var(--line); padding-top: 40px; }
-  .closings h4 { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
   .closing-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
   .closing-row div { font-size: 14px; color: var(--muted); }
   .closing-row strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
   .disclaimer { font-size: 11px; color: var(--muted); margin-top: 32px; }
 
-  /* ---------- About ---------- */
-  .about { background: var(--paper); }
-  .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 96px; align-items: start; }
-  .about-photo { aspect-ratio: 4 / 5; position: sticky; top: 110px; }
-  .about h2 { margin-bottom: 36px; }
-  .about p { color: var(--ink-2); margin-bottom: 20px; font-size: 16px; }
-  .about p.big { font-family: var(--serif); font-size: 26px; line-height: 1.35; color: var(--ink); margin-bottom: 32px; }
+  /* ---------- Biography chapters ---------- */
+  .chapter { border-top: 1px solid var(--line); }
+  .chapter-paper { background: var(--paper); }
+  .chapter-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 96px; align-items: start; }
+  .chapter-side { position: sticky; top: 110px; }
+  .chapter-photo { aspect-ratio: 4 / 5; margin-top: 48px; }
+  .prose p { font-size: 17px; color: var(--ink-2); margin-bottom: 22px; max-width: 680px; }
+  .prose p.big { font-family: var(--serif); font-size: 30px; line-height: 1.3; color: var(--ink); margin-bottom: 32px; }
+  .prose strong { font-weight: 500; color: var(--ink); }
+  .prose .big strong { font-weight: 400; }
+  .prose .closing-row { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .wide-photo { aspect-ratio: 3 / 2; margin: 40px 0; }
+  .caption { font-size: 11px !important; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted) !important; margin-top: -24px; }
+  .chapter .cards { margin-top: 72px; }
+  .brickell .prose p { color: rgba(242,239,233,0.72); }
+  .brickell .prose strong, .brickell .prose p.big { color: #F2EFE9; }
+  .quote-close { max-width: 680px; margin: 48px auto 0; font-size: 17px; color: var(--ink-2); }
+  .quote-close strong { font-weight: 500; color: var(--ink); }
+  .hero .lead strong { font-weight: 500; color: var(--ink); }
   .facts { display: grid; grid-template-columns: 1fr 1fr; margin-top: 44px; border-top: 1px solid var(--line); }
   .fact { padding: 20px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
   .fact:nth-child(odd) { padding-right: 24px; }
   .fact span { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 
-  /* ---------- Reach ---------- */
-  .reach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .reach-item .ph { aspect-ratio: 3 / 2; margin-bottom: 28px; }
-  .reach-item .tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-  .reach-item h3 { margin-bottom: 14px; }
-  .reach-item p { color: var(--muted); max-width: 520px; }
 
   /* ---------- Contact ---------- */
   .contact { background: var(--dark); color: #F2EFE9; }
@@ -326,14 +329,14 @@
     section { padding: 88px 0; }
     .nav-links a:not(.btn) { display: none; }
     .hero { padding: 120px 0 72px; }
-    .hero-grid, .section-head, .brickell-grid, .about-grid, .contact-grid, .reach-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-grid, .section-head, .chapter-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     .hero-photo { max-width: 420px; }
     .stats-grid { grid-template-columns: 1fr 1fr; row-gap: 48px; }
     .stat:nth-child(3) { border-left: 0; padding-left: 0; }
     .aud-grid { grid-template-columns: 1fr; }
     .aud { padding: 40px 28px; }
-    .about-photo { position: static; max-width: 420px; }
-    .closings { grid-template-columns: 1fr; gap: 24px; }
+    .chapter-side { position: static; }
+    .chapter-photo { max-width: 420px; }
     .quote { padding: 100px 0; }
   }
   @media (max-width: 560px) {
@@ -367,11 +370,11 @@
   <div class="wrap">
     <a href="#top" class="logo">Carlos Visbal<small>First Way Realty</small></a>
     <div class="nav-links">
-      <a href="#metodo">Método</a>
+      <a href="#biografia">Biografía</a>
       <a href="#brickell">Brickell</a>
       <a href="#portafolio">Portafolio</a>
-      <a href="#sobre">Sobre Carlos</a>
-      <a href="#contacto" class="btn btn-solid">Valorar mi propiedad</a>
+      <a href="#hospitality">Hospitality</a>
+      <a href="#contacto" class="btn btn-solid">Contactar</a>
     </div>
   </div>
 </nav>
@@ -380,12 +383,12 @@
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <div class="eyebrow">Brickell · Miami · South Florida</div>
-      <h1>Tu propiedad en Brickell merece a alguien que <em>negocie</em> cada dólar.</h1>
-      <p class="lead">Más de dos décadas en Real Estate, inversión, preconstrucción y hospitality. Carlos Visbal posiciona, comercializa y negocia tu propiedad o proyecto frente a compradores e inversionistas de Estados Unidos y Latinoamérica.</p>
+      <div class="eyebrow">Real Estate · Inversión · Preconstrucción · Hospitality</div>
+      <h1>Carlos <em>Visbal</em></h1>
+      <p class="lead">Carlos Visbal es un empresario y profesional inmobiliario con más de dos décadas de experiencia, cuya trayectoria integra cuatro pilares fundamentales: <strong>Real Estate, inversión, preconstrucción y hospitality</strong>.</p>
       <div class="hero-ctas">
-        <a href="#contacto" class="btn btn-solid">Solicitar valoración <span class="arrow">→</span></a>
-        <a href="#portafolio" class="btn btn-ghost">Ver portafolio</a>
+        <a href="#biografia" class="btn btn-solid">Conocer su trayectoria <span class="arrow">→</span></a>
+        <a href="#contacto" class="btn btn-ghost">Contactar a Carlos</a>
       </div>
       <div class="hero-meta">
         <div><strong>Managing Partner</strong>First Way Realty</div>
@@ -428,11 +431,212 @@
   </div>
 </section>
 
+
+<!-- ============ BIOGRAFÍA COMPLETA ============ -->
+
+<!-- 01 · Biografía -->
+<section class="chapter" id="biografia">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side reveal">
+      <div class="eyebrow">01 · Biografía</div>
+      <h2>Una visión <em>integral</em> del negocio inmobiliario.</h2>
+      <!-- FOTO 2: Segunda foto de Carlos (lifestyle, oficina, en una propiedad) -->
+      <div class="ph chapter-photo" data-file="carlos-about.jpg">
+        <img src="assets/carlos-visbal/carlos-about.jpg" alt="Carlos Visbal en Miami" onerror="this.remove()">
+      </div>
+    </div>
+    <div class="prose reveal">
+      <p class="big">A lo largo de su carrera, ha desarrollado una sólida experiencia en el mercado inmobiliario del sur de Florida, con un <strong>especial enfoque en Miami y Brickell</strong>.</p>
+      <p>Ha participado en operaciones residenciales, comerciales y multifamiliares, trabajando con clientes e inversionistas tanto en Estados Unidos como en mercados de Latinoamérica y el Caribe.</p>
+      <p>Actualmente se desempeña como <strong>Managing Partner de First Way Realty</strong>, donde desarrolla su actividad inmobiliaria en Florida, acompañando a compradores, propietarios e inversionistas en la identificación, negociación y comercialización de oportunidades inmobiliarias.</p>
+      <p>Su experiencia, sin embargo, va mucho más allá de la compraventa tradicional de propiedades. Carlos ha construido una visión integral del negocio inmobiliario, combinando conocimientos en <strong>negociación, planificación estratégica, project management, financiamiento, administración de presupuestos y desarrollo de oportunidades de inversión</strong>.</p>
+      <div class="facts">
+        <div class="fact"><span>Firma</span>First Way Realty</div>
+        <div class="fact"><span>Cargo</span>Managing Partner</div>
+        <div class="fact"><span>Activos</span>Casas, condos, townhouses, multifamiliar, comercial</div>
+        <div class="fact"><span>Mercados</span>Miami, Brickell, South Florida</div>
+        <div class="fact"><span>Idiomas</span>Español e inglés</div>
+        <div class="fact"><span>Clientes</span>EE.UU., Latinoamérica y el Caribe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · Resultados -->
+<section class="chapter chapter-paper">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side reveal">
+      <div class="eyebrow">02 · Resultados</div>
+      <h2>Una trayectoria respaldada por <em>resultados</em>.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>A lo largo de su carrera profesional, Carlos reporta <strong>más de $150 millones en ventas brutas</strong>, construyendo una trayectoria enfocada en la negociación, el desarrollo de relaciones comerciales y la generación de oportunidades dentro del mercado inmobiliario.</p>
+      <p>Su actividad reciente también refleja esta experiencia.</p>
+      <p>De acuerdo con <strong>Homes.com</strong>, durante los últimos cinco años Carlos registra <strong>17 ventas cerradas por un valor total aproximado de $20.8 millones</strong>, con un precio promedio de <strong>$1.2 millones</strong> y operaciones dentro de un rango aproximado de <strong>$345,000 a $4.7 millones</strong>.</p>
+      <p>Por su parte, su perfil profesional en <strong>Zillow</strong> refleja <strong>23 ventas totales</strong>, incluyendo tres operaciones durante los últimos 12 meses registrados en la plataforma. Entre sus cierres recientes destacan una propiedad en <strong>Pinecrest por $1.375 millones</strong> y otra en <strong>Plantation por $875,000</strong>, además de haber representado al comprador en una operación en Pompano Beach.</p>
+      <p>Su experiencia abarca diferentes tipos de activos, incluyendo <strong>casas, condominios, townhouses, propiedades multifamiliares y comerciales</strong>, permitiéndole comprender el mercado desde diferentes perspectivas y acompañar tanto al comprador residencial como al inversionista.</p>
+      <div class="closing-row">
+        <div><strong>$1.375M</strong>Pinecrest · Vendido</div>
+        <div><strong>$875K</strong>Plantation · Vendido</div>
+        <div><strong>23</strong>ventas totales en Zillow</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Brickell -->
+<section class="brickell" id="brickell">
+  <!-- FOTO 3: Skyline o calle de Brickell (horizontal panorámica) -->
+  <div class="ph brickell-photo" data-file="brickell.jpg">
+    <img src="assets/carlos-visbal/brickell.jpg" alt="Skyline de Brickell, Miami" onerror="this.remove()">
+  </div>
+  <div class="brickell-body">
+    <div class="wrap chapter-grid">
+      <div class="chapter-side reveal">
+        <div class="eyebrow">03 · Especialización</div>
+        <h2>Brickell: uno de sus mercados de especialización.</h2>
+      </div>
+      <div class="prose reveal">
+        <p class="big"><strong>Brickell representa uno de los principales mercados de especialización de Carlos y su equipo.</strong></p>
+        <p>Su experiencia en esta zona abarca compraventa, inversión, alquileres y análisis de oportunidades en uno de los distritos residenciales y financieros más importantes de Miami.</p>
+        <p>A través de First Way Realty, Carlos y su equipo han trabajado con propiedades y clientes dentro del mercado de Brickell, desarrollando conocimiento práctico sobre sus edificios, oportunidades de inversión, dinámica de alquiler y diferentes perfiles de compradores e inversionistas.</p>
+        <p>Su experiencia incluye operaciones de alquiler en propiedades de <strong>Fortune House Brickell</strong>, así como inmuebles ubicados sobre <strong>Brickell Avenue</strong>, incluyendo <strong>110 Brickell Avenue, Unit 1-02, Miami, FL 33131</strong>.</p>
+        <p>Esta presencia en el área permite que su asesoría vaya más allá de simplemente encontrar una propiedad disponible. Carlos busca entender el objetivo del cliente —residencia, inversión, generación de ingresos o preservación de patrimonio— para identificar oportunidades alineadas con su estrategia dentro de <strong>Brickell y el mercado de Miami</strong>.</p>
+        <ul class="brickell-list">
+          <li><span>Fortune House Brickell</span><span>Operaciones de alquiler</span></li>
+          <li><span>110 Brickell Avenue, Unit 1-02</span><span>Miami, FL 33131</span></li>
+          <li><span>185 SE 14th Terrace, Unit 1611</span><span>Listing activo</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · Preconstrucción -->
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side reveal">
+      <div class="eyebrow">04 · Preconstrucción</div>
+      <h2>Especialista en preconstrucción y relación con <em>developers</em>.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>Otra de las áreas que forman parte de su trayectoria es la <strong>preconstrucción en Miami y South Florida</strong>.</p>
+      <p>Carlos trabaja directamente con <strong>developers y proyectos inmobiliarios</strong>, permitiéndole acompañar a compradores e inversionistas interesados en oportunidades desde las primeras etapas de un desarrollo.</p>
+      <p>Su experiencia en preconstrucción comprende el análisis de proyectos, ubicación, propuesta de valor, estructura de inversión y potencial del activo, ayudando al cliente a comprender no solamente qué está comprando, sino también <strong>cómo esa propiedad puede encajar dentro de una estrategia inmobiliaria de mediano y largo plazo</strong>.</p>
+      <p>La relación con developers y su conocimiento del mercado le permiten conectar a inversionistas nacionales e internacionales con oportunidades de <strong>preconstrucción, nuevos desarrollos y proyectos de inversión en Miami</strong>, con especial atención a zonas de alto interés como Brickell y sus alrededores.</p>
+      <p>Esta combinación entre conocimiento del mercado tradicional y experiencia en nuevos desarrollos fortalece su posicionamiento como un profesional capaz de acompañar al inversionista durante diferentes etapas del ciclo inmobiliario.</p>
+      <!-- FOTO 4: Render o foto de un proyecto de preconstrucción -->
+      <div class="ph wide-photo" data-file="preconstruccion.jpg">
+        <img src="assets/carlos-visbal/preconstruccion.jpg" alt="Proyecto de preconstrucción en Miami" onerror="this.remove()">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · Portafolio -->
+<section class="chapter chapter-paper" id="portafolio">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div class="chapter-side reveal">
+        <div class="eyebrow">05 · Portafolio</div>
+        <h2>Portafolio inmobiliario <em>activo</em>.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>Su actividad también se extiende actualmente a propiedades y oportunidades de inversión en distintas zonas de Miami.</p>
+        <p>Entre los listings que aparecen actualmente reflejados en su perfil de Zillow se encuentran propiedades desde aproximadamente <strong>$350,000 hasta más de $4.4 millones</strong>, incluyendo oportunidades en Brickell, Downtown Miami y áreas estratégicas para inversión y desarrollo.</p>
+        <p>Dentro de este portafolio destacan activos como <strong>7105 NE 4th Ct</strong>, una propiedad multifamiliar presentada por aproximadamente <strong>$4.49 millones</strong>, y <strong>426 NE 26th St</strong>, una oportunidad inmobiliaria en Miami presentada por aproximadamente <strong>$3.2 millones</strong>.</p>
+        <p>También aparecen dentro de sus listings activos propiedades como <strong>185 SE 14th Terrace, Unit 1611</strong>, en el área de Brickell, y <strong>1600 NE 1st Ave #1916</strong>, ampliando su portafolio hacia propiedades residenciales y oportunidades dirigidas a diferentes perfiles de compradores e inversionistas.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <!-- FOTOS 5–8: una foto por propiedad (vertical 4:5 o se recorta) -->
+      <div class="card reveal">
+        <div class="ph" data-file="listing-7105-ne-4th-ct.jpg">
+          <img src="assets/carlos-visbal/listing-7105-ne-4th-ct.jpg" alt="7105 NE 4th Ct, Miami" onerror="this.remove()">
+        </div>
+        <div class="card-type">Multifamiliar</div>
+        <h4>7105 NE 4th Ct</h4>
+        <div class="card-price">≈ $4.49M</div>
+      </div>
+      <div class="card reveal">
+        <div class="ph" data-file="listing-426-ne-26th-st.jpg">
+          <img src="assets/carlos-visbal/listing-426-ne-26th-st.jpg" alt="426 NE 26th St, Miami" onerror="this.remove()">
+        </div>
+        <div class="card-type">Oportunidad de inversión</div>
+        <h4>426 NE 26th St</h4>
+        <div class="card-price">≈ $3.2M</div>
+      </div>
+      <div class="card reveal">
+        <div class="ph" data-file="listing-185-se-14th-ter.jpg">
+          <img src="assets/carlos-visbal/listing-185-se-14th-ter.jpg" alt="185 SE 14th Terrace Unit 1611, Brickell" onerror="this.remove()">
+        </div>
+        <div class="card-type">Condominio · Brickell</div>
+        <h4>185 SE 14th Terrace #1611</h4>
+        <div class="card-price">Brickell</div>
+      </div>
+      <div class="card reveal">
+        <div class="ph" data-file="listing-1600-ne-1st-ave.jpg">
+          <img src="assets/carlos-visbal/listing-1600-ne-1st-ave.jpg" alt="1600 NE 1st Ave #1916, Miami" onerror="this.remove()">
+        </div>
+        <div class="card-type">Residencial · Miami</div>
+        <h4>1600 NE 1st Ave #1916</h4>
+        <div class="card-price">Miami</div>
+      </div>
+    </div>
+    <p class="disclaimer">Listings y cierres según los perfiles públicos de Carlos Visbal en Zillow y Homes.com. Precios aproximados; la disponibilidad puede cambiar.</p>
+  </div>
+</section>
+
+<!-- 06 · Presencia internacional -->
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side reveal">
+      <div class="eyebrow">06 · Internacional</div>
+      <h2>Presencia internacional y conexiones con <em>Latinoamérica</em>.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>La trayectoria de Carlos también se ha extendido más allá del mercado estadounidense, participando en <strong>eventos y encuentros inmobiliarios internacionales orientados a conectar oportunidades de inversión en Florida con compradores e inversionistas de Latinoamérica</strong>.</p>
+      <p>En 2026 participó en el <strong>Gran Salón Inmobiliario de Bogotá, Colombia</strong>, representando oportunidades del mercado de Florida y fortaleciendo la conexión de First Way Realty con el público e inversionistas latinoamericanos.</p>
+      <p>Esta presencia internacional complementa una trayectoria caracterizada por el desarrollo de relaciones comerciales entre <strong>South Florida, Latinoamérica y el Caribe</strong>, acercando oportunidades inmobiliarias a inversionistas que buscan diversificar, proteger o expandir su patrimonio en Estados Unidos.</p>
+      <!-- FOTO 9: Carlos en el Gran Salón Inmobiliario de Bogotá 2026 -->
+      <div class="ph wide-photo" data-file="bogota-2026.jpg">
+        <img src="assets/carlos-visbal/bogota-2026.jpg" alt="Carlos Visbal en el Gran Salón Inmobiliario de Bogotá 2026" onerror="this.remove()">
+      </div>
+      <p class="caption">Gran Salón Inmobiliario · Bogotá, Colombia · 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · Real Estate + Hospitality -->
+<section class="chapter chapter-paper" id="hospitality">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side reveal">
+      <div class="eyebrow">07 · Hospitality</div>
+      <h2>Real Estate + <em>Hospitality</em>.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>Carlos es además <strong>cofundador de Hospitality Kings</strong>, compañía especializada en el mercado de alquileres de corta duración y administración de propiedades vacacionales en South Florida.</p>
+      <p>A través de Hospitality Kings, participa en un modelo que integra la <strong>adquisición, remodelación, posicionamiento y administración de propiedades</strong>, incorporando tecnología y estrategias de comercialización para conectar los activos de su portafolio con huéspedes y mercados a nivel global.</p>
+      <!-- FOTO 10: Propiedad o equipo de Hospitality Kings -->
+      <div class="ph wide-photo" data-file="hospitality-kings.jpg">
+        <img src="assets/carlos-visbal/hospitality-kings.jpg" alt="Propiedad administrada por Hospitality Kings" onerror="this.remove()">
+      </div>
+      <p>Esta combinación entre Real Estate y Hospitality le ha permitido desarrollar una perspectiva diferente sobre la propiedad inmobiliaria: no verla únicamente como un espacio para comprar o vender, sino como un <strong>activo con potencial para generar valor, ingresos y nuevas oportunidades de inversión</strong>.</p>
+      <p>Su trayectoria también incluye experiencia en propiedades y oportunidades de desarrollo, desde residencias de lujo hasta activos multifamiliares y proyectos con potencial de transformación, especialmente dentro del dinámico mercado del sur de Florida.</p>
+      <p>Bilingüe en <strong>inglés y español</strong>, Carlos ha construido parte de su carrera conectando el mercado inmobiliario de Florida con clientes e inversionistas internacionales, particularmente provenientes de Latinoamérica y el Caribe.</p>
+      <p>Su filosofía profesional está profundamente ligada a la negociación, la estrategia y la capacidad de crear oportunidades donde otros simplemente ven una transacción.</p>
+      <p>Una frase resume esa visión:</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ QUOTE ============ -->
 <section class="quote">
   <div class="wrap reveal">
     <blockquote>“You only get what you <em>negotiate</em>, not what you want or deserve.”</blockquote>
     <cite>— Carlos Visbal</cite>
+    <p class="quote-close">Para Carlos Visbal, cada propiedad representa mucho más que una operación inmobiliaria. Representa una oportunidad para <strong>crear valor, construir patrimonio y desarrollar relaciones comerciales a largo plazo</strong>.</p>
   </div>
 </section>
 
@@ -441,7 +645,7 @@
   <div class="wrap">
     <div class="section-head">
       <div class="reveal">
-        <div class="eyebrow">Por qué vender con Carlos</div>
+        <div class="eyebrow">Por qué trabajar con Carlos</div>
         <h2>No es solo publicar una propiedad. Es <em>diseñar la venta</em>.</h2>
       </div>
       <p class="lead reveal">Carlos ve cada inmueble como un activo: con potencial de valor, ingresos e inversión. Esa lectura cambia cómo se presenta, a quién se le presenta y cuánto se logra en la mesa de negociación.</p>
@@ -530,156 +734,12 @@
   </div>
 </section>
 
-<!-- ============ BRICKELL ============ -->
-<section class="brickell" id="brickell">
-  <!-- FOTO 2: Skyline o calle de Brickell (horizontal panorámica) -->
-  <div class="ph brickell-photo" data-file="brickell.jpg">
-    <img src="assets/carlos-visbal/brickell.jpg" alt="Skyline de Brickell, Miami" onerror="this.remove()">
-  </div>
-  <div class="brickell-body">
-    <div class="wrap brickell-grid">
-      <div class="reveal">
-        <div class="eyebrow">Mercado de especialización</div>
-        <h2>Brickell, edificio por edificio.</h2>
-      </div>
-      <div class="reveal">
-        <p>Brickell es uno de los principales mercados de Carlos y su equipo en First Way Realty: compraventa, inversión, alquileres y análisis de oportunidades en el distrito financiero y residencial más dinámico de Miami.</p>
-        <p>Ese conocimiento práctico de sus edificios, su dinámica de renta y sus perfiles de comprador es lo que permite fijar un precio con argumentos y defenderlo.</p>
-        <ul class="brickell-list">
-          <li><span>Fortune House Brickell</span><span>Operaciones de alquiler</span></li>
-          <li><span>110 Brickell Avenue</span><span>Brickell Avenue · 33131</span></li>
-          <li><span>185 SE 14th Terrace</span><span>Listing activo</span></li>
-          <li><span>Brickell · Downtown Miami</span><span>Venta, inversión y renta</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PORTFOLIO ============ -->
-<section class="portfolio" id="portafolio">
-  <div class="wrap">
-    <div class="portfolio-head">
-      <div class="reveal">
-        <div class="eyebrow">Portafolio</div>
-        <h2>De $350K a más de $4.4M.</h2>
-      </div>
-      <p class="lead reveal" style="max-width:420px">Residencial, multifamiliar y oportunidades de inversión y desarrollo en Miami.</p>
-    </div>
-
-    <div class="cards">
-      <!-- FOTOS 3–6: una foto por propiedad (vertical 4:5 o se recorta) -->
-      <div class="card reveal">
-        <div class="ph" data-file="listing-7105-ne-4th-ct.jpg">
-          <img src="assets/carlos-visbal/listing-7105-ne-4th-ct.jpg" alt="7105 NE 4th Ct, Miami" onerror="this.remove()">
-        </div>
-        <div class="card-type">Multifamiliar</div>
-        <h4>7105 NE 4th Ct</h4>
-        <div class="card-price">≈ $4.49M</div>
-      </div>
-      <div class="card reveal">
-        <div class="ph" data-file="listing-426-ne-26th-st.jpg">
-          <img src="assets/carlos-visbal/listing-426-ne-26th-st.jpg" alt="426 NE 26th St, Miami" onerror="this.remove()">
-        </div>
-        <div class="card-type">Oportunidad de inversión</div>
-        <h4>426 NE 26th St</h4>
-        <div class="card-price">≈ $3.2M</div>
-      </div>
-      <div class="card reveal">
-        <div class="ph" data-file="listing-185-se-14th-ter.jpg">
-          <img src="assets/carlos-visbal/listing-185-se-14th-ter.jpg" alt="185 SE 14th Terrace Unit 1611, Brickell" onerror="this.remove()">
-        </div>
-        <div class="card-type">Condominio · Brickell</div>
-        <h4>185 SE 14th Terrace #1611</h4>
-        <div class="card-price">Brickell</div>
-      </div>
-      <div class="card reveal">
-        <div class="ph" data-file="listing-1600-ne-1st-ave.jpg">
-          <img src="assets/carlos-visbal/listing-1600-ne-1st-ave.jpg" alt="1600 NE 1st Ave #1916, Miami" onerror="this.remove()">
-        </div>
-        <div class="card-type">Condominio · Miami</div>
-        <h4>1600 NE 1st Ave #1916</h4>
-        <div class="card-price">Residencial</div>
-      </div>
-    </div>
-
-    <div class="closings reveal">
-      <h4>Cierres recientes</h4>
-      <div class="closing-row">
-        <div><strong>$1.375M</strong>Pinecrest · Vendido</div>
-        <div><strong>$875K</strong>Plantation · Vendido</div>
-        <div><strong>23</strong>ventas totales registradas en Zillow</div>
-      </div>
-    </div>
-    <p class="disclaimer">Listings y cierres según los perfiles públicos de Carlos Visbal en Zillow y Homes.com. Precios aproximados; la disponibilidad puede cambiar.</p>
-  </div>
-</section>
-
-<!-- ============ ABOUT ============ -->
-<section class="about" id="sobre">
-  <div class="wrap about-grid">
-    <!-- FOTO 7: Segunda foto de Carlos (lifestyle, oficina, edificio o reunión) -->
-    <div class="ph about-photo reveal" data-file="carlos-about.jpg">
-      <img src="assets/carlos-visbal/carlos-about.jpg" alt="Carlos Visbal en Miami" onerror="this.remove()">
-    </div>
-    <div class="reveal">
-      <div class="eyebrow">Sobre Carlos</div>
-      <h2>Empresario, negociador y <em>constructor de patrimonio</em>.</h2>
-      <p class="big">Más de dos décadas integrando cuatro pilares: Real Estate, inversión, preconstrucción y hospitality.</p>
-      <p>Carlos Visbal es Managing Partner de First Way Realty, donde acompaña a compradores, propietarios e inversionistas en la identificación, negociación y comercialización de oportunidades inmobiliarias en Florida, con especial enfoque en Miami y Brickell.</p>
-      <p>Su experiencia va más allá de la compraventa tradicional: combina negociación, planificación estratégica, project management, financiamiento, administración de presupuestos y desarrollo de oportunidades de inversión. Ha participado en operaciones residenciales, comerciales y multifamiliares con clientes de Estados Unidos, Latinoamérica y el Caribe.</p>
-      <p>Para Carlos, cada propiedad representa mucho más que una operación: es una oportunidad para crear valor, construir patrimonio y desarrollar relaciones comerciales a largo plazo.</p>
-      <div class="facts">
-        <div class="fact"><span>Firma</span>First Way Realty</div>
-        <div class="fact"><span>Cargo</span>Managing Partner</div>
-        <div class="fact"><span>Activos</span>Casas, condos, townhouses, multifamiliar, comercial</div>
-        <div class="fact"><span>Mercados</span>Brickell, Miami, South Florida</div>
-        <div class="fact"><span>Idiomas</span>Español e inglés</div>
-        <div class="fact"><span>Clientes</span>EE.UU., Latinoamérica y el Caribe</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ REACH ============ -->
-<section class="reach">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="reveal">
-        <div class="eyebrow">Más allá de Miami</div>
-        <h2>Tu propiedad frente a <em>más compradores</em>.</h2>
-      </div>
-      <p class="lead reveal">Una red que conecta South Florida con inversionistas que buscan diversificar, proteger o expandir su patrimonio en Estados Unidos.</p>
-    </div>
-    <div class="reach-grid">
-      <div class="reach-item reveal">
-        <!-- FOTO 8: Carlos en el Gran Salón Inmobiliario de Bogotá 2026 -->
-        <div class="ph" data-file="bogota-2026.jpg">
-          <img src="assets/carlos-visbal/bogota-2026.jpg" alt="Carlos Visbal en el Gran Salón Inmobiliario de Bogotá 2026" onerror="this.remove()">
-        </div>
-        <div class="tag">Bogotá · 2026</div>
-        <h3>Gran Salón Inmobiliario</h3>
-        <p>Representando oportunidades del mercado de Florida y fortaleciendo la conexión de First Way Realty con inversionistas latinoamericanos.</p>
-      </div>
-      <div class="reach-item reveal">
-        <!-- FOTO 9: Propiedad o equipo de Hospitality Kings -->
-        <div class="ph" data-file="hospitality-kings.jpg">
-          <img src="assets/carlos-visbal/hospitality-kings.jpg" alt="Propiedad administrada por Hospitality Kings" onerror="this.remove()">
-        </div>
-        <div class="tag">Real Estate + Hospitality</div>
-        <h3>Hospitality Kings</h3>
-        <p>Cofundador de una compañía de rentas de corta duración en South Florida: adquisición, remodelación, posicionamiento y administración de propiedades con alcance global.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ CONTACT ============ -->
 <section class="contact" id="contacto">
   <div class="wrap contact-grid">
     <div class="reveal">
       <div class="eyebrow">Hablemos</div>
-      <h2>¿Cuánto vale hoy tu propiedad en Brickell?</h2>
+      <h2>Hablemos de tu propiedad o proyecto.</h2>
       <p class="lead">Agenda una conversación con Carlos. Analizamos tu propiedad o proyecto, el mercado actual y la estrategia para venderlo al mejor precio posible.</p>
       <div class="contact-direct">
         <!-- EDITAR: reemplaza el número y el correo en CONFIG (al final del archivo) -->
