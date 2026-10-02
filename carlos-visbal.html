@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlos Visbal — Vende tu propiedad en Brickell</title>
+<meta name="description" content="Carlos Visbal, Managing Partner de First Way Realty. Más de 20 años y más de $150M en ventas brutas reportadas. Estrategia y negociación para vender tu propiedad o proyecto en Brickell y Miami.">
+<meta property="og:title" content="Carlos Visbal — Vende tu propiedad en Brickell">
+<meta property="og:description" content="Estrategia, negociación y red internacional para vender tu propiedad o proyecto en Brickell y Miami.">
+<meta property="og:image" content="assets/carlos-visbal/og-image.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F5F1;
+    --paper: #FFFFFF;
+    --ink: #141414;
+    --ink-2: #3A3835;
+    --muted: #77726A;
+    --line: #E3DFD7;
+    --accent: #9A7B4F;
+    --dark: #121212;
+    --dark-line: rgba(255,255,255,0.12);
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --wrap: 1200px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-weight: 400;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+  section { padding: 120px 0; }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(44px, 6.4vw, 92px); line-height: 1; }
+  h2 { font-size: clamp(36px, 4.4vw, 60px); line-height: 1.05; }
+  h3 { font-size: 28px; line-height: 1.15; }
+  em { font-style: italic; color: var(--accent); }
+  .lead { font-size: 18px; font-weight: 300; color: var(--ink-2); max-width: 560px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    transition: background .25s, color .25s;
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .btn-solid { background: var(--ink); color: var(--bg); }
+  .btn-solid:hover { background: transparent; color: var(--ink); }
+  .btn-ghost { background: transparent; color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+  .btn .arrow { transition: transform .25s; }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  /* ---------- Image slots ---------- */
+  /* Each .ph shows the filename to upload until the real photo exists. */
+  .ph {
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 14px, rgba(0,0,0,0.025) 14px 15px),
+      #ECE8E1;
+  }
+  .ph::after {
+    content: '⬆ Subir foto\A' attr(data-file);
+    white-space: pre;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .ph img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    transition: background .3s, border-color .3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled { background: rgba(247,245,241,0.92); backdrop-filter: blur(10px); border-color: var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { font-family: var(--serif); font-size: 24px; letter-spacing: 0.02em; }
+  .logo small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: -2px;
+  }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a:not(.btn) { font-size: 13px; color: var(--ink-2); }
+  .nav-links a:not(.btn):hover { color: var(--accent); }
+  .nav .btn { padding: 11px 20px; font-size: 11px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 150px 0 100px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 72px; align-items: end; }
+  .hero h1 { margin-bottom: 32px; }
+  .hero .lead { margin-bottom: 44px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .hero-meta strong { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .hero-photo { aspect-ratio: 4 / 5; }
+  .hero-photo-cap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  /* ---------- Stats ---------- */
+  .stats { background: var(--dark); color: #F2EFE9; padding: 90px 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 8px 32px; border-left: 1px solid var(--dark-line); }
+  .stat:first-child { border-left: 0; padding-left: 0; }
+  .stat-num { font-family: var(--serif); font-size: clamp(44px, 4.6vw, 68px); line-height: 1; margin-bottom: 14px; }
+  .stat-label { font-size: 13px; color: rgba(242,239,233,0.6); max-width: 220px; }
+  .stats-note { margin-top: 56px; font-size: 11px; color: rgba(242,239,233,0.4); letter-spacing: 0.04em; }
+
+  /* ---------- Quote ---------- */
+  .quote { text-align: center; padding: 140px 0; }
+  .quote blockquote {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4.2vw, 58px);
+    line-height: 1.15;
+    max-width: 940px;
+    margin: 0 auto 28px;
+  }
+  .quote cite { font-style: normal; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- Why ---------- */
+  .why { border-top: 1px solid var(--line); }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 80px; }
+  .pillars { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+  .pillar { padding: 40px 32px 40px 0; border-right: 1px solid var(--line); }
+  .pillar + .pillar { padding-left: 32px; }
+  .pillar:last-child { border-right: 0; }
+  .pillar-n { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 40px; }
+  .pillar h3 { font-size: 26px; margin-bottom: 16px; }
+  .pillar p { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Audiences ---------- */
+  .audiences { background: var(--paper); }
+  .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .aud { background: var(--paper); padding: 56px; }
+  .aud .tag { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+  .aud h3 { font-size: 36px; margin-bottom: 20px; }
+  .aud > p { color: var(--muted); margin-bottom: 32px; }
+  .aud ul { list-style: none; margin-bottom: 40px; }
+  .aud li { padding: 14px 0; border-top: 1px solid var(--line); font-size: 15px; display: flex; gap: 14px; }
+  .aud li::before { content: '—'; color: var(--accent); }
+
+  /* ---------- Process ---------- */
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; counter-reset: s; }
+  .step { counter-increment: s; border-top: 1px solid var(--ink); padding-top: 24px; }
+  .step::before { content: '0' counter(s); display: block; font-family: var(--serif); font-size: 44px; color: var(--accent); margin-bottom: 20px; line-height: 1; }
+  .step h4 { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+  .step p { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Brickell ---------- */
+  .brickell { padding: 0; background: var(--dark); color: #F2EFE9; }
+  .brickell-photo { width: 100%; height: clamp(320px, 42vw, 620px); }
+  .brickell-photo.ph { background-color: #2A2826; }
+  .brickell-photo.ph::after { color: rgba(255,255,255,0.45); }
+  .brickell-body { padding: 100px 0 120px; }
+  .brickell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .brickell .eyebrow { color: rgba(242,239,233,0.55); }
+  .brickell p { color: rgba(242,239,233,0.7); font-weight: 300; margin-bottom: 20px; font-size: 16px; }
+  .brickell-list { list-style: none; margin-top: 12px; }
+  .brickell-list li { display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; border-top: 1px solid var(--dark-line); font-size: 15px; }
+  .brickell-list li span:last-child { color: rgba(242,239,233,0.5); font-size: 13px; text-align: right; }
+
+  /* ---------- Portfolio ---------- */
+  .portfolio-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 56px; flex-wrap: wrap; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .card .ph { aspect-ratio: 4 / 5; margin-bottom: 20px; }
+  .card .ph img { transition: transform .8s ease; }
+  .card:hover .ph img { transform: scale(1.04); }
+  .card-type { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .card h4 { font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.15; margin-bottom: 8px; }
+  .card-price { font-size: 14px; color: var(--ink-2); }
+
+  .closings { margin-top: 80px; display: grid; grid-template-columns: 220px 1fr; gap: 40px; border-top: 1px solid var(--line); padding-top: 40px; }
+  .closings h4 { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .closing-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .closing-row div { font-size: 14px; color: var(--muted); }
+  .closing-row strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
+  .disclaimer { font-size: 11px; color: var(--muted); margin-top: 32px; }
+
+  /* ---------- About ---------- */
+  .about { background: var(--paper); }
+  .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 96px; align-items: start; }
+  .about-photo { aspect-ratio: 4 / 5; position: sticky; top: 110px; }
+  .about h2 { margin-bottom: 36px; }
+  .about p { color: var(--ink-2); margin-bottom: 20px; font-size: 16px; }
+  .about p.big { font-family: var(--serif); font-size: 26px; line-height: 1.35; color: var(--ink); margin-bottom: 32px; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; margin-top: 44px; border-top: 1px solid var(--line); }
+  .fact { padding: 20px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .fact:nth-child(odd) { padding-right: 24px; }
+  .fact span { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+
+  /* ---------- Reach ---------- */
+  .reach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .reach-item .ph { aspect-ratio: 3 / 2; margin-bottom: 28px; }
+  .reach-item .tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .reach-item h3 { margin-bottom: 14px; }
+  .reach-item p { color: var(--muted); max-width: 520px; }
+
+  /* ---------- Contact ---------- */
+  .contact { background: var(--dark); color: #F2EFE9; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; }
+  .contact .eyebrow { color: rgba(242,239,233,0.55); }
+  .contact .lead { color: rgba(242,239,233,0.65); margin-top: 28px; }
+  .contact-direct { margin-top: 56px; display: grid; gap: 18px; }
+  .contact-direct a { display: flex; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--dark-line); font-size: 15px; }
+  .contact-direct a span { color: rgba(242,239,233,0.5); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .contact-direct a:hover { color: var(--accent); }
+
+  form { display: grid; gap: 28px; }
+  .field label { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(242,239,233,0.5); margin-bottom: 8px; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    color: #F2EFE9;
+    font-family: var(--sans);
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    border-radius: 0;
+    transition: border-color .2s;
+  }
+  .field select option { color: var(--ink); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact .btn { border-color: #F2EFE9; background: #F2EFE9; color: var(--ink); justify-self: start; }
+  .contact .btn:hover { background: transparent; color: #F2EFE9; }
+  .form-note { font-size: 12px; color: rgba(242,239,233,0.4); }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--dark); color: rgba(242,239,233,0.45); border-top: 1px solid var(--dark-line); padding: 40px 0; font-size: 12px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .pillars { grid-template-columns: 1fr 1fr; }
+    .pillar:nth-child(2) { border-right: 0; }
+    .pillar:nth-child(3) { padding-left: 0; }
+    .pillar:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .steps { grid-template-columns: repeat(3, 1fr); row-gap: 48px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 860px) {
+    section { padding: 88px 0; }
+    .nav-links a:not(.btn) { display: none; }
+    .hero { padding: 120px 0 72px; }
+    .hero-grid, .section-head, .brickell-grid, .about-grid, .contact-grid, .reach-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-photo { max-width: 420px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; row-gap: 48px; }
+    .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+    .aud-grid { grid-template-columns: 1fr; }
+    .aud { padding: 40px 28px; }
+    .about-photo { position: static; max-width: 420px; }
+    .closings { grid-template-columns: 1fr; gap: 24px; }
+    .quote { padding: 100px 0; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .pillars { grid-template-columns: 1fr; }
+    .pillar, .pillar + .pillar { padding: 32px 0; border-right: 0; border-top: 1px solid var(--line); }
+    .pillar:first-child { border-top: 0; }
+    .steps { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .closing-row { grid-template-columns: 1fr; }
+    .stat { padding: 0 16px; }
+    .stat:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .row-2 { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr; }
+    .hero-meta { gap: 24px; }
+    .brickell-list li { flex-direction: column; gap: 2px; }
+    .brickell-list li span:last-child { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     FOTOS: todas van en  assets/carlos-visbal/
+     Ver la guía completa en assets/carlos-visbal/README.md
+     Mientras la foto no exista, se muestra un recuadro con
+     el nombre exacto del archivo que debes subir.
+     ========================================================= -->
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">Carlos Visbal<small>First Way Realty</small></a>
+    <div class="nav-links">
+      <a href="#metodo">Método</a>
+      <a href="#brickell">Brickell</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#sobre">Sobre Carlos</a>
+      <a href="#contacto" class="btn btn-solid">Valorar mi propiedad</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Brickell · Miami · South Florida</div>
+      <h1>Tu propiedad en Brickell merece a alguien que <em>negocie</em> cada dólar.</h1>
+      <p class="lead">Más de dos décadas en Real Estate, inversión, preconstrucción y hospitality. Carlos Visbal posiciona, comercializa y negocia tu propiedad o proyecto frente a compradores e inversionistas de Estados Unidos y Latinoamérica.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn btn-solid">Solicitar valoración <span class="arrow">→</span></a>
+        <a href="#portafolio" class="btn btn-ghost">Ver portafolio</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>Managing Partner</strong>First Way Realty</div>
+        <div><strong>Co-fundador</strong>Hospitality Kings</div>
+        <div><strong>Bilingüe</strong>Español · English</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <!-- FOTO 1: Retrato principal de Carlos (vertical 4:5) -->
+      <div class="ph hero-photo" data-file="carlos-hero.jpg">
+        <img src="assets/carlos-visbal/carlos-hero.jpg" alt="Carlos Visbal, Managing Partner de First Way Realty" onerror="this.remove()">
+      </div>
+      <div class="hero-photo-cap"><span>Carlos Visbal</span><span>Miami, FL</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-num">$150M+</div>
+        <div class="stat-label">en ventas brutas reportadas a lo largo de su carrera</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">años de experiencia en el mercado del sur de Florida</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">$20.8M</div>
+        <div class="stat-label">en 17 ventas cerradas durante los últimos cinco años¹</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">$1.2M</div>
+        <div class="stat-label">precio promedio por operación, en un rango de $345K a $4.7M¹</div>
+      </div>
+    </div>
+    <p class="stats-note">¹ Datos según el perfil de Carlos Visbal en Homes.com. Cifras de carrera reportadas por el agente.</p>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote">
+  <div class="wrap reveal">
+    <blockquote>“You only get what you <em>negotiate</em>, not what you want or deserve.”</blockquote>
+    <cite>— Carlos Visbal</cite>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="why" id="metodo">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <div class="eyebrow">Por qué vender con Carlos</div>
+        <h2>No es solo publicar una propiedad. Es <em>diseñar la venta</em>.</h2>
+      </div>
+      <p class="lead reveal">Carlos ve cada inmueble como un activo: con potencial de valor, ingresos e inversión. Esa lectura cambia cómo se presenta, a quién se le presenta y cuánto se logra en la mesa de negociación.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pillar-n">01</div>
+        <h3>Negociación</h3>
+        <p>Una filosofía construida alrededor de la mesa: estrategia, preparación y control del proceso para defender el precio de tu propiedad.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-n">02</div>
+        <h3>Mirada de inversionista</h3>
+        <p>Experiencia en residencial, comercial y multifamiliar, más la operación de rentas cortas con Hospitality Kings. Sabe cómo piensa quien compra para invertir.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-n">03</div>
+        <h3>Red internacional</h3>
+        <p>Conexión activa con compradores de Latinoamérica y el Caribe, incluyendo su participación en el Gran Salón Inmobiliario de Bogotá 2026.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-n">04</div>
+        <h3>Preconstrucción</h3>
+        <p>Trabajo directo con developers: análisis de proyecto, ubicación, propuesta de valor y estructura de inversión para nuevos desarrollos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIENCES ============ -->
+<section class="audiences">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <div class="eyebrow">Con quién trabaja</div>
+        <h2>Una propiedad o un proyecto completo.</h2>
+      </div>
+      <p class="lead reveal">Dos caminos, el mismo principio: entender tu objetivo y construir la estrategia comercial que lo cumpla.</p>
+    </div>
+    <div class="aud-grid reveal">
+      <div class="aud">
+        <div class="tag">Propietarios</div>
+        <h3>Vende tu propiedad en Brickell</h3>
+        <p>Condominios, casas, townhouses, multifamiliares y comerciales en Brickell, Downtown y Miami.</p>
+        <ul>
+          <li>Valoración basada en el mercado real del edificio y la zona</li>
+          <li>Posicionamiento para comprador residencial o inversionista</li>
+          <li>Exposición a compradores en EE.UU. y Latinoamérica</li>
+          <li>Negociación y acompañamiento hasta el cierre</li>
+        </ul>
+        <a href="#contacto" class="btn btn-solid">Valorar mi propiedad <span class="arrow">→</span></a>
+      </div>
+      <div class="aud">
+        <div class="tag">Developers</div>
+        <h3>Comercializa tu proyecto</h3>
+        <p>Preconstrucción y nuevos desarrollos en Miami y South Florida, con foco en Brickell y alrededores.</p>
+        <ul>
+          <li>Lectura del proyecto desde la óptica del inversionista</li>
+          <li>Narrativa de valor: ubicación, producto y potencial del activo</li>
+          <li>Canal hacia inversionistas nacionales e internacionales</li>
+          <li>Presencia en eventos inmobiliarios en Latinoamérica</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost">Presentar mi proyecto <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <div class="eyebrow">El proceso</div>
+        <h2>Cinco pasos, <em>cero improvisación</em>.</h2>
+      </div>
+      <p class="lead reveal">Planificación estratégica y project management aplicados a la venta de tu propiedad.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>Diagnóstico</h4><p>Entender tu objetivo: liquidez, reinversión o preservación de patrimonio.</p></div>
+      <div class="step reveal"><h4>Valoración</h4><p>Análisis del edificio, comparables y perfil de comprador más probable.</p></div>
+      <div class="step reveal"><h4>Posicionamiento</h4><p>Preparación, presentación y narrativa del activo para su mercado.</p></div>
+      <div class="step reveal"><h4>Exposición</h4><p>Red local e internacional, compradores e inversionistas calificados.</p></div>
+      <div class="step reveal"><h4>Negociación y cierre</h4><p>Defensa del precio y control del proceso hasta la firma.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRICKELL ============ -->
+<section class="brickell" id="brickell">
+  <!-- FOTO 2: Skyline o calle de Brickell (horizontal panorámica) -->
+  <div class="ph brickell-photo" data-file="brickell.jpg">
+    <img src="assets/carlos-visbal/brickell.jpg" alt="Skyline de Brickell, Miami" onerror="this.remove()">
+  </div>
+  <div class="brickell-body">
+    <div class="wrap brickell-grid">
+      <div class="reveal">
+        <div class="eyebrow">Mercado de especialización</div>
+        <h2>Brickell, edificio por edificio.</h2>
+      </div>
+      <div class="reveal">
+        <p>Brickell es uno de los principales mercados de Carlos y su equipo en First Way Realty: compraventa, inversión, alquileres y análisis de oportunidades en el distrito financiero y residencial más dinámico de Miami.</p>
+        <p>Ese conocimiento práctico de sus edificios, su dinámica de renta y sus perfiles de comprador es lo que permite fijar un precio con argumentos y defenderlo.</p>
+        <ul class="brickell-list">
+          <li><span>Fortune House Brickell</span><span>Operaciones de alquiler</span></li>
+          <li><span>110 Brickell Avenue</span><span>Brickell Avenue · 33131</span></li>
+          <li><span>185 SE 14th Terrace</span><span>Listing activo</span></li>
+          <li><span>Brickell · Downtown Miami</span><span>Venta, inversión y renta</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portafolio">
+  <div class="wrap">
+    <div class="portfolio-head">
+      <div class="reveal">
+        <div class="eyebrow">Portafolio</div>
+        <h2>De $350K a más de $4.4M.</h2>
+      </div>
+      <p class="lead reveal" style="max-width:420px">Residencial, multifamiliar y oportunidades de inversión y desarrollo en Miami.</p>
+    </div>
+
+    <div class="cards">
+      <!-- FOTOS 3–6: una foto por propiedad (vertical 4:5 o se recorta) -->
+      <div class="card reveal">
+        <div class="ph" data-file="listing-7105-ne-4th-ct.jpg">
+          <img src="assets/carlos-visbal/listing-7105-ne-4th-ct.jpg" alt="7105 NE 4th Ct, Miami" onerror="this.remove()">
+        </div>
+        <div class="card-type">Multifamiliar</div>
+        <h4>7105 NE 4th Ct</h4>
+        <div class="card-price">≈ $4.49M</div>
+      </div>
+      <div class="card reveal">
+        <div class="ph" data-file="listing-426-ne-26th-st.jpg">
+          <img src="assets/carlos-visbal/listing-426-ne-26th-st.jpg" alt="426 NE 26th St, Miami" onerror="this.remove()">
+        </div>
+        <div class="card-type">Oportunidad de inversión</div>
+        <h4>426 NE 26th St</h4>
+        <div class="card-price">≈ $3.2M</div>
+      </div>
+      <div class="card reveal">
+        <div class="ph" data-file="listing-185-se-14th-ter.jpg">
+          <img src="assets/carlos-visbal/listing-185-se-14th-ter.jpg" alt="185 SE 14th Terrace Unit 1611, Brickell" onerror="this.remove()">
+        </div>
+        <div class="card-type">Condominio · Brickell</div>
+        <h4>185 SE 14th Terrace #1611</h4>
+        <div class="card-price">Brickell</div>
+      </div>
+      <div class="card reveal">
+        <div class="ph" data-file="listing-1600-ne-1st-ave.jpg">
+          <img src="assets/carlos-visbal/listing-1600-ne-1st-ave.jpg" alt="1600 NE 1st Ave #1916, Miami" onerror="this.remove()">
+        </div>
+        <div class="card-type">Condominio · Miami</div>
+        <h4>1600 NE 1st Ave #1916</h4>
+        <div class="card-price">Residencial</div>
+      </div>
+    </div>
+
+    <div class="closings reveal">
+      <h4>Cierres recientes</h4>
+      <div class="closing-row">
+        <div><strong>$1.375M</strong>Pinecrest · Vendido</div>
+        <div><strong>$875K</strong>Plantation · Vendido</div>
+        <div><strong>23</strong>ventas totales registradas en Zillow</div>
+      </div>
+    </div>
+    <p class="disclaimer">Listings y cierres según los perfiles públicos de Carlos Visbal en Zillow y Homes.com. Precios aproximados; la disponibilidad puede cambiar.</p>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <!-- FOTO 7: Segunda foto de Carlos (lifestyle, oficina, edificio o reunión) -->
+    <div class="ph about-photo reveal" data-file="carlos-about.jpg">
+      <img src="assets/carlos-visbal/carlos-about.jpg" alt="Carlos Visbal en Miami" onerror="this.remove()">
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Sobre Carlos</div>
+      <h2>Empresario, negociador y <em>constructor de patrimonio</em>.</h2>
+      <p class="big">Más de dos décadas integrando cuatro pilares: Real Estate, inversión, preconstrucción y hospitality.</p>
+      <p>Carlos Visbal es Managing Partner de First Way Realty, donde acompaña a compradores, propietarios e inversionistas en la identificación, negociación y comercialización de oportunidades inmobiliarias en Florida, con especial enfoque en Miami y Brickell.</p>
+      <p>Su experiencia va más allá de la compraventa tradicional: combina negociación, planificación estratégica, project management, financiamiento, administración de presupuestos y desarrollo de oportunidades de inversión. Ha participado en operaciones residenciales, comerciales y multifamiliares con clientes de Estados Unidos, Latinoamérica y el Caribe.</p>
+      <p>Para Carlos, cada propiedad representa mucho más que una operación: es una oportunidad para crear valor, construir patrimonio y desarrollar relaciones comerciales a largo plazo.</p>
+      <div class="facts">
+        <div class="fact"><span>Firma</span>First Way Realty</div>
+        <div class="fact"><span>Cargo</span>Managing Partner</div>
+        <div class="fact"><span>Activos</span>Casas, condos, townhouses, multifamiliar, comercial</div>
+        <div class="fact"><span>Mercados</span>Brickell, Miami, South Florida</div>
+        <div class="fact"><span>Idiomas</span>Español e inglés</div>
+        <div class="fact"><span>Clientes</span>EE.UU., Latinoamérica y el Caribe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REACH ============ -->
+<section class="reach">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <div class="eyebrow">Más allá de Miami</div>
+        <h2>Tu propiedad frente a <em>más compradores</em>.</h2>
+      </div>
+      <p class="lead reveal">Una red que conecta South Florida con inversionistas que buscan diversificar, proteger o expandir su patrimonio en Estados Unidos.</p>
+    </div>
+    <div class="reach-grid">
+      <div class="reach-item reveal">
+        <!-- FOTO 8: Carlos en el Gran Salón Inmobiliario de Bogotá 2026 -->
+        <div class="ph" data-file="bogota-2026.jpg">
+          <img src="assets/carlos-visbal/bogota-2026.jpg" alt="Carlos Visbal en el Gran Salón Inmobiliario de Bogotá 2026" onerror="this.remove()">
+        </div>
+        <div class="tag">Bogotá · 2026</div>
+        <h3>Gran Salón Inmobiliario</h3>
+        <p>Representando oportunidades del mercado de Florida y fortaleciendo la conexión de First Way Realty con inversionistas latinoamericanos.</p>
+      </div>
+      <div class="reach-item reveal">
+        <!-- FOTO 9: Propiedad o equipo de Hospitality Kings -->
+        <div class="ph" data-file="hospitality-kings.jpg">
+          <img src="assets/carlos-visbal/hospitality-kings.jpg" alt="Propiedad administrada por Hospitality Kings" onerror="this.remove()">
+        </div>
+        <div class="tag">Real Estate + Hospitality</div>
+        <h3>Hospitality Kings</h3>
+        <p>Cofundador de una compañía de rentas de corta duración en South Florida: adquisición, remodelación, posicionamiento y administración de propiedades con alcance global.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Hablemos</div>
+      <h2>¿Cuánto vale hoy tu propiedad en Brickell?</h2>
+      <p class="lead">Agenda una conversación con Carlos. Analizamos tu propiedad o proyecto, el mercado actual y la estrategia para venderlo al mejor precio posible.</p>
+      <div class="contact-direct">
+        <!-- EDITAR: reemplaza el número y el correo en CONFIG (al final del archivo) -->
+        <a href="#" data-wa><span>WhatsApp</span><span data-phone-label>+1 (000) 000-0000</span></a>
+        <a href="#" data-mail><span>Email</span><span data-email-label>correo@firstwayrealty.com</span></a>
+      </div>
+    </div>
+    <form class="reveal" id="lead-form">
+      <div class="row-2">
+        <div class="field"><label for="f-name">Nombre</label><input id="f-name" name="nombre" required></div>
+        <div class="field"><label for="f-phone">Teléfono</label><input id="f-phone" name="telefono" type="tel" required></div>
+      </div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email"></div>
+      <div class="row-2">
+        <div class="field">
+          <label for="f-type">Quiero</label>
+          <select id="f-type" name="tipo">
+            <option>Vender mi propiedad</option>
+            <option>Comercializar un proyecto</option>
+            <option>Invertir en Brickell</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-addr">Dirección / edificio</label><input id="f-addr" name="direccion" placeholder="Ej. 1000 Brickell Ave"></div>
+      </div>
+      <div class="field"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="mensaje"></textarea></div>
+      <button type="submit" class="btn">Enviar por WhatsApp <span class="arrow">→</span></button>
+      <p class="form-note">Al enviar se abre WhatsApp con tu mensaje listo para Carlos.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Carlos Visbal · First Way Realty</span>
+    <span>Brickell · Miami · South Florida</span>
+  </div>
+</footer>
+
+<script>
+  // ===== CONFIG: edita estos datos de contacto =====
+  const CONFIG = {
+    whatsapp: '10000000000',              // solo dígitos, con código de país (ej. 13055551234)
+    phoneLabel: '+1 (000) 000-0000',
+    email: 'correo@firstwayrealty.com'
+  };
+
+  document.querySelectorAll('[data-phone-label]').forEach(el => el.textContent = CONFIG.phoneLabel);
+  document.querySelectorAll('[data-email-label]').forEach(el => el.textContent = CONFIG.email);
+  document.querySelectorAll('[data-wa]').forEach(a => {
+    a.href = 'https://wa.me/' + CONFIG.whatsapp; a.target = '_blank'; a.rel = 'noopener';
+  });
+  document.querySelectorAll('[data-mail]').forEach(a => a.href = 'mailto:' + CONFIG.email);
+
+  document.getElementById('lead-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const d = new FormData(e.target);
+    const text = [
+      'Hola Carlos, me interesa: ' + d.get('tipo'),
+      'Nombre: ' + d.get('nombre'),
+      'Teléfono: ' + d.get('telefono'),
+      d.get('email') && 'Email: ' + d.get('email'),
+      d.get('direccion') && 'Propiedad: ' + d.get('direccion'),
+      d.get('mensaje') && 'Mensaje: ' + d.get('mensaje')
+    ].filter(Boolean).join('\n');
+    window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
