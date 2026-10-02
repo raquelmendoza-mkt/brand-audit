@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlos Visbal — Real Estate, Investment, Pre-construction & Hospitality</title>
+<meta name="description" content="Carlos Visbal, Managing Partner of First Way Realty. 20+ years and more than $150M in reported gross sales. Strategy and negotiation to sell your property or project in Brickell and Miami.">
+<meta property="og:title" content="Carlos Visbal — Real Estate, Investment, Pre-construction & Hospitality">
+<meta property="og:description" content="Strategy, negotiation and an international network to sell your property or project in Brickell and Miami.">
+<meta property="og:image" content="assets/carlos-visbal/og-image-en.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F5F1;
+    --paper: #FFFFFF;
+    --ink: #141414;
+    --ink-2: #3A3835;
+    --muted: #77726A;
+    --line: #E3DFD7;
+    --accent: #9A7B4F;
+    --dark: #121212;
+    --dark-line: rgba(255,255,255,0.12);
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --wrap: 1200px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-weight: 400;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+  section { padding: 120px 0; }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(44px, 6.4vw, 92px); line-height: 1; }
+  h2 { font-size: clamp(36px, 4.4vw, 60px); line-height: 1.05; }
+  h3 { font-size: 28px; line-height: 1.15; }
+  em { font-style: italic; color: var(--accent); }
+  .lead { font-size: 18px; font-weight: 300; color: var(--ink-2); max-width: 560px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    transition: background .25s, color .25s;
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .btn-solid { background: var(--ink); color: var(--bg); }
+  .btn-solid:hover { background: transparent; color: var(--ink); }
+  .btn-ghost { background: transparent; color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+  .btn .arrow { transition: transform .25s; }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  /* ---------- Image slots ---------- */
+    .ph {
+    position: relative;
+    overflow: hidden;
+    background:
+      #ECE8E1;
+  }
+  .ph img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    transition: background .3s, border-color .3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled { background: rgba(247,245,241,0.92); backdrop-filter: blur(10px); border-color: var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { font-family: var(--serif); font-size: 24px; letter-spacing: 0.02em; }
+  .logo small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: -2px;
+  }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a:not(.btn) { font-size: 13px; color: var(--ink-2); }
+  .nav-links a:not(.btn):hover { color: var(--accent); }
+  .nav .btn { padding: 11px 20px; font-size: 11px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 150px 0 100px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 72px; align-items: end; }
+  .hero h1 { font-size: clamp(64px, 9vw, 136px); margin-bottom: 36px; }
+  .hero .lead { margin-bottom: 44px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .hero-meta strong { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .hero-photo { aspect-ratio: 4 / 5; }
+  .hero-photo-cap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  /* ---------- Stats ---------- */
+  .stats { background: var(--dark); color: #F2EFE9; padding: 90px 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 8px 32px; border-left: 1px solid var(--dark-line); }
+  .stat:first-child { border-left: 0; padding-left: 0; }
+  .stat-num { font-family: var(--serif); font-size: clamp(44px, 4.6vw, 68px); line-height: 1; margin-bottom: 14px; }
+  .stat-label { font-size: 13px; color: rgba(242,239,233,0.6); max-width: 220px; }
+  .stats-note { margin-top: 56px; font-size: 11px; color: rgba(242,239,233,0.4); letter-spacing: 0.04em; }
+
+  /* ---------- Quote ---------- */
+  .quote { text-align: center; padding: 140px 0; }
+  .quote blockquote {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4.2vw, 58px);
+    line-height: 1.15;
+    max-width: 940px;
+    margin: 0 auto 28px;
+  }
+  .quote cite { font-style: normal; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- Why ---------- */
+  .why { border-top: 1px solid var(--line); }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 80px; }
+  .pillars { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+  .pillar { padding: 40px 32px 40px 0; border-right: 1px solid var(--line); }
+  .pillar + .pillar { padding-left: 32px; }
+  .pillar:last-child { border-right: 0; }
+  .pillar-n { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 40px; }
+  .pillar h3 { font-size: 26px; margin-bottom: 16px; }
+  .pillar p { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Audiences ---------- */
+  .audiences { background: var(--paper); }
+  .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .aud { background: var(--paper); padding: 56px; }
+  .aud .tag { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+  .aud h3 { font-size: 36px; margin-bottom: 20px; }
+  .aud > p { color: var(--muted); margin-bottom: 32px; }
+  .aud ul { list-style: none; margin-bottom: 40px; }
+  .aud li { padding: 14px 0; border-top: 1px solid var(--line); font-size: 15px; display: flex; gap: 14px; }
+  .aud li::before { content: '—'; color: var(--accent); }
+
+  /* ---------- Process ---------- */
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; counter-reset: s; }
+  .step { counter-increment: s; border-top: 1px solid var(--ink); padding-top: 24px; }
+  .step::before { content: '0' counter(s); display: block; font-family: var(--serif); font-size: 44px; color: var(--accent); margin-bottom: 20px; line-height: 1; }
+  .step h4 { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+  .step p { font-size: 14px; color: var(--muted); }
+
+  /* ---------- Brickell ---------- */
+  .brickell { padding: 0; background: var(--dark); color: #F2EFE9; }
+  .brickell .eyebrow { color: rgba(242,239,233,0.55); }
+  .brickell p { color: rgba(242,239,233,0.7); font-weight: 300; margin-bottom: 20px; font-size: 16px; }
+  .brickell-list { list-style: none; margin-top: 12px; }
+  .brickell-list li { display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; border-top: 1px solid var(--dark-line); font-size: 15px; }
+  .brickell-list li span:last-child { color: rgba(242,239,233,0.5); font-size: 13px; text-align: right; }
+
+  /* ---------- Portfolio ---------- */
+  .portfolio-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 56px; flex-wrap: wrap; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .card .ph { aspect-ratio: 4 / 5; margin-bottom: 20px; }
+  .card .ph img { transition: transform .8s ease; }
+  .card:hover .ph img { transform: scale(1.04); }
+  .card-type { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .card h4 { font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.15; margin-bottom: 8px; }
+  .card-price { font-size: 14px; color: var(--ink-2); }
+
+  .closing-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .closing-row div { font-size: 14px; color: var(--muted); }
+  .closing-row strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
+  .disclaimer { font-size: 11px; color: var(--muted); margin-top: 32px; }
+
+  /* ---------- Biography chapters ---------- */
+  .chapter { border-top: 1px solid var(--line); }
+  .chapter-paper { background: var(--paper); }
+  .chapter-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 96px; align-items: start; }
+  .chapter-side { position: sticky; top: 110px; }
+  .chapter-photo { aspect-ratio: 4 / 5; margin-top: 48px; }
+  .prose p { font-size: 17px; color: var(--ink-2); margin-bottom: 22px; max-width: 680px; }
+  .prose p.big { font-family: var(--serif); font-size: 30px; line-height: 1.3; color: var(--ink); margin-bottom: 32px; }
+  .prose strong { font-weight: 500; color: var(--ink); }
+  .prose .big strong { font-weight: 400; }
+  .prose .closing-row { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .wide-photo { aspect-ratio: 3 / 2; margin: 40px 0; }
+  .caption { font-size: 11px !important; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted) !important; margin-top: -24px; }
+  .chapter .cards { margin-top: 72px; }
+  .brickell .prose p { color: rgba(242,239,233,0.72); }
+  .brickell .prose strong, .brickell .prose p.big { color: #F2EFE9; }
+  .quote-close { max-width: 680px; margin: 48px auto 0; font-size: 17px; color: var(--ink-2); }
+  .quote-close strong { font-weight: 500; color: var(--ink); }
+  .hero .lead strong { font-weight: 500; color: var(--ink); }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; margin-top: 44px; border-top: 1px solid var(--line); }
+  .fact { padding: 20px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .fact:nth-child(odd) { padding-right: 24px; }
+  .fact span { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+
+
+  /* ---------- Contact ---------- */
+  .contact { background: var(--dark); color: #F2EFE9; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; }
+  .contact .eyebrow { color: rgba(242,239,233,0.55); }
+  .contact .lead { color: rgba(242,239,233,0.65); margin-top: 28px; }
+  .contact-direct { margin-top: 56px; display: grid; gap: 18px; }
+  .contact-direct a { display: flex; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--dark-line); font-size: 15px; }
+  .contact-direct a span { color: rgba(242,239,233,0.5); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .contact-direct a:hover { color: var(--accent); }
+
+  form { display: grid; gap: 28px; }
+  .field label { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(242,239,233,0.5); margin-bottom: 8px; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    color: #F2EFE9;
+    font-family: var(--sans);
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    border-radius: 0;
+    transition: border-color .2s;
+  }
+  .field select option { color: var(--ink); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact .btn { border-color: #F2EFE9; background: #F2EFE9; color: var(--ink); justify-self: start; }
+  .contact .btn:hover { background: transparent; color: #F2EFE9; }
+  .form-note { font-size: 12px; color: rgba(242,239,233,0.4); }
+
+  /* ---------- WhatsApp flotante ---------- */
+  .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 55; width: 58px; height: 58px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(0,0,0,.25); transition: transform .3s, background .3s; }
+  .wa-float::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--accent); animation: ping 2.4s ease-out infinite; }
+  .wa-float:hover { transform: scale(1.08); background: #7E6340; }
+  @keyframes ping { from { transform: scale(1); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .wa-float::before { animation: none; } }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--dark); color: rgba(242,239,233,0.45); border-top: 1px solid var(--dark-line); padding: 40px 0; font-size: 12px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .pillars { grid-template-columns: 1fr 1fr; }
+    .pillar:nth-child(2) { border-right: 0; }
+    .pillar:nth-child(3) { padding-left: 0; }
+    .pillar:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .steps { grid-template-columns: repeat(3, 1fr); row-gap: 48px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 860px) {
+    section { padding: 88px 0; }
+    .nav-links a:not(.btn) { display: none; }
+    .hero { padding: 120px 0 72px; }
+    .hero-grid, .section-head, .chapter-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-photo { max-width: 420px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; row-gap: 48px; }
+    .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+    .aud-grid { grid-template-columns: 1fr; }
+    .aud { padding: 40px 28px; }
+    .chapter-side { position: static; }
+    .chapter-photo { max-width: 420px; }
+    .quote { padding: 100px 0; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .pillars { grid-template-columns: 1fr; }
+    .pillar, .pillar + .pillar { padding: 32px 0; border-right: 0; border-top: 1px solid var(--line); }
+    .pillar:first-child { border-top: 0; }
+    .steps { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .closing-row { grid-template-columns: 1fr; }
+    .stat { padding: 0 16px; }
+    .stat:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .row-2 { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr; }
+    .hero-meta { gap: 24px; }
+    .brickell-list li { flex-direction: column; gap: 2px; }
+    .brickell-list li span:last-child { text-align: left; }
+  }
+
+  /* ================= Motion & impact layer ================= */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); z-index: 60; }
+
+  /* Hero intro */
+  .hero { position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: center; }
+  .hero > .wrap { width: 100%; }
+  .hero-ghost {
+    position: absolute; left: -2vw; bottom: -4vw; z-index: 0;
+    font-family: var(--serif); font-size: 30vw; line-height: .8; letter-spacing: -0.02em;
+    color: transparent; -webkit-text-stroke: 1px rgba(154,123,79,0.22);
+    white-space: nowrap; pointer-events: none; user-select: none;
+  }
+  .hero-grid { position: relative; z-index: 1; }
+  .hero h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
+  .hero h1 .line > span { display: inline-block; transform: translateY(105%); animation: rise 1.1s cubic-bezier(.2,.7,.1,1) forwards; animation-delay: var(--d); }
+  .intro { opacity: 0; transform: translateY(18px); animation: fadeup 1s ease forwards; animation-delay: var(--d); }
+  .hero-photo { clip-path: inset(100% 0 0 0); animation: unclip 1.4s cubic-bezier(.7,0,.2,1) .3s forwards; }
+  .hero-photo img { transform: scale(1.25); animation: settle 2.2s cubic-bezier(.2,.7,.1,1) .3s forwards; }
+  @keyframes rise { to { transform: none; } }
+  @keyframes fadeup { to { opacity: 1; transform: none; } }
+  @keyframes unclip { to { clip-path: inset(0 0 0 0); } }
+  @keyframes settle { to { transform: scale(1); } }
+  .scroll-cue { position: absolute; left: 50%; bottom: 28px; width: 1px; height: 56px; background: var(--line); overflow: hidden; z-index: 1; }
+  .scroll-cue span { position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--ink); animation: cue 2s ease-in-out infinite; }
+  @keyframes cue { to { top: 100%; } }
+
+  /* Marquee */
+  .marquee { background: var(--dark); color: #F2EFE9; overflow: hidden; padding: 26px 0; border-bottom: 1px solid var(--dark-line); }
+  .marquee-track { display: flex; gap: 48px; width: max-content; animation: marquee 38s linear infinite; align-items: center; }
+  .marquee span { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 48px); white-space: nowrap; }
+  .marquee span:nth-of-type(even) { font-style: italic; color: var(--accent); }
+  .marquee i { font-style: normal; font-size: 14px; color: var(--accent); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* Image reveal on scroll */
+  .img-reveal { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s cubic-bezier(.7,0,.2,1); }
+  .img-reveal img { transform: scale(1.2); transition: transform 2s cubic-bezier(.2,.7,.1,1); }
+  .img-reveal.in { clip-path: inset(0 0 0 0); }
+  .img-reveal.in img { transform: scale(1); }
+
+  /* Brickell cinematic band */
+  .brickell-hero {
+    position: relative; height: 100vh; min-height: 560px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 30%, rgba(154,123,79,0.35), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 20% 80%, rgba(40,70,110,0.45), transparent 60%),
+      linear-gradient(180deg, #0d1622 0%, #121212 100%);
+    background-size: 160% 160%;
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift { to { background-position: 100% 100%; } }
+  .brickell-bg { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; will-change: transform; }
+  .brickell-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,18,18,0.15) 0%, rgba(18,18,18,0.1) 45%, rgba(18,18,18,0.92) 100%); }
+  .brickell-hero-inner { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 72px; }
+  .brickell-word { font-family: var(--serif); font-size: clamp(88px, 19vw, 300px); line-height: .85; letter-spacing: -0.03em; color: #F2EFE9; transform-origin: 0 100%; will-change: transform; }
+  .brickell-tag { margin-top: 24px; font-size: 16px; color: rgba(242,239,233,0.75); max-width: 460px; }
+  .brickell-body { padding: 110px 0 120px; }
+  .collage { display: grid; grid-template-columns: 1fr 1.5fr; grid-auto-rows: minmax(0, auto); gap: 24px; margin-top: 100px; }
+  .collage .c-tall { grid-row: span 2; aspect-ratio: 4 / 5; height: 100%; }
+  .collage .c-wide { aspect-ratio: 16 / 9; }
+  .collage .ph, .wide-band, .chapter-photo { background: #1d1c1a; }
+
+  /* Preconstruction */
+  .wide-band { aspect-ratio: 16 / 7; margin-top: 88px; }
+  .compare { margin-top: 24px; }
+  .compare-stage { position: relative; aspect-ratio: 1080 / 658; overflow: hidden; background: #1d1c1a; user-select: none; }
+  .compare-stage > img, .compare-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .compare-top { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos, 55%)) 0 0); }
+  .compare-handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 55%); width: 2px; background: #fff; transform: translateX(-1px); pointer-events: none; }
+  .compare-handle span { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 52px; height: 52px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; font-size: 18px; box-shadow: 0 8px 30px rgba(0,0,0,.25); }
+  .compare-label { position: absolute; top: 20px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,.45); padding: 6px 12px; pointer-events: none; }
+  .compare-label.l { left: 20px; } .compare-label.r { right: 20px; }
+  .compare input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .compare figcaption { margin-top: 14px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+
+  /* Portfolio cards */
+  .cards { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .card { display: block; }
+  .card .ph { aspect-ratio: 4 / 3; background: #E7E3DC; }
+  .card .ph::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.35)); z-index: 2; opacity: 0; transition: opacity .5s; }
+  .card:hover .ph::before { opacity: 1; }
+  .card .ph img { transition: transform 1.2s cubic-bezier(.2,.7,.1,1); }
+  .card:hover .ph img { transform: scale(1.07); }
+  .card-price { display: flex; justify-content: space-between; align-items: center; }
+  .card-more { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); opacity: 0; transform: translateX(-8px); transition: .4s; }
+  .card:hover .card-more { opacity: 1; transform: none; }
+
+  /* International route */
+  .chapter-photo.tall { aspect-ratio: 3 / 4; }
+  .chapter-side .caption { margin-top: 14px; }
+  .route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .route strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1; color: var(--ink); }
+  .route span { font-size: 12px; color: var(--muted); }
+  .route > div:last-child { text-align: right; }
+  .route-line { position: relative; height: 1px; background: var(--line); }
+  .route-line i { position: absolute; top: -3px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: fly 3.2s ease-in-out infinite; }
+  @keyframes fly { 0% { left: 0; } 50% { left: calc(100% - 7px); } 100% { left: 0; } }
+
+  /* Hospitality browser mock */
+  .browser { margin: 40px 0; background: #fff; border: 1px solid var(--line); box-shadow: 0 30px 80px -30px rgba(0,0,0,.25); border-radius: 10px; overflow: hidden; }
+  .browser-bar { display: flex; align-items: center; gap: 6px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: #FAF9F7; }
+  .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: #DCD7CE; }
+  .browser-bar span { margin-left: 12px; font-size: 11px; color: var(--muted); letter-spacing: .06em; }
+  .float { animation: float 6s ease-in-out infinite; }
+  @keyframes float { 50% { transform: translateY(-10px); } }
+
+  /* Quote word-by-word */
+  .quote { padding: 180px 0; }
+  .quote blockquote { font-size: clamp(40px, 5.6vw, 84px); max-width: 1100px; }
+  .quote .w { opacity: .12; transition: opacity .25s, color .25s; }
+  .quote .w.on { opacity: 1; }
+  .quote .w.key.on { color: var(--accent); font-style: italic; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 .line > span, .intro, .hero-photo, .hero-photo img { animation: none; transform: none; opacity: 1; clip-path: none; }
+    .img-reveal, .img-reveal img { clip-path: none; transform: none; transition: none; }
+    .marquee-track, .float, .route-line i, .brickell-hero, .scroll-cue span { animation: none; }
+    .quote .w { opacity: 1; }
+  }
+  @media (max-width: 860px) {
+    .hero { min-height: auto; }
+    .hero-ghost { font-size: 44vw; bottom: auto; top: 90px; }
+    .scroll-cue { display: none; }
+    .collage { grid-template-columns: 1fr; margin-top: 64px; }
+    .collage .c-tall { grid-row: auto; height: auto; }
+    .wide-band { aspect-ratio: 4 / 3; margin-top: 56px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .brickell-hero { height: 80vh; }
+    .quote { padding: 120px 0; }
+  }
+  @media (max-width: 560px) {
+    .cards { grid-template-columns: 1fr; }
+    .route strong { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     FOTOS: todas van en  assets/carlos-visbal/
+     Ver la guía completa en assets/carlos-visbal/README.md
+     Si una foto no existe, su espacio se oculta automáticamente.
+     ========================================================= -->
+
+<div class="progress" id="progress"></div>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">Carlos Visbal<small>First Way Realty</small></a>
+    <div class="nav-links">
+      <a href="#biografia">Biography</a>
+      <a href="#brickell">Brickell</a>
+      <a href="#portafolio">Portfolio</a>
+      <a href="#hospitality">Hospitality</a>
+      <a href="#contacto" class="btn btn-solid">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-ghost" aria-hidden="true" data-drift="-0.25">VISBAL</div>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow intro" style="--d:.1s">Real Estate · Investment · Pre-construction · Hospitality</div>
+      <h1>
+        <span class="line"><span style="--d:.25s">Carlos</span></span>
+        <span class="line"><span style="--d:.4s"><em>Visbal</em></span></span>
+      </h1>
+      <p class="lead intro" style="--d:.7s">Carlos Visbal is an entrepreneur and real estate professional with more than two decades of experience, whose career brings together four core pillars: <strong>real estate, investment, pre-construction and hospitality</strong>.</p>
+      <div class="hero-ctas intro" style="--d:.85s">
+        <a href="#biografia" class="btn btn-solid">Explore his career <span class="arrow">→</span></a>
+        <a href="#contacto" class="btn btn-ghost">Contact Carlos</a>
+      </div>
+      <div class="hero-meta intro" style="--d:1s">
+        <div><strong>Managing Partner</strong>First Way Realty</div>
+        <div><strong>CEO & Co-founder</strong>Hospitality Kings</div>
+        <div><strong>Bilingual</strong>English · Spanish</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ph hero-photo">
+        <img src="assets/carlos-visbal/carlos-hero.jpg" alt="Carlos Visbal, Managing Partner of First Way Realty" onerror="this.closest('.ph').remove()">
+      </div>
+      <div class="hero-photo-cap intro" style="--d:1.1s"><span>Carlos Visbal</span><span>Miami, FL</span></div>
+    </div>
+  </div>
+  <a href="#biografia" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Real Estate</span><i>✦</i><span>Investment</span><i>✦</i><span>Pre-construction</span><i>✦</i><span>Hospitality</span><i>✦</i><span>Brickell</span><i>✦</i><span>Miami</span><i>✦</i>
+    <span>Real Estate</span><i>✦</i><span>Investment</span><i>✦</i><span>Pre-construction</span><i>✦</i><span>Hospitality</span><i>✦</i><span>Brickell</span><i>✦</i><span>Miami</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="150" data-prefix="$" data-suffix="M+">$150M+</span></div>
+        <div class="stat-label">in reported gross sales over his career</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="20" data-suffix="+">20+</span></div>
+        <div class="stat-label">years of experience in the South Florida market</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="20.8" data-decimals="1" data-prefix="$" data-suffix="M">$20.8M</span></div>
+        <div class="stat-label">across 17 closed sales over the last five years¹</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num"><span data-count="1.2" data-decimals="1" data-prefix="$" data-suffix="M">$1.2M</span></div>
+        <div class="stat-label">average sale price, within a range of $345K to $4.7M¹</div>
+      </div>
+    </div>
+    <p class="stats-note">¹ Data from Carlos Visbal's Homes.com profile. Career figures as reported by the agent.</p>
+  </div>
+</section>
+
+<!-- ============ 01 · BIOGRAFÍA ============ -->
+<section class="chapter" id="biografia">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side">
+      <div class="eyebrow reveal">01 · Biography</div>
+      <h2 class="reveal">A <em>comprehensive</em> view of the real estate business.</h2>
+      <div class="ph chapter-photo img-reveal">
+        <img src="assets/carlos-visbal/carlos-about.jpg" alt="Carlos Visbal during a film shoot at a real estate event" onerror="this.closest('.ph').remove()">
+      </div>
+    </div>
+    <div class="prose reveal">
+      <p class="big">Throughout his career, he has built solid experience in the South Florida real estate market, with a <strong>special focus on Miami and Brickell</strong>.</p>
+      <p>He has taken part in residential, commercial and multifamily transactions, working with clients and investors both in the United States and in markets across Latin America and the Caribbean.</p>
+      <p>He currently serves as <strong>Managing Partner of First Way Realty</strong>, where he leads his real estate activity in Florida, guiding buyers, owners and investors in identifying, negotiating and marketing real estate opportunities.</p>
+      <p>His experience, however, goes far beyond traditional property sales. Carlos has built a comprehensive view of the real estate business, combining expertise in <strong>negotiation, strategic planning, project management, financing, budget management and investment opportunity development</strong>.</p>
+      <div class="facts">
+        <div class="fact"><span>Firm</span>First Way Realty</div>
+        <div class="fact"><span>Title</span>Managing Partner</div>
+        <div class="fact"><span>Assets</span>Homes, condos, townhouses, multifamily, commercial</div>
+        <div class="fact"><span>Markets</span>Miami, Brickell, South Florida</div>
+        <div class="fact"><span>Languages</span>Spanish and English</div>
+        <div class="fact"><span>Clients</span>U.S., Latin America and the Caribbean</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · RESULTADOS ============ -->
+<section class="chapter chapter-paper">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side">
+      <div class="eyebrow reveal">02 · Results</div>
+      <h2 class="reveal">A track record backed by <em>results</em>.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>Over the course of his professional career, Carlos reports <strong>more than $150 million in gross sales</strong>, building a track record focused on negotiation, developing business relationships and generating opportunities within the real estate market.</p>
+      <p>His recent activity also reflects this experience.</p>
+      <p>According to <strong>Homes.com</strong>, over the last five years Carlos has recorded <strong>17 closed sales totaling approximately $20.8 million</strong>, with an average price of <strong>$1.2 million</strong> and transactions ranging from approximately <strong>$345,000 to $4.7 million</strong>.</p>
+      <p>Meanwhile, his professional profile on <strong>Zillow</strong> shows <strong>23 total sales</strong>, including three transactions during the last 12 months recorded on the platform. His recent closings include a property in <strong>Pinecrest for $1.375 million</strong> and another in <strong>Plantation for $875,000</strong>, in addition to representing the buyer in a transaction in Pompano Beach.</p>
+      <p>His experience spans different asset types, including <strong>single-family homes, condominiums, townhouses, multifamily and commercial properties</strong>, allowing him to understand the market from different perspectives and to guide both residential buyers and investors.</p>
+      <div class="closing-row">
+        <div><strong><span data-count="1.375" data-decimals="3" data-prefix="$" data-suffix="M">$1.375M</span></strong>Pinecrest · Sold</div>
+        <div><strong><span data-count="875" data-prefix="$" data-suffix="K">$875K</span></strong>Plantation · Sold</div>
+        <div><strong><span data-count="23">23</span></strong>total sales on Zillow</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · BRICKELL ============ -->
+<section class="brickell" id="brickell">
+  <div class="brickell-hero">
+    <!-- Skyline generado con IA + video animado (si el video no carga, queda la imagen) -->
+    <img class="brickell-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_afc1c107-da48-446a-b028-8d19a7f41b1f.png" alt="Brickell skyline, Miami, at dusk" onerror="this.remove()">
+    <video class="brickell-bg" autoplay muted loop playsinline preload="auto" poster="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_afc1c107-da48-446a-b028-8d19a7f41b1f.png"><source src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_180250_8da6d709-083c-4fb5-8987-9192563001a0.mp4" type="video/mp4" onerror="this.parentNode.remove()"></video>
+    <div class="brickell-shade"></div>
+    <div class="wrap brickell-hero-inner">
+      <div class="eyebrow reveal">03 · Specialty market</div>
+      <div class="brickell-word" id="brickell-word">Brickell</div>
+      <p class="brickell-tag reveal">One of Miami's most important residential and financial districts.</p>
+    </div>
+  </div>
+  <div class="brickell-body">
+    <div class="wrap chapter-grid">
+      <div class="chapter-side">
+        <h2 class="reveal">Brickell: one of his specialty markets.</h2>
+      </div>
+      <div class="prose reveal">
+        <p class="big"><strong>Brickell is one of the main specialty markets for Carlos and his team.</strong></p>
+        <p>His experience in the area spans sales, investment, rentals and opportunity analysis in one of Miami's most important residential and financial districts.</p>
+        <p>Through First Way Realty, Carlos and his team have worked with properties and clients across the Brickell market, building hands-on knowledge of its buildings, investment opportunities, rental dynamics and the different profiles of buyers and investors.</p>
+        <p>His experience includes rental transactions at <strong>Fortune House Brickell</strong>, as well as properties on <strong>Brickell Avenue</strong>, including <strong>110 Brickell Avenue, Unit 1-02, Miami, FL 33131</strong>.</p>
+        <p>This presence in the area allows his advice to go beyond simply finding an available property. Carlos seeks to understand each client's goal —a home, an investment, income generation or wealth preservation— to identify opportunities aligned with their strategy within <strong>Brickell and the Miami market</strong>.</p>
+        <ul class="brickell-list">
+          <li><span>Fortune House Brickell</span><span>Rental transactions</span></li>
+          <li><span>110 Brickell Avenue, Unit 1-02</span><span>Miami, FL 33131</span></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Collage de Brickell (imágenes generadas con IA). Las que falten se ocultan. -->
+    <div class="wrap collage">
+      <div class="ph c-tall img-reveal" data-speed="0.06"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_900f773c-038f-4274-8367-0dae9baca31e.png" alt="Luxury residential tower in Brickell" onerror="this.closest('.ph').remove()"></div>
+      <div class="ph c-wide img-reveal" data-speed="-0.04"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_80ee9c11-c8e0-4bc5-9426-ee146432bc92.png" alt="Brickell Avenue at night" onerror="this.closest('.ph').remove()"></div>
+      <div class="ph c-wide img-reveal" data-speed="0.03"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_b97ad2ce-0e36-49b8-8d93-e89d370dcc89.png" alt="Bay-view condominium in Brickell" onerror="this.closest('.ph').remove()"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · PRECONSTRUCCIÓN ============ -->
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side">
+      <div class="eyebrow reveal">04 · Pre-construction</div>
+      <h2 class="reveal">Pre-construction specialist with direct <em>developer</em> relationships.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>Another area that is part of his career is <strong>pre-construction in Miami and South Florida</strong>.</p>
+      <p>Carlos works directly with <strong>developers and real estate projects</strong>, allowing him to guide buyers and investors interested in opportunities from the earliest stages of a development.</p>
+      <p>His pre-construction experience covers project analysis, location, value proposition, investment structure and asset potential, helping clients understand not only what they are buying, but also <strong>how that property can fit into a medium- and long-term real estate strategy</strong>.</p>
+      <p>His relationships with developers and his market knowledge allow him to connect domestic and international investors with <strong>pre-construction, new development and investment opportunities in Miami</strong>, with special attention to high-demand areas such as Brickell and its surroundings.</p>
+      <p>This combination of traditional market knowledge and new-development experience strengthens his position as a professional able to support investors through the different stages of the real estate cycle.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ph wide-band img-reveal">
+      <img src="assets/carlos-visbal/preconstruccion.jpg" alt="Night render of a residential development in Miami" onerror="this.closest('.ph').remove()" data-zoom>
+    </div>
+    <!-- Comparador render vs. obra: arrastra para comparar -->
+    <figure class="compare reveal" id="compare">
+      <div class="compare-stage">
+        <img src="assets/carlos-visbal/933-sw-4th-ave-obra.jpg" alt="933 SW 4th Ave under construction" onerror="this.closest('.compare').remove()">
+        <div class="compare-top"><img src="assets/carlos-visbal/listing-933-sw-4th-ave.jpg" alt="Render of 933 SW 4th Ave" onerror="this.closest('.compare').remove()"></div>
+        <div class="compare-handle"><span>⟷</span></div>
+        <span class="compare-label l">Render</span><span class="compare-label r">Construction</span>
+        <input type="range" min="0" max="100" value="55" aria-label="Compare render and construction">
+      </div>
+      <figcaption>933 SW 4th Ave · From render to construction — drag to compare</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 05 · PORTAFOLIO ============ -->
+<section class="chapter chapter-paper" id="portafolio">
+  <div class="wrap">
+    <div class="chapter-grid">
+      <div class="chapter-side">
+        <div class="eyebrow reveal">05 · Portfolio</div>
+        <h2 class="reveal"><em>Active</em> real estate portfolio.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>His activity currently extends to properties and investment opportunities across different areas of Miami.</p>
+        <p>The listings currently shown on his Zillow profile include properties from approximately <strong>$350,000 to more than $4.4 million</strong>, including opportunities in Brickell, Downtown Miami and strategic areas for investment and development.</p>
+        <p>Highlights of this portfolio include assets such as <strong>7105 NE 4th Ct</strong>, a multifamily property listed at approximately <strong>$4.49 million</strong>, and <strong>426 NE 26th St</strong>, a real estate opportunity in Miami listed at approximately <strong>$3.2 million</strong>.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <a href="#contacto" class="card reveal">
+        <div class="ph"><img src="assets/carlos-visbal/listing-7105-ne-4th-ct.jpg" alt="Interior of 7105 NE 4th Ct, Miami" onerror="this.closest('.ph').remove()"></div>
+        <div class="card-type">Multifamily</div>
+        <h4>7105 NE 4th Ct</h4>
+        <div class="card-price">≈ $4.49M <span class="card-more">Inquire →</span></div>
+      </a>
+      <a href="#contacto" class="card reveal">
+        <div class="ph"><img src="assets/carlos-visbal/listing-426-ne-26th-st.jpg" alt="Render of 426 NE 26th St, Miami" onerror="this.closest('.ph').remove()"></div>
+        <div class="card-type">Investment opportunity</div>
+        <h4>426 NE 26th St</h4>
+        <div class="card-price">≈ $3.2M <span class="card-more">Inquire →</span></div>
+      </a>
+      <a href="#contacto" class="card reveal">
+        <div class="ph"><img src="assets/carlos-visbal/listing-933-sw-4th-ave.jpg" alt="Render of 933 SW 4th Ave, Miami" onerror="this.closest('.ph').remove()"></div>
+        <div class="card-type">Townhouses · New development</div>
+        <h4>933 SW 4th Ave</h4>
+        <div class="card-price">Miami <span class="card-more">Inquire →</span></div>
+      </a>
+    </div>
+    <p class="disclaimer">Listings and closings per Carlos Visbal's public profiles on Zillow and Homes.com. Prices are approximate; availability may change.</p>
+  </div>
+</section>
+
+<!-- ============ 06 · INTERNACIONAL ============ -->
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side">
+      <div class="eyebrow reveal">06 · International</div>
+      <h2 class="reveal">International presence and connections with <em>Latin America</em>.</h2>
+      <div class="ph chapter-photo tall img-reveal">
+        <img src="assets/carlos-visbal/bogota-2026.jpg" alt="Carlos Visbal at the Gran Salón Inmobiliario in Bogotá, 2026" onerror="this.closest('.ph').remove()">
+      </div>
+      <p class="caption">Gran Salón Inmobiliario · Bogotá, Colombia · 2026</p>
+    </div>
+    <div class="prose reveal">
+      <p class="big">Carlos's career has also extended beyond the U.S. market.</p>
+      <p>He has taken part in <strong>international real estate events and gatherings aimed at connecting Florida investment opportunities with buyers and investors from Latin America</strong>.</p>
+      <p>In 2026 he took part in the <strong>Gran Salón Inmobiliario in Bogotá, Colombia</strong>, representing Florida market opportunities and strengthening First Way Realty's connection with Latin American audiences and investors.</p>
+      <p>This international presence complements a career defined by building business relationships between <strong>South Florida, Latin America and the Caribbean</strong>, bringing real estate opportunities to investors looking to diversify, protect or grow their wealth in the United States.</p>
+      <div class="route">
+        <div><strong>Miami</strong><span>South Florida</span></div>
+        <div class="route-line"><i></i></div>
+        <div><strong>Bogotá</strong><span>Latin America · Caribbean</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · HOSPITALITY ============ -->
+<section class="chapter chapter-paper" id="hospitality">
+  <div class="wrap chapter-grid">
+    <div class="chapter-side">
+      <div class="eyebrow reveal">07 · Hospitality</div>
+      <h2 class="reveal">Real Estate + <em>Hospitality</em>.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>Carlos is also <strong>CEO and co-founder of Hospitality Kings</strong>, a company specializing in the short-term rental market and vacation property management in South Florida.</p>
+      <p>Through Hospitality Kings, he is part of a model that integrates the <strong>acquisition, renovation, positioning and management of properties</strong>, incorporating technology and marketing strategies to connect the assets in its portfolio with guests and markets worldwide.</p>
+      <div class="browser float">
+        <div class="browser-bar"><i></i><i></i><i></i><span>hospitalitykings</span></div>
+        <img src="assets/carlos-visbal/hospitality-kings.jpg" alt="Hospitality Kings website" onerror="this.closest('.browser').remove()">
+      </div>
+      <p>This combination of real estate and hospitality has given him a different perspective on property: seeing it not only as a space to buy or sell, but as an <strong>asset with the potential to generate value, income and new investment opportunities</strong>.</p>
+      <p>His career also includes experience with properties and development opportunities, from luxury residences to multifamily assets and projects with transformation potential, especially within South Florida's dynamic market.</p>
+      <p>Bilingual in <strong>English and Spanish</strong>, Carlos has built part of his career connecting Florida's real estate market with international clients and investors, particularly from Latin America and the Caribbean.</p>
+      <p>His professional philosophy is deeply tied to negotiation, strategy and the ability to create opportunities where others simply see a transaction.</p>
+      <p>One phrase sums up that vision:</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote" id="quote">
+  <div class="wrap">
+    <blockquote id="quote-text">“You only get what you negotiate, not what you want or deserve.”</blockquote>
+    <cite class="reveal">— Carlos Visbal</cite>
+    <p class="quote-close reveal">For Carlos Visbal, every property represents much more than a real estate transaction. It represents an opportunity to <strong>create value, build wealth and develop long-term business relationships</strong>.</p>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="why" id="metodo">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <div class="eyebrow">Why work with Carlos</div>
+        <h2>It's not just listing a property. It's <em>designing the sale</em>.</h2>
+      </div>
+      <p class="lead reveal">Carlos sees every property as an asset, with potential for value, income and investment. That perspective changes how it is presented, who it is presented to, and how much is achieved at the negotiating table.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pillar-n">01</div>
+        <h3>Negotiation</h3>
+        <p>A philosophy built around the negotiating table: strategy, preparation and control of the process to defend your property's price.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-n">02</div>
+        <h3>An investor's eye</h3>
+        <p>Experience in residential, commercial and multifamily, plus short-term rental operations with Hospitality Kings. He knows how investment buyers think.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-n">03</div>
+        <h3>International network</h3>
+        <p>Active connections with buyers from Latin America and the Caribbean, including his participation in the Gran Salón Inmobiliario in Bogotá, 2026.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-n">04</div>
+        <h3>Pre-construction</h3>
+        <p>Direct work with developers: project analysis, location, value proposition and investment structure for new developments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIENCES ============ -->
+<section class="audiences">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <div class="eyebrow">Who he works with</div>
+        <h2>A single property or an entire project.</h2>
+      </div>
+      <p class="lead reveal">Two paths, one principle: understand your goal and build the commercial strategy that achieves it.</p>
+    </div>
+    <div class="aud-grid reveal">
+      <div class="aud">
+        <div class="tag">Owners</div>
+        <h3>Sell your property in Brickell</h3>
+        <p>Condos, homes, townhouses, multifamily and commercial properties in Brickell, Downtown and Miami.</p>
+        <ul>
+          <li>Valuation based on the real market for the building and the area</li>
+          <li>Positioning for residential buyers or investors</li>
+          <li>Exposure to buyers in the U.S. and Latin America</li>
+          <li>Negotiation and guidance through closing</li>
+        </ul>
+        <a href="#contacto" class="btn btn-solid">Value my property <span class="arrow">→</span></a>
+      </div>
+      <div class="aud">
+        <div class="tag">Developers</div>
+        <h3>Market your project</h3>
+        <p>Pre-construction and new developments in Miami and South Florida, focused on Brickell and its surroundings.</p>
+        <ul>
+          <li>Project assessment from the investor's perspective</li>
+          <li>Value narrative: location, product and asset potential</li>
+          <li>A channel to domestic and international investors</li>
+          <li>Presence at real estate events in Latin America</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost">Present my project <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <div class="eyebrow">The process</div>
+        <h2>Five steps, <em>zero improvisation</em>.</h2>
+      </div>
+      <p class="lead reveal">Strategic planning and project management applied to the sale of your property.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>Assessment</h4><p>Understanding your goal: liquidity, reinvestment or wealth preservation.</p></div>
+      <div class="step reveal"><h4>Valuation</h4><p>Analysis of the building, comparables and the most likely buyer profile.</p></div>
+      <div class="step reveal"><h4>Positioning</h4><p>Preparation, presentation and narrative of the asset for its market.</p></div>
+      <div class="step reveal"><h4>Exposure</h4><p>Local and international network, qualified buyers and investors.</p></div>
+      <div class="step reveal"><h4>Negotiation and closing</h4><p>Defending the price and controlling the process through signing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Let's talk</div>
+      <h2>Let's talk about your property or project.</h2>
+      <p class="lead">Schedule a conversation with Carlos. We'll review your property or project, the current market and the strategy to sell it at the best possible price.</p>
+      <div class="contact-direct">
+        <!-- Datos de contacto: se editan en CONFIG (al final del archivo) -->
+        <a href="#" data-wa><span>WhatsApp</span><span data-phone-label>+1 305-967-2439</span></a>
+        <a href="#" data-tel><span>Call</span><span data-phone-label>+1 305-967-2439</span></a>
+      </div>
+    </div>
+    <form class="reveal" id="lead-form">
+      <div class="row-2">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="nombre" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="telefono" type="tel" required></div>
+      </div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email"></div>
+      <div class="row-2">
+        <div class="field">
+          <label for="f-type">I want to</label>
+          <select id="f-type" name="tipo">
+            <option>Sell my property</option>
+            <option>Market a project</option>
+            <option>Invest in Brickell</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-addr">Address / building</label><input id="f-addr" name="direccion" placeholder="e.g. 1000 Brickell Ave"></div>
+      </div>
+      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="mensaje"></textarea></div>
+      <button type="submit" class="btn">Send via WhatsApp <span class="arrow">→</span></button>
+      <p class="form-note">Submitting opens WhatsApp with your message ready for Carlos.</p>
+    </form>
+  </div>
+</section>
+
+<a href="#" class="wa-float" data-wa aria-label="Message Carlos on WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Carlos Visbal · First Way Realty</span>
+    <span>Brickell · Miami · South Florida</span>
+  </div>
+</footer>
+
+<script>
+  // ===== CONFIG: edita estos datos de contacto =====
+  const CONFIG = {
+    whatsapp: '13059672439',              // solo dígitos, con código de país
+    phoneLabel: '+1 305-967-2439'
+  };
+
+  document.querySelectorAll('[data-phone-label]').forEach(el => el.textContent = CONFIG.phoneLabel);
+  document.querySelectorAll('[data-wa]').forEach(a => {
+    a.href = 'https://wa.me/' + CONFIG.whatsapp; a.target = '_blank'; a.rel = 'noopener';
+  });
+  document.querySelectorAll('[data-tel]').forEach(a => a.href = 'tel:+' + CONFIG.whatsapp);
+
+  document.getElementById('lead-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const d = new FormData(e.target);
+    const text = [
+      'Hi Carlos, I would like to: ' + d.get('tipo'),
+      'Name: ' + d.get('nombre'),
+      'Phone: ' + d.get('telefono'),
+      d.get('email') && 'Email: ' + d.get('email'),
+      d.get('direccion') && 'Property: ' + d.get('direccion'),
+      d.get('mensaje') && 'Message: ' + d.get('mensaje')
+    ].filter(Boolean).join('\n');
+    window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Image reveals
+  const io2 = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io2.unobserve(en.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.img-reveal').forEach(el => io2.observe(el));
+
+  // Count-up numbers
+  const fmt = (v, d) => v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const counter = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; counter.unobserve(el);
+      const end = parseFloat(el.dataset.count), d = +(el.dataset.decimals || 0);
+      const pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+      if (reduce) return;
+      const t0 = performance.now(), dur = 1800;
+      const tick = now => {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+        el.textContent = pre + fmt(end * e, d) + suf;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('[data-count]').forEach(el => counter.observe(el));
+
+  // Quote: split into words, light them up while scrolling
+  const qt = document.getElementById('quote-text');
+  qt.innerHTML = qt.textContent.trim().split(/\s+/).map(w =>
+    `<span class="w${/negotiate/i.test(w) ? ' key' : ''}">${w}</span>`).join(' ');
+  const words = [...qt.querySelectorAll('.w')];
+
+  // Before / after slider
+  const cmp = document.getElementById('compare');
+  if (cmp) {
+    const range = cmp.querySelector('input'), stage = cmp.querySelector('.compare-stage');
+    const set = v => stage.style.setProperty('--pos', v + '%');
+    range.addEventListener('input', () => set(range.value)); set(range.value);
+  }
+
+  // Scroll-driven effects
+  const progress = document.getElementById('progress');
+  const ghost = document.querySelector('.hero-ghost');
+  const bHero = document.querySelector('.brickell-hero');
+  const bWord = document.getElementById('brickell-word');
+  const parallax = [...document.querySelectorAll('[data-speed]')];
+  let ticking = false;
+  const onFrame = () => {
+    ticking = false;
+    const y = window.scrollY, vh = window.innerHeight;
+    progress.style.transform = `scaleX(${y / (document.documentElement.scrollHeight - vh)})`;
+    if (reduce) { words.forEach(w => w.classList.add('on')); return; }
+    if (ghost) ghost.style.transform = `translateX(${y * -0.25}px)`;
+    if (bHero) {
+      const r = bHero.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, 1 - r.bottom / (vh + r.height)));
+      bHero.querySelectorAll('.brickell-bg').forEach(bg => bg.style.transform = `translateY(${(p - .5) * 12}%) scale(${1.05 + p * .1})`);
+      if (bWord) bWord.style.transform = `translateX(${(0.5 - p) * 12}vw) scale(${0.85 + p * .3})`;
+    }
+    parallax.forEach(el => {
+      const r = el.getBoundingClientRect();
+      el.style.translate = `0 ${(r.top + r.height / 2 - vh / 2) * -el.dataset.speed}px`;
+    });
+    const qr = qt.getBoundingClientRect();
+    const qp = Math.min(1, Math.max(0, (vh * 0.85 - qr.top) / (qr.height + vh * 0.35)));
+    const lit = Math.round(qp * words.length);
+    words.forEach((w, i) => w.classList.toggle('on', i < lit));
+  };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onFrame); } }, { passive: true });
+  window.addEventListener('resize', onFrame);
+  onFrame();
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
