@@ -10,6 +10,9 @@ Fotos de la landing (`carlos-visbal.html`). Si un archivo no existe, su espacio 
 | `brickell-torre.jpg` | 03 · Brickell, collage (IA, 4:5) | ✅ IA, enlazado desde Higgsfield |
 | `brickell-avenida.jpg` | 03 · Brickell, collage (IA, 16:9) | ✅ IA, enlazado desde Higgsfield |
 | `brickell-interior.jpg` | 03 · Brickell, collage (IA, 16:9) | ✅ IA, enlazado desde Higgsfield |
+| The Roads (imagen + video) | 03 · Brickell, bloque The Roads | ✅ IA, enlazado desde Higgsfield |
+| Cinta de fotos de Miami | Sección "Donde Carlos hace mercado" | ✅ IA, enlazado desde Higgsfield |
+| `almeria-sala.jpg` + `almeria-dormitorio.jpg` | Almeria Residential Villas | ✅ |
 | `preconstruccion.jpg` | 04 · Preconstrucción, banda ancha | ✅ |
 | `listing-933-sw-4th-ave.jpg` + `933-sw-4th-ave-obra.jpg` | 04 · Comparador render / obra y 05 · Portafolio | ✅ |
 | `listing-7105-ne-4th-ct.jpg` | 05 · Portafolio | ✅ |

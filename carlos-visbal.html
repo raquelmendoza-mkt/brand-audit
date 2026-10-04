@@ -145,6 +145,8 @@
     flex-wrap: wrap;
   }
   .hero-meta strong { display: block; color: var(--ink); font-weight: 500; font-size: 14px; }
+  .hero-meta { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 28px; font-size: 12px; }
+  .hero-meta strong { font-size: 13px; }
   .hero-photo { aspect-ratio: 4 / 5; }
   .hero-photo-cap {
     display: flex;
@@ -286,6 +288,55 @@
   .contact .btn:hover { background: transparent; color: #F2EFE9; }
   .form-note { font-size: 12px; color: rgba(242,239,233,0.4); }
 
+
+  /* ---------- The Roads ---------- */
+  .roads { display: grid; grid-template-columns: 1.2fr 1fr; gap: 72px; align-items: center; margin-top: 110px; }
+  .roads-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #1d1c1a; }
+  .roads-media img, .roads-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .roads-title { font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; margin-bottom: 24px; color: #F2EFE9; }
+  .roads-tag { position: absolute; left: 20px; bottom: 20px; z-index: 2; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,.4); padding: 7px 12px; backdrop-filter: blur(6px); }
+
+  /* ---------- Photo strip ---------- */
+  .photo-strip { background: var(--dark); color: #F2EFE9; padding: 0 0 130px; overflow: hidden; }
+  .photo-strip .strip-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
+  .photo-strip .eyebrow { color: rgba(242,239,233,0.55); margin-bottom: 18px; }
+  .photo-strip h2 { color: #F2EFE9; }
+  .strip-track { display: flex; gap: 20px; width: max-content; animation: marquee 70s linear infinite; }
+  .strip-track:hover { animation-play-state: paused; }
+  .strip-item { position: relative; flex: none; width: clamp(220px, 24vw, 360px); aspect-ratio: 4 / 5; overflow: hidden; background: #1d1c1a; }
+  .strip-item.wide { width: clamp(360px, 40vw, 600px); }
+  .strip-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.7,.1,1); }
+  .strip-item:hover img { transform: scale(1.06); }
+
+  /* ---------- Almeria ---------- */
+  .almeria { background: var(--paper); }
+  .almeria-head { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 64px; }
+  .almeria-head .lead { margin-bottom: 32px; }
+  .almeria-head .lead strong { font-weight: 500; color: var(--ink); }
+  .almeria-badge { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 8px 14px; margin-bottom: 28px; }
+  .almeria-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .2; } }
+  .almeria-gallery { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; }
+  .almeria-gallery .ph { aspect-ratio: 16 / 10; }
+  .almeria-gallery .a-side { margin-top: 120px; }
+  .almeria .caption { margin-top: 18px !important; }
+
+  /* ---------- Active listings KPI ---------- */
+  .kpi-band { display: flex; align-items: center; gap: 32px; margin-top: 72px; padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .kpi-num { font-family: var(--serif); font-size: clamp(64px, 8vw, 120px); line-height: .9; color: var(--ink); }
+  .kpi-text { display: flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+  .live-dot { position: relative; width: 9px; height: 9px; border-radius: 50%; background: #3E9B6B; }
+  .live-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #3E9B6B; animation: ping 1.8s ease-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .strip-track, .almeria-badge::before, .live-dot::after { animation: none; }
+  }
+  @media (max-width: 860px) {
+    .roads, .almeria-head, .almeria-gallery { grid-template-columns: 1fr; gap: 40px; }
+    .roads { margin-top: 72px; }
+    .almeria-gallery .a-side { margin-top: 0; }
+  }
+
   /* ---------- WhatsApp flotante ---------- */
   .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 55; width: 58px; height: 58px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(0,0,0,.25); transition: transform .3s, background .3s; }
   .wa-float::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--accent); animation: ping 2.4s ease-out infinite; }
@@ -337,7 +388,7 @@
     .stat:nth-child(odd) { border-left: 0; padding-left: 0; }
     .row-2 { grid-template-columns: 1fr; }
     .facts { grid-template-columns: 1fr; }
-    .hero-meta { gap: 24px; }
+    .hero-meta { gap: 20px; grid-template-columns: 1fr 1fr; }
     .brickell-list li { flex-direction: column; gap: 2px; }
     .brickell-list li span:last-child { text-align: left; }
   }
@@ -377,10 +428,9 @@
   @keyframes marquee { to { transform: translateX(-50%); } }
 
   /* Image reveal on scroll */
-  .img-reveal { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s cubic-bezier(.7,0,.2,1); }
-  .img-reveal img { transform: scale(1.2); transition: transform 2s cubic-bezier(.2,.7,.1,1); }
-  .img-reveal.in { clip-path: inset(0 0 0 0); }
-  .img-reveal.in img { transform: scale(1); }
+  /* The clip lives on the children: a fully clipped target never reports as intersecting. */
+  .img-reveal > img, .img-reveal > video { clip-path: inset(0 0 100% 0); transform: scale(1.2); transition: clip-path 1.3s cubic-bezier(.7,0,.2,1), transform 2s cubic-bezier(.2,.7,.1,1); }
+  .img-reveal.in > img, .img-reveal.in > video { clip-path: inset(0 0 0 0); transform: scale(1); }
 
   /* Brickell cinematic band */
   .brickell-hero {
@@ -457,7 +507,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .hero h1 .line > span, .intro, .hero-photo, .hero-photo img { animation: none; transform: none; opacity: 1; clip-path: none; }
-    .img-reveal, .img-reveal img { clip-path: none; transform: none; transition: none; }
+    .img-reveal > img, .img-reveal > video { clip-path: none; transform: none; transition: none; }
     .marquee-track, .float, .route-line i, .brickell-hero, .scroll-cue span { animation: none; }
     .quote .w { opacity: 1; }
   }
@@ -494,6 +544,7 @@
     <div class="nav-links">
       <a href="#biografia">Biografía</a>
       <a href="#brickell">Brickell</a>
+      <a href="#almeria">Almeria</a>
       <a href="#portafolio">Portafolio</a>
       <a href="#hospitality">Hospitality</a>
       <a href="#contacto" class="btn btn-solid">Contactar</a>
@@ -520,6 +571,7 @@
         <div><strong>Managing Partner</strong>First Way Realty</div>
         <div><strong>CEO & Co-fundador</strong>Hospitality Kings</div>
         <div><strong>Bilingüe</strong>Español · English</div>
+        <div><strong>Representante de ventas</strong>Almeria Residential Villas</div>
       </div>
     </div>
     <div class="hero-visual">
@@ -535,8 +587,8 @@
 <!-- ============ MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Real Estate</span><i>✦</i><span>Inversión</span><i>✦</i><span>Preconstrucción</span><i>✦</i><span>Hospitality</span><i>✦</i><span>Brickell</span><i>✦</i><span>Miami</span><i>✦</i>
-    <span>Real Estate</span><i>✦</i><span>Inversión</span><i>✦</i><span>Preconstrucción</span><i>✦</i><span>Hospitality</span><i>✦</i><span>Brickell</span><i>✦</i><span>Miami</span><i>✦</i>
+    <span>Real Estate</span><i>✦</i><span>Inversión</span><i>✦</i><span>Preconstrucción</span><i>✦</i><span>Hospitality</span><i>✦</i><span>Brickell</span><i>✦</i><span>The Roads</span><i>✦</i><span>Miami</span><i>✦</i>
+    <span>Real Estate</span><i>✦</i><span>Inversión</span><i>✦</i><span>Preconstrucción</span><i>✦</i><span>Hospitality</span><i>✦</i><span>Brickell</span><i>✦</i><span>The Roads</span><i>✦</i><span>Miami</span><i>✦</i>
   </div>
 </div>
 
@@ -554,7 +606,7 @@
       </div>
       <div class="stat reveal">
         <div class="stat-num"><span data-count="20.8" data-decimals="1" data-prefix="$" data-suffix="M">$20.8M</span></div>
-        <div class="stat-label">en 17 ventas cerradas durante los últimos cinco años¹</div>
+        <div class="stat-label">en 17 ventas cerradas durante los últimos tres años¹</div>
       </div>
       <div class="stat reveal">
         <div class="stat-num"><span data-count="1.2" data-decimals="1" data-prefix="$" data-suffix="M">$1.2M</span></div>
@@ -602,7 +654,7 @@
     <div class="prose reveal">
       <p>A lo largo de su carrera profesional, Carlos reporta <strong>más de $150 millones en ventas brutas</strong>, construyendo una trayectoria enfocada en la negociación, el desarrollo de relaciones comerciales y la generación de oportunidades dentro del mercado inmobiliario.</p>
       <p>Su actividad reciente también refleja esta experiencia.</p>
-      <p>De acuerdo con <strong>Homes.com</strong>, durante los últimos cinco años Carlos registra <strong>17 ventas cerradas por un valor total aproximado de $20.8 millones</strong>, con un precio promedio de <strong>$1.2 millones</strong> y operaciones dentro de un rango aproximado de <strong>$345,000 a $4.7 millones</strong>.</p>
+      <p>De acuerdo con <strong>Homes.com</strong>, durante los últimos tres años Carlos registra <strong>17 ventas cerradas por un valor total aproximado de $20.8 millones</strong>, con un precio promedio de <strong>$1.2 millones</strong> y operaciones dentro de un rango aproximado de <strong>$345,000 a $4.7 millones</strong>.</p>
       <p>Por su parte, su perfil profesional en <strong>Zillow</strong> refleja <strong>23 ventas totales</strong>, incluyendo tres operaciones durante los últimos 12 meses registrados en la plataforma. Entre sus cierres recientes destacan una propiedad en <strong>Pinecrest por $1.375 millones</strong> y otra en <strong>Plantation por $875,000</strong>, además de haber representado al comprador en una operación en Pompano Beach.</p>
       <p>Su experiencia abarca diferentes tipos de activos, incluyendo <strong>casas, condominios, townhouses, propiedades multifamiliares y comerciales</strong>, permitiéndole comprender el mercado desde diferentes perspectivas y acompañar tanto al comprador residencial como al inversionista.</p>
       <div class="closing-row">
@@ -640,6 +692,7 @@
         <p>Esta presencia en el área permite que su asesoría vaya más allá de simplemente encontrar una propiedad disponible. Carlos busca entender el objetivo del cliente —residencia, inversión, generación de ingresos o preservación de patrimonio— para identificar oportunidades alineadas con su estrategia dentro de <strong>Brickell y el mercado de Miami</strong>.</p>
         <ul class="brickell-list">
           <li><span>Fortune House Brickell</span><span>Operaciones de alquiler</span></li>
+          <li><span>The Roads</span><span>Especialista</span></li>
           <li><span>110 Brickell Avenue, Unit 1-02</span><span>Miami, FL 33131</span></li>
         </ul>
       </div>
@@ -650,6 +703,68 @@
       <div class="ph c-wide img-reveal" data-speed="-0.04"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_80ee9c11-c8e0-4bc5-9426-ee146432bc92.png" alt="Brickell Avenue de noche" onerror="this.closest('.ph').remove()"></div>
       <div class="ph c-wide img-reveal" data-speed="0.03"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_b97ad2ce-0e36-49b8-8d93-e89d370dcc89.png" alt="Condominio con vista a la bahía en Brickell" onerror="this.closest('.ph').remove()"></div>
     </div>
+
+    <!-- The Roads (imagen y video generados con IA) -->
+    <div class="wrap roads">
+      <div class="roads-media img-reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194757_be18af29-1bf1-4773-82d7-276e513a0fad.png" alt="Calle arbolada en The Roads, Miami" onerror="this.remove()">
+        <video autoplay muted loop playsinline preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194757_be18af29-1bf1-4773-82d7-276e513a0fad.png"><source src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194837_b43f34e8-80de-4967-8858-5a5efcf208d3.mp4" type="video/mp4" onerror="this.parentNode.remove()"></video>
+        <span class="roads-tag">The Roads</span>
+      </div>
+      <div class="prose reveal">
+        <div class="eyebrow">The Roads · Brickell</div>
+        <h3 class="roads-title">Especialista en el mercado de <em>The Roads</em>.</h3>
+        <p>Dentro de Brickell, Carlos es especialista en el mercado de <strong>The Roads</strong>, uno de los vecindarios residenciales más buscados de Miami: calles arboladas, casas y villas a pocos minutos del distrito financiero.</p>
+        <p>Su conocimiento de la zona le permite posicionar cada propiedad frente al comprador adecuado y negociar con argumentos de mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MIAMI EN MOVIMIENTO (imágenes generadas con IA) ============ -->
+<section class="photo-strip" aria-label="Miami">
+  <div class="wrap strip-head">
+    <div class="reveal">
+      <div class="eyebrow">Miami · Brickell · The Roads</div>
+      <h2>Donde Carlos <em>hace mercado</em>.</h2>
+    </div>
+  </div>
+  <div class="strip-track">
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_bb2ad112-8219-4ee0-bd63-7a57ad84b63a.png" alt="Vista aérea de Brickell y la bahía de Biscayne" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_643dc84f-a39d-45c1-8907-1ed0c127f251.png" alt="Piscina en azotea con vista al skyline de Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_ccb3257d-4401-41dc-bd3e-de0a40273813.png" alt="Malecón con palmeras en Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_8670d529-093d-4472-8977-e88e2bb7a96b.png" alt="Villa moderna en un vecindario arbolado de Miami" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_80ee9c11-c8e0-4bc5-9426-ee146432bc92.png" alt="Brickell Avenue de noche" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_900f773c-038f-4274-8367-0dae9baca31e.png" alt="Torre residencial de lujo en Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_b97ad2ce-0e36-49b8-8d93-e89d370dcc89.png" alt="Condominio con vista a la bahía en Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_bb2ad112-8219-4ee0-bd63-7a57ad84b63a.png" alt="Vista aérea de Brickell y la bahía de Biscayne" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_643dc84f-a39d-45c1-8907-1ed0c127f251.png" alt="Piscina en azotea con vista al skyline de Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_ccb3257d-4401-41dc-bd3e-de0a40273813.png" alt="Malecón con palmeras en Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261004_194727_8670d529-093d-4472-8977-e88e2bb7a96b.png" alt="Villa moderna en un vecindario arbolado de Miami" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173629_80ee9c11-c8e0-4bc5-9426-ee146432bc92.png" alt="Brickell Avenue de noche" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_900f773c-038f-4274-8367-0dae9baca31e.png" alt="Torre residencial de lujo en Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+      <div class="strip-item wide"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38AcZgVBmkrxRyzNakpGz706S5Z/hf_20261002_173628_b97ad2ce-0e36-49b8-8d93-e89d370dcc89.png" alt="Condominio con vista a la bahía en Brickell" loading="lazy" onerror="this.closest('.strip-item').remove()"></div>
+  </div>
+</section>
+
+<!-- ============ ALMERIA RESIDENTIAL VILLAS ============ -->
+<section class="almeria" id="almeria">
+  <div class="wrap">
+    <div class="almeria-head">
+      <div class="reveal">
+        <div class="almeria-badge">Representante de ventas</div>
+        <h2>Almeria <em>Residential Villas</em></h2>
+      </div>
+      <div class="reveal">
+        <p class="lead">Carlos Visbal es <strong>representante de ventas de Almeria Residential Villas</strong>. Agenda una visita o solicita información de disponibilidad y precios directamente con él.</p>
+        <a href="#contacto" class="btn btn-solid">Solicitar información <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="almeria-gallery">
+      <div class="ph img-reveal"><img src="assets/carlos-visbal/almeria-sala.jpg" alt="Sala de Almeria Residential Villas" onerror="this.closest('.ph').remove()"></div>
+      <div class="ph a-side img-reveal" data-speed="0.05"><img src="assets/carlos-visbal/almeria-dormitorio.jpg" alt="Dormitorio de Almeria Residential Villas" onerror="this.closest('.ph').remove()"></div>
+    </div>
+    <p class="caption">Renders de interiores · Almeria Residential Villas</p>
   </div>
 </section>
 
@@ -699,6 +814,11 @@
         <p>Entre los listings que aparecen actualmente reflejados en su perfil de Zillow se encuentran propiedades desde aproximadamente <strong>$350,000 hasta más de $4.4 millones</strong>, incluyendo oportunidades en Brickell, Downtown Miami y áreas estratégicas para inversión y desarrollo.</p>
         <p>Dentro de este portafolio destacan activos como <strong>7105 NE 4th Ct</strong>, una propiedad multifamiliar presentada por aproximadamente <strong>$4.49 millones</strong>, y <strong>426 NE 26th St</strong>, una oportunidad inmobiliaria en Miami presentada por aproximadamente <strong>$3.2 millones</strong>.</p>
       </div>
+    </div>
+
+    <div class="kpi-band reveal">
+      <div class="kpi-num"><span data-count="7" data-prefix="+$" data-suffix="M">+$7M</span></div>
+      <div class="kpi-text"><span class="live-dot"></span>en listings activos actualmente</div>
     </div>
 
     <div class="cards">
@@ -902,6 +1022,7 @@
             <option>Vender mi propiedad</option>
             <option>Comercializar un proyecto</option>
             <option>Invertir en Brickell</option>
+            <option>Conocer Almeria Residential Villas</option>
           </select>
         </div>
         <div class="field"><label for="f-addr">Dirección / edificio</label><input id="f-addr" name="direccion" placeholder="Ej. 1000 Brickell Ave"></div>
