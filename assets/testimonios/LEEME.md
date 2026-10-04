@@ -43,3 +43,10 @@ aparece sola. Si la lista queda vacía, esa sección no se muestra.
   pueden incrustar; los videos pesan demasiado).
 - **Si compartes el enlace publicado**, todo se ve sin hacer nada más, porque
   la carpeta se publica junto a la página.
+
+## Enlace de Drive para subirlos
+
+Si prefieres no manejar archivos aquí, sube los testimonios a esta carpeta
+de tu Drive y avísame — yo los incorporo:
+
+https://drive.google.com/drive/folders/1xuhvIZMwH152r5-xJb60sahNP_nOWnsi
