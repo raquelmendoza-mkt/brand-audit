@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!--
+  ============================================================
+  RM MARKETING · Propuesta para Grupo Mendoza
+  Página estática, sin dependencias. Se despliega tal cual en
+  Netlify o Vercel (arrastra la carpeta o conecta el repo).
+
+  WHATSAPP → busca "WHATSAPP_NUMERO" al final del archivo.
+  Ahí está el número (04227163477) y los mensajes de cada plan.
+  ============================================================
+-->
+<title>RM Marketing · Estrategia, contenido y Meta Ads para Grupo Mendoza</title>
+<meta name="description" content="Planes de marketing digital para Grupo Mendoza: estrategia, contenido, producción audiovisual y Meta Ads trabajando como un solo sistema. Content $397/mes, Ads $250/mes, Growth $547/mes.">
+<meta name="author" content="RM Marketing">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0A0B" media="(prefers-color-scheme: dark)">
+
+<!-- Open Graph / redes. Al desplegar, cambia las rutas relativas por la URL completa del dominio. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="RM Marketing">
+<meta property="og:title" content="Contenido que conecta. Estrategia que convierte. — RM Marketing">
+<meta property="og:description" content="Estrategia, contenido, producción audiovisual y Meta Ads trabajando juntos para transformar atención en oportunidades comerciales. Propuesta para Grupo Mendoza.">
+<meta property="og:image" content="assets/og-grupo-mendoza.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RM Marketing — Contenido que conecta. Estrategia que convierte.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contenido que conecta. Estrategia que convierte. — RM Marketing">
+<meta name="twitter:description" content="Estrategia, contenido, producción audiovisual y Meta Ads en un mismo sistema.">
+<meta name="twitter:image" content="assets/og-grupo-mendoza.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A0A0B'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='%23fff'%3ERM%3C/text%3E%3Ccircle cx='50' cy='16' r='5' fill='%236C47FF'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "RM Marketing",
+  "description": "Agencia boutique de marketing digital: estrategia, contenido, producción audiovisual y Meta Ads.",
+  "telephone": "+58 422 7163477",
+  "areaServed": "VE",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Planes de marketing digital",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Plan Content", "price": "397", "priceCurrency": "USD", "description": "Estrategia, producción y publicación de 12 piezas mensuales." },
+      { "@type": "Offer", "name": "Plan Ads", "price": "250", "priceCurrency": "USD", "description": "Gestión de campañas en Meta Ads. Inversión publicitaria no incluida." },
+      { "@type": "Offer", "name": "Plan Growth", "price": "547", "priceCurrency": "USD", "description": "Contenido + publicidad en un mismo ecosistema. Inversión publicitaria no incluida." }
+    ]
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:          #0A0A0B;
+  --ink-2:        #141418;
+  --ink-3:        #1E1E24;
+  --paper:        #FFFFFF;
+  --mist:         #F7F6FA;
+  --line:         #E8E6EE;
+  --line-dark:    rgba(255,255,255,0.10);
+  --text:         #0A0A0B;
+  --muted:        #5D5B66;
+  --soft:         #8C8A96;
+  --purple:       #6C47FF;
+  --purple-hover: #5634E8;
+  --purple-tint:  #F2EEFF;
+  --purple-on-dark: #A992FF;
+
+  --font:   'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif:  'Playfair Display', Georgia, serif;
+
+  --maxw:   1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section: clamp(88px, 12vw, 160px);
+  --radius: 22px;
+  --ease:   cubic-bezier(0.22, 1, 0.36, 1);
+  --header-h: 72px;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--paper);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 8px; }
+
+.skip-link {
+  position: absolute; left: 16px; top: -60px; z-index: 200;
+  background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; text-decoration: none; font-size: 14px;
+}
+.skip-link:focus { top: 12px; }
+
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+.section { padding: var(--section) 0; position: relative; }
+.section--mist { background: var(--mist); }
+.section--dark { background: var(--ink); color: #fff; }
+
+/* ============================================================
+   2. TIPOGRAFÍA
+   ============================================================ */
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.035em; line-height: 1.06; }
+h1 { font-size: clamp(40px, 6.2vw, 84px); }
+h2 { font-size: clamp(32px, 4.8vw, 58px); }
+h3 { font-size: clamp(19px, 1.8vw, 22px); letter-spacing: -0.02em; line-height: 1.25; }
+
+.serif { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: -0.02em; }
+.accent { color: var(--purple); }
+.section--dark .accent { color: var(--purple-on-dark); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 22px;
+}
+.eyebrow::before { content: ""; width: 18px; height: 1.5px; background: var(--purple); }
+.section--dark .eyebrow { color: rgba(255,255,255,0.6); }
+.section--dark .eyebrow::before { background: var(--purple-on-dark); }
+
+.lead { font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: var(--muted); font-weight: 400; max-width: 620px; }
+.section--dark .lead { color: rgba(255,255,255,0.66); }
+p { color: var(--muted); }
+.section--dark p { color: rgba(255,255,255,0.66); }
+
+.section-head { max-width: 760px; margin-bottom: clamp(48px, 7vw, 80px); }
+.section-head h2 + .lead { margin-top: 22px; }
+.section-head--center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head--center .lead { margin-left: auto; margin-right: auto; }
+.section-head--center .eyebrow { justify-content: center; }
+
+/* ============================================================
+   3. BOTONES
+   ============================================================ */
+.btn {
+  --bg: var(--ink); --fg: #fff;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 26px; border-radius: 999px;
+  background: var(--bg); color: var(--fg);
+  font-size: 15px; font-weight: 500; letter-spacing: -0.005em; text-decoration: none; white-space: nowrap;
+  border: 1px solid transparent;
+  transition: transform .35s var(--ease), background-color .25s, box-shadow .35s var(--ease), border-color .25s, color .25s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn .arrow { transition: transform .35s var(--ease); }
+.btn:hover .arrow { transform: translateX(3px); }
+
+.btn--primary { --bg: var(--purple); box-shadow: 0 10px 28px -12px rgba(108,71,255,0.7); }
+.btn--primary:hover { --bg: var(--purple-hover); box-shadow: 0 16px 34px -12px rgba(108,71,255,0.75); }
+.btn--dark:hover { --bg: #26262C; }
+.btn--ghost { --bg: transparent; --fg: var(--text); border-color: var(--line); }
+.btn--ghost:hover { border-color: var(--text); }
+.btn--light { --bg: #fff; --fg: var(--ink); }
+.btn--light:hover { --bg: #EDEBF3; }
+.btn--sm { min-height: 42px; padding: 0 18px; font-size: 14px; }
+.btn--lg { min-height: 62px; padding: 0 34px; font-size: 16.5px; }
+.btn--block { width: 100%; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+@media (max-width: 400px) { .btn { white-space: normal; text-align: center; line-height: 1.3; } }
+
+.text-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--purple); font-weight: 500; text-decoration: none; font-size: 15px;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size .35s var(--ease);
+}
+.text-link:hover { background-size: 100% 1px; }
+
+/* ============================================================
+   4. HEADER
+   ============================================================ */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header-h);
+  transition: background-color .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.header.is-scrolled {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px);
+  border-bottom-color: rgba(10,10,11,0.06);
+}
+.header.is-dark { color: #fff; }
+.header.is-dark.is-scrolled { background: rgba(10,10,11,0.66); border-bottom-color: rgba(255,255,255,0.08); }
+.header.is-dark .nav a { color: rgba(255,255,255,0.62); }
+.header.is-dark .nav a:hover, .header.is-dark .nav a.is-active { color: #fff; }
+.header.is-dark .nav a::after { background: var(--purple-on-dark); }
+.header.is-dark .btn--dark { --bg: #fff; --fg: var(--ink); }
+.header.is-dark .menu-toggle span { background: #fff; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header.is-scrolled { background: rgba(255,255,255,0.97); }
+}
+.header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+.logo { display: inline-flex; align-items: center; gap: 2px; text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -0.03em; }
+.logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); margin-left: 3px; transform: translateY(5px); }
+.logo-light { font-weight: 300; margin-left: 5px; }
+
+.nav { display: flex; align-items: center; gap: 34px; }
+.nav a {
+  position: relative; text-decoration: none; font-size: 14.5px; color: var(--muted); font-weight: 400;
+  transition: color .2s;
+}
+.nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1.5px; background: var(--purple);
+  transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease);
+}
+.nav a:hover, .nav a.is-active { color: var(--text); }
+.nav a:hover::after, .nav a.is-active::after { transform: scaleX(1); }
+
+.header-actions { display: flex; align-items: center; gap: 10px; }
+
+.menu-toggle { display: none; width: 44px; height: 44px; border-radius: 50%; align-items: center; justify-content: center; position: relative; }
+.menu-toggle span { position: absolute; width: 18px; height: 1.5px; background: var(--text); border-radius: 2px; transition: transform .35s var(--ease), opacity .2s; }
+.menu-toggle span:nth-child(1) { transform: translateY(-4px); }
+.menu-toggle span:nth-child(2) { transform: translateY(4px); }
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { transform: rotate(-45deg); }
+
+.mobile-menu {
+  position: fixed; top: var(--header-h); left: 0; right: 0; z-index: 99;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+  padding: 8px var(--gutter) 28px;
+  transform: translateY(-8px); opacity: 0; visibility: hidden;
+  transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s;
+}
+.mobile-menu.is-open { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+.mobile-menu a:not(.btn) {
+  display: block; padding: 16px 0; border-bottom: 1px solid var(--line);
+  font-size: 20px; font-weight: 500; letter-spacing: -0.02em; text-decoration: none;
+}
+.mobile-menu .btn { margin-top: 24px; }
+
+@media (max-width: 960px) {
+  .nav { display: none; }
+  .menu-toggle { display: inline-flex; }
+}
+@media (max-width: 480px) {
+  :root { --header-h: 64px; }
+  .header .btn--sm { padding: 0 14px; font-size: 13px; min-height: 38px; }
+  .logo { font-size: 16.5px; }
+}
+@media (max-width: 359px) { .header .btn--sm { display: none; } }
+
+/* ============================================================
+   5. HERO
+   ============================================================ */
+.hero {
+  position: relative; overflow: hidden;
+  padding: calc(var(--header-h) + clamp(40px, 6.5vw, 92px)) 0 clamp(72px, 10vw, 130px);
+}
+.hero::before { /* retícula muy sutil, se desvanece hacia los bordes */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(10,10,11,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,11,0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 60% 70% at 70% 40%, #000 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 70% 40%, #000 0%, transparent 70%);
+}
+.hero-grid {
+  position: relative; display: grid; grid-template-columns: 1.1fr 0.9fr;
+  grid-template-areas: "title visual" "copy visual";
+  column-gap: clamp(40px, 6vw, 80px); align-items: start;
+}
+.hero-title { grid-area: title; }
+.hero-copy { grid-area: copy; }
+.hero-visual { grid-area: visual; align-self: center; }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 14px 7px 8px; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.8);
+  font-size: 13px; color: var(--muted); margin-bottom: 30px;
+}
+.hero-tag b { background: var(--purple-tint); color: var(--purple); font-weight: 500; padding: 3px 10px; border-radius: 999px; font-size: 12px; }
+
+.hero h1 .line { display: block; }
+.hero h1 .serif { font-size: 1.04em; }
+.hero .lead { margin-top: 30px; max-width: 560px; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.hero-proof {
+  margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft);
+  max-width: 560px;
+}
+.hero-proof i { width: 3px; height: 3px; border-radius: 50%; background: var(--purple); }
+
+/* Visual: teléfono + tarjetas */
+.hero-visual { position: relative; height: 560px; }
+.phone {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 262px; height: 536px; border-radius: 42px; padding: 10px;
+  background: var(--ink);
+  box-shadow: 0 50px 80px -40px rgba(10,10,11,0.45), 0 0 0 1px rgba(10,10,11,0.06);
+}
+.phone-screen {
+  position: relative; height: 100%; border-radius: 33px; overflow: hidden;
+  background: radial-gradient(120% 70% at 50% 35%, #26213E 0%, #121116 60%, #0C0C0F 100%);
+}
+.phone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 82px; height: 22px; background: #000; border-radius: 999px; z-index: 2; }
+.reel-top { position: absolute; top: 46px; left: 18px; right: 18px; display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #fff; }
+.reel-top span:last-child { opacity: .55; font-weight: 400; }
+.reel-play {
+  position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);
+  width: 64px; height: 64px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.35); display: grid; place-items: center;
+  backdrop-filter: blur(4px);
+}
+.reel-play::after { content: ""; border-left: 15px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px; }
+.reel-side { position: absolute; right: 14px; bottom: 120px; display: grid; gap: 18px; }
+.reel-side i { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.75); }
+.reel-meta { position: absolute; left: 16px; right: 60px; bottom: 34px; }
+.reel-handle { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12.5px; font-weight: 500; margin-bottom: 10px; }
+.reel-handle i { width: 24px; height: 24px; border-radius: 50%; background: var(--purple); }
+.reel-meta .bar { height: 7px; border-radius: 4px; background: rgba(255,255,255,0.28); margin-top: 7px; }
+.reel-meta .bar:nth-child(3) { width: 72%; }
+.reel-progress { position: absolute; left: 16px; right: 16px; bottom: 16px; height: 2px; background: rgba(255,255,255,0.18); border-radius: 2px; overflow: hidden; }
+.reel-progress::after { content: ""; position: absolute; inset: 0; background: #fff; transform-origin: left; animation: progress 6s linear infinite; }
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.float-card {
+  position: absolute; z-index: 3;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(10,10,11,0.06); border-radius: 18px;
+  box-shadow: 0 24px 50px -24px rgba(10,10,11,0.25);
+  padding: 16px 18px;
+  animation: float 7s ease-in-out infinite;
+}
+.float-card small { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); font-weight: 500; }
+.float-card strong { display: block; font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em; margin-top: 2px; }
+
+.card-retention { top: 54px; left: -6px; width: 212px; }
+.bars { display: flex; align-items: flex-end; gap: 6px; height: 54px; margin-top: 14px; }
+.bars i { flex: 1; border-radius: 4px 4px 2px 2px; background: #E7E4F0; transform-origin: bottom; animation: grow 1.2s var(--ease) both; }
+.bars i.is-top { background: var(--purple); }
+.bars i:nth-child(1) { height: 42%; animation-delay: .5s; }
+.bars i:nth-child(2) { height: 58%; animation-delay: .58s; }
+.bars i:nth-child(3) { height: 36%; animation-delay: .66s; }
+.bars i:nth-child(4) { height: 100%; animation-delay: .74s; }
+.bars i:nth-child(5) { height: 52%; animation-delay: .82s; }
+.bars i:nth-child(6) { height: 64%; animation-delay: .9s; }
+@keyframes grow { from { transform: scaleY(0); } }
+
+.card-ads { bottom: 64px; right: -8px; width: 226px; animation-delay: -3.5s; }
+.ads-flow { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 12.5px; color: var(--muted); }
+.ads-flow span { padding: 5px 10px; border-radius: 999px; background: var(--mist); }
+.ads-flow span:last-child { background: var(--purple-tint); color: var(--purple); font-weight: 500; }
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); margin-top: 10px; }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 0 4px rgba(108,71,255,0.15); animation: pulse 2.4s ease-in-out infinite; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(108,71,255,0.15); } 50% { box-shadow: 0 0 0 7px rgba(108,71,255,0.06); } }
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; grid-template-areas: "title" "copy" "visual"; }
+  .hero-visual { height: 520px; max-width: 460px; width: 100%; margin: 56px auto 0; }
+}
+@media (max-width: 480px) {
+  .hero-ctas .btn { width: 100%; }
+  .btn--lg { padding: 0 24px; }
+  .hero-visual { height: 470px; }
+  .phone { width: 228px; height: 466px; border-radius: 38px; }
+  .phone-screen { border-radius: 29px; }
+  .card-retention { left: 0; top: 18px; width: 180px; padding: 13px 14px; }
+  .card-ads { right: 0; bottom: 26px; width: 200px; padding: 13px 14px; }
+  .bars { height: 42px; }
+  .float-card small { font-size: 9.5px; letter-spacing: 0.1em; white-space: nowrap; }
+  .float-card strong { font-size: 13.5px; }
+}
+
+/* ============================================================
+   6. PROBLEMA
+   ============================================================ */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.problem-grid h2 { max-width: 560px; }
+.problem-copy p { font-size: 17.5px; line-height: 1.75; }
+.problem-copy p + p { margin-top: 18px; }
+.problem-copy strong { color: var(--text); font-weight: 500; }
+
+.flow {
+  list-style: none; margin-top: clamp(56px, 8vw, 96px);
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+  border: 1px solid var(--line); border-radius: var(--radius); background: #fff; overflow: hidden;
+}
+.flow li { position: relative; padding: 26px 22px; border-right: 1px solid var(--line); }
+.flow li:last-child { border-right: 0; }
+.flow li small { display: block; font-size: 12px; color: var(--soft); font-weight: 500; letter-spacing: 0.08em; }
+.flow li span { display: block; margin-top: 18px; font-size: 17px; font-weight: 500; letter-spacing: -0.02em; }
+.flow li::after { /* flecha que conecta los pasos */
+  content: "→"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 1px solid var(--line);
+  display: grid; place-items: center; font-size: 11px; color: var(--purple); z-index: 1;
+}
+.flow li:last-child::after { display: none; }
+.flow li:last-child span { color: var(--purple); }
+
+.truths { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 40px); margin-top: clamp(48px, 7vw, 80px); }
+.truth { padding-top: 20px; border-top: 1px solid var(--text); }
+.truth small { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); font-weight: 500; }
+.truth p { margin-top: 12px; color: var(--text); font-size: 18px; line-height: 1.45; letter-spacing: -0.015em; font-weight: 400; }
+
+@media (max-width: 900px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .flow { grid-template-columns: 1fr; }
+  .flow li { border-right: 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 18px; padding: 20px 22px; }
+  .flow li:last-child { border-bottom: 0; }
+  .flow li span { margin-top: 0; }
+  .flow li::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -11px; transform: translateX(-50%); }
+  .truths { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) { .truths { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   7. SERVICIOS
+   ============================================================ */
+.services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.service { background: #fff; padding: clamp(28px, 3vw, 40px); min-height: 300px; display: flex; flex-direction: column; transition: background-color .4s var(--ease); }
+.service:hover { background: var(--mist); }
+.service .num { font-size: 13px; color: var(--purple); font-weight: 500; }
+.service h3 { margin-top: auto; padding-top: 48px; }
+.service p { margin-top: 12px; font-size: 15px; line-height: 1.65; }
+@media (max-width: 960px) { .services { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) {
+  .services { grid-template-columns: 1fr; }
+  .service { min-height: 0; }
+  .service h3 { padding-top: 28px; }
+}
+
+/* ============================================================
+   8. PLANES
+   ============================================================ */
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+
+.plan {
+  position: relative; display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: 26px;
+  padding: clamp(28px, 3vw, 38px);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .3s;
+}
+.plan:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -36px rgba(10,10,11,0.22); }
+
+.plan-name { font-size: 13px; font-weight: 600; letter-spacing: 0.2em; color: var(--text); }
+.plan-price { display: flex; align-items: baseline; gap: 6px; margin-top: 26px; flex-wrap: wrap; }
+.plan-price .amount { color: var(--text); font-size: clamp(46px, 5vw, 60px); font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
+.plan-price .per { font-size: 16px; color: var(--soft); }
+.plan-price .old { width: 100%; font-size: 17px; color: var(--soft); text-decoration: line-through; text-decoration-thickness: 1.5px; margin-bottom: 4px; }
+.plan-extra { margin-top: 10px; font-size: 14px; font-weight: 500; color: var(--purple); }
+.plan-desc { margin-top: 20px; font-size: 15px; line-height: 1.65; min-height: 75px; }
+.plan .btn { margin-top: 28px; }
+.plan-save { margin-top: 12px; text-align: center; font-size: 13.5px; font-weight: 500; }
+
+.plan-body { margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); }
+.plan-label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); margin-bottom: 14px; }
+.plan-group + .plan-group { margin-top: 24px; }
+.checks { list-style: none; display: grid; gap: 10px; }
+.checks li { position: relative; padding-left: 26px; font-size: 14.5px; line-height: 1.5; color: var(--text); }
+.checks li::before {
+  content: ""; position: absolute; left: 0; top: 4px; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--purple-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%236C47FF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 13px no-repeat;
+}
+
+.plan-note { margin-top: 26px; padding: 14px 16px; border-radius: 14px; background: var(--mist); font-size: 13px; line-height: 1.6; color: var(--muted); }
+.plan-note strong { color: var(--text); font-weight: 600; }
+.plan-note + .plan-note { margin-top: 10px; }
+.plan-note--accent { background: var(--purple-tint); color: #3D2C8F; }
+.plan-note--accent strong { color: #2A1D72; }
+
+/* Plan destacado */
+.plan--featured { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: 0 40px 80px -40px rgba(56,32,160,0.55); }
+.plan--featured:hover { box-shadow: 0 50px 90px -40px rgba(56,32,160,0.65); }
+.plan--featured::before { /* filo morado superior */
+  content: ""; position: absolute; top: -1px; left: 32px; right: 32px; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple-on-dark), transparent);
+}
+.plan--featured .plan-name, .plan--featured .plan-price .amount { color: #fff; }
+.plan--featured .plan-price .per, .plan--featured .plan-price .old { color: rgba(255,255,255,0.45); }
+.plan--featured .plan-extra { color: var(--purple-on-dark); }
+.plan--featured .plan-desc { color: rgba(255,255,255,0.7); }
+.plan--featured .plan-body { border-top-color: var(--line-dark); }
+.plan--featured .plan-label { color: var(--purple-on-dark); }
+.plan--featured .checks li { color: rgba(255,255,255,0.88); }
+.plan--featured .checks li::before {
+  background-color: rgba(169,146,255,0.16);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23A992FF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.plan--featured .plan-save { color: var(--purple-on-dark); }
+.plan--featured .plan-note { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.62); }
+.plan--featured .plan-note strong { color: #fff; }
+
+.badge {
+  position: absolute; top: clamp(28px, 3vw, 38px); right: clamp(28px, 3vw, 38px);
+  padding: 6px 12px; border-radius: 999px;
+  background: var(--purple); color: #fff;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em;
+}
+
+/* Lista plegable en móvil (JS añade .is-collapsible) */
+.collapse-btn { display: none; }
+@media (max-width: 720px) {
+  .plan-body.is-collapsible { position: relative; max-height: 330px; overflow: hidden; transition: max-height .6s var(--ease); }
+  .plan-body.is-collapsible::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 110px; pointer-events: none;
+    background: linear-gradient(rgba(255,255,255,0), #fff 85%); transition: opacity .3s;
+  }
+  .plan--featured .plan-body.is-collapsible::after { background: linear-gradient(rgba(10,10,11,0), var(--ink) 85%); }
+  .plan-body.is-collapsible.is-expanded { max-height: 2400px; }
+  .plan-body.is-collapsible.is-expanded::after { opacity: 0; }
+  .collapse-btn {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+    font-size: 14px; font-weight: 500; color: var(--purple);
+  }
+  .plan--featured .collapse-btn { color: var(--purple-on-dark); }
+  .collapse-btn svg { width: 14px; height: 14px; transition: transform .35s var(--ease); }
+  .collapse-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+}
+
+@media (max-width: 1060px) {
+  .plans { grid-template-columns: 1fr 1fr; }
+  .plan--featured { grid-column: 1 / -1; }
+  .plan--featured .plan-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .plan--featured .plan-group + .plan-group { margin-top: 0; }
+  .plan-desc { min-height: 0; }
+}
+@media (max-width: 720px) {
+  .plans { grid-template-columns: 1fr; gap: 16px; }
+  .plan--featured { grid-column: auto; }
+  .plan--featured .plan-body { display: block; }
+  .plan--featured .plan-group + .plan-group { margin-top: 24px; }
+}
+
+/* Tabla comparativa */
+.compare { margin-top: clamp(80px, 10vw, 128px); }
+.compare-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; flex-wrap: wrap; }
+.compare-head h3 { font-size: clamp(24px, 2.6vw, 32px); }
+.compare-head p { font-size: 15px; max-width: 420px; }
+
+.table-wrap { border: 1px solid var(--line); border-radius: var(--radius); background: #fff; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table { width: 100%; border-collapse: collapse; min-width: 560px; font-size: 15px; }
+.table th, .table td { padding: 17px 20px; text-align: center; border-bottom: 1px solid var(--line); }
+.table th:first-child, .table td:first-child { text-align: left; }
+.table thead th { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); padding-top: 22px; padding-bottom: 22px; }
+.table thead th.col-growth { color: var(--purple); }
+.table tbody th { font-weight: 400; color: var(--text); }
+.table .col-growth { background: rgba(108,71,255,0.045); }
+.table thead th:not(:first-child) { width: 19%; }
+.table .yes { color: var(--purple); font-weight: 600; font-size: 17px; }
+.table .no { color: #C3C1CB; }
+.table tbody tr { transition: background-color .2s; }
+.table tbody tr:hover { background: var(--mist); }
+.table tfoot th, .table tfoot td { border-bottom: 0; padding-top: 22px; padding-bottom: 22px; }
+.table tfoot td { font-size: 22px; font-weight: 600; letter-spacing: -0.03em; }
+.table tfoot td small { display: block; font-size: 11.5px; font-weight: 400; letter-spacing: 0; color: var(--soft); margin-top: 2px; }
+.table tfoot th { font-weight: 500; }
+.table-cta td { padding-top: 0 !important; }
+.table-cta a { font-size: 13.5px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 600px) {
+  .table { font-size: 13.5px; min-width: 0; }
+  .table th, .table td { padding: 14px 8px; }
+  .table th:first-child, .table td:first-child { padding-left: 16px; }
+  .table thead th { font-size: 10.5px; letter-spacing: 0.08em; }
+  .table tfoot td { font-size: 17px; }
+  .table-cta { display: none; }
+}
+
+/* ============================================================
+   9. DIFERENCIADOR (oscuro)
+   ============================================================ */
+.diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+.diff-grid h2 { max-width: 600px; }
+.diff-copy p { font-size: 17px; line-height: 1.75; }
+.diff-copy p + p { margin-top: 18px; }
+
+.loop {
+  list-style: none; margin-top: clamp(56px, 8vw, 96px);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--line-dark);
+}
+.loop li { position: relative; padding: 26px 18px 0 0; }
+.loop li::before { /* indicador que se enciende en secuencia */
+  content: ""; position: absolute; top: -1px; left: 0; right: 14px; height: 2px; background: var(--purple-on-dark);
+  transform: scaleX(0); transform-origin: left; transition: transform .8s var(--ease);
+}
+.loop.is-in li::before { transform: scaleX(1); }
+.loop.is-in li:nth-child(2)::before { transition-delay: .25s; }
+.loop.is-in li:nth-child(3)::before { transition-delay: .5s; }
+.loop.is-in li:nth-child(4)::before { transition-delay: .75s; }
+.loop.is-in li:nth-child(5)::before { transition-delay: 1s; }
+.loop small { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 500; }
+.loop span { display: block; margin-top: 12px; font-size: clamp(14px, 1.45vw, 18px); font-weight: 600; letter-spacing: 0.08em; }
+.loop li:nth-child(4) span { color: var(--purple-on-dark); }
+
+.section--dark .quote, .quote {
+  margin-top: clamp(72px, 10vw, 128px); max-width: 980px;
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(32px, 5vw, 64px); line-height: 1.12; letter-spacing: -0.025em; color: #fff;
+}
+.quote em { font-style: italic; color: var(--purple-on-dark); }
+
+@media (max-width: 900px) {
+  .diff-grid { grid-template-columns: 1fr; }
+  .loop { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid var(--line-dark); }
+  .loop li { padding: 14px 0 14px 22px; display: flex; align-items: baseline; gap: 16px; }
+  .loop li::before { top: 0; bottom: 0; left: -1px; right: auto; width: 2px; height: auto; transform: scaleY(0); transform-origin: top; }
+  .loop.is-in li::before { transform: scaleY(1); }
+  .loop span { margin-top: 0; font-size: 16px; }
+}
+
+/* ============================================================
+   10. METODOLOGÍA
+   ============================================================ */
+.steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(24px, 3vw, 40px); }
+.step { position: relative; padding-top: 28px; border-top: 1px solid var(--line); }
+.step::before {
+  content: ""; position: absolute; top: -1px; left: 0; width: 40px; height: 2px; background: var(--purple);
+  transition: width .6s var(--ease);
+}
+.step:hover::before { width: 100%; }
+.step .num { font-size: clamp(44px, 5vw, 64px); font-weight: 300; letter-spacing: -0.05em; line-height: 1; color: var(--text); }
+.step h3 { margin-top: 28px; }
+.step p { margin-top: 12px; font-size: 15px; line-height: 1.7; }
+@media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; row-gap: 48px; } }
+@media (max-width: 560px) { .steps { grid-template-columns: 1fr; row-gap: 40px; } }
+
+/* ============================================================
+   11. ADD-ONS
+   ============================================================ */
+.addons-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+.addons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.addon {
+  background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px;
+  display: flex; flex-direction: column; gap: 28px; min-height: 168px;
+  transition: border-color .3s, transform .5s var(--ease);
+}
+.addon:hover { border-color: var(--purple); transform: translateY(-3px); }
+.addon h3 { font-size: 17px; font-weight: 500; line-height: 1.35; }
+.addon .price { margin-top: auto; font-size: 14px; color: var(--muted); }
+.addon .price b { display: block; font-size: 26px; font-weight: 600; color: var(--purple); letter-spacing: -0.03em; line-height: 1.2; }
+@media (max-width: 960px) { .addons { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .addons { grid-template-columns: 1fr; } .addon { min-height: 0; } }
+
+/* ============================================================
+   12. COMPROMISO
+   ============================================================ */
+.months { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: m; }
+.month { position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(28px, 3vw, 36px); overflow: hidden; }
+.month-track { display: flex; gap: 6px; margin-bottom: 30px; }
+.month-track i { flex: 1; height: 4px; border-radius: 4px; background: var(--line); }
+.month-track i.on { background: var(--purple); }
+.month small { font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple); }
+.month h3 { margin-top: 8px; }
+.month p { margin-top: 12px; font-size: 15px; line-height: 1.7; }
+.disclaimer {
+  margin-top: 28px; display: flex; gap: 16px; align-items: flex-start;
+  padding: 22px 24px; border-radius: 18px; border: 1px dashed #D5D2DE;
+  font-size: 14px; line-height: 1.7; color: var(--muted);
+}
+.disclaimer b { flex: none; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); padding-top: 3px; }
+@media (max-width: 860px) { .months { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .disclaimer { flex-direction: column; gap: 6px; } }
+
+/* ============================================================
+   13. FAQ
+   ============================================================ */
+.faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+.faq-aside { position: sticky; top: calc(var(--header-h) + 32px); }
+.faq-aside p { margin-top: 20px; }
+.faq-aside .text-link { margin-top: 24px; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-q {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 26px 0; text-align: left; font-size: clamp(16.5px, 1.6vw, 19px); font-weight: 500; letter-spacing: -0.015em;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--purple); }
+.faq-icon { position: relative; flex: none; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); transition: background-color .3s, border-color .3s, transform .4s var(--ease); }
+.faq-icon::before, .faq-icon::after { content: ""; position: absolute; top: 50%; left: 50%; width: 11px; height: 1.5px; background: currentColor; transform: translate(-50%, -50%); transition: transform .4s var(--ease); }
+.faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-q[aria-expanded="true"] .faq-icon { background: var(--purple); border-color: var(--purple); color: #fff; transform: rotate(180deg); }
+.faq-q[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.faq-a { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .45s var(--ease), visibility 0s linear .45s; }
+.faq-a > div { overflow: hidden; }
+.faq-a p { padding: 0 56px 28px 0; font-size: 15.5px; line-height: 1.75; }
+.faq-item.is-open .faq-a { grid-template-rows: 1fr; visibility: visible; transition-delay: 0s; }
+@media (max-width: 900px) {
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-aside { position: static; }
+  .faq-a p { padding-right: 0; }
+}
+
+/* ============================================================
+   14. CTA FINAL + FOOTER
+   ============================================================ */
+.final { position: relative; overflow: hidden; text-align: center; padding: clamp(110px, 14vw, 190px) 0; }
+.final::before { /* halo morado discreto */
+  content: ""; position: absolute; left: 50%; top: 100%; width: 1100px; height: 700px; transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(108,71,255,0.32), transparent); pointer-events: none;
+}
+.final .wrap { position: relative; }
+.final h2 { font-size: clamp(38px, 6.4vw, 84px); max-width: 1000px; margin: 0 auto; }
+.final .lead { margin: 28px auto 0; text-align: center; }
+.final .btn { margin-top: 48px; }
+.final .fine { margin: 22px auto 0; max-width: 460px; font-size: 14px; color: rgba(255,255,255,0.5); }
+@media (max-width: 480px) { .final .btn { width: 100%; white-space: normal; text-align: center; padding: 14px 22px; } }
+
+.footer { background: var(--ink); color: rgba(255,255,255,0.5); border-top: 1px solid var(--line-dark); padding: 36px 0 calc(36px + env(safe-area-inset-bottom)); font-size: 13.5px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer .logo { color: #fff; font-size: 16px; }
+.footer a:not(.logo) { color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer a:not(.logo):hover { color: #fff; }
+
+/* WhatsApp flotante */
+.wa-float {
+  position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom)); z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--purple); color: #fff; display: grid; place-items: center;
+  box-shadow: 0 16px 34px -14px rgba(108,71,255,0.8);
+  opacity: 0; transform: translateY(16px) scale(.92); pointer-events: none;
+  transition: opacity .4s var(--ease), transform .4s var(--ease), background-color .25s;
+}
+.wa-float.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.wa-float:hover { background: var(--purple-hover); }
+.wa-float svg { width: 24px; height: 24px; }
+
+/* ============================================================
+   15. ANIMACIÓN DE ENTRADA
+   ============================================================ */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+.js .reveal[data-delay="1"] { transition-delay: .08s; }
+.js .reveal[data-delay="2"] { transition-delay: .16s; }
+.js .reveal[data-delay="3"] { transition-delay: .24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ========================= HEADER ========================= -->
+<header class="header" id="header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#inicio" aria-label="RM Marketing, ir al inicio">RM<span class="logo-light">Marketing</span><span class="logo-dot" aria-hidden="true"></span></a>
+
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#planes">Planes</a>
+      <a href="#como-trabajamos">Cómo trabajamos</a>
+      <a href="#faq">Preguntas frecuentes</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn--dark btn--sm" href="#contacto" data-wa="general">Solicitar propuesta</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-label="Menú móvil">
+  <a href="#servicios">Servicios</a>
+  <a href="#planes">Planes</a>
+  <a href="#como-trabajamos">Cómo trabajamos</a>
+  <a href="#faq">Preguntas frecuentes</a>
+  <a class="btn btn--primary btn--block" href="#contacto" data-wa="general">Solicitar propuesta</a>
+</div>
+
+<main id="contenido">
+
+<!-- ========================= HERO ========================= -->
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-title">
+      <p class="hero-tag reveal"><b>Propuesta</b> Preparada para Grupo Mendoza</p>
+      <h1 id="hero-title" class="reveal" data-delay="1">
+        <span class="line">Contenido que conecta.</span>
+        <span class="line">Estrategia que <span class="serif accent">convierte.</span></span>
+      </h1>
+    </div>
+    <div class="hero-copy">
+      <p class="lead reveal" data-delay="2">Creamos sistemas de marketing que combinan estrategia, contenido, producción audiovisual y publicidad para convertir la atención de tu audiencia en oportunidades reales de negocio.</p>
+      <div class="hero-ctas reveal" data-delay="3">
+        <a class="btn btn--primary btn--lg" href="#contacto" data-wa="general">Quiero potenciar mi marca <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="#planes">Ver planes</a>
+      </div>
+      <p class="hero-proof reveal" data-delay="3" aria-label="Estrategia, Contenido, Producción y Meta Ads">
+        <span>Estrategia</span><i></i><span>Contenido</span><i></i><span>Producción</span><i></i><span>Meta Ads</span>
+      </p>
+    </div>
+
+    <div class="hero-visual reveal" data-delay="2" aria-hidden="true">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="reel-top"><span>Reels</span><span>00:24</span></div>
+          <div class="reel-play"></div>
+          <div class="reel-side"><i></i><i></i><i></i></div>
+          <div class="reel-meta">
+            <div class="reel-handle"><i></i>tu marca</div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+          <div class="reel-progress"></div>
+        </div>
+      </div>
+
+      <div class="float-card card-retention">
+        <small>Retención por pieza</small>
+        <strong>Contenido ganador</strong>
+        <div class="bars"><i></i><i></i><i></i><i class="is-top"></i><i></i><i></i></div>
+      </div>
+
+      <div class="float-card card-ads">
+        <small>Meta Ads</small>
+        <strong>Campaña de remarketing</strong>
+        <div class="ads-flow"><span>Reel</span>→<span>Anuncio</span></div>
+        <span class="status">Optimizando esta semana</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PROBLEMA ========================= -->
+<section class="section section--mist" aria-labelledby="problema-title">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="reveal">
+        <span class="eyebrow">El enfoque</span>
+        <h2 id="problema-title">Tu negocio no necesita simplemente <span class="serif">“publicar más”.</span></h2>
+      </div>
+      <div class="problem-copy reveal" data-delay="1">
+        <p>Publicar constantemente sin una estrategia detrás puede generar visualizaciones, pero no necesariamente crecimiento ni oportunidades comerciales.</p>
+        <p>Por eso nuestro enfoque <strong>conecta cada pieza del ecosistema.</strong> No creamos contenido por crear contenido: construimos un sistema donde estrategia, contenido y publicidad trabajan juntos para transformar atención en oportunidades comerciales.</p>
+      </div>
+    </div>
+
+    <ol class="flow reveal" aria-label="El ecosistema, paso a paso">
+      <li><small>01</small><span>Estrategia</span></li>
+      <li><small>02</small><span>Contenido</span></li>
+      <li><small>03</small><span>Distribución</span></li>
+      <li><small>04</small><span>Publicidad</span></li>
+      <li><small>05</small><span>Optimización</span></li>
+    </ol>
+
+    <div class="truths">
+      <div class="truth reveal"><small>Contenido</small><p>El contenido genera atención.</p></div>
+      <div class="truth reveal" data-delay="1"><small>Datos</small><p>Los datos nos muestran qué mensajes conectan.</p></div>
+      <div class="truth reveal" data-delay="2"><small>Publicidad</small><p>La publicidad amplifica lo que funciona.</p></div>
+      <div class="truth reveal" data-delay="3"><small>Optimización</small><p>Y la optimización convierte esa información en mejores decisiones de marketing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SERVICIOS ========================= -->
+<section class="section" id="servicios" aria-labelledby="servicios-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2 id="servicios-title">Cuatro disciplinas. <span class="serif">Un solo sistema.</span></h2>
+      <p class="lead">Cada área tiene un rol claro. Lo que marca la diferencia es cómo se conectan entre sí.</p>
+    </div>
+
+    <div class="services">
+      <article class="service reveal">
+        <span class="num">01</span>
+        <h3>Estrategia</h3>
+        <p>Definimos a quién le hablamos, qué decimos y por qué. Cada mes partimos del análisis de tu negocio, tu competencia y tus resultados.</p>
+      </article>
+      <article class="service reveal" data-delay="1">
+        <span class="num">02</span>
+        <h3>Contenido</h3>
+        <p>Calendario, guiones, diseño y copywriting pensados para construir autoridad y abrir conversaciones, no para llenar el feed.</p>
+      </article>
+      <article class="service reveal" data-delay="2">
+        <span class="num">03</span>
+        <h3>Producción audiovisual</h3>
+        <p>Una jornada mensual de grabación con dirección en set y edición de Reels para que tu marca se vea y se escuche como es.</p>
+      </article>
+      <article class="service reveal" data-delay="3">
+        <span class="num">04</span>
+        <h3>Meta Ads</h3>
+        <p>Campañas estructuradas, segmentadas y optimizadas cada semana para convertir alcance en conversaciones y oportunidades.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PLANES ========================= -->
+<section class="section section--mist" id="planes" aria-labelledby="planes-title">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Planes</span>
+      <h2 id="planes-title">Elige cómo quieres crecer</h2>
+      <p class="lead">Puedes trabajar cada área individualmente o integrar contenido + publicidad dentro de un mismo ecosistema.</p>
+    </div>
+
+    <div class="plans">
+      <!-- ---------- PLAN CONTENT ---------- -->
+      <article class="plan reveal" aria-labelledby="plan-content">
+        <h3 class="plan-name" id="plan-content">CONTENT</h3>
+        <p class="plan-price"><span class="amount">$397</span><span class="per">/ mes</span></p>
+        <p class="plan-desc">Para marcas que necesitan construir una presencia digital estratégica y profesional.</p>
+        <a class="btn btn--dark btn--block" href="#contacto" data-wa="content">Quiero este plan <span class="arrow" aria-hidden="true">→</span></a>
+
+        <div class="plan-body" data-collapsible>
+          <p class="plan-label">Incluye</p>
+          <ul class="checks">
+            <li>Estrategia mensual de contenido</li>
+            <li>Investigación de competencia y tendencias</li>
+            <li>Calendario estratégico de contenido</li>
+            <li>12 publicaciones mensuales</li>
+            <li>8 Reels</li>
+            <li>4 carruseles/posts</li>
+            <li>Guiones para Reels</li>
+            <li>1 jornada mensual de grabación de hasta 4 horas</li>
+            <li>Dirección durante la grabación</li>
+            <li>Edición de Reels</li>
+            <li>Diseño de carruseles y portadas</li>
+            <li>Copywriting para captions</li>
+            <li>Programación y publicación</li>
+            <li>Optimización básica del perfil</li>
+            <li>Reporte mensual de resultados</li>
+            <li>Recomendaciones estratégicas para el siguiente mes</li>
+          </ul>
+        </div>
+        <div class="plan-foot">
+          <p class="plan-note">Community Management, historias frecuentes y gestión de mensajes/comentarios no están incluidos y pueden contratarse adicionalmente.</p>
+        </div>
+      </article>
+
+      <!-- ---------- PLAN ADS ---------- -->
+      <article class="plan reveal" data-delay="1" aria-labelledby="plan-ads">
+        <h3 class="plan-name" id="plan-ads">ADS</h3>
+        <p class="plan-price"><span class="amount">$250</span><span class="per">/ mes</span></p>
+        <p class="plan-extra">+ inversión publicitaria</p>
+        <p class="plan-desc">Para negocios que ya cuentan con contenido y necesitan utilizar publicidad para generar alcance, conversaciones, leads u oportunidades comerciales.</p>
+        <a class="btn btn--dark btn--block" href="#contacto" data-wa="ads">Quiero hacer publicidad <span class="arrow" aria-hidden="true">→</span></a>
+
+        <div class="plan-body" data-collapsible>
+          <p class="plan-label">Incluye</p>
+          <ul class="checks">
+            <li>Investigación del público objetivo</li>
+            <li>Estrategia publicitaria mensual</li>
+            <li>Configuración/revisión de Meta Business Manager</li>
+            <li>Creación y estructuración de campañas</li>
+            <li>Hasta 3 campañas activas simultáneamente</li>
+            <li>Segmentaciones y públicos personalizados</li>
+            <li>Copywriting publicitario</li>
+            <li>Adaptación de creativos</li>
+            <li>Remarketing</li>
+            <li>Pruebas A/B</li>
+            <li>Optimización semanal</li>
+            <li>Seguimiento de CPL, CTR, CPM, CPC y resultados</li>
+            <li>Reporte mensual</li>
+            <li>Reunión mensual de resultados</li>
+          </ul>
+        </div>
+        <div class="plan-foot">
+          <p class="plan-note plan-note--accent"><strong>La inversión publicitaria en Meta no está incluida dentro del fee de gestión.</strong></p>
+          <p class="plan-note"><strong>Referencia:</strong> inversión publicitaria recomendada desde $150–$300/mes, dependiendo del objetivo, mercado y alcance de la campaña.</p>
+        </div>
+      </article>
+
+      <!-- ---------- PLAN GROWTH (destacado) ---------- -->
+      <article class="plan plan--featured reveal" data-delay="2" aria-labelledby="plan-growth">
+        <span class="badge">MÁS RECOMENDADO</span>
+        <h3 class="plan-name" id="plan-growth">GROWTH</h3>
+        <p class="plan-price">
+          <span class="old"><span class="sr-only">Precio anterior: </span>$647</span>
+          <span class="amount">$547</span><span class="per">/ mes</span>
+        </p>
+        <p class="plan-extra">+ inversión publicitaria</p>
+        <p class="plan-desc">Nuestro ecosistema completo de contenido + publicidad para marcas que quieren dejar de improvisar y empezar a tomar decisiones basadas en estrategia y datos.</p>
+        <a class="btn btn--primary btn--block" href="#contacto" data-wa="growth">Quiero el plan Growth <span class="arrow" aria-hidden="true">→</span></a>
+        <p class="plan-save">Ahorra $100/mes contratando el ecosistema completo.</p>
+
+        <div class="plan-body" data-collapsible>
+          <div class="plan-group">
+            <p class="plan-label">Contenido</p>
+            <ul class="checks">
+              <li>Estrategia mensual</li>
+              <li>Calendario de contenido</li>
+              <li>12 publicaciones mensuales</li>
+              <li>8 Reels</li>
+              <li>4 carruseles/posts</li>
+              <li>Guiones</li>
+              <li>Jornada mensual de grabación</li>
+              <li>Dirección de contenido</li>
+              <li>Edición</li>
+              <li>Diseño gráfico</li>
+              <li>Copywriting</li>
+              <li>Programación y publicación</li>
+            </ul>
+          </div>
+          <div class="plan-group">
+            <p class="plan-label">Publicidad</p>
+            <ul class="checks">
+              <li>Estrategia de captación</li>
+              <li>Hasta 3 campañas activas simultáneamente</li>
+              <li>Segmentación estratégica</li>
+              <li>Remarketing</li>
+              <li>A/B Testing</li>
+              <li>Optimización semanal</li>
+              <li>Adaptación de creativos publicitarios</li>
+              <li>Copywriting para Ads</li>
+              <li>Reporte de resultados</li>
+            </ul>
+          </div>
+          <div class="plan-group">
+            <p class="plan-label">Estrategia</p>
+            <ul class="checks">
+              <li>Reunión estratégica mensual</li>
+              <li>Análisis de métricas</li>
+              <li>Identificación del contenido orgánico ganador</li>
+              <li>Conversión de contenidos ganadores en anuncios</li>
+              <li>Plan de optimización para el siguiente mes</li>
+            </ul>
+          </div>
+        </div>
+        <div class="plan-foot">
+          <p class="plan-note">La inversión publicitaria en Meta no está incluida dentro del fee de gestión y se paga directamente a Meta.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- ---------- COMPARACIÓN ---------- -->
+    <div class="compare reveal">
+      <div class="compare-head">
+        <h3>Compara los planes</h3>
+        <p>Content y Ads funcionan por separado. Growth los une para que lo que aprende uno alimente al otro.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-label="Tabla comparativa de planes" tabindex="0">
+        <table class="table">
+          <caption class="sr-only">Comparación de servicios incluidos en Content, Ads y Growth</caption>
+          <thead>
+            <tr>
+              <th scope="col">Servicio</th>
+              <th scope="col">Content</th>
+              <th scope="col">Ads</th>
+              <th scope="col" class="col-growth">Growth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Estrategia de contenido</th><td class="yes">✓</td><td class="no">—</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">Grabación</th><td class="yes">✓</td><td class="no">—</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">Edición de Reels</th><td class="yes">✓</td><td class="no">—</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">Publicaciones mensuales</th><td>12</td><td class="no">—</td><td class="col-growth">12</td></tr>
+            <tr><th scope="row">Meta Ads</th><td class="no">—</td><td class="yes">✓</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">Remarketing</th><td class="no">—</td><td class="yes">✓</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">A/B Testing</th><td class="no">—</td><td class="yes">✓</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">Análisis contenido ganador</th><td class="yes">✓</td><td class="no">—</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">Contenido → Ads</th><td class="no">—</td><td class="no">—</td><td class="col-growth yes">✓</td></tr>
+            <tr><th scope="row">Reunión estratégica</th><td class="yes">✓</td><td class="yes">✓</td><td class="col-growth yes">✓</td></tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Precio mensual</th>
+              <td>$397</td>
+              <td>$250<small>+ inversión</small></td>
+              <td class="col-growth">$547<small>+ inversión</small></td>
+            </tr>
+            <tr class="table-cta">
+              <th scope="row"><span class="sr-only">Solicitar</span></th>
+              <td><a class="text-link" href="#contacto" data-wa="content">Elegir Content</a></td>
+              <td><a class="text-link" href="#contacto" data-wa="ads">Elegir Ads</a></td>
+              <td class="col-growth"><a class="text-link" href="#contacto" data-wa="growth">Elegir Growth</a></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= DIFERENCIADOR ========================= -->
+<section class="section section--dark" aria-labelledby="diff-title">
+  <div class="wrap">
+    <div class="diff-grid">
+      <div class="reveal">
+        <span class="eyebrow">Por qué Growth</span>
+        <h2 id="diff-title">El contenido y los Ads no deberían vivir <span class="serif accent">separados.</span></h2>
+      </div>
+      <div class="diff-copy reveal" data-delay="1">
+        <p>Cuando trabajamos el ecosistema completo podemos identificar qué contenido genera mayor atención, retención e interacción y utilizar esa información para desarrollar mejores campañas publicitarias.</p>
+        <p>En lugar de adivinar qué anuncio puede funcionar, utilizamos el comportamiento real de tu audiencia para tomar mejores decisiones.</p>
+      </div>
+    </div>
+
+    <ol class="loop" data-loop aria-label="Creamos, medimos, identificamos, amplificamos, optimizamos">
+      <li><small>01</small><span>CREAMOS</span></li>
+      <li><small>02</small><span>MEDIMOS</span></li>
+      <li><small>03</small><span>IDENTIFICAMOS</span></li>
+      <li><small>04</small><span>AMPLIFICAMOS</span></li>
+      <li><small>05</small><span>OPTIMIZAMOS</span></li>
+    </ol>
+
+    <p class="quote reveal">Lo que funciona orgánicamente puede convertirse en <em>combustible</em> para tus campañas.</p>
+  </div>
+</section>
+
+<!-- ========================= METODOLOGÍA ========================= -->
+<section class="section" id="como-trabajamos" aria-labelledby="metodo-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2 id="metodo-title">Así trabajamos</h2>
+    </div>
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="num">01</span>
+        <h3>Estrategia</h3>
+        <p>Analizamos tu negocio, cliente ideal, competencia, oferta y objetivos.</p>
+      </li>
+      <li class="step reveal" data-delay="1">
+        <span class="num">02</span>
+        <h3>Producción</h3>
+        <p>Creamos los conceptos, guiones y piezas de contenido necesarias para comunicar tu propuesta de valor.</p>
+      </li>
+      <li class="step reveal" data-delay="2">
+        <span class="num">03</span>
+        <h3>Distribución</h3>
+        <p>Publicamos estratégicamente y utilizamos publicidad cuando corresponda para amplificar el alcance.</p>
+      </li>
+      <li class="step reveal" data-delay="3">
+        <span class="num">04</span>
+        <h3>Optimización</h3>
+        <p>Analizamos los datos para identificar qué mensajes, formatos y campañas están generando mejores resultados.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========================= ADD-ONS ========================= -->
+<section class="section section--mist" aria-labelledby="addons-title">
+  <div class="wrap">
+    <div class="addons-head reveal">
+      <div>
+        <span class="eyebrow">Adicionales</span>
+        <h2 id="addons-title">¿Necesitas algo adicional?</h2>
+      </div>
+      <a class="text-link" href="#contacto" data-wa="general">Consultar por WhatsApp <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="addons">
+      <article class="addon reveal">
+        <h3>Reel adicional</h3>
+        <p class="price"><b>Desde $20</b></p>
+      </article>
+      <article class="addon reveal" data-delay="1">
+        <h3>Community Management</h3>
+        <p class="price">Cotización personalizada</p>
+      </article>
+      <article class="addon reveal" data-delay="2">
+        <h3>Campañas o lanzamientos especiales</h3>
+        <p class="price">Cotización personalizada</p>
+      </article>
+      <article class="addon reveal" data-delay="3">
+        <h3>Producción audiovisual especial</h3>
+        <p class="price">Cotización personalizada</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= COMPROMISO ========================= -->
+<section class="section" aria-labelledby="compromiso-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Compromiso</span>
+      <h2 id="compromiso-title">El marketing necesita tiempo para <span class="serif">aprender.</span></h2>
+      <p class="lead">Para estrategias integrales recomendamos trabajar con una visión mínima de 3 meses.</p>
+    </div>
+    <ol class="months">
+      <li class="month reveal">
+        <div class="month-track" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+        <small>Mes 1</small>
+        <h3>Construcción + Testing</h3>
+        <p>Construimos el sistema, desarrollamos contenido y comenzamos las primeras pruebas.</p>
+      </li>
+      <li class="month reveal" data-delay="1">
+        <div class="month-track" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></div>
+        <small>Mes 2</small>
+        <h3>Aprendizaje + Optimización</h3>
+        <p>Analizamos qué mensajes, contenidos, públicos y campañas están respondiendo mejor.</p>
+      </li>
+      <li class="month reveal" data-delay="2">
+        <div class="month-track" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+        <small>Mes 3</small>
+        <h3>Escala</h3>
+        <p>Potenciamos lo que funciona y optimizamos lo que todavía puede mejorar.</p>
+      </li>
+    </ol>
+    <p class="disclaimer reveal"><b>Importante</b><span>Los resultados dependen de múltiples factores como oferta, mercado, inversión, producto, proceso comercial y capacidad de seguimiento. No se garantizan cantidades específicas de ventas o leads.</span></p>
+  </div>
+</section>
+
+<!-- ========================= FAQ ========================= -->
+<section class="section section--mist" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div class="faq-aside reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 id="faq-title">Lo que suelen preguntarnos</h2>
+      <p>Si tu duda no está aquí, escríbenos y te respondemos personalmente.</p>
+      <a class="text-link" href="#contacto" data-wa="general">Hacer una pregunta <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="faq-list reveal" data-delay="1">
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-1-q">¿La inversión en Meta Ads está incluida?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-1" role="region" aria-labelledby="faq-1-q"><div><p>No. El fee corresponde a la estrategia, creación, gestión y optimización de las campañas. La inversión publicitaria se paga directamente a Meta.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-2-q">¿Tengo que contratar contenido y Ads juntos?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-2" role="region" aria-labelledby="faq-2-q"><div><p>No. Puedes contratar Content o Ads individualmente. Sin embargo, Growth permite integrar ambos canales dentro de una misma estrategia.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-3-q">¿Ustedes realizan las grabaciones?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-3" role="region" aria-labelledby="faq-3-q"><div><p>Sí. El plan Content y Growth incluyen una jornada mensual de grabación de hasta 4 horas.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-4-q">¿Cuántas publicaciones realizan?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-4" role="region" aria-labelledby="faq-4-q"><div><p>Los planes Content y Growth incluyen 12 publicaciones mensuales, distribuidas estratégicamente entre Reels, carruseles y otros formatos según la estrategia.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-q">¿Responden mensajes y comentarios?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-5" role="region" aria-labelledby="faq-5-q"><div><p>La gestión diaria de comunidad no está incluida dentro del paquete estándar. Puede agregarse como servicio adicional.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-6-q">¿Garantizan ventas?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-6" role="region" aria-labelledby="faq-6-q"><div><p>No. Ninguna agencia responsable debería garantizar una cantidad específica de ventas. Nuestro trabajo consiste en desarrollar, ejecutar, medir y optimizar el sistema de marketing para aumentar las probabilidades de generar mejores resultados.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-7" id="faq-7-q">¿Cuánto tiempo recomiendan trabajar?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="faq-7" role="region" aria-labelledby="faq-7-q"><div><p>Recomendamos un período mínimo de 3 meses para estrategias integrales, ya que permite recopilar información suficiente para optimizar contenido y campañas.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= CTA FINAL ========================= -->
+<section class="section--dark final" id="contacto" aria-labelledby="final-title">
+  <div class="wrap">
+    <span class="eyebrow reveal">Siguiente paso</span>
+    <h2 id="final-title" class="reveal">Tu marca puede hacer más que <span class="serif accent">simplemente publicar.</span></h2>
+    <p class="lead reveal" data-delay="1">Construyamos un sistema de contenido y publicidad diseñado alrededor de tus objetivos comerciales.</p>
+    <a class="btn btn--light btn--lg reveal" data-delay="2" href="#contacto" data-wa="general">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.42 9.43-9.42a9.37 9.37 0 0 1 9.42 9.43c0 5.2-4.23 9.42-9.43 9.42m8.02-17.44A11.27 11.27 0 0 0 12.05.75C5.8.75.72 5.83.72 12.08c0 2 .52 3.95 1.52 5.66L.62 23.25l5.64-1.48a11.3 11.3 0 0 0 5.79 1.47h.01c6.25 0 11.33-5.08 11.33-11.33 0-3.03-1.18-5.87-3.32-8.01"/></svg>
+      Solicitar propuesta por WhatsApp
+    </a>
+    <p class="fine reveal" data-delay="3">Cuéntanos sobre tu negocio y te ayudaremos a identificar cuál de nuestros planes tiene más sentido para ti.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="#inicio">RM<span class="logo-light">Marketing</span><span class="logo-dot" aria-hidden="true"></span></a>
+    <span>Propuesta preparada para Grupo Mendoza · © <span data-year>2026</span></span>
+    <a href="#contacto" data-wa="general">WhatsApp 0422-7163477</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="#contacto" data-wa="general" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.42 9.43-9.42a9.37 9.37 0 0 1 9.42 9.43c0 5.2-4.23 9.42-9.43 9.42m8.02-17.44A11.27 11.27 0 0 0 12.05.75C5.8.75.72 5.83.72 12.08c0 2 .52 3.95 1.52 5.66L.62 23.25l5.64-1.48a11.3 11.3 0 0 0 5.79 1.47h.01c6.25 0 11.33-5.08 11.33-11.33 0-3.03-1.18-5.87-3.32-8.01"/></svg>
+</a>
+
+<script>
+/* ==================================================================
+   WHATSAPP — CONFIGURACIÓN
+   ------------------------------------------------------------------
+   Número de contacto: 04227163477  (Venezuela)
+   WhatsApp necesita el formato internacional, sin "+" ni el 0 inicial:
+       58 (código de Venezuela) + 4227163477  →  584227163477
+   Para cambiar el número, edita solo WHATSAPP_NUMERO.
+   Para cambiar un mensaje, edita su texto en WHATSAPP_MENSAJES.
+   Cada botón elige su mensaje con el atributo data-wa="general|content|ads|growth".
+   ================================================================== */
+var WHATSAPP_NUMERO = '584227163477';
+
+var WHATSAPP_MENSAJES = {
+  general: 'Hola, vi sus servicios de marketing y me gustaría recibir más información.',
+  content: 'Hola, vengo de la página web y estoy interesado/a en conocer más sobre el Plan Content de $397.',
+  ads:     'Hola, vengo de la página web y estoy interesado/a en conocer más sobre el servicio de Meta Ads.',
+  growth:  'Hola, vengo de la página web y estoy interesado/a en conocer más sobre el Plan Growth de $547.'
+};
+
+(function () {
+  'use strict';
+
+  /* ---------- Enlaces de WhatsApp ---------- */
+  function waLink(key) {
+    var msg = WHATSAPP_MENSAJES[key] || WHATSAPP_MENSAJES.general;
+    return 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
+  }
+  document.querySelectorAll('[data-wa]').forEach(function (el) {
+    el.setAttribute('href', waLink(el.getAttribute('data-wa')));
+    el.setAttribute('target', '_blank');
+    el.setAttribute('rel', 'noopener');
+  });
+
+  /* ---------- Header: efecto glass al hacer scroll ---------- */
+  var header = document.getElementById('header');
+  var waFloat = document.querySelector('.wa-float');
+  var hero = document.getElementById('inicio');
+  var finalCta = document.getElementById('contacto');
+  var darkSections = Array.prototype.slice.call(document.querySelectorAll('.section--dark'));
+  var menu = document.getElementById('mobile-menu');
+  var ticking = false;
+
+  function onScroll() {
+    var y = window.scrollY;
+    header.classList.toggle('is-scrolled', y > 12);
+    var probe = header.offsetHeight / 2;
+    var overDark = !menu.classList.contains('is-open') && darkSections.some(function (el) {
+      var r = el.getBoundingClientRect(); return r.top <= probe && r.bottom >= probe;
+    });
+    header.classList.toggle('is-dark', overDark);
+    var pastHero = y > hero.offsetHeight * 0.75;
+    var atFinal = finalCta.getBoundingClientRect().top < window.innerHeight * 0.85;
+    waFloat.classList.toggle('is-visible', pastHero && !atFinal);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+  onScroll();
+
+  /* ---------- Menú móvil ---------- */
+  var toggle = document.querySelector('.menu-toggle');
+  function setMenu(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menu.classList.toggle('is-open', open);
+    if (open) header.classList.add('is-scrolled'); else onScroll();
+  }
+  toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) { setMenu(false); toggle.focus(); }
+  });
+  window.matchMedia('(min-width: 961px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
+
+  /* ---------- Enlace activo en la navegación ---------- */
+  var navLinks = document.querySelectorAll('.nav a');
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['servicios', 'planes', 'como-trabajamos', 'faq'].forEach(function (id) { spy.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- FAQ (acordeón) ---------- */
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      btn.closest('.faq-item').classList.toggle('is-open', open);
+    });
+  });
+
+  /* ---------- Listas de planes plegables (solo móvil) ---------- */
+  var chevron = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.querySelectorAll('[data-collapsible]').forEach(function (body, i) {
+    var total = body.querySelectorAll('li').length;
+    body.id = body.id || 'plan-incluye-' + i;
+    body.classList.add('is-collapsible');
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'collapse-btn';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', body.id);
+    var labelClosed = 'Ver los ' + total + ' puntos incluidos';
+    btn.innerHTML = '<span>' + labelClosed + '</span>' + chevron;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      body.classList.toggle('is-expanded', open);
+      btn.firstChild.textContent = open ? 'Ver menos' : labelClosed;
+    });
+    body.insertAdjacentElement('afterend', btn);
+  });
+
+  /* ---------- Animaciones de entrada ---------- */
+  var revealables = document.querySelectorAll('.reveal, [data-loop]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ---------- Año del footer ---------- */
+  document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+})();
+</script>
+</body>
+</html>
