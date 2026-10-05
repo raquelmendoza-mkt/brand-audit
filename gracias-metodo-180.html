@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- Página de agradecimiento del cuestionario Método 180 (destino del formulario de Netlify). -->
+<title>¡Recibí tu cuestionario! · Método 180 — RM Marketing</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A0A0B'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='%23fff'%3ERM%3C/text%3E%3Ccircle cx='50' cy='16' r='5' fill='%236C47FF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink: #0A0A0B; --line: #E8E6EE; --muted: #5D5B66; --soft: #8C8A96; --purple: #6C47FF; --purple-hover: #5634E8; --purple-tint: #F2EEFF; --ease: cubic-bezier(0.22, 1, 0.36, 1); --gutter: clamp(16px, 4vw, 40px); }
+body { font-family: 'Poppins', system-ui, sans-serif; background: #fff; color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+.header { height: 68px; border-bottom: 1px solid rgba(10,10,11,0.06); }
+.header-inner { height: 100%; max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); display: flex; align-items: center; }
+.logo { display: inline-flex; align-items: center; text-decoration: none; color: inherit; font-weight: 600; font-size: 17px; letter-spacing: -0.03em; }
+.logo-light { font-weight: 300; margin-left: 5px; }
+.logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); margin-left: 3px; transform: translateY(5px); }
+main { flex: 1; display: grid; place-items: center; padding: clamp(56px, 10vw, 120px) var(--gutter); position: relative; overflow: hidden; }
+main::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(10,10,11,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,11,0.045) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 55% 60% at 50% 40%, #000, transparent 70%); -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 40%, #000, transparent 70%); }
+.card { position: relative; max-width: 620px; text-align: center; animation: in .8s var(--ease) both; }
+@keyframes in { from { opacity: 0; transform: translateY(16px); } }
+.check { width: 64px; height: 64px; border-radius: 50%; background: var(--purple-tint); display: grid; place-items: center; margin: 0 auto 32px; }
+.check svg { width: 28px; height: 28px; color: var(--purple); }
+.check path { stroke-dasharray: 30; stroke-dashoffset: 30; animation: draw .7s .3s var(--ease) forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.06; }
+h1 em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 500; color: var(--purple); }
+.lead { margin-top: 22px; font-size: clamp(16.5px, 1.7vw, 19px); color: var(--muted); }
+.steps { list-style: none; margin: 40px auto 0; max-width: 460px; text-align: left; border-top: 1px solid var(--line); }
+.steps li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+.steps b { color: var(--purple); font-size: 12.5px; font-weight: 600; padding-top: 2px; }
+.steps strong { color: var(--ink); font-weight: 500; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 28px; margin-top: 40px; border-radius: 999px; background: var(--purple); color: #fff; font-size: 15.5px; font-weight: 500; text-decoration: none; box-shadow: 0 10px 28px -12px rgba(108,71,255,0.7); transition: transform .35s var(--ease), background-color .25s; }
+.btn:hover { transform: translateY(-2px); background: var(--purple-hover); }
+.btn svg { width: 18px; height: 18px; }
+.fine { margin-top: 16px; font-size: 13.5px; color: var(--soft); }
+.footer { background: var(--ink); color: rgba(255,255,255,0.55); padding: 28px var(--gutter); font-size: 13.5px; text-align: center; }
+.footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+@media (max-width: 480px) { .btn { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } .check path { stroke-dashoffset: 0; } }
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><a class="logo" href="/cuestionario-metodo-180.html">RM<span class="logo-light">Marketing</span><span class="logo-dot" aria-hidden="true"></span></a></div></header>
+<main>
+  <div class="card">
+    <div class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h1>¡Recibí tu <em>cuestionario!</em></h1>
+    <p class="lead">Gracias por tomarte el tiempo y por responder con honestidad. Te escribo por WhatsApp en las próximas 24 horas para agendar tu sesión individual de bienvenida.</p>
+    <ol class="steps">
+      <li><b>01</b><span><strong>Leo tus respuestas</strong> una por una.</span></li>
+      <li><b>02</b><span><strong>Te escribo por WhatsApp</strong> en menos de 24 horas.</span></li>
+      <li><b>03</b><span><strong>Agendamos tu sesión</strong> y armamos tu plan de 6 semanas.</span></li>
+    </ol>
+    <a class="btn" href="https://wa.me/584227163477?text=Hola%20Raquel%2C%20acabo%20de%20enviar%20mi%20cuestionario%20del%20M%C3%A9todo%20180." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.42 9.43-9.42a9.37 9.37 0 0 1 9.42 9.43c0 5.2-4.23 9.42-9.43 9.42m8.02-17.44A11.27 11.27 0 0 0 12.05.75C5.8.75.72 5.83.72 12.08c0 2 .52 3.95 1.52 5.66L.62 23.25l5.64-1.48a11.3 11.3 0 0 0 5.79 1.47h.01c6.25 0 11.33-5.08 11.33-11.33 0-3.03-1.18-5.87-3.32-8.01"/></svg>
+      Avisarte por WhatsApp
+    </a>
+    <p class="fine">Mi número: 0422-7163477</p>
+  </div>
+</main>
+<footer class="footer">Método 180 · Raquel Mendoza · <a href="https://wa.me/584227163477" target="_blank" rel="noopener">WhatsApp 0422-7163477</a></footer>
+</body>
+</html>
