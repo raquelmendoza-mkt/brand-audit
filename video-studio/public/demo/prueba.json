@@ -1,0 +1,156 @@
+[
+  {
+    "text": " Hola,",
+    "startMs": 300,
+    "endMs": 620,
+    "timestampMs": 460,
+    "confidence": null
+  },
+  {
+    "text": " soy",
+    "startMs": 820,
+    "endMs": 1020,
+    "timestampMs": 920,
+    "confidence": null
+  },
+  {
+    "text": " Raquel",
+    "startMs": 1020,
+    "endMs": 1440,
+    "timestampMs": 1230,
+    "confidence": null
+  },
+  {
+    "text": " Mendoza.",
+    "startMs": 1440,
+    "endMs": 2320,
+    "timestampMs": 1880,
+    "confidence": null
+  },
+  {
+    "text": " Hoy",
+    "startMs": 2540,
+    "endMs": 2700,
+    "timestampMs": 2620,
+    "confidence": null
+  },
+  {
+    "text": " te",
+    "startMs": 2700,
+    "endMs": 2900,
+    "timestampMs": 2800,
+    "confidence": null
+  },
+  {
+    "text": " voy",
+    "startMs": 2900,
+    "endMs": 3080,
+    "timestampMs": 2990,
+    "confidence": null
+  },
+  {
+    "text": " a",
+    "startMs": 3080,
+    "endMs": 3360,
+    "timestampMs": 3220,
+    "confidence": null
+  },
+  {
+    "text": " enseñar",
+    "startMs": 3360,
+    "endMs": 3920,
+    "timestampMs": 3640,
+    "confidence": null
+  },
+  {
+    "text": " cómo",
+    "startMs": 3920,
+    "endMs": 4260,
+    "timestampMs": 4090,
+    "confidence": null
+  },
+  {
+    "text": " vender",
+    "startMs": 4260,
+    "endMs": 4720,
+    "timestampMs": 4490,
+    "confidence": null
+  },
+  {
+    "text": " una",
+    "startMs": 4720,
+    "endMs": 5000,
+    "timestampMs": 4860,
+    "confidence": null
+  },
+  {
+    "text": " propia",
+    "startMs": 5000,
+    "endMs": 5340,
+    "timestampMs": 5170,
+    "confidence": null
+  },
+  {
+    "text": " la",
+    "startMs": 5340,
+    "endMs": 5640,
+    "timestampMs": 5490,
+    "confidence": null
+  },
+  {
+    "text": " entreintalía",
+    "startMs": 5640,
+    "endMs": 6320,
+    "timestampMs": 5980,
+    "confidence": null
+  },
+  {
+    "text": " usando",
+    "startMs": 6800,
+    "endMs": 7240,
+    "timestampMs": 7020,
+    "confidence": null
+  },
+  {
+    "text": " inteligencia",
+    "startMs": 7240,
+    "endMs": 8560,
+    "timestampMs": 7900,
+    "confidence": null
+  },
+  {
+    "text": " artificial.",
+    "startMs": 8560,
+    "endMs": 9240,
+    "timestampMs": 8900,
+    "confidence": null
+  },
+  {
+    "text": " Quédate",
+    "startMs": 9460,
+    "endMs": 9980,
+    "timestampMs": 9720,
+    "confidence": null
+  },
+  {
+    "text": " hasta",
+    "startMs": 9980,
+    "endMs": 10240,
+    "timestampMs": 10110,
+    "confidence": null
+  },
+  {
+    "text": " el",
+    "startMs": 10240,
+    "endMs": 10520,
+    "timestampMs": 10380,
+    "confidence": null
+  },
+  {
+    "text": " final.",
+    "startMs": 10520,
+    "endMs": 10840,
+    "timestampMs": 10680,
+    "confidence": null
+  }
+]
