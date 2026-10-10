@@ -26,6 +26,18 @@ conversación, cópialos ahí. Inspecciona siempre primero: `npm run ff -- info 
   Si Raquel no da gancho/CTA, propón uno con la metodología de la skill `remi-ai` (Método CLAVE, hooks) o pregúntale.
 - **Propiedad con fotos** → composición `PropertyPromo`: copia las fotos a `public/work/<nombre>/` y
   `npx remotion render PropertyPromo out/x.mp4 --props='{"photos":["work/<nombre>/1.jpg",...],"secondsPerPhoto":3.5,"title":"...","location":"...","price":"...","features":["3 hab","2 baños"],"agent":"...","phone":"..."}'`
+- **Video ya montado + textos por segmento + cierre con marca** (p. ej. promos de clientes) →
+  composición `PromoTextos`: detecta los cortes con
+  `ffmpeg -i x.mp4 -vf "select='gt(scene,0.25)',showinfo" -f null - 2>&1 | grep pts_time`, copia el
+  video a `public/work/<n>/` y pasa `segments` (from/to en segundos, `small` en Helvetica, `big` en
+  Poppins, `position` arriba|abajo según dónde no tape lo importante), `brandName`, colores del cierre.
+  Al final normaliza: `ffmpeg -i out/x.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11 -c:v copy ...`.
+- **Música de fondo** → si Raquel no da una pista, genera una original y libre de derechos:
+  `python3 -I scripts/musica.py public/work/<n>/musica.wav <segundos> --bpm 120 --estilo movida|suave`.
+  Las bibliotecas de música en línea están bloqueadas en este entorno.
+- **Fuentes**: `src/brand.ts` (marca RM: Syne + DM Sans) y `src/fonts.ts` (Poppins y Helvetica;
+  Helvetica es de pago, se usa su clon libre TeX Gyre Heros). Fuentes nuevas: archivos en
+  `public/fonts/` y `loadFont` en `src/fonts.ts`.
 - **Portada** → `npx remotion still Thumbnail out/portada.png --props='{"photo":"...","title":"...","highlight":"..."}'`
   (la foto puede salir de `npm run ff -- foto input/x.mp4 00:00:03 public/work/<n>/frame.jpg`).
 - **Operaciones sueltas** → `npm run ff -- <comando>` (`npm run ff` lista todos): cortar, vertical

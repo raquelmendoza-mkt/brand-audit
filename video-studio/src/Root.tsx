@@ -1,4 +1,5 @@
 import {Folder} from 'remotion';
+import {PromoTextosComposition} from './PromoTextos';
 import {PropertyPromoComposition} from './PropertyPromo';
 import {ReelComposition} from './Reel';
 import {ThumbnailStill} from './Thumbnail';
@@ -9,6 +10,7 @@ export const RemotionRoot: React.FC = () => {
 			<Folder name="Reels">
 				<ReelComposition />
 				<PropertyPromoComposition />
+				<PromoTextosComposition />
 			</Folder>
 			<Folder name="Portadas">
 				<ThumbnailStill />
