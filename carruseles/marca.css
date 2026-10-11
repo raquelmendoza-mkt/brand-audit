@@ -1,0 +1,281 @@
+/* ==================================================================
+   RM MARKETING IA — Sistema de diseño para carruseles de Instagram
+   Lienzo: 1080 × 1350 (4:5). Títulos: Poppins · Acentos: Playfair Display
+   Ver carruseles/README.md para el catálogo de piezas.
+   ================================================================== */
+
+/* ---------- Fuentes locales (no dependen de internet) ---------- */
+@font-face { font-family: 'Poppins'; font-weight: 300; src: url('fonts/Poppins-300.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 400; src: url('fonts/Poppins-400.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('fonts/Poppins-500.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 600; src: url('fonts/Poppins-600.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('fonts/Poppins-700.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 800; src: url('fonts/Poppins-800.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 900; src: url('fonts/Poppins-900.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; font-style: italic; src: url('fonts/Poppins-500-italic.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; font-style: italic; src: url('fonts/Poppins-700-italic.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 400; src: url('fonts/PlayfairDisplay-400.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 600; src: url('fonts/PlayfairDisplay-600.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 700; src: url('fonts/PlayfairDisplay-700.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 400; font-style: italic; src: url('fonts/PlayfairDisplay-400-italic.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 500; font-style: italic; src: url('fonts/PlayfairDisplay-500-italic.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 600; font-style: italic; src: url('fonts/PlayfairDisplay-600-italic.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 700; font-style: italic; src: url('fonts/PlayfairDisplay-700-italic.ttf'); }
+
+/* ---------- Tokens de marca ---------- */
+:root {
+  --purple:       #7B6FE8;
+  --purple-soft:  #A99FF5;   /* morado legible sobre negro */
+  --purple-dark:  #3D3492;
+  --purple-deep:  #1C1747;
+  --purple-light: #EEF0FF;
+  --gold:         #C9943A;
+  --gold-soft:    #E8C27E;   /* dorado legible sobre morado */
+  --gold-light:   #FDF6E9;
+  --black:        #0E0E0E;
+  --ink-2:        #1A1A1C;
+  --white:        #FAFAFA;
+  --paper:        #F6F4EF;
+  --gray:         #6B6B6B;
+
+  --W: 1080px;
+  --H: 1350px;
+  --mx: 96px;     /* margen lateral */
+  --top: 176px;   /* debajo de la cabecera */
+  --bottom: 172px;/* encima del pie: zona segura */
+
+  --sans: 'Poppins', system-ui, sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #2a2a2e; }
+body { font-family: var(--sans); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+
+/* ---------- Lienzo ---------- */
+.deck { display: flex; position: relative; width: max-content; }
+.slide {
+  position: relative; flex: none;
+  width: var(--W); height: var(--H);
+  overflow: hidden;
+  /* tema por defecto */
+  --bg: var(--black); --fg: var(--white); --muted: rgba(250,250,250,0.62);
+  --accent: var(--purple-soft); --accent-2: var(--gold); --line: rgba(255,255,255,0.12);
+  --card: rgba(255,255,255,0.05);
+  background: var(--bg); color: var(--fg);
+}
+.slide.bleed { overflow: visible; }   /* deja salir elementos hacia el slide vecino (panorámico) */
+
+/* Vista previa en el navegador (render.mjs la desactiva) */
+body.preview { padding: 40px; overflow-x: auto; }
+body.preview .deck { zoom: 0.36; gap: 0; }
+body.preview .slide { outline: 2px dashed rgba(255,255,255,0.25); outline-offset: -1px; }
+
+/* ---------- Temas ---------- */
+.t-dark {
+  background:
+    radial-gradient(ellipse 90% 55% at 15% 0%, rgba(123,111,232,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 45% at 95% 100%, rgba(201,148,58,0.12) 0%, transparent 55%),
+    var(--black);
+}
+.t-ink { --bg: var(--ink-2); background: var(--ink-2); }
+.t-light {
+  --bg: var(--paper); --fg: var(--black); --muted: rgba(14,14,14,0.62);
+  --accent: var(--purple-dark); --accent-2: var(--gold); --line: rgba(14,14,14,0.12);
+  --card: #FFFFFF;
+  background:
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(123,111,232,0.12) 0%, transparent 60%),
+    var(--paper);
+}
+.t-purple {
+  --bg: var(--purple-dark); --fg: #FFFFFF; --muted: rgba(255,255,255,0.72);
+  --accent: var(--gold-soft); --accent-2: var(--gold-soft); --line: rgba(255,255,255,0.18);
+  --card: rgba(255,255,255,0.08);
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 10%, rgba(123,111,232,0.85) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 0% 100%, rgba(201,148,58,0.25) 0%, transparent 60%),
+    linear-gradient(160deg, var(--purple-dark) 0%, var(--purple-deep) 100%);
+}
+.t-gold {
+  --bg: var(--gold-light); --fg: var(--black); --muted: rgba(14,14,14,0.65);
+  --accent: #8A5F17; --accent-2: var(--purple-dark); --line: rgba(14,14,14,0.12);
+  --card: #FFFFFF;
+  background: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(201,148,58,0.28) 0%, transparent 60%), var(--gold-light);
+}
+
+/* Textura de grano sutil (evita el look "plano de plantilla") */
+.slide::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 50;
+  opacity: 0.06; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.slide.no-grain::after { display: none; }
+
+/* ---------- Cabecera y pie (los inserta carrusel.js) ---------- */
+.chrome-top, .chrome-bottom {
+  position: absolute; left: var(--mx); right: var(--mx); z-index: 40;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 24px; font-weight: 500; letter-spacing: 0.01em; color: var(--muted);
+}
+.chrome-top { top: 64px; }
+.chrome-bottom { bottom: 64px; }
+.brand { display: flex; align-items: center; gap: 16px; color: var(--fg); font-weight: 600; }
+.brand .mono {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+  color: #fff; font-weight: 800; font-size: 20px; letter-spacing: -0.02em;
+  box-shadow: 0 0 0 2px rgba(201,148,58,0.55);
+}
+.t-purple .brand .mono { background: #fff; color: var(--purple-dark); }
+.counter { font-variant-numeric: tabular-nums; font-weight: 600; }
+.swipe { display: flex; align-items: center; gap: 12px; color: var(--fg); font-weight: 600; }
+.swipe svg { width: 40px; height: 40px; }
+.progress { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: var(--line); z-index: 41; }
+.progress i { display: block; height: 100%; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+
+/* ---------- Zona de contenido ---------- */
+.content {
+  position: absolute; z-index: 10;
+  left: var(--mx); right: var(--mx); top: var(--top); bottom: var(--bottom);
+  display: flex; flex-direction: column; justify-content: center; gap: 36px;
+}
+.content.top { justify-content: flex-start; }
+.content.bottom { justify-content: flex-end; }
+.content.between { justify-content: space-between; }
+.content.center { align-items: center; text-align: center; }
+
+/* ---------- Tipografía ---------- */
+.kicker {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 12px 24px; border-radius: 100px;
+  border: 1.5px solid var(--line); background: var(--card);
+  font-size: 24px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent);
+}
+.kicker::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-2); }
+.content.center .kicker { align-self: center; }
+
+.hook  { font-weight: 800; font-size: 112px; line-height: 1.04; letter-spacing: -0.03em; }
+.h1    { font-weight: 700; font-size: 84px;  line-height: 1.08; letter-spacing: -0.025em; }
+.h2    { font-weight: 700; font-size: 62px;  line-height: 1.12; letter-spacing: -0.02em; }
+.h3    { font-weight: 700; font-size: 46px;  line-height: 1.15; letter-spacing: -0.02em; }
+.lead  { font-family: var(--serif); font-size: 46px; line-height: 1.3; color: var(--fg); }
+.body  { font-size: 35px; line-height: 1.5; color: var(--muted); font-weight: 400; letter-spacing: -0.005em; }
+.body b, .body strong { color: var(--fg); font-weight: 600; }
+.small { font-size: 28px; line-height: 1.45; color: var(--muted); }
+
+.hook, .h1, .h2, .h3, .lead, .quote { text-wrap: balance; }
+.body, .small { text-wrap: pretty; }
+
+/* Acento editorial: <em> dentro de un título = Playfair itálica de color */
+.hook em, .h1 em, .h2 em, .h3 em, .lead em {
+  font-family: var(--serif); font-style: italic; font-weight: 600;
+  color: var(--accent); letter-spacing: -0.02em;
+}
+.gold { color: var(--accent-2) !important; }
+.purple { color: var(--accent) !important; }
+.muted { color: var(--muted) !important; }
+/* Subrayado de rotulador */
+.mark { background: linear-gradient(transparent 62%, rgba(201,148,58,0.55) 62%, rgba(201,148,58,0.55) 92%, transparent 92%); padding: 0 4px; }
+.strike { position: relative; color: var(--muted); }
+.strike::after { content: ''; position: absolute; left: -4px; right: -4px; top: 52%; height: 8px; background: var(--accent-2); transform: rotate(-3deg); border-radius: 4px; }
+
+/* ---------- Piezas ---------- */
+.rule { width: 120px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--purple), var(--gold)); }
+.content.center .rule { align-self: center; }
+
+/* Número gigante de fondo (paso 01, 02…) */
+.bignum {
+  position: absolute; z-index: 1; right: 40px; top: 120px;
+  font-weight: 900; font-size: 520px; line-height: 0.8; letter-spacing: -0.06em;
+  color: transparent; -webkit-text-stroke: 3px var(--line);
+}
+.bignum.left { right: auto; left: 40px; }
+.bignum.filled { color: var(--card); -webkit-text-stroke: 0; }
+
+/* Lista numerada */
+.list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.list li {
+  display: grid; grid-template-columns: 76px 1fr; gap: 28px; align-items: center;
+  padding: 24px 32px; border-radius: 28px; background: var(--card); border: 1.5px solid var(--line);
+  font-size: 36px; line-height: 1.3; font-weight: 500;
+}
+.list li .n {
+  width: 76px; height: 76px; border-radius: 22px; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: #fff;
+  font-weight: 800; font-size: 30px;
+}
+.list li small { display: block; font-size: 28px; color: var(--muted); font-weight: 400; margin-top: 6px; }
+.list.check li .n { background: var(--accent-2); color: var(--black); }
+.list.cross li .n { background: transparent; border: 2px solid var(--line); color: var(--muted); }
+
+/* Tarjeta */
+.card {
+  padding: 48px; border-radius: 36px; background: var(--card); border: 1.5px solid var(--line);
+  display: flex; flex-direction: column; gap: 22px;
+}
+.card.glow { box-shadow: 0 40px 120px -40px rgba(123,111,232,0.55); border-color: rgba(123,111,232,0.45); }
+
+/* Comparativa antes / después */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.compare .col { padding: 40px 36px; border-radius: 32px; display: flex; flex-direction: column; gap: 22px; border: 1.5px solid var(--line); background: var(--card); }
+.compare .col h4 { font-size: 26px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.compare .col p { font-size: 32px; line-height: 1.35; }
+.compare .col.good { background: linear-gradient(160deg, var(--purple) 0%, var(--purple-dark) 100%); border-color: transparent; color: #fff; }
+.compare .col.good h4 { color: var(--gold-soft); }
+
+/* Dato grande */
+.stat { font-weight: 900; font-size: 260px; line-height: 0.85; letter-spacing: -0.06em;
+  background: linear-gradient(135deg, var(--fg) 30%, var(--accent) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.stat sup { font-size: 0.4em; vertical-align: top; }
+
+/* Cita */
+.quote { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 64px; line-height: 1.2; letter-spacing: -0.01em; }
+.quote::before { content: '“'; display: block; font-size: 220px; line-height: 0.6; height: 90px; color: var(--accent-2); }
+.cite { font-size: 28px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* Botón / llamada a la acción */
+.cta {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 18px;
+  padding: 30px 48px; border-radius: 100px;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+  color: #fff; font-size: 36px; font-weight: 700; letter-spacing: -0.01em;
+  box-shadow: 0 24px 60px -18px rgba(123,111,232,0.7);
+}
+.t-purple .cta { background: #fff; color: var(--purple-dark); box-shadow: 0 24px 60px -18px rgba(0,0,0,0.5); }
+.content.center .cta { align-self: center; }
+.keyword { display: inline-block; padding: 4px 22px; border-radius: 14px; background: var(--accent-2); color: var(--black); font-weight: 800; letter-spacing: 0.02em; }
+
+/* Acciones del final: guardar / compartir / comentar */
+.actions { display: flex; gap: 20px; flex-wrap: wrap; }
+.actions span { display: inline-flex; align-items: center; gap: 12px; padding: 16px 26px; border-radius: 100px; border: 1.5px solid var(--line); font-size: 26px; font-weight: 600; background: var(--card); }
+.actions svg { width: 30px; height: 30px; }
+
+/* Foto */
+.photo { position: absolute; z-index: 2; overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo.full { inset: 0; }
+.photo.full::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,14,14,0.15) 0%, rgba(14,14,14,0.0) 35%, rgba(14,14,14,0.85) 72%, rgba(14,14,14,0.97) 100%); }
+.photo.right { top: 0; bottom: 0; right: 0; width: 46%; }
+.photo.right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg) 0%, transparent 45%); }
+.photo.arch { border-radius: 400px 400px 40px 40px; border: 3px solid var(--gold); }
+
+/* Chip / etiqueta pequeña */
+.chips { display: flex; gap: 14px; flex-wrap: wrap; }
+.chip { padding: 12px 24px; border-radius: 100px; background: var(--card); border: 1.5px solid var(--line); font-size: 26px; font-weight: 600; }
+
+/* Formas decorativas */
+.orb { position: absolute; border-radius: 50%; filter: blur(2px); z-index: 0; }
+.ring { position: absolute; border-radius: 50%; border: 2px solid var(--line); z-index: 0; }
+.arrow-bridge { position: absolute; z-index: 30; }
+
+/* Utilidades */
+.row { display: flex; gap: 24px; align-items: center; }
+.grow { flex: 1; }
+.w-80 { max-width: 80%; }
+.w-70 { max-width: 70%; }
+.w-60 { max-width: 60%; }
+.mt-0 { margin-top: 0; }
