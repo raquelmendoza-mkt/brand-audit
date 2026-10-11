@@ -1,0 +1,130 @@
+#!/usr/bin/env python3
+"""Genera efectos de sonido originales (libres de derechos) en public/sfx/.
+
+Uso: python3 scripts/sfx.py [carpeta_salida]
+
+Crea: whoosh.wav, whoosh-corto.wav, ping.wav, ding.wav, pop.wav, click.wav,
+teclado-iphone.wav (ráfaga de tecleo), tecla.wav (una sola tecla) y swipe.wav.
+Si remotion.media está permitido en la red, scripts/setup.sh descarga además los
+efectos grabados de @remotion/sfx a public/sfx/remotion/.
+"""
+import os
+import sys
+import wave
+
+import numpy as np
+
+SR = 48000
+rng = np.random.default_rng(11)
+out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), '..', 'public', 'sfx')
+os.makedirs(out, exist_ok=True)
+
+
+def t(dur):
+    return np.arange(int(dur * SR)) / SR
+
+
+def onepole(x, cutoff):
+    # Filtro paso bajo de un polo con frecuencia de corte variable en el tiempo
+    cutoff = np.broadcast_to(cutoff, x.shape)
+    y = np.empty_like(x)
+    acc = 0.0
+    for i in range(len(x)):
+        a = np.exp(-2 * np.pi * cutoff[i] / SR)
+        acc = (1 - a) * x[i] + a * acc
+        y[i] = acc
+    return y
+
+
+def bandpass(x, lo, hi):
+    return onepole(x, hi) - onepole(x, lo)
+
+
+def save(name, sig, stereo_pan=None):
+    sig = sig / (np.max(np.abs(sig)) + 1e-9) * 0.89
+    if stereo_pan is None:
+        st = np.stack([sig, sig], axis=1)
+    else:
+        st = np.stack([sig * (1 - stereo_pan), sig * stereo_pan], axis=1) * 1.6
+        st = np.clip(st, -0.95, 0.95)
+    with wave.open(os.path.join(out, name), 'wb') as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(SR)
+        w.writeframes((st * 32767).astype('<i2').tobytes())
+
+
+def whoosh(dur):
+    tt = t(dur)
+    p = tt / dur
+    noise = rng.normal(0, 1, len(tt))
+    # El filtro sube y baja: aire que pasa cerca
+    sweep = 300 + 5200 * np.sin(np.pi * p) ** 2
+    sig = bandpass(noise, sweep * 0.35, sweep)
+    envl = np.sin(np.pi * np.clip(p, 0, 1)) ** 1.5
+    return sig * envl
+
+
+def bell(f, dur, decay, partials):
+    tt = t(dur)
+    s = sum(a * np.sin(2 * np.pi * f * m * tt) * np.exp(-tt * decay * (1 + 0.6 * k)) for k, (m, a) in enumerate(partials))
+    att = np.minimum(1, tt / 0.002)
+    return s * att
+
+
+def tap(bright=1.0):
+    # Tecla del teclado del iPhone: clic corto y seco con un poco de "cuerpo"
+    tt = t(0.045)
+    noise = rng.normal(0, 1, len(tt))
+    click = bandpass(noise, 1800, 6500 * bright) * np.exp(-tt * 260)
+    body = np.sin(2 * np.pi * 1150 * tt) * np.exp(-tt * 180) * 0.35
+    return click + body
+
+
+# Whoosh: transición entre cortes
+w = whoosh(0.55)
+save('whoosh.wav', w)
+save('whoosh-corto.wav', whoosh(0.28))
+
+# Swipe: deslizar en la pantalla del celular (más agudo y corto)
+tt = t(0.22)
+sw = bandpass(rng.normal(0, 1, len(tt)), 2500, 9000) * np.sin(np.pi * tt / 0.22) ** 2
+save('swipe.wav', sw)
+
+# Ping: notificación brillante (dos notas rápidas)
+p1 = bell(1568, 0.6, 7, [(1, 1), (2.01, 0.35), (3.0, 0.12)])
+p2 = bell(2093, 0.8, 6, [(1, 1), (2.01, 0.3), (3.0, 0.1)])
+ping = np.zeros(int(0.9 * SR))
+ping[: len(p1)] += p1 * 0.8
+s = int(0.09 * SR)
+ping[s: s + len(p2)] += p2[: len(ping) - s]
+save('ping.wav', ping)
+
+# Ding: campanita para resaltar un dato
+save('ding.wav', bell(1318.5, 1.2, 4, [(1, 1), (2.76, 0.4), (5.4, 0.15)]))
+
+# Pop: aparición de texto
+tt = t(0.12)
+f = 900 * np.exp(-tt * 30) + 220
+pop = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 40)
+save('pop.wav', pop)
+
+# Click: clic de mouse / botón
+save('click.wav', tap(1.4)[: int(0.03 * SR)])
+
+# Una tecla suelta y una ráfaga de tecleo (unas 9 teclas por segundo, ritmo humano)
+save('tecla.wav', tap())
+dur = 1.6
+burst = np.zeros(int(dur * SR))
+pos = 0.02
+while pos < dur - 0.06:
+    k = tap(rng.uniform(0.85, 1.15)) * rng.uniform(0.6, 1.0)
+    i = int(pos * SR)
+    burst[i: i + len(k)] += k[: len(burst) - i]
+    pos += rng.uniform(0.07, 0.16)
+save('teclado-iphone.wav', burst)
+
+print('Efectos listos en', os.path.abspath(out))
+for f in sorted(os.listdir(out)):
+    if f.endswith('.wav'):
+        print(' -', f)

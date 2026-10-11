@@ -24,4 +24,30 @@ if [[ ! -f $MODEL/onnx/encoder_model_quantized.onnx ]]; then
 	rm -rf "$tmp"
 fi
 
+# Efectos de sonido sintetizados (siempre disponibles, sin internet)
+if [[ ! -f public/sfx/whoosh.wav ]]; then
+	python3 -I scripts/sfx.py >/dev/null
+fi
+
+# Efectos grabados de @remotion/sfx: solo si remotion.media está permitido en la red
+if [[ ! -d public/sfx/remotion ]] && curl -sSf -m 10 -o /dev/null https://remotion.media/whoosh.wav 2>/dev/null; then
+	echo "Descargando efectos de sonido de Remotion..."
+	mkdir -p public/sfx/remotion
+	for s in whoosh whip ding mouse-click switch page-turn shutter-modern snapchat-notification vine-boom record-scratch; do
+		curl -sSf -m 30 -o "public/sfx/remotion/$s.wav" "https://remotion.media/$s.wav" || rm -f "public/sfx/remotion/$s.wav"
+	done
+fi
+
+# Recorte de personas (texto detrás del sujeto): MediaPipe + modelo de Google
+if ! python3 -c "import mediapipe" 2>/dev/null; then
+	echo "Instalando MediaPipe..."
+	pip install -q mediapipe 2>/dev/null || pip install -q --break-system-packages mediapipe
+	command -v apt-get >/dev/null && ! ldconfig -p | grep -q libEGL.so.1 && apt-get install -y -q libegl1 libgles2 >/dev/null 2>&1 || true
+fi
+SEG=.models/mediapipe/selfie_multiclass_256x256.tflite
+if [[ ! -f $SEG ]]; then
+	mkdir -p .models/mediapipe
+	curl -sSf -o "$SEG" https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_multiclass_256x256/float32/latest/selfie_multiclass_256x256.tflite
+fi
+
 echo "Estudio listo."

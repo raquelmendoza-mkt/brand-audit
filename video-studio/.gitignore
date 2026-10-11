@@ -12,3 +12,5 @@ out
 input/*
 !input/LEEME.md
 public/work
+# Efectos generados o descargados por scripts/setup.sh
+public/sfx
