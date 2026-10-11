@@ -3,7 +3,7 @@
 
 Uso: python3 scripts/sfx.py [carpeta_salida]
 
-Crea: whoosh.wav, whoosh-corto.wav, ping.wav, ding.wav, pop.wav, click.wav,
+Crea: impacto.wav, whoosh.wav, whoosh-corto.wav, ping.wav, ding.wav, pop.wav, click.wav,
 teclado-iphone.wav (ráfaga de tecleo), tecla.wav (una sola tecla) y swipe.wav.
 Si remotion.media está permitido en la red, scripts/setup.sh descarga además los
 efectos grabados de @remotion/sfx a public/sfx/remotion/.
@@ -108,6 +108,13 @@ tt = t(0.12)
 f = 900 * np.exp(-tt * 30) + 220
 pop = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 40)
 save('pop.wav', pop)
+
+# Impacto: golpe grave para títulos que "caen" en pantalla
+tt = t(0.9)
+f = 38 + 90 * np.exp(-tt * 18)
+boom = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 4.5)
+crack = bandpass(rng.normal(0, 1, len(tt)), 200, 4000) * np.exp(-tt * 35) * 0.5
+save('impacto.wav', np.tanh((boom + crack) * 2.2))
 
 # Click: clic de mouse / botón
 save('click.wav', tap(1.4)[: int(0.03 * SR)])
