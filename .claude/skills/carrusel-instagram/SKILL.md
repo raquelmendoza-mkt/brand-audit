@@ -11,8 +11,11 @@ Idioma: español neutro, tuteo, frases cortas.
 
 ## 0. Antes de diseñar
 1. Lee `carruseles/referencias/notas-de-estilo.md` (manda sobre esta guía).
-2. Mira las imágenes nuevas de `carruseles/referencias/me-gusta/`,
-   `no-me-gusta/` y `competencia/` con Read. Si hay referencias que aún no
+2. Las referencias y fotos están en Google Drive (IDs de carpeta en
+   `carruseles/referencias/LEEME.md`). Lista cada carpeta con
+   `search_files` (`parentId = '<id>'`), descarga lo nuevo con
+   `download_file_content` a la subcarpeta local equivalente (convierte HEIC
+   a JPG con Pillow/pillow-heif o ffmpeg) y míralas con Read. Si hay referencias que aún no
    están reflejadas en las notas, anota en `notas-de-estilo.md` qué tienen
    en común (composición, peso de la tipografía, fondos, densidad, uso de foto)
    y aplícalo.
@@ -45,7 +48,8 @@ Idioma: español neutro, tuteo, frases cortas.
   normalmente oscuro o morado.
 - Jerarquía: un solo elemento dominante por slide. Mucho aire; si dudas,
   quita texto.
-- Fotos de Raquel en `assets/` (raquel-1.jpg retrato, raquel-2.jpg taller).
+- Fotos de Raquel en `assets/` (raquel-1.jpg retrato, raquel-2.jpg taller),
+  y las nuevas en Drive «4 · Mis fotos». Ambientes y detalles: «5 · B-roll».
   Fotos nuevas: guárdalas en `carruseles/proyectos/NN-tema/img/`.
 - Si necesitas un recurso que no existe (icono, forma), créalo en SVG inline.
 

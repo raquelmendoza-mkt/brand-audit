@@ -1,35 +1,26 @@
 # Referencias visuales
 
-Aquí subes los carruseles que te inspiran. Antes de diseñar, reviso esta
-carpeta y anoto en `notas-de-estilo.md` lo que aprendo de tu gusto.
+Las referencias y fotos viven en **Google Drive** (subir a GitHub desde el
+navegador fallaba). Antes de diseñar, reviso estas carpetas y anoto en
+`notas-de-estilo.md` lo que aprendo de tu gusto.
 
-## Dónde va cada cosa
+Carpeta principal: [RM Carruseles](https://drive.google.com/drive/folders/11eeVACoOUJW6b56dEZ6kaBxvPM7dLsk5)
 
-| Carpeta | Qué subir |
-|---|---|
-| `me-gusta/` | Carruseles cuyo estilo quieres para tu marca |
-| `no-me-gusta/` | Lo que no quieres ver nunca (igual de útil que lo anterior) |
-| `competencia/` | Lo que publican otros realtors o mentores de tu nicho |
+| Carpeta en Drive | Qué subir | ID |
+|---|---|---|
+| [1 · Me gusta](https://drive.google.com/drive/folders/1Q4USX8zUrIaiUxohnGEYLwUmygrqV6dW) | Carruseles cuyo estilo quieres para tu marca | `1Q4USX8zUrIaiUxohnGEYLwUmygrqV6dW` |
+| [2 · No me gusta](https://drive.google.com/drive/folders/1x2HhyJel55xmZCCdkaF_eM9n0LxPY9Lx) | Lo que nunca quieres ver | `1x2HhyJel55xmZCCdkaF_eM9n0LxPY9Lx` |
+| [3 · Competencia](https://drive.google.com/drive/folders/11YCS3dYWihXA2eNZ4zbYnNvvcO7EcVwY) | Lo que publican otros realtors o mentores | `11YCS3dYWihXA2eNZ4zbYnNvvcO7EcVwY` |
+| [4 · Mis fotos](https://drive.google.com/drive/folders/1dUruhi-YSyOQruHhh6UYQ85pqOkHCYQU) | Retratos y fotos tuyas para usar en los carruseles | `1dUruhi-YSyOQruHhh6UYQ85pqOkHCYQU` |
+| [5 · B-roll](https://drive.google.com/drive/folders/1rhT8wdctI4dXCEbQku6PGXySFDbuV56s) | Propiedades, oficina, eventos, detalles, manos, laptop… | `1rhT8wdctI4dXCEbQku6PGXySFDbuV56s` |
 
-## Cómo nombrar los archivos
+## Consejos
+- Cualquier formato sirve (HEIC, JPG, PNG). Yo los convierto.
+- Si puedes, pon en el nombre qué te gusta: `portada-foto-grande.jpg`.
+- De cada carrusel de referencia: la portada y 1 o 2 slides de adentro.
+- Fotos tuyas: en la mejor calidad posible (original, no reenviada por WhatsApp).
 
-Sube capturas en `.jpg` o `.png` (del slide 1 y de 1 o 2 slides interiores).
-Pon en el nombre **qué te gusta**, así no tengo que adivinarlo:
-
-```
-me-gusta/portada-foto-grande-titulo-abajo.jpg
-me-gusta/fondo-crema-lista-numerada.png
-me-gusta/@cuenta-tipografia-gigante.jpg
-no-me-gusta/demasiado-texto.jpg
-```
-
-Si un carrusel tiene varios slides, usa el mismo prefijo:
-`me-gusta/marca-x-01.jpg`, `me-gusta/marca-x-02.jpg`…
-
-## Cómo subirlos
-
-- **Desde GitHub:** abre la carpeta en github.com → *Add file* → *Upload files*.
-- **Desde el chat:** adjunta las capturas y dime en qué carpeta van.
-- **Desde Drive:** súbelas a una carpeta y pásame el enlace.
-
-Con 8 a 15 referencias ya tengo suficiente para fijar tu estilo.
+## Copia local
+Al diseñar, descargo lo nuevo a estas subcarpetas (`me-gusta/`,
+`no-me-gusta/`, `competencia/`, `mis-fotos/`, `b-roll/`) para usarlo en los
+carruseles.
