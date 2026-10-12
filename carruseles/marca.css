@@ -279,3 +279,77 @@ body.preview .slide { outline: 2px dashed rgba(255,255,255,0.25); outline-offset
 .w-70 { max-width: 70%; }
 .w-60 { max-width: 60%; }
 .mt-0 { margin-top: 0; }
+
+/* ==================================================================
+   ESTILO LIMPIO (aprendido de las referencias de Raquel, oct 2026)
+   Fondos claros y aireados, títulos negros con 1-3 palabras en morado,
+   mezcla de pesos, palabra en Playfair itálica, foto recortada, sin brillos.
+   ================================================================== */
+:root { --purple-ink: #5446D6; }   /* morado de texto sobre fondos claros */
+
+.t-white, .t-lavender, .t-mist {
+  --fg: #0E0E0E; --muted: rgba(14,14,14,0.6); --accent: var(--purple-ink); --accent-2: var(--purple-ink);
+  --line: rgba(14,14,14,0.10); --card: #FFFFFF;
+}
+.t-white    { --bg: #FFFFFF; background: #FFFFFF; }
+.t-lavender { --bg: #F1EFFD; background: linear-gradient(180deg, #F4F2FE 0%, #ECE9FC 100%); }
+.t-mist     { --bg: #EEEFF3; background: radial-gradient(ellipse 70% 60% at 30% 20%, #FAFAFC 0%, transparent 70%), #E9EAEF; }
+.t-night    { /* oscuro minimalista: degradado morado profundo, sin texturas */
+  --bg: #17134A; --fg: #FFFFFF; --muted: rgba(255,255,255,0.7); --accent: #A99FF5; --accent-2: #A99FF5;
+  --line: rgba(255,255,255,0.14); --card: rgba(255,255,255,0.06);
+  background: linear-gradient(115deg, #0D0B2B 0%, #241B6E 55%, #4433B8 100%);
+}
+/* Los estilos limpios no llevan grano */
+.t-white::after, .t-lavender::after, .t-mist::after, .t-night::after { display: none; }
+
+/* Cabecera y pie minimalistas */
+.clean .chrome-top, .clean .chrome-bottom { font-size: 24px; color: var(--muted); }
+.clean .chrome-top .brand { font-weight: 500; color: var(--muted); gap: 0; }
+.clean .chrome-top .brand .mono { display: none; }
+.clean .swipe { font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 22px; color: var(--accent); }
+.clean .progress { height: 5px; }
+
+/* Títulos limpios: negros, morado en palabras clave, mezcla de pesos */
+.clean .hook { font-weight: 800; font-size: 104px; line-height: 1.06; letter-spacing: -0.035em; }
+.clean .h1   { font-weight: 800; font-size: 80px; line-height: 1.08; letter-spacing: -0.03em; }
+.clean .h2   { font-weight: 700; font-size: 60px; line-height: 1.12; letter-spacing: -0.025em; }
+.c { color: var(--accent); }                       /* palabra en morado */
+.thin { font-weight: 300; }                        /* contraste de pesos: "Las vistas no pagan" */
+.serif { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; }
+.clean .hook em, .clean .h1 em, .clean .h2 em { color: var(--fg); font-weight: 500; }  /* itálica en negro, como «personal» */
+.t-night .hook em, .t-night .h1 em, .t-night .h2 em { color: var(--accent); }
+
+/* Caja resaltada detrás de una palabra o frase */
+.hl { display: inline; background: var(--purple-ink); color: #fff; padding: 0.02em 0.22em; border-radius: 0.16em;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hl.soft { background: #C9C2FA; color: #15114A; }
+.underline { background: linear-gradient(transparent 88%, var(--accent) 88%); }
+
+/* Kicker limpio: texto espaciado sin cápsula */
+.clean .kicker { border: 0; background: none; padding: 0; font-size: 24px; letter-spacing: 0.22em; color: var(--muted); font-weight: 600; }
+.clean .kicker::before { display: none; }
+
+/* Tarjeta blanca con sombra suave */
+.clean .card, .clean .list li, .clean .compare .col { border: 1px solid rgba(14,14,14,0.06); box-shadow: 0 18px 50px -24px rgba(40,30,120,0.25); }
+.clean .compare .col.good { background: var(--purple-ink); }
+
+/* Slide tipo tuit / post de X */
+.tweet { background: transparent; display: flex; flex-direction: column; gap: 34px; }
+.tweet .who { display: flex; align-items: center; gap: 26px; }
+.tweet .who img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; background: #E9EAEF; }
+.tweet .name { font-size: 40px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.tweet .name svg { width: 34px; height: 34px; }
+.tweet .user { font-size: 32px; color: var(--muted); }
+.tweet .text { font-size: 50px; line-height: 1.32; font-weight: 400; letter-spacing: -0.01em; }
+.tweet .text b { font-weight: 700; }
+.tweet .meta { font-size: 28px; color: var(--muted); padding-bottom: 26px; border-bottom: 1px solid var(--line); }
+
+/* Foto recortada (PNG sin fondo) */
+.cutout { position: absolute; z-index: 5; bottom: 0; }
+.cutout img { display: block; width: 100%; height: auto; }
+.cutout::after { display: none; }
+/* Botón CTA ancho tipo píldora */
+.pill { display: inline-flex; align-items: center; justify-content: center; gap: 14px; padding: 30px 54px; border-radius: 100px;
+        background: var(--purple-ink); color: #fff; font-size: 44px; font-weight: 700; letter-spacing: -0.01em; }
+.clean .progress i { background: var(--purple-ink); }
+.clean .t-night .progress i { background: #A99FF5; }

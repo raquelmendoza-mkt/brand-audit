@@ -38,6 +38,13 @@ Idioma: español neutro, tuteo, frases cortas.
 - CTA final con palabra clave (`.keyword`), y botones de guardar/compartir.
 
 ## 3. Diseño
+- **Estilo por defecto: limpio** (`<body class="clean">`, temas `t-white`,
+  `t-lavender`, `t-mist` y `t-night` para contraste). Piezas del estilo limpio:
+  `.c` (palabra morada), `.thin` (peso light), `em.serif`, `.hl` (caja
+  resaltada), `.tweet`, `.cutout` (foto recortada), `.pill` (CTA).
+  Referencia: `carruseles/proyectos/02-perfil-catalogo-limpio/`.
+- Fotos recortadas: `carruseles/recursos/*-recorte.png`. Para recortar una
+  foto nueva usa `rembg` con la sesión `birefnet-portrait`.
 - Copia `carruseles/plantilla.html` a `carruseles/proyectos/NN-tema/carrusel.html`.
 - Piezas disponibles en `carruseles/marca.css` (temas `t-dark`, `t-light`,
   `t-purple`, `t-gold`; `.hook .h1 .h2 .h3 .body .small .kicker .rule
