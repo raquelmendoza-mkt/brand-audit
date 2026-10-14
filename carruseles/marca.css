@@ -387,3 +387,4 @@ body.preview .slide { outline: 2px dashed rgba(255,255,255,0.25); outline-offset
 .note b { font-weight: 700; }
 .hook:has(.hl), .h1:has(.hl), .h2:has(.hl) { line-height: 1.3; }
 .hl { white-space: nowrap; }
+.photo.full.raw::after { display: none; }
