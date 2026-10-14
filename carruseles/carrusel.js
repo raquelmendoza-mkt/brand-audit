@@ -6,6 +6,7 @@
      data-progress="off"   oculta la barra de progreso inferior
    Opciones del carrusel (en <body>):
      data-handle="@raquelmendoza.mkt"   data-name="Raquel Mendoza"
+     data-counter="off"  oculta la numeración (01 / 10)
    ================================================================== */
 (function () {
   const params = new URLSearchParams(location.search);
@@ -15,6 +16,7 @@
   const body = document.body;
   const handle = body.dataset.handle || '@raquelmendoza.mkt';
   const name = body.dataset.name || 'Raquel Mendoza';
+  const showCounter = body.dataset.counter !== 'off';
   const slides = [...document.querySelectorAll('.slide')];
   const total = slides.length;
   const pad = (n) => String(n).padStart(2, '0');
@@ -26,7 +28,7 @@
     if (s.dataset.chrome !== 'off') {
       s.insertAdjacentHTML('beforeend',
         `<div class="chrome-top"><div class="brand"><span class="mono">RM</span>${name}</div><div>${handle}</div></div>` +
-        `<div class="chrome-bottom"><div class="counter">${pad(n)} / ${pad(total)}</div>` +
+        `<div class="chrome-bottom"><div class="counter">${showCounter ? pad(n) + ' / ' + pad(total) : ''}</div>` +
         (last || s.dataset.swipe === 'off' ? '<div></div>' : `<div class="swipe">Desliza ${arrow}</div>`) +
         `</div>`);
     }
