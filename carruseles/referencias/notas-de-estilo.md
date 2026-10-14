@@ -11,6 +11,13 @@ carrusel nuevo. Lo más reciente manda.
 - Le gustan los **diseños limpios**. Estilo por defecto: `<body class="clean">`
   (ejemplo: `proyectos/02-perfil-catalogo-limpio`).
 
+## Reglas que pidió Raquel
+- **Cada slide lleva su identidad visual, portada incluida**: al menos una palabra
+  o elemento en morado (#5446D6) además de cabecera/pie. Nunca un título todo en negro.
+- Portadas que continúan un video suyo: **solo texto**, sin foto.
+- Sin numeración de slides (`data-counter="off"`) y sin etiqueta encima del título de portada.
+- En slides tipo tuit, el avatar es `recursos/raquel-avatar.jpg` (cara centrada).
+
 ## Aprendido de las referencias (oct 2026, 11 «me gusta» / 2 «no me gusta»)
 Lo que se repite en lo que le gusta:
 1. **Fondos claros y aireados**: blanco, gris de estudio, lavanda suave. Mucho espacio vacío.
