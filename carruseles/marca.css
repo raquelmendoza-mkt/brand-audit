@@ -353,3 +353,37 @@ body.preview .slide { outline: 2px dashed rgba(255,255,255,0.25); outline-offset
         background: var(--purple-ink); color: #fff; font-size: 44px; font-weight: 700; letter-spacing: -0.01em; }
 .clean .progress i { background: var(--purple-ink); }
 .clean .t-night .progress i { background: #A99FF5; }
+
+/* Ventana de chat con IA (prompt de ejemplo) */
+.chat { background: #fff; border-radius: 34px; border: 1px solid rgba(14,14,14,0.06);
+        box-shadow: 0 24px 60px -26px rgba(40,30,120,0.30); overflow: hidden; }
+.chat .bar { display: flex; align-items: center; gap: 14px; padding: 22px 30px; border-bottom: 1px solid rgba(14,14,14,0.07);
+             font-size: 24px; font-weight: 600; color: rgba(14,14,14,0.55); }
+.chat .bar i { width: 14px; height: 14px; border-radius: 50%; background: #E3E1EC; display: inline-block; }
+.chat .bar span { margin-left: 10px; }
+.chat .body-chat { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+.chat .msg { align-self: flex-end; max-width: 92%; background: #EEEBFD; color: #15114A; border-radius: 28px 28px 8px 28px;
+             padding: 26px 30px; font-size: 31px; line-height: 1.42; }
+.chat .msg b { color: var(--purple-ink); font-weight: 700; }
+.chat .input { display: flex; align-items: center; justify-content: space-between; margin: 0 30px 28px; padding: 18px 18px 18px 28px;
+               border-radius: 100px; border: 1px solid rgba(14,14,14,0.10); font-size: 26px; color: rgba(14,14,14,0.4); }
+.chat .input b { width: 52px; height: 52px; border-radius: 50%; background: var(--purple-ink); display: grid; place-items: center; }
+.chat .input svg { width: 26px; height: 26px; }
+
+/* Rejilla de tarjetas pequeñas (2×2) */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.tile { background: #fff; border-radius: 28px; padding: 34px 32px; border: 1px solid rgba(14,14,14,0.06);
+        box-shadow: 0 18px 50px -26px rgba(40,30,120,0.25); display: flex; flex-direction: column; gap: 14px; }
+.tile .ico { width: 64px; height: 64px; border-radius: 18px; background: #EEEBFD; display: grid; place-items: center; }
+.tile .ico svg { width: 34px; height: 34px; stroke: var(--purple-ink); }
+.tile h4 { font-size: 38px; font-weight: 700; letter-spacing: -0.02em; }
+.tile p { font-size: 26px; line-height: 1.4; color: var(--muted); }
+
+/* Aviso */
+.note { display: flex; gap: 24px; align-items: flex-start; padding: 34px 36px; border-radius: 28px;
+        background: #fff; border-left: 8px solid var(--purple-ink); box-shadow: 0 18px 50px -26px rgba(40,30,120,0.25);
+        font-size: 33px; line-height: 1.42; }
+.note .emoji { font-size: 52px; line-height: 1; }
+.note b { font-weight: 700; }
+.hook:has(.hl), .h1:has(.hl), .h2:has(.hl) { line-height: 1.3; }
+.hl { white-space: nowrap; }

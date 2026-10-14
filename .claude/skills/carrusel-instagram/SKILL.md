@@ -41,7 +41,10 @@ Idioma: español neutro, tuteo, frases cortas.
 - **Estilo por defecto: limpio** (`<body class="clean">`, temas `t-white`,
   `t-lavender`, `t-mist` y `t-night` para contraste). Piezas del estilo limpio:
   `.c` (palabra morada), `.thin` (peso light), `em.serif`, `.hl` (caja
-  resaltada), `.tweet`, `.cutout` (foto recortada), `.pill` (CTA).
+  resaltada), `.tweet`, `.cutout` (foto recortada), `.pill` (CTA), `.chat`
+  (ventana de prompt a la IA), `.grid2 .tile` (tarjetas 2×2), `.note` (aviso).
+  Recortes de alta calidad: `raquel-6092-recorte.png` (retrato, chaqueta rosa)
+  y `raquel-6109-recorte.png` (agachada con iPad).
   Referencia: `carruseles/proyectos/02-perfil-catalogo-limpio/`.
 - Fotos recortadas: `carruseles/recursos/*-recorte.png`. Para recortar una
   foto nueva usa `rembg` con la sesión `birefnet-portrait`.
