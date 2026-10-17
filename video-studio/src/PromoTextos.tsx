@@ -3,6 +3,7 @@ import {
   AbsoluteFill,
   Composition,
   Easing,
+  Img,
   interpolate,
   Sequence,
   staticFile,
@@ -35,6 +36,15 @@ export type PromoTextosProps = {
   readonly endColorTop: string;
   readonly endColorBottom: string;
   readonly endSeconds: number;
+  // Opcionales: ícono animado sobre el nombre en el cierre y efectos de sonido
+  readonly endIcon?: "regalo" | null;
+  // Imagen (último fotograma) que queda congelada detrás de la transición al cierre
+  readonly holdImage?: string | null;
+  readonly sfx?: {
+    readonly at: number;
+    readonly src: string;
+    readonly volume: number;
+  }[];
 };
 
 const calculateMetadata: CalculateMetadataFunction<PromoTextosProps> = ({
@@ -128,11 +138,110 @@ const SegmentText: React.FC<{ readonly segment: Segment }> = ({ segment }) => {
   );
 };
 
+// Regalo en vector: la caja cae con rebote, la tapa salta y salen destellos
+const Gift: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t0 = 0.25 * fps;
+  const clamp = {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  } as const;
+  const lidLift = interpolate(
+    frame,
+    [t0 + 0.55 * fps, t0 + 0.75 * fps, t0 + 1.0 * fps],
+    [0, -26, -8],
+    {
+      ...clamp,
+      easing: Easing.bezier(0.33, 1, 0.68, 1),
+    },
+  );
+  const lidTilt = interpolate(
+    frame,
+    [t0 + 0.55 * fps, t0 + 0.75 * fps, t0 + 1.0 * fps],
+    [0, -10, -4],
+    clamp,
+  );
+  const sparkle = (delay: number) =>
+    interpolate(
+      frame,
+      [t0 + delay * fps, t0 + (delay + 0.25) * fps, t0 + (delay + 0.6) * fps],
+      [0, 1, 0],
+      clamp,
+    );
+  return (
+    <div
+      style={{
+        width: 380,
+        height: 380,
+        marginBottom: 40,
+        opacity: interpolate(frame, [t0, t0 + 0.15 * fps], [0, 1], clamp),
+        translate: interpolate(
+          frame,
+          [t0, t0 + 0.55 * fps],
+          ["0px -180px", "0px 0px"],
+          {
+            ...clamp,
+            easing: Easing.bezier(0.34, 1.56, 0.64, 1),
+          },
+        ),
+        // Un leve balanceo continuo para que no quede estático
+        rotate: `${Math.sin(frame / 9) * 2}deg`,
+      }}
+    >
+      <svg viewBox="0 0 200 200" width={380} height={380}>
+        {/* destellos */}
+        {[
+          [30, 40, 0.75],
+          [170, 50, 0.9],
+          [160, 150, 1.05],
+          [35, 145, 1.15],
+        ].map(([x, y, d]) => (
+          <path
+            key={`${x}-${y}`}
+            d={`M${x} ${y - 12} L${x + 3} ${y - 3} L${x + 12} ${y} L${x + 3} ${y + 3} L${x} ${y + 12} L${x - 3} ${y + 3} L${x - 12} ${y} L${x - 3} ${y - 3} Z`}
+            fill="#FFFFFF"
+            opacity={sparkle(d)}
+            transform={`rotate(0 ${x} ${y})`}
+          />
+        ))}
+        {/* caja */}
+        <rect x="45" y="92" width="110" height="88" rx="10" fill="#FFFFFF" />
+        <rect
+          x="45"
+          y="92"
+          width="110"
+          height="88"
+          rx="10"
+          fill="#E2437E"
+          opacity="0.18"
+        />
+        <rect x="91" y="92" width="18" height="88" fill="#C2185B" />
+        {/* tapa con lazo */}
+        <g transform={`translate(0 ${lidLift}) rotate(${lidTilt} 100 80)`}>
+          <rect x="37" y="68" width="126" height="30" rx="8" fill="#FFFFFF" />
+          <rect x="91" y="68" width="18" height="30" fill="#C2185B" />
+          <path
+            d="M100 68 C 80 40, 52 48, 66 64 C 74 72, 92 70, 100 68 Z"
+            fill="#C2185B"
+          />
+          <path
+            d="M100 68 C 120 40, 148 48, 134 64 C 126 72, 108 70, 100 68 Z"
+            fill="#C2185B"
+          />
+          <circle cx="100" cy="66" r="7" fill="#AD1457" />
+        </g>
+      </svg>
+    </div>
+  );
+};
+
 const EndCard: React.FC<{
   readonly name: string;
   readonly top: string;
   readonly bottom: string;
-}> = ({ name, top, bottom }) => {
+  readonly icon?: "regalo" | null;
+}> = ({ name, top, bottom, icon }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return (
@@ -144,11 +253,13 @@ const EndCard: React.FC<{
         clipPath: `circle(${interpolate(frame, [0, 0.6 * fps], [0, 120], { extrapolateRight: "clamp", easing: Easing.bezier(0.65, 0, 0.35, 1) })}% at 50% 50%)`,
       }}
     >
+      {icon === "regalo" ? <Gift /> : null}
       <div
         style={{
           fontFamily: poppins,
           fontWeight: 700,
           fontSize: 112,
+          textShadow: "0 6px 30px rgba(120,0,50,0.25)",
           color: "#FFFFFF",
           letterSpacing: -1,
           opacity: interpolate(frame, [0.35 * fps, 0.8 * fps], [0, 1], {
@@ -209,13 +320,37 @@ export const PromoTextosComponent: React.FC<PromoTextosProps> = (props) => {
           <SegmentText segment={s} />
         </Sequence>
       ))}
+      {props.holdImage ? (
+        <Sequence name="Último fotograma" from={videoFrames} premountFor={fps}>
+          <Img
+            src={staticFile(props.holdImage)}
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </Sequence>
+      ) : null}
       <Sequence name="Cierre" from={videoFrames} premountFor={fps}>
         <EndCard
           name={props.brandName}
           top={props.endColorTop}
           bottom={props.endColorBottom}
+          icon={props.endIcon ?? null}
         />
       </Sequence>
+      {(props.sfx ?? []).map((x) => (
+        <Sequence
+          key={`${x.src}-${x.at}`}
+          name={x.src}
+          from={Math.round(x.at * fps)}
+          durationInFrames={3 * fps}
+        >
+          <Audio src={staticFile(x.src)} volume={x.volume} />
+        </Sequence>
+      ))}
       {props.music ? (
         <Audio
           name="Música"
@@ -292,6 +427,63 @@ export const PromoTextosComposition: React.FC = () => {
         endColorTop: "#6A35A8",
         endColorBottom: "#3B1A6B",
         endSeconds: 2.5,
+      }}
+    />
+  );
+};
+
+export const DetallitosDyanComposition: React.FC = () => {
+  return (
+    <Composition
+      id="DetallitosDyan"
+      component={PromoTextosComponent}
+      durationInFrames={393}
+      fps={30}
+      width={1080}
+      height={1920}
+      calculateMetadata={calculateMetadata}
+      defaultProps={{
+        video: "work/dyan/video.mp4",
+        videoSeconds: 10.0,
+        music: "work/dyan/musica.wav",
+        musicVolume: 0.55,
+        videoVolume: 0.3,
+        segments: [
+          {
+            from: 0.25,
+            to: 6.3,
+            small: "Nuestro producto",
+            big: "del momento",
+            position: "arriba",
+          },
+          {
+            from: 6.5,
+            to: 8.4,
+            small: "¿Ya usaste esta",
+            big: "nueva sombra?",
+            position: "abajo",
+          },
+          {
+            from: 8.55,
+            to: 9.95,
+            small: "Te esperamos en",
+            big: "Detallitos Dyan",
+            position: "abajo",
+          },
+        ],
+        brandName: "Detallitos Dyan",
+        endColorTop: "#F7A8C8",
+        endColorBottom: "#D63384",
+        endSeconds: 3.1,
+        endIcon: "regalo",
+        holdImage: "work/dyan/ultimo.jpg",
+        sfx: [
+          { at: 6.2, src: "sfx/whoosh.wav", volume: 0.4 },
+          { at: 8.38, src: "sfx/whoosh-corto.wav", volume: 0.35 },
+          { at: 9.85, src: "sfx/remotion/whip.wav", volume: 0.45 },
+          { at: 10.85, src: "sfx/pop.wav", volume: 0.45 },
+          { at: 11.05, src: "sfx/remotion/ding.wav", volume: 0.35 },
+        ],
       }}
     />
   );
