@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Genera una pista de afro house original, libre de derechos, para reels.
 
-Uso: python3 scripts/afrohouse.py <salida.wav> <segundos> [--bpm 122] [--calma INICIO FIN]
+Uso: python3 scripts/afrohouse.py <salida.wav> <segundos> [--bpm 122] [--calma INICIO FIN] [--estilo afro|elegante]
+
+--estilo elegante: deep house sofisticado para inmobiliaria y lujo (acordes de 7ª tipo
+piano eléctrico, percusión suave sin congas, melodía de campana fina).
 
 - Groove afro: bombo a negras, palmas en 2 y 4, shaker en semicorcheas con swing,
   congas y clave en patrón 3-3-2, hi-hat abierto a contratiempo.
@@ -23,6 +26,7 @@ p.add_argument('out')
 p.add_argument('seconds', type=float)
 p.add_argument('--bpm', type=float, default=122)
 p.add_argument('--calma', type=float, nargs=2, default=None)
+p.add_argument('--estilo', default='afro', choices=['afro', 'elegante'])
 a = p.parse_args()
 
 rng = np.random.default_rng(23)
@@ -129,6 +133,17 @@ def marimba(m, d=0.5):
     return s * np.minimum(tt / 0.002, 1) * 0.2
 
 
+def epiano(notes, d):
+    # Piano eléctrico: senos con leve trémolo y ataque suave
+    tt = t(d)
+    s = np.zeros(len(tt))
+    for m in notes:
+        f = hz(m)
+        s += np.sin(2 * np.pi * f * tt) + 0.3 * np.sin(2 * np.pi * 2 * f * tt) * np.exp(-tt * 6)
+    env = np.minimum(tt / 0.01, 1) * np.exp(-tt * 2.2) * (1 + 0.15 * np.sin(2 * np.pi * 5 * tt))
+    return s * env * 0.045
+
+
 def pad(notes, d):
     tt = t(d)
     s = np.zeros(len(tt))
@@ -145,6 +160,11 @@ mel = [  # (semicorchea, nota) un motivo de 2 compases, estilo marimba afro
     (0, 76), (3, 74), (6, 72), (8, 74), (10, 76), (14, 79),
     (16, 81), (19, 79), (22, 76), (24, 74), (27, 72), (30, 74),
 ]
+ELEGANTE = a.estilo == 'elegante'
+if ELEGANTE:
+    # Fmaj7 - Em7 - Dm7 - Cmaj7: elegante, cálido y en movimiento
+    prog = [(41, [57, 60, 64, 65]), (40, [55, 59, 62, 64]), (38, [53, 57, 60, 62]), (36, [52, 55, 59, 60])]
+    mel = [(0, 81), (6, 79), (10, 76), (14, 77), (16, 76), (22, 72), (26, 74), (30, 71)]
 K, C, HO = kick(), clap(), hat_open()
 nbars = int(np.ceil(a.seconds / bar)) + 1
 for b in range(nbars):
@@ -167,24 +187,28 @@ for b in range(nbars):
     for k in range(16):
         swing = 0.012 if k % 2 else 0
         add(shaker(k % 4 == 2), t0 + k * s16 + swing, pan=-0.35, vol=0.7 if quiet else 1)
-    # Congas y clave en 3-3-2
-    for k, (pitch, slap) in {0: (196, False), 3: (262, True), 6: (196, False), 10: (330, False), 11: (262, True), 14: (196, False)}.items():
+    # Congas y clave en 3-3-2 (en el estilo elegante solo un rim suave)
+    for k, (pitch, slap) in ({} if ELEGANTE else {0: (196, False), 3: (262, True), 6: (196, False), 10: (330, False), 11: (262, True), 14: (196, False)}).items():
         add(conga(pitch, slap), t0 + k * s16, pan=0.35)
-    for k in (0, 3, 6, 10, 12):
-        add(clave(), t0 + k * s16, pan=-0.2, vol=0.8)
+    for k in ((3, 10) if ELEGANTE else (0, 3, 6, 10, 12)):
+        add(clave(), t0 + k * s16, pan=-0.2, vol=0.45 if ELEGANTE else 0.8)
     if not quiet:
         # Bajo sincopado
         for k, dur, oct_ in ((0, 3, 0), (3, 2, 0), (6, 2, 12), (8, 3, 0), (11, 2, 0), (14, 2, 12)):
             add(bass(root - 12 + oct_, dur * s16 * 0.95), t0 + k * s16)
         # Acordes a contratiempo
-        for k in (2, 5, 8, 10, 13):
-            add(stab(chord, s16 * 2.2), t0 + k * s16, pan=-0.15 if k % 2 else 0.15)
-        # Marimba a partir del compás 5
-        if b >= 4:
+        if ELEGANTE:
+            for k in (0, 6, 10):
+                add(epiano(chord, s16 * (6 if k == 0 else 4)), t0 + k * s16, pan=-0.1 if k % 2 else 0.1)
+        else:
+            for k in (2, 5, 8, 10, 13):
+                add(stab(chord, s16 * 2.2), t0 + k * s16, pan=-0.15 if k % 2 else 0.15)
+        # Marimba (o campana fina en el estilo elegante) a partir del compás 5
+        if b >= (2 if ELEGANTE else 4):
             for k, m in mel:
                 st = (b % 2) * 16
                 if st <= k < st + 16:
-                    add(marimba(m), t0 + (k - st) * s16, pan=0.25)
+                    add(marimba(m, 0.9 if ELEGANTE else 0.5) * (0.7 if ELEGANTE else 1), t0 + (k - st) * s16, pan=0.25)
     else:
         add(stab(chord, bar * 0.9, bright=900) * 2.2, t0)
     add(pad(chord, bar), t0, vol=0.6 if quiet else 1.0)
