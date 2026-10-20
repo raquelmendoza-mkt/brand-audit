@@ -1,6 +1,6 @@
 import json, sys, re
 S=sys.argv[1]; W=json.load(open(f'{S}/words.json'))
-HELV="Liberation Sans"   # Helvetica-metric stand-in
+HELV="Nimbus Sans"   # URW Helvetica
 def ts(t):
     t=max(t,0); h=int(t//3600); m=int(t%3600//60); s=t%60; return f"{h}:{m:02d}:{s:05.2f}"
 GOLD="&H6FC6E9&"   # #E9C66F (BGR)
@@ -13,7 +13,7 @@ SEG=[("IMG_0742_ai_a",0.0,0.0,5.4,"¿Y si tu próximo lujo fuera tener un espaci
      ("IMG_0718",2.45,25.5,8.45,"Y este balcón para disfrutar una pausa conectada con la naturaleza y disfrutar de un buen café"),
      ("IMG_0748",4.95,31.5,5.65,None),("IMG_0748",5.95,32.2,10.75,None),
      ("IMG_0743",1.95,40.0,9.05,"¿Te imaginas viviendo aquí? Comenta la palabra PALMAS y te envío todos los detalles para agendar tu próxima visita")]
-HL={"lujo","modo","avión?","estudio","casa","balcón","naturaleza","café","dos","parqueaderos","24","horas.","Además,","PALMAS","aquí?","visita"}
+HL={"estudio","casa","balcón","naturaleza","café","dos","parqueaderos","24","horas.","Además,","PALMAS","aquí?","visita"}
 words=[]  # (t_timeline, text)
 park_txt="Además, cuenta con dos parqueaderos privados, cuarto útil y vigilancia 24 horas.".split()
 pk=0
@@ -30,18 +30,26 @@ for i,(t,w,segend) in enumerate(words):
     cur.append((t,w,segend))
     nxt=words[i+1] if i+1<len(words) else None
     txtlen=sum(len(x[1])+1 for x in cur)
-    brk = (nxt is None or nxt[2]!=segend or re.search(r"[,?.]$",w) or len(cur)>=3 or txtlen>14
-           or (nxt and txtlen+len(nxt[1])>15))
+    brk = (nxt is None or nxt[2]!=segend or re.search(r"[,?.]$",w) or len(cur)>=4 or txtlen>16
+           or (nxt and txtlen+len(nxt[1])>19))
     if brk: chunks.append(cur); cur=[]
+KEY=lambda w: w in HL or w.strip("¿?.,") in {"PALMAS","Palmas"}
 for i,ch in enumerate(chunks):
-    a=ch[0][0]-0.04; segend=ch[-1][2]
-    nxt=chunks[i+1][0][0]-0.04 if i+1<len(chunks) else 1e9
-    b=min(nxt, segend, ch[-1][0]+0.75)
-    toks=[]
-    for _,w,_ in ch:
-        up=w.upper().rstrip('.,')
-        toks.append(f"{{\\c{GOLD}}}{up}{{\\c&HFFFFFF&}}" if w in HL or w.strip("¿?.,") in {"lujo","PALMAS"} else up)
-    E(a,b,"{\\fscx70\\fscy70\\t(0,110,\\fscx104\\fscy104)\\t(110,180,\\fscx100\\fscy100)}"+" ".join(toks))
+    a=ch[0][0]-0.06; segend=ch[-1][2]
+    nxt=chunks[i+1][0][0]-0.06 if i+1<len(chunks) else 1e9
+    b=min(nxt, segend, ch[-1][0]+0.8)
+    spans=[]; glow=[]
+    for t,w,_ in ch:
+        d=max(0,int((t-a)*1000)); txt=w.rstrip('.,')
+        if KEY(w):
+            f=f"\\fnPoppins Bold\\fs104\\c{GOLD}"; txt=txt
+        else:
+            f=f"\\fn{HELV}\\b0\\fs84\\c&HFFFFFF&"
+        anim=f"\\alpha&HFF&\\fscy55\\t({d},{d+120},\\alpha&H00&\\fscy100)"
+        spans.append("{"+f+anim+"}"+txt)
+        glow.append("{"+f+f"\\1a&HFF&\\3a&HFF&\\fscy55\\t({d},{d+120},\\3a&H50&\\fscy100)"+"}"+txt)
+    E(a,b,"{\\bord0\\shad0}"+" ".join(spans),"Sub",2)
+    E(a,b,"{\\bord11\\blur16\\3c&H000000&\\shad0}"+" ".join(glow),"Sub",1)
 # ---- helpers for graphics ----
 def rrect(w,h,r):
     k=r*0.45
@@ -124,7 +132,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Sub,Poppins ExtraBold,82,&H00FFFFFF,&H00FFFFFF,&H00101010,&H90000000,0,0,0,0,100,100,1,0,1,5,3,2,60,60,520,1
+Style: Sub,Nimbus Sans,76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,0,0,2,50,50,470,1
 Style: Gfx,Poppins,60,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,0,2,8,0,0,0,1
 
 [Events]
@@ -134,7 +142,7 @@ open(f'{S}/subs.ass','w').write(hdr+"\n".join(ev)+"\n")
 # also export plain SRT of speech
 srt=[]; n=1
 for l in ev:
-    if ",Sub," in l:
+    if l.startswith("Dialogue: 2,") and ",Sub," in l:
         p=l.split(",",9); txt=re.sub(r"\{[^}]*\}","",p[9])
         f=lambda s: "0"+s.replace(".",",")+"0" if len(s.split(":")[0])==1 else s
         srt.append(f"{n}\n{f(p[1])} --> {f(p[2])}\n{txt}\n"); n+=1

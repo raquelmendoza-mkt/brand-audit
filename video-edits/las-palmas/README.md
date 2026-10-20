@@ -14,9 +14,11 @@ Reel vertical 9:16, 1080×1920, 30 fps, 47,1 s. Sigue la estructura del document
 | 0:37–0:40 | VENTA · $1.340.000.000 COP · Administración $1.000.000/mes | 0690 |
 | 0:40–0:47 | Cierre «Comenta PALMAS» (voz) | 0743 |
 
-- Subtítulos: Poppins ExtraBold (palabras clave en dorado). Textos secundarios: Helvetica
-  (renderizado con Liberation Sans, alternativa libre con las mismas métricas).
-- Música: pista original house elegante, 120 BPM, compuesta con `scripts/music.py`
-  (libre de derechos). Entra justo cuando se activa el modo avión.
+- **v2** (`Las_Palmas_Reel_45s_v2.mp4`): subtítulos palabra por palabra en Helvetica
+  (Nimbus Sans, URW) con palabras clave en Poppins Bold dorada; en el gancho «LUJO» y
+  «MODO AVIÓN» van detrás de Felipe (máscara por fotograma con `scripts/mask.py`,
+  texto en `hook_texto_detras.ass`); música afro house original 120 BPM
+  (`scripts/music_afro.py`: congas, bongós, clave, kalimba, bajo rodante).
+- v1: subtítulos Poppins ExtraBold en mayúsculas y música house (`scripts/music.py`).
 - `subs.ass` = subtítulos y gráficos animados; `Las_Palmas_subtitulos.srt` = solo las frases habladas.
 - El MP4 y el WAV no se suben al repositorio por tamaño (ver `.gitignore`).
