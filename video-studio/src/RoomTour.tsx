@@ -31,7 +31,8 @@ type Motion =
   | "panLeft"
   | "panRight"
   | "tiltUp"
-  | "tiltDown";
+  | "tiltDown"
+  | "suave";
 
 type SceneText = {
   readonly kicker?: string; // línea pequeña en Helvetica
@@ -95,6 +96,8 @@ const useMotion = (motion: Motion) => {
     panRight: { scale: 1.2, x: -60 + 120 * p, y: 0 },
     tiltUp: { scale: 1.2, x: 0, y: -80 + 160 * p },
     tiltDown: { scale: 1.2, x: 0, y: 80 - 160 * p },
+    // Para clips que ya traen movimiento de cámara (p. ej. Higgsfield): solo un leve empuje
+    suave: { scale: 1.02 + 0.04 * p, x: 0, y: 0 },
   };
   return m[motion];
 };
@@ -625,6 +628,148 @@ export const RoomTourBosqueComposition: React.FC = () => {
             kind: "foto",
             seconds: 3.6,
             motion: "panLeft",
+            text: {
+              kicker: "¡Comenta la palabra",
+              big: "BOSQUE",
+              sub: "y te comparto toda la info!",
+              position: "centro",
+            },
+          },
+        ],
+      }}
+    />
+  );
+};
+
+// Versión con todas las fotos animadas en Higgsfield (Gemini Omni Flash 1.1)
+export const RoomTourBosqueOmniComposition: React.FC = () => {
+  return (
+    <Composition
+      id="RoomTourBosqueOmni"
+      component={RoomTourComponent}
+      durationInFrames={900}
+      fps={30}
+      width={1080}
+      height={1920}
+      calculateMetadata={calculateMetadata}
+      defaultProps={{
+        transitionSeconds: 0.4,
+        music: "work/bosque/musica.wav",
+        musicVolume: 0.8,
+        agentName: "Yoramis Medina",
+        agentCompany: "Dorata Realty",
+        endSeconds: 3.4,
+        accent: "#C9A45C",
+        scenes: [
+          {
+            src: "work/bosque/omni/o1.mp4",
+            kind: "video",
+            seconds: 3.8,
+            motion: "suave",
+            text: {
+              kicker: "¿Apartamento en Valencia?",
+              title: "ESTE ES PARA TI.",
+              position: "centro",
+            },
+          },
+          {
+            src: "work/bosque/omni/o2.mp4",
+            kind: "video",
+            seconds: 3.6,
+            motion: "suave",
+            text: {
+              kicker: "Ubicado en El Bosque",
+              big: "60 m²",
+              position: "abajo",
+            },
+          },
+          {
+            src: "work/bosque/omni/o3.mp4",
+            kind: "video",
+            seconds: 3.6,
+            motion: "suave",
+            text: {
+              kicker: "Te espera",
+              title: "Amoblado y equipado",
+              position: "abajo",
+            },
+          },
+          {
+            src: "work/bosque/omni/o4.mp4",
+            kind: "video",
+            seconds: 3.4,
+            motion: "suave",
+            text: {
+              kicker: "Disfruta de",
+              title: "Cocina abierta",
+              position: "abajo",
+            },
+          },
+          {
+            src: "work/bosque/omni/o5.mp4",
+            kind: "video",
+            seconds: 3.4,
+            motion: "suave",
+            text: { title: "Una habitación privada", position: "abajo" },
+          },
+          {
+            src: "work/bosque/omni/o6.mp4",
+            kind: "video",
+            seconds: 3.2,
+            motion: "suave",
+            text: { title: "Baño moderno", position: "abajo" },
+          },
+          {
+            src: "work/bosque/omni/o7.mp4",
+            kind: "video",
+            seconds: 2.4,
+            motion: "suave",
+            speed: 0.75,
+            text: { title: "Área de lavado", position: "abajo" },
+          },
+          {
+            src: "work/bosque/v1.mp4",
+            kind: "video",
+            seconds: 4.05,
+            motion: "zoomIn",
+            trimStart: 19.55,
+            text: {
+              kicker: "Además",
+              list: [
+                "3 puestos de estacionamiento",
+                "Planta eléctrica al 100 %",
+                "Pozo de agua propio",
+              ],
+              position: "centro",
+            },
+          },
+          {
+            src: "work/bosque/v1.mp4",
+            kind: "video",
+            seconds: 2.6,
+            motion: "zoomIn",
+            trimStart: 15.8,
+            speed: 0.6,
+            text: {
+              kicker: "Todo en un piso alto",
+              title: "con vista a las montañas",
+              position: "abajo",
+            },
+          },
+          {
+            src: "work/bosque/omni/o2.mp4",
+            kind: "video",
+            seconds: 3.0,
+            motion: "zoomOut",
+            trimStart: 0.9,
+            text: { kicker: "Precio", big: "$75,000", position: "centro" },
+          },
+          {
+            src: "work/bosque/omni/o1.mp4",
+            kind: "video",
+            seconds: 3.4,
+            motion: "suave",
+            trimStart: 0.6,
             text: {
               kicker: "¡Comenta la palabra",
               big: "BOSQUE",

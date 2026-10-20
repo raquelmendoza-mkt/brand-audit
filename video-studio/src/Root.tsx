@@ -3,7 +3,7 @@ import {Dia2Composition} from './Dia2';
 import {DetallitosDyanComposition, PromoTextosComposition} from './PromoTextos';
 import {PropertyPromoComposition} from './PropertyPromo';
 import {ReelComposition} from './Reel';
-import {RoomTourBosqueComposition} from './RoomTour';
+import {RoomTourBosqueComposition, RoomTourBosqueOmniComposition} from './RoomTour';
 import {ThumbnailStill} from './Thumbnail';
 
 export const RemotionRoot: React.FC = () => {
@@ -16,6 +16,7 @@ export const RemotionRoot: React.FC = () => {
 				<DetallitosDyanComposition />
 				<Dia2Composition />
 				<RoomTourBosqueComposition />
+				<RoomTourBosqueOmniComposition />
 			</Folder>
 			<Folder name="Portadas">
 				<ThumbnailStill />
