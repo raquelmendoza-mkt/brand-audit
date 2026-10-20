@@ -1,0 +1,98 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Poppins ExtraBold,82,&H00FFFFFF,&H00FFFFFF,&H00101010,&H90000000,0,0,0,0,100,100,1,0,1,5,3,2,60,60,520,1
+Style: Gfx,Poppins,60,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,0,2,8,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.60,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}¿Y SI TU
+Dialogue: 0,0:00:00.60,0:00:01.56,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}PRÓXIMO {\c&H6FC6E9&}LUJO{\c&HFFFFFF&}
+Dialogue: 0,0:00:01.56,0:00:02.44,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}FUERA TENER UN
+Dialogue: 0,0:00:02.44,0:00:03.24,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}ESPACIO DONDE
+Dialogue: 0,0:00:03.24,0:00:04.20,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}TE PUEDAS PONER
+Dialogue: 0,0:00:04.20,0:00:05.40,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}EN {\c&H6FC6E9&}MODO{\c&HFFFFFF&} {\c&H6FC6E9&}AVIÓN?{\c&HFFFFFF&}
+Dialogue: 0,0:00:22.60,0:00:23.88,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}Y UN {\c&H6FC6E9&}ESTUDIO{\c&HFFFFFF&}
+Dialogue: 0,0:00:23.88,0:00:24.60,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}PARA TRABAJAR
+Dialogue: 0,0:00:24.60,0:00:25.50,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}DESDE {\c&H6FC6E9&}CASA{\c&HFFFFFF&}
+Dialogue: 0,0:00:25.57,0:00:26.69,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}Y ESTE {\c&H6FC6E9&}BALCÓN{\c&HFFFFFF&}
+Dialogue: 0,0:00:26.69,0:00:27.41,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}PARA DISFRUTAR
+Dialogue: 0,0:00:27.41,0:00:27.97,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}UNA PAUSA
+Dialogue: 0,0:00:27.97,0:00:28.77,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}CONECTADA CON
+Dialogue: 0,0:00:28.77,0:00:30.13,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}LA {\c&H6FC6E9&}NATURALEZA{\c&HFFFFFF&} Y
+Dialogue: 0,0:00:30.13,0:00:30.93,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}DISFRUTAR DE UN
+Dialogue: 0,0:00:30.93,0:00:31.50,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}BUEN {\c&H6FC6E9&}CAFÉ{\c&HFFFFFF&}
+Dialogue: 0,0:00:31.55,0:00:32.20,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}{\c&H6FC6E9&}ADEMÁS{\c&HFFFFFF&}
+Dialogue: 0,0:00:32.21,0:00:33.01,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}CUENTA CON {\c&H6FC6E9&}DOS{\c&HFFFFFF&}
+Dialogue: 0,0:00:33.01,0:00:33.73,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}{\c&H6FC6E9&}PARQUEADEROS{\c&HFFFFFF&}
+Dialogue: 0,0:00:33.73,0:00:34.13,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}PRIVADOS
+Dialogue: 0,0:00:34.13,0:00:35.09,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}CUARTO ÚTIL Y
+Dialogue: 0,0:00:35.09,0:00:36.37,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}VIGILANCIA {\c&H6FC6E9&}24{\c&HFFFFFF&}
+Dialogue: 0,0:00:36.37,0:00:37.00,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}{\c&H6FC6E9&}HORAS{\c&HFFFFFF&}
+Dialogue: 0,0:00:40.09,0:00:41.05,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}¿TE IMAGINAS
+Dialogue: 0,0:00:41.05,0:00:42.09,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}VIVIENDO {\c&H6FC6E9&}AQUÍ?{\c&HFFFFFF&}
+Dialogue: 0,0:00:42.09,0:00:42.73,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}COMENTA LA
+Dialogue: 0,0:00:42.73,0:00:43.69,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}PALABRA {\c&H6FC6E9&}PALMAS{\c&HFFFFFF&}
+Dialogue: 0,0:00:43.69,0:00:44.25,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}Y TE ENVÍO
+Dialogue: 0,0:00:44.25,0:00:44.57,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}TODOS LOS
+Dialogue: 0,0:00:44.57,0:00:45.29,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}DETALLES PARA
+Dialogue: 0,0:00:45.29,0:00:46.09,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}AGENDAR TU
+Dialogue: 0,0:00:46.09,0:00:47.10,Sub,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx104\fscy104)\t(110,180,\fscx100\fscy100)}PRÓXIMA {\c&H6FC6E9&}VISITA{\c&HFFFFFF&}
+Dialogue: 6,0:00:05.50,0:00:08.18,Gfx,,0,0,0,,{\an7\move(70,1110,70,1180,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(2480,2660,\alpha&HFF&)\p1\c&HF2F2F2&\bord0\shad0\blur1.2\1a&H18&}m 38 0 l 902 0 b 922.9 0 940 17.1 940 38 l 940 112 b 940 132.9 922.9 150 902 150 l 38 150 b 17.1 150 0 132.9 0 112 l 0 38 b 0 17.1 17.1 0 38 0{\p0}
+Dialogue: 7,0:00:05.50,0:00:08.18,Gfx,,0,0,0,,{\an7\move(98,1139,98,1209,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(2480,2660,\alpha&HFF&)\p1\c&HF0A030&\bord0\shad0}m 22 0 l 70 0 b 82.1 0 92 9.9 92 22 l 92 70 b 92 82.1 82.1 92 70 92 l 22 92 b 9.9 92 0 82.1 0 70 l 0 22 b 0 9.9 9.9 0 22 0{\p0}
+Dialogue: 8,0:00:05.50,0:00:08.18,Gfx,,0,0,0,,{\an7\move(212,1134,212,1204,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(2480,2660,\alpha&HFF&)\fnLiberation Sans\fs40\b1\c&H1A1A1A&\bord0\shad0}Reunión
+Dialogue: 8,0:00:05.50,0:00:08.18,Gfx,,0,0,0,,{\an7\move(212,1188,212,1258,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(2480,2660,\alpha&HFF&)\fnLiberation Sans\fs32\b0\c&H3A3A3A&\bord0\shad0}Comité de ventas · 10:00 a. m.
+Dialogue: 8,0:00:05.50,0:00:08.18,Gfx,,0,0,0,,{\an9\move(980,1138,980,1208,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(2480,2660,\alpha&HFF&)\fnLiberation Sans\fs28\b0\c&H808080&\bord0\shad0}ahora
+Dialogue: 6,0:00:06.20,0:00:08.18,Gfx,,0,0,0,,{\an7\move(70,1285,70,1355,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1780,1960,\alpha&HFF&)\p1\c&HF2F2F2&\bord0\shad0\blur1.2\1a&H18&}m 38 0 l 902 0 b 922.9 0 940 17.1 940 38 l 940 112 b 940 132.9 922.9 150 902 150 l 38 150 b 17.1 150 0 132.9 0 112 l 0 38 b 0 17.1 17.1 0 38 0{\p0}
+Dialogue: 7,0:00:06.20,0:00:08.18,Gfx,,0,0,0,,{\an7\move(98,1314,98,1384,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1780,1960,\alpha&HFF&)\p1\c&H2E9BF5&\bord0\shad0}m 22 0 l 70 0 b 82.1 0 92 9.9 92 22 l 92 70 b 92 82.1 82.1 92 70 92 l 22 92 b 9.9 92 0 82.1 0 70 l 0 22 b 0 9.9 9.9 0 22 0{\p0}
+Dialogue: 8,0:00:06.20,0:00:08.18,Gfx,,0,0,0,,{\an7\move(212,1309,212,1379,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1780,1960,\alpha&HFF&)\fnLiberation Sans\fs40\b1\c&H1A1A1A&\bord0\shad0}Pendiente
+Dialogue: 8,0:00:06.20,0:00:08.18,Gfx,,0,0,0,,{\an7\move(212,1363,212,1433,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1780,1960,\alpha&HFF&)\fnLiberation Sans\fs32\b0\c&H3A3A3A&\bord0\shad0}Enviar propuesta antes de las 12
+Dialogue: 8,0:00:06.20,0:00:08.18,Gfx,,0,0,0,,{\an9\move(980,1313,980,1383,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1780,1960,\alpha&HFF&)\fnLiberation Sans\fs28\b0\c&H808080&\bord0\shad0}ahora
+Dialogue: 6,0:00:06.90,0:00:08.18,Gfx,,0,0,0,,{\an7\move(70,1460,70,1530,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1080,1260,\alpha&HFF&)\p1\c&HF2F2F2&\bord0\shad0\blur1.2\1a&H18&}m 38 0 l 902 0 b 922.9 0 940 17.1 940 38 l 940 112 b 940 132.9 922.9 150 902 150 l 38 150 b 17.1 150 0 132.9 0 112 l 0 38 b 0 17.1 17.1 0 38 0{\p0}
+Dialogue: 7,0:00:06.90,0:00:08.18,Gfx,,0,0,0,,{\an7\move(98,1489,98,1559,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1080,1260,\alpha&HFF&)\p1\c&H5CC734&\bord0\shad0}m 22 0 l 70 0 b 82.1 0 92 9.9 92 22 l 92 70 b 92 82.1 82.1 92 70 92 l 22 92 b 9.9 92 0 82.1 0 70 l 0 22 b 0 9.9 9.9 0 22 0{\p0}
+Dialogue: 8,0:00:06.90,0:00:08.18,Gfx,,0,0,0,,{\an7\move(212,1484,212,1554,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1080,1260,\alpha&HFF&)\fnLiberation Sans\fs40\b1\c&H1A1A1A&\bord0\shad0}Otra llamada
+Dialogue: 8,0:00:06.90,0:00:08.18,Gfx,,0,0,0,,{\an7\move(212,1538,212,1608,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1080,1260,\alpha&HFF&)\fnLiberation Sans\fs32\b0\c&H3A3A3A&\bord0\shad0}3 llamadas perdidas
+Dialogue: 8,0:00:06.90,0:00:08.18,Gfx,,0,0,0,,{\an9\move(980,1488,980,1558,0,220)\alpha&HFF&\t(0,160,\alpha&H00&)\t(1080,1260,\alpha&HFF&)\fnLiberation Sans\fs28\b0\c&H808080&\bord0\shad0}ahora
+Dialogue: 4,0:00:08.08,0:00:08.50,Gfx,,0,0,0,,{\an8\pos(540,1395)\p1\c&H141414&\1a&H30&\bord0\shad0\fscx60\fscy60\t(0,140,\fscx100\fscy100)\fad(0,150)}m 48 0 l 612 0 b 638.4 0 660 21.6 660 48 l 660 48 b 660 74.4 638.4 96 612 96 l 48 96 b 21.6 96 0 74.4 0 48 l 0 48 b 0 21.6 21.6 0 48 0{\p0}
+Dialogue: 5,0:00:08.08,0:00:08.50,Gfx,,0,0,0,,{\an8\pos(540,1420)\fnLiberation Sans\b1\fs46\fsp4\c&HFFFFFF&\bord0\shad3\4a&H50&\fscx60\fscy60\t(0,140,\fscx100\fscy100)\fad(0,150)}MODO AVIÓN ACTIVADO
+Dialogue: 3,0:00:08.50,0:00:12.00,Gfx,,0,0,0,,{\an7\pos(-300,1180)\p1\c&H000000&\alpha&H80&\bord0\shad0\blur90\fad(200,200)}m 0 0 l 1680 0 l 1680 500 l 0 500{\p0}
+Dialogue: 5,0:00:08.50,0:00:09.55,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs46\fsp10\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1290,540,1260,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}BIENVENIDO A
+Dialogue: 5,0:00:08.50,0:00:09.55,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs128\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1370,540,1320,80,340)\alpha&HFF&\t(80,280,\alpha&H00&)\fad(0,160)}Las Palmas
+Dialogue: 5,0:00:08.50,0:00:09.55,Gfx,,0,0,0,,{\an8\pos(540,1490)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(150,450,\fscx100)\fad(0,160)}m 0 0 l 160 0 l 160 5 l 0 5{\p0}
+Dialogue: 5,0:00:08.50,0:00:09.55,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs36\fsp8\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,1550,540,1520,220,480)\alpha&HFF&\t(220,420,\alpha&H00&)\fad(0,160)}EL POBLADO · MEDELLÍN
+Dialogue: 5,0:00:09.90,0:00:12.00,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs52\fsp1\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1510,540,1480,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}Tu próximo hogar moderno
+Dialogue: 5,0:00:09.90,0:00:12.00,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs52\fsp1\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,1578,540,1548,120,380)\alpha&HFF&\t(120,320,\alpha&H00&)\fad(0,160)}rodeado de naturaleza
+Dialogue: 3,0:00:12.00,0:00:13.50,Gfx,,0,0,0,,{\an7\pos(-300,1220)\p1\c&H000000&\alpha&H90&\bord0\shad0\blur90\fad(200,200)}m 0 0 l 1680 0 l 1680 420 l 0 420{\p0}
+Dialogue: 5,0:00:12.00,0:00:13.50,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs50\fsp2\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1360,540,1330,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}Confort  ·  Tranquilidad
+Dialogue: 5,0:00:12.00,0:00:13.50,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs30\fsp5\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,1430,540,1400,150,410)\alpha&HFF&\t(150,350,\alpha&H00&)\fad(0,160)}UNO DE LOS SECTORES MÁS EXCLUSIVOS
+Dialogue: 3,0:00:13.50,0:00:22.50,Gfx,,0,0,0,,{\an7\pos(-300,1150)\p1\c&H000000&\alpha&H88&\bord0\shad0\blur90\fad(200,200)}m 0 0 l 1680 0 l 1680 560 l 0 560{\p0}
+Dialogue: 5,0:00:13.50,0:00:16.00,Gfx,,0,0,0,,{\an8\fnPoppins Black\fs150\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1230,540,1180,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}117,5 m²
+Dialogue: 5,0:00:13.50,0:00:16.00,Gfx,,0,0,0,,{\an8\pos(540,1385)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(200,500,\fscx100)\fad(0,160)}m 0 0 l 160 0 l 160 5 l 0 5{\p0}
+Dialogue: 5,0:00:13.50,0:00:16.00,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs42\fsp6\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1440,540,1410,250,510)\alpha&HFF&\t(250,450,\alpha&H00&)\fad(0,160)}SALA Y COMEDOR AMPLIOS
+Dialogue: 5,0:00:16.00,0:00:18.50,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs96\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1280,540,1230,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}Cocina abierta
+Dialogue: 5,0:00:16.00,0:00:18.50,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs30\fsp5\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,1400,540,1370,180,440)\alpha&HFF&\t(180,380,\alpha&H00&)\fad(0,160)}PARA COMPARTIR TUS MEJORES MOMENTOS
+Dialogue: 5,0:00:18.50,0:00:21.50,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs96\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1250,540,1200,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}2 habitaciones
+Dialogue: 5,0:00:18.50,0:00:21.50,Gfx,,0,0,0,,{\an8\pos(540,1340)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(200,500,\fscx100)\fad(0,160)}m 0 0 l 160 0 l 160 5 l 0 5{\p0}
+Dialogue: 5,0:00:18.50,0:00:21.50,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs42\fsp6\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1395,540,1365,250,510)\alpha&HFF&\t(250,450,\alpha&H00&)\fad(0,160)}AMBAS CON BAÑO PRIVADO
+Dialogue: 5,0:00:21.50,0:00:22.50,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs104\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1280,540,1230,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}Vestier
+Dialogue: 5,0:00:21.50,0:00:22.50,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs34\fsp6\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,1405,540,1375,100,360)\alpha&HFF&\t(100,300,\alpha&H00&)\fad(0,160)}EN LA HABITACIÓN PRINCIPAL
+Dialogue: 3,0:00:31.50,0:00:37.00,Gfx,,0,0,0,,{\an7\pos(-300,170)\p1\c&H000000&\alpha&HA0&\bord0\shad0\blur90\fad(200,200)}m 0 0 l 1680 0 l 1680 420 l 0 420{\p0}
+Dialogue: 5,0:00:31.60,0:00:37.00,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs84\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,300,540,250,500,760)\alpha&HFF&\t(500,700,\alpha&H00&)\fad(0,160)}2 parqueaderos
+Dialogue: 5,0:00:31.60,0:00:37.00,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs28\fsp4\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,400,540,370,800,1060)\alpha&HFF&\t(800,1000,\alpha&H00&)\fad(0,160)}PRIVADOS  ·  CUARTO ÚTIL  ·  VIGILANCIA 24 H
+Dialogue: 3,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an7\pos(-300,640)\p1\c&H000000&\alpha&H55&\bord0\shad0\blur90\fad(200,200)}m 0 0 l 1680 0 l 1680 760 l 0 760{\p0}
+Dialogue: 5,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs34\fsp8\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,790,540,760,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,160)}LAS PALMAS · EL POBLADO
+Dialogue: 5,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an8\pos(540,850)\p1\c&HFFFFFF&\bord0\shad0\alpha&HFF&\t(80,260,\alpha&H00&)\fad(0,160)}m 35 0 l 225 0 b 244.25 0 260 15.75 260 35 l 260 35 b 260 54.25 244.25 70 225 70 l 35 70 b 15.75 70 0 54.25 0 35 l 0 35 b 0 15.75 15.75 0 35 0{\p0}
+Dialogue: 6,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an8\pos(540,858)\fnLiberation Sans\b1\fs40\fsp8\c&H1A1A1A&\bord0\shad0\alpha&HFF&\t(80,260,\alpha&H00&)\fad(0,160)}VENTA
+Dialogue: 5,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an8\fnPoppins Black\fs112\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1010,540,960,160,420)\alpha&HFF&\t(160,360,\alpha&H00&)\fad(0,160)}$1.340.000.000
+Dialogue: 5,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b1\fs40\fsp10\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1140,540,1110,260,520)\alpha&HFF&\t(260,460,\alpha&H00&)\fad(0,160)}COP
+Dialogue: 5,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an8\pos(540,1185)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(300,600,\fscx100)\fad(0,160)}m 0 0 l 200 0 l 200 5 l 0 5{\p0}
+Dialogue: 5,0:00:37.00,0:00:40.00,Gfx,,0,0,0,,{\an8\fnLiberation Sans\b0\fs44\fsp1\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1245,540,1215,380,640)\alpha&HFF&\t(380,580,\alpha&H00&)\fad(0,160)}Administración: $1.000.000/mes
+Dialogue: 5,0:00:40.20,0:00:47.10,Gfx,,0,0,0,,{\an8\pos(540,260)\p1\c&H6FC6E9&\bord0\shad3\4a&H60&\fscx40\fscy40\alpha&HFF&\t(0,220,\fscx100\fscy100\alpha&H00&)}m 60 0 l 580 0 b 613.0 0 640 27.0 640 60 l 640 60 b 640 93.0 613.0 120 580 120 l 60 120 b 27.0 120 0 93.0 0 60 l 0 60 b 0 27.0 27.0 0 60 0{\p0}
+Dialogue: 6,0:00:40.20,0:00:47.10,Gfx,,0,0,0,,{\an8\pos(540,282)\fnPoppins Bold\fs52\c&H1A1A1A&\bord0\shad0\fscx40\fscy40\alpha&HFF&\t(0,220,\fscx100\fscy100\alpha&H00&)}Comenta {\fnPoppins Black}PALMAS
+Dialogue: 5,0:00:40.60,0:00:47.10,Gfx,,0,0,0,,{\an8\pos(540,400)\fnLiberation Sans\b1\fs32\fsp4\c&HFFFFFF&\bord0\shad2\4a&H40&\fad(250,0)}Y AGENDA TU VISITA
