@@ -3,7 +3,7 @@
 
 Uso: python3 scripts/sfx.py [carpeta_salida]
 
-Crea: impacto.wav, whoosh.wav, whoosh-corto.wav, ping.wav, ding.wav, pop.wav, click.wav,
+Crea: error.wav, sparkle.wav, impacto.wav, whoosh.wav, whoosh-corto.wav, ping.wav, ding.wav, pop.wav, click.wav,
 teclado-iphone.wav (ráfaga de tecleo), tecla.wav (una sola tecla) y swipe.wav.
 Si remotion.media está permitido en la red, scripts/setup.sh descarga además los
 efectos grabados de @remotion/sfx a public/sfx/remotion/.
@@ -115,6 +115,24 @@ f = 38 + 90 * np.exp(-tt * 18)
 boom = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 4.5)
 crack = bandpass(rng.normal(0, 1, len(tt)), 200, 4000) * np.exp(-tt * 35) * 0.5
 save('impacto.wav', np.tanh((boom + crack) * 2.2))
+
+# Error: dos tonos graves cortos (para "lo que NO debes hacer")
+err = np.zeros(int(0.42 * SR))
+for k, f0 in enumerate((220, 165)):
+    tt = t(0.17)
+    tone = np.sign(np.sin(2 * np.pi * f0 * tt)) * 0.5 + np.sin(2 * np.pi * f0 * tt) * 0.5
+    seg = onepole(tone, 1800) * np.minimum(tt / 0.005, 1) * np.exp(-tt * 6)
+    i = int(k * 0.2 * SR)
+    err[i: i + len(seg)] += seg
+save('error.wav', err)
+
+# Sparkle: arpegio brillante ascendente (para algo valioso / premium)
+sp = np.zeros(int(1.1 * SR))
+for k, f0 in enumerate((1568, 1976, 2349, 3136)):
+    b = bell(f0, 0.8, 7, [(1, 1), (2.0, 0.25)])
+    i = int(k * 0.06 * SR)
+    sp[i: i + len(b)] += b[: len(sp) - i] * (0.9 - 0.1 * k)
+save('sparkle.wav', sp)
 
 # Click: clic de mouse / botón
 save('click.wav', tap(1.4)[: int(0.03 * SR)])
