@@ -684,10 +684,11 @@ export const RoomTourBosqueOmniComposition: React.FC = () => {
             },
           },
           {
-            src: "work/bosque/omni/o3.mp4",
+            src: "work/bosque/v3.mp4",
             kind: "video",
-            seconds: 3.6,
+            seconds: 3.0,
             motion: "suave",
+            label: "Ambientación virtual",
             text: {
               kicker: "Te espera",
               title: "Amoblado y equipado",
@@ -695,10 +696,11 @@ export const RoomTourBosqueOmniComposition: React.FC = () => {
             },
           },
           {
-            src: "work/bosque/omni/o4.mp4",
+            src: "work/bosque/v2.mp4",
             kind: "video",
-            seconds: 3.4,
+            seconds: 3.0,
             motion: "suave",
+            label: "Ambientación virtual",
             text: {
               kicker: "Disfruta de",
               title: "Cocina abierta",
