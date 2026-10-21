@@ -213,6 +213,47 @@ const Social: React.FC<{
   );
 };
 
+// Diamante azul al estilo del emoji de WhatsApp, con destellos
+const BlueGem: React.FC<{ readonly size: number; readonly frame: number }> = ({
+  size,
+  frame,
+}) => {
+  const tw = (o: number) => 0.35 + 0.65 * Math.abs(Math.sin((frame + o) / 6));
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100">
+      {/* corona */}
+      <polygon points="22,22 78,22 94,40 6,40" fill="#9FE3FF" />
+      <polygon points="22,22 38,22 30,40 6,40" fill="#C9F0FF" />
+      <polygon points="38,22 62,22 70,40 30,40" fill="#7FD6FA" />
+      <polygon points="62,22 78,22 94,40 70,40" fill="#5CC4F2" />
+      {/* pabellón */}
+      <polygon points="6,40 30,40 50,92" fill="#4FB8EE" />
+      <polygon points="30,40 70,40 50,92" fill="#2E9BE0" />
+      <polygon points="70,40 94,40 50,92" fill="#1A7FCC" />
+      <polyline
+        points="6,40 94,40"
+        stroke="#E8FAFF"
+        strokeWidth="1.2"
+        fill="none"
+      />
+      <polygon points="38,22 62,22 50,30" fill="#E8FAFF" opacity="0.7" />
+      {/* destellos */}
+      {[
+        [84, 14, 0],
+        [12, 16, 9],
+        [88, 62, 17],
+      ].map(([x, y, o]) => (
+        <path
+          key={`${x}-${y}`}
+          d={`M${x} ${y - 7} L${x + 1.8} ${y - 1.8} L${x + 7} ${y} L${x + 1.8} ${y + 1.8} L${x} ${y + 7} L${x - 1.8} ${y + 1.8} L${x - 7} ${y} L${x - 1.8} ${y - 1.8} Z`}
+          fill="#FFFFFF"
+          opacity={tw(o)}
+        />
+      ))}
+    </svg>
+  );
+};
+
 // ---------- Animación base: aparece con resorte y se va con fundido ----------
 const usePop = (from: number, to: number) => {
   const frame = useCurrentFrame();
@@ -507,7 +548,7 @@ const Checklist: React.FC<{
         }}
       >
         <div style={{ fontSize: 22, color: PURPLE, letterSpacing: 2 }}>
-          CONTENIDO DE VALOR
+          CONTENIDO...
         </div>
         {items.map((it) => {
           const p = spring({
@@ -858,21 +899,19 @@ export const CatalogoComponent: React.FC = () => {
         items={[
           { at: 26.24, icon: "documento", label: "Documentos" },
           { at: 28.9, icon: "pin", label: "Zonas" },
-          { at: 29.7, icon: "precio", label: "Precios" },
+          { at: 29.7, icon: "alerta", label: "Errores" },
           { at: 30.48, icon: "chat", label: "Asesoría" },
         ]}
       />
       <TopCard from={s(34.7)} to={s(36.6)}>
-        <Card style={{ fontSize: 34 }}>
-          <div
-            style={{
-              rotate: `${interpolate(t, [34.7, 35.3], [-20, 0], clamp)}deg`,
-            }}
-          >
-            <Icon name="gema" size={46} />
-          </div>
-          VALIOSO
-        </Card>
+        <div
+          style={{
+            rotate: `${interpolate(t, [34.7, 35.3], [-20, 0], clamp)}deg`,
+            filter: "drop-shadow(0 14px 30px rgba(0,60,140,0.45))",
+          }}
+        >
+          <BlueGem size={190} frame={frame} />
+        </div>
       </TopCard>
 
       {/* Cierre */}
