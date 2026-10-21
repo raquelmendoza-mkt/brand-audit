@@ -428,6 +428,93 @@ const T = {
 	pill: at('cta', 4.4),
 };
 
+// Tomas de la casa (room tour) mientras Karen describe la ubicación: [inicio, fin, clip]
+const BROLL: [number, number, string][] = [
+	[at('ubicacion', 4.55), at('ubicacion', 6.1), 'fachada'],
+	[at('ubicacion', 6.1), at('ubicacion', 7.5), 'pasillo'],
+	[T.rest, T.comercios, 'recepcion'],
+	[at('ubicacion', 11.85), fin('ubicacion'), 'salon'],
+];
+
+const Broll: React.FC<{readonly from: number; readonly to: number; readonly clip: string}> = ({from, to, clip}) => {
+	const {fps} = useVideoConfig();
+	const frame = useCurrentFrame();
+	const a = Math.round(from * fps);
+	const d = Math.round(to * fps) - a;
+	const z = interpolate(frame, [a, a + d], [1.02, 1.1], clamp);
+	return (
+		<Sequence from={a} durationInFrames={d} premountFor={fps}>
+			<AbsoluteFill style={{scale: String(z)}}>
+				<Video src={staticFile(`${W}/broll/${clip}.mp4`)} muted style={{position: 'absolute', width: '100%', height: '100%', objectFit: 'cover'}} />
+			</AbsoluteFill>
+		</Sequence>
+	);
+};
+
+// Íconos tipo emoji (círculo brillante con degradado y glifo blanco)
+const EMOJI = {
+	clinica: {
+		bg: ['#5FB4FF', '#1C6BEA'],
+		glyph: <path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" fill="#FFFFFF" />,
+	},
+	spa: {
+		bg: ['#F7A8D8', '#B05BE0'],
+		glyph: (
+			<g fill="#FFFFFF">
+				<path d="M12 5c1.8 2 2.6 4.3 2.6 6.4 0 2.5-1.1 4.4-2.6 5.6-1.5-1.2-2.6-3.1-2.6-5.6C9.4 9.3 10.2 7 12 5z" />
+				<path d="M4.5 10c2.4.2 4.2 1.4 5.3 3.2.8 1.3 1.3 2.6 1.4 3.8-2.3-.2-4.3-1.3-5.5-3.2-.7-1.2-1.1-2.5-1.2-3.8zM19.5 10c-.1 1.3-.5 2.6-1.2 3.8-1.2 1.9-3.2 3-5.5 3.2.1-1.2.6-2.5 1.4-3.8 1.1-1.8 2.9-3 5.3-3.2z" />
+				<rect x="5" y="18.2" width="14" height="1.6" rx="0.8" />
+			</g>
+		),
+	},
+	restaurante: {
+		bg: ['#FFC46B', '#F0662A'],
+		glyph: (
+			<g fill="none" stroke="#FFFFFF" strokeWidth="1.9" strokeLinecap="round">
+				<path d="M7 3.5v6.2a1.8 1.8 0 0 0 3.6 0V3.5M8.8 11.5V20.5M8.8 3.5v5" />
+				<path d="M16.5 3.5c-1.6 0-2.7 2-2.7 4.6 0 2.2 1.1 3.6 2.7 3.6v8.8" />
+			</g>
+		),
+	},
+};
+
+const Emoji: React.FC<{readonly kind: keyof typeof EMOJI; readonly at: number; readonly to: number; readonly x: number; readonly y: number}> = ({kind, at: t0, to, x, y}) => {
+	const frame = useCurrentFrame();
+	const a = Math.round(t0 * FPS);
+	const b = Math.round(to * FPS);
+	if (frame < a || frame >= b) return null;
+	const e = EMOJI[kind];
+	const pop = interpolate(frame, [a, a + 12], [0, 1], {...clamp, easing: Easing.out(Easing.back(2.6))});
+	const float = Math.sin((frame - a) / 9) * 6;
+	const o = interpolate(frame, [b - 5, b], [1, 0], clamp);
+	return (
+		<div
+			style={{
+				position: 'absolute',
+				left: x - 75,
+				top: y - 75 + float,
+				width: 150,
+				height: 150,
+				borderRadius: 999,
+				background: `radial-gradient(circle at 32% 28%, ${e.bg[0]}, ${e.bg[1]} 72%)`,
+				boxShadow: '0 16px 36px rgba(0,0,0,0.32), inset 0 -8px 18px rgba(0,0,0,0.18), inset 0 6px 14px rgba(255,255,255,0.45)',
+				border: '5px solid rgba(255,255,255,0.95)',
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				scale: String(pop),
+				rotate: `${interpolate(frame, [a, a + 12], [-25, 0], clamp)}deg`,
+				opacity: o,
+			}}
+		>
+			<svg width="84" height="84" viewBox="0 0 24 24">
+				{e.glyph}
+			</svg>
+			<div style={{position: 'absolute', left: 26, top: 16, width: 50, height: 26, borderRadius: 999, background: 'rgba(255,255,255,0.35)', rotate: '-25deg'}} />
+		</div>
+	);
+};
+
 export const VinedoComponent: React.FC = () => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
@@ -441,6 +528,11 @@ export const VinedoComponent: React.FC = () => {
 		<AbsoluteFill style={{background: '#000'}}>
 			<AbsoluteFill style={{scale: String(scale * iaZoom), transformOrigin: '50% 40%', opacity: end}}>
 				<Video src={staticFile(`${W}/base.mp4`)} premountFor={fps} style={{position: 'absolute', width: '100%', height: '100%'}} />
+			</AbsoluteFill>
+			<AbsoluteFill style={{opacity: end}}>
+				{BROLL.map(([a, b, c]) => (
+					<Broll key={c} from={a} to={b} clip={c} />
+				))}
 			</AbsoluteFill>
 
 			<AbsoluteFill style={{opacity: end}}>
@@ -474,6 +566,11 @@ export const VinedoComponent: React.FC = () => {
 					{inRange(T.clinica - 0.1, fin('espacios')) ? <Cutout {...CUTOUTS.espacios} /> : null}
 					{t >= T.vinedoCta - 0.1 ? <Cutout {...CUTOUTS.cta} /> : null}
 				</AbsoluteFill>
+
+				{/* Íconos tipo emoji para clínica, spa y restaurantes */}
+				<Emoji kind="clinica" at={T.clinica} to={T.finRest} x={300} y={1180} />
+				<Emoji kind="spa" at={T.spa} to={T.finRest} x={540} y={1180} />
+				<Emoji kind="restaurante" at={T.restaurantes} to={T.finRest} x={780} y={1180} />
 
 				{/* ---------- Textos delante ---------- */}
 				<Small from={at('gancho', 1.1)} to={T.vinedo} text="LA PRÓXIMA" top={815} size={58} spacing={8} />
@@ -525,6 +622,9 @@ export const VinedoComponent: React.FC = () => {
 			<Sfx at={at('cuentame', 0) - 0.05} src="sfx/swipe.wav" volume={0.32} />
 			<Sfx at={at('pasa', 0) - 0.06} src="sfx/whoosh-corto.wav" volume={0.32} />
 			<Sfx at={at('ubicacion', 0) - 0.06} src="sfx/swipe.wav" volume={0.32} />
+			{BROLL.map(([a, , c]) => (
+				<Sfx key={`b-${c}`} at={a - 0.06} src="sfx/whoosh-corto.wav" volume={0.3} />
+			))}
 			<Sfx at={T.corazon - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
 			<Sfx at={T.corazon} src="sfx/impacto.wav" volume={0.35} />
 			<Sfx at={T.rest} src="sfx/pop.wav" volume={0.3} />
