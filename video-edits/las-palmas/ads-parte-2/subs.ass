@@ -1,0 +1,77 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Nimbus Sans,76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,0,0,2,50,50,470,1
+Style: Gfx,Poppins,60,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,0,2,8,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.12,0:00:01.16,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(60,180,\alpha&H00&\fscy100)}Este {\fnPoppins Bold\fs104\c&H6FC6E9&\alpha&HFF&\fscy55\t(379,499,\alpha&H00&\fscy100)}balcón {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(939,1059,\alpha&H00&\fscy100)}para
+Dialogue: 1,0:00:00.12,0:00:01.16,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(60,180,\3a&H50&\fscy100)}Este {\fnPoppins Bold\fs104\c&H6FC6E9&\1a&HFF&\3a&HFF&\fscy55\t(379,499,\3a&H50&\fscy100)}balcón {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(939,1059,\3a&H50&\fscy100)}para
+Dialogue: 2,0:00:01.16,0:00:02.28,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(60,180,\alpha&H00&\fscy100)}disfrutar {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(620,740,\alpha&H00&\fscy100)}una {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(780,900,\alpha&H00&\fscy100)}pausa
+Dialogue: 1,0:00:01.16,0:00:02.28,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(60,180,\3a&H50&\fscy100)}disfrutar {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(620,740,\3a&H50&\fscy100)}una {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(780,900,\3a&H50&\fscy100)}pausa
+Dialogue: 2,0:00:02.28,0:00:03.24,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(60,180,\alpha&H00&\fscy100)}conectada {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(699,819,\alpha&H00&\fscy100)}con {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(859,979,\alpha&H00&\fscy100)}la
+Dialogue: 1,0:00:02.28,0:00:03.24,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(60,180,\3a&H50&\fscy100)}conectada {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(699,819,\3a&H50&\fscy100)}con {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(859,979,\3a&H50&\fscy100)}la
+Dialogue: 2,0:00:03.24,0:00:04.44,Sub,,0,0,0,,{\bord0\shad0}{\fnPoppins Bold\fs104\c&H6FC6E9&\alpha&HFF&\fscy55\t(60,180,\alpha&H00&\fscy100)}naturaleza {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(939,1059,\alpha&H00&\fscy100)}y
+Dialogue: 1,0:00:03.24,0:00:04.44,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnPoppins Bold\fs104\c&H6FC6E9&\1a&HFF&\3a&HFF&\fscy55\t(60,180,\3a&H50&\fscy100)}naturaleza {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(939,1059,\3a&H50&\fscy100)}y
+Dialogue: 2,0:00:04.44,0:00:05.24,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(59,179,\alpha&H00&\fscy100)}disfrutar {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(619,739,\alpha&H00&\fscy100)}de {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(779,899,\alpha&H00&\fscy100)}un
+Dialogue: 1,0:00:04.44,0:00:05.24,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(59,179,\3a&H50&\fscy100)}disfrutar {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(619,739,\3a&H50&\fscy100)}de {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(779,899,\3a&H50&\fscy100)}un
+Dialogue: 2,0:00:05.24,0:00:05.83,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(59,179,\alpha&H00&\fscy100)}buen {\fnPoppins Bold\fs104\c&H6FC6E9&\alpha&HFF&\fscy55\t(300,420,\alpha&H00&\fscy100)}café
+Dialogue: 1,0:00:05.24,0:00:05.83,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(59,179,\3a&H50&\fscy100)}buen {\fnPoppins Bold\fs104\c&H6FC6E9&\1a&HFF&\3a&HFF&\fscy55\t(300,420,\3a&H50&\fscy100)}café
+Dialogue: 2,0:00:10.82,0:00:12.02,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(60,180,\alpha&H00&\fscy100)}Un {\fnPoppins Bold\fs104\c&H6FC6E9&\alpha&HFF&\fscy55\t(380,500,\alpha&H00&\fscy100)}estudio {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(1020,1140,\alpha&H00&\fscy100)}para
+Dialogue: 1,0:00:10.82,0:00:12.02,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(60,180,\3a&H50&\fscy100)}Un {\fnPoppins Bold\fs104\c&H6FC6E9&\1a&HFF&\3a&HFF&\fscy55\t(380,500,\3a&H50&\fscy100)}estudio {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(1020,1140,\3a&H50&\fscy100)}para
+Dialogue: 2,0:00:12.02,0:00:12.98,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(60,180,\alpha&H00&\fscy100)}trabajar {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(540,660,\alpha&H00&\fscy100)}desde
+Dialogue: 1,0:00:12.02,0:00:12.98,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(60,180,\3a&H50&\fscy100)}trabajar {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(540,660,\3a&H50&\fscy100)}desde
+Dialogue: 2,0:00:12.98,0:00:13.47,Sub,,0,0,0,,{\bord0\shad0}{\fnPoppins Bold\fs104\c&H6FC6E9&\alpha&HFF&\fscy55\t(60,180,\alpha&H00&\fscy100)}casa
+Dialogue: 1,0:00:12.98,0:00:13.47,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnPoppins Bold\fs104\c&H6FC6E9&\1a&HFF&\3a&HFF&\fscy55\t(60,180,\3a&H50&\fscy100)}casa
+Dialogue: 2,0:00:17.57,0:00:18.53,Sub,,0,0,0,,{\bord0\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(59,179,\alpha&H00&\fscy100)}¿Te {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\alpha&HFF&\fscy55\t(460,580,\alpha&H00&\fscy100)}imaginas
+Dialogue: 1,0:00:17.57,0:00:18.53,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(59,179,\3a&H50&\fscy100)}¿Te {\fnNimbus Sans\b0\fs84\c&HFFFFFF&\1a&HFF&\3a&HFF&\fscy55\t(460,580,\3a&H50&\fscy100)}imaginas
+Dialogue: 2,0:00:18.53,0:00:19.53,Sub,,0,0,0,,{\bord0\shad0}{\fnPoppins Bold\fs104\c&H6FC6E9&\alpha&HFF&\fscy55\t(59,179,\alpha&H00&\fscy100)}viviendo {\fnPoppins Bold\fs104\c&H6FC6E9&\alpha&HFF&\fscy55\t(540,660,\alpha&H00&\fscy100)}aquí?
+Dialogue: 1,0:00:18.53,0:00:19.53,Sub,,0,0,0,,{\bord11\blur16\3c&H000000&\shad0}{\fnPoppins Bold\fs104\c&H6FC6E9&\1a&HFF&\3a&HFF&\fscy55\t(59,179,\3a&H50&\fscy100)}viviendo {\fnPoppins Bold\fs104\c&H6FC6E9&\1a&HFF&\3a&HFF&\fscy55\t(540,660,\3a&H50&\fscy100)}aquí?
+Dialogue: 3,0:00:00.00,0:00:04.00,Gfx,,0,0,0,,{\an7\pos(-300,120)\p1\c&H000000&\alpha&H98&\bord0\shad0\blur90\fad(150,150)}m 0 0 l 1680 0 l 1680 420 l 0 420{\p0}
+Dialogue: 5,0:00:00.15,0:00:04.00,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs34\fsp10\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,245,540,215,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}EL POBLADO · MEDELLÍN
+Dialogue: 5,0:00:00.15,0:00:04.00,Gfx,,0,0,0,,{\an8\fnPoppins SemiBold\fs120\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,315,540,265,100,360)\alpha&HFF&\t(100,300,\alpha&H00&)\fad(0,140)}Las Palmas
+Dialogue: 3,0:00:05.75,0:00:10.75,Gfx,,0,0,0,,{\an7\pos(-300,1120)\p1\c&H000000&\alpha&H88&\bord0\shad0\blur90\fad(150,150)}m 0 0 l 1680 0 l 1680 560 l 0 560{\p0}
+Dialogue: 5,0:00:05.75,0:00:07.00,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs40\fsp10\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1290,540,1260,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}APARTAMENTO EN VENTA
+Dialogue: 5,0:00:05.75,0:00:07.00,Gfx,,0,0,0,,{\an8\pos(540,1325)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(120,420,\fscx100)\fad(0,140)}m 0 0 l 160 0 l 160 5 l 0 5{\p0}
+Dialogue: 5,0:00:07.00,0:00:08.25,Gfx,,0,0,0,,{\an8\fnPoppins Black\fs150\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1230,540,1180,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}117,5 m²
+Dialogue: 5,0:00:07.00,0:00:08.25,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs40\fsp6\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1415,540,1385,180,440)\alpha&HFF&\t(180,380,\alpha&H00&)\fad(0,140)}SALA Y COMEDOR AMPLIOS
+Dialogue: 5,0:00:08.25,0:00:09.25,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs96\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1280,540,1230,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}Cocina abierta
+Dialogue: 5,0:00:08.25,0:00:09.25,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs34\fsp8\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,1400,540,1370,150,410)\alpha&HFF&\t(150,350,\alpha&H00&)\fad(0,140)}DISEÑO MODERNO
+Dialogue: 5,0:00:09.25,0:00:10.75,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs96\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1250,540,1200,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}2 habitaciones
+Dialogue: 5,0:00:09.25,0:00:10.75,Gfx,,0,0,0,,{\an8\pos(540,1340)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(150,450,\fscx100)\fad(0,140)}m 0 0 l 160 0 l 160 5 l 0 5{\p0}
+Dialogue: 5,0:00:09.25,0:00:10.75,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs38\fsp5\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1395,540,1365,200,460)\alpha&HFF&\t(200,400,\alpha&H00&)\fad(0,140)}CON BAÑO PRIVADO · VESTIER
+Dialogue: 3,0:00:13.50,0:00:15.50,Gfx,,0,0,0,,{\an7\pos(-300,1120)\p1\c&H000000&\alpha&H88&\bord0\shad0\blur90\fad(150,150)}m 0 0 l 1680 0 l 1680 520 l 0 520{\p0}
+Dialogue: 5,0:00:13.50,0:00:14.50,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs92\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1280,540,1230,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}Zonas comunes
+Dialogue: 5,0:00:14.50,0:00:15.50,Gfx,,0,0,0,,{\an8\fnPoppins ExtraBold\fs96\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1250,540,1200,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}2 parqueaderos
+Dialogue: 5,0:00:14.50,0:00:15.50,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs36\fsp5\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,1370,540,1340,150,410)\alpha&HFF&\t(150,350,\alpha&H00&)\fad(0,140)}CUARTO ÚTIL · VIGILANCIA 24 H
+Dialogue: 3,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an7\pos(-300,640)\p1\c&H000000&\alpha&H55&\bord0\shad0\blur90\fad(150,150)}m 0 0 l 1680 0 l 1680 760 l 0 760{\p0}
+Dialogue: 5,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs34\fsp8\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,790,540,760,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}LAS PALMAS · EL POBLADO
+Dialogue: 5,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an8\pos(540,850)\p1\c&HFFFFFF&\bord0\shad0\alpha&HFF&\t(60,220,\alpha&H00&)\fad(0,140)}m 35 0 l 225 0 b 244.25 0 260 15.75 260 35 l 260 35 b 260 54.25 244.25 70 225 70 l 35 70 b 15.75 70 0 54.25 0 35 l 0 35 b 0 15.75 15.75 0 35 0{\p0}
+Dialogue: 6,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an8\pos(540,858)\fnNimbus Sans\b1\fs40\fsp8\c&H1A1A1A&\bord0\shad0\alpha&HFF&\t(60,220,\alpha&H00&)\fad(0,140)}VENTA
+Dialogue: 5,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an8\fnPoppins Black\fs112\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,1010,540,960,120,380)\alpha&HFF&\t(120,320,\alpha&H00&)\fad(0,140)}$1.340.000.000
+Dialogue: 5,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs40\fsp10\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1140,540,1110,200,460)\alpha&HFF&\t(200,400,\alpha&H00&)\fad(0,140)}COP
+Dialogue: 5,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an8\pos(540,1185)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(240,540,\fscx100)\fad(0,140)}m 0 0 l 200 0 l 200 5 l 0 5{\p0}
+Dialogue: 5,0:00:15.50,0:00:17.50,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b0\fs44\fsp1\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1245,540,1215,300,560)\alpha&HFF&\t(300,500,\alpha&H00&)\fad(0,140)}Administración: $1.000.000/mes
+Dialogue: 5,0:00:19.50,0:00:22.50,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs32\fsp10\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,590,540,560,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}LAS PALMAS · EL POBLADO
+Dialogue: 5,0:00:19.50,0:00:22.50,Gfx,,0,0,0,,{\an8\fnPoppins SemiBold\fs132\c&HFFFFFF&\bord0\shad3\4a&H70&\move(540,690,540,640,120,380)\alpha&HFF&\t(120,320,\alpha&H00&)\fad(0,140)}Felipe Peláez
+Dialogue: 5,0:00:19.50,0:00:22.50,Gfx,,0,0,0,,{\an8\pos(540,830)\p1\c&H6FC6E9&\bord0\shad0\fscx0\t(260,560,\fscx100)\fad(0,140)}m 0 0 l 220 0 l 220 5 l 0 5{\p0}
+Dialogue: 5,0:00:19.50,0:00:22.50,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b1\fs48\fsp22\c&H6FC6E9&\bord0\shad2\4a&H60&\move(540,900,540,870,320,580)\alpha&HFF&\t(320,520,\alpha&H00&)\fad(0,140)}REALTOR
+Dialogue: 5,0:00:19.95,0:00:22.50,Gfx,,0,0,0,,{\an8\fnNimbus Sans\b0\fs56\fsp1\c&HFFFFFF&\bord0\shad2\4a&H60&\move(540,1160,540,1130,0,260)\alpha&HFF&\t(0,200,\alpha&H00&)\fad(0,140)}Haz clic en el botón de abajo
+Dialogue: 5,0:00:19.95,0:00:22.50,Gfx,,0,0,0,,{\an8\fnPoppins Bold\fs88\c&H6FC6E9&\bord0\shad3\4a&H70&\move(540,1255,540,1205,120,380)\alpha&HFF&\t(120,320,\alpha&H00&)\fad(0,140)}para más información
+Dialogue: 5,0:00:20.40,0:00:20.90,Gfx,,0,0,0,,{\an8\move(540,1430,540,1475,0,500)\p1\c&HFFFFFF&\bord0\shad2\4a&H60&\alpha&HFF&\t(0,150,\alpha&H00&)}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:20.52,0:00:20.90,Gfx,,0,0,0,,{\an8\move(540,1500,540,1545,0,380)\p1\c&H6FC6E9&\bord0\shad2\4a&H60&\alpha&HFF&\t(0,150,\alpha&H00&)}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:20.90,0:00:21.40,Gfx,,0,0,0,,{\an8\move(540,1430,540,1475,0,500)\p1\c&HFFFFFF&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:21.02,0:00:21.40,Gfx,,0,0,0,,{\an8\move(540,1500,540,1545,0,380)\p1\c&H6FC6E9&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:21.40,0:00:21.90,Gfx,,0,0,0,,{\an8\move(540,1430,540,1475,0,500)\p1\c&HFFFFFF&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:21.52,0:00:21.90,Gfx,,0,0,0,,{\an8\move(540,1500,540,1545,0,380)\p1\c&H6FC6E9&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:21.90,0:00:22.40,Gfx,,0,0,0,,{\an8\move(540,1430,540,1475,0,500)\p1\c&HFFFFFF&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:22.02,0:00:22.40,Gfx,,0,0,0,,{\an8\move(540,1500,540,1545,0,380)\p1\c&H6FC6E9&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:22.40,0:00:22.50,Gfx,,0,0,0,,{\an8\move(540,1430,540,1475,0,500)\p1\c&HFFFFFF&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
+Dialogue: 5,0:00:22.52,0:00:22.50,Gfx,,0,0,0,,{\an8\move(540,1500,540,1545,0,380)\p1\c&H6FC6E9&\bord0\shad2\4a&H60&}m 0 0 l 50 46 l 100 0 l 100 24 l 50 70 l 0 24{\p0}
