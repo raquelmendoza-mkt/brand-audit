@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  ============================================================
+  RM MARKETING · Guía visual de grabación para Realtors
+  Documento pensado para exportarse a PDF (tamaño carta).
+  Las escenas ilustradas se generan con SVG en el script final.
+  ============================================================
+-->
+<title>Guía de Grabación · RM Marketing</title>
+<meta name="description" content="Guía visual de grabación de propiedades para Realtors: encuadres, ritmo de ángulos, iluminación, orden y equipo.">
+<meta name="author" content="RM Marketing">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:          #0A0A0B;
+  --paper:        #FFFFFF;
+  --mist:         #F7F6FA;
+  --line:         #E8E6EE;
+  --text:         #0A0A0B;
+  --muted:        #5D5B66;
+  --soft:         #8C8A96;
+  --purple:       #6C47FF;
+  --purple-tint:  #F2EEFF;
+  --purple-on-dark: #A992FF;
+  --ok:           #1F9D6B;
+  --no:           #E5484D;
+
+  --font:   'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif:  'Playfair Display', Georgia, serif;
+}
+
+@page { size: 8.5in 11in; margin: 0; }
+
+html, body { background: #E9E7EF; }
+body {
+  font-family: var(--font);
+  color: var(--text);
+  font-size: 12.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+svg { display: block; max-width: 100%; }
+
+/* ============================================================
+   2. PÁGINA
+   ============================================================ */
+.page {
+  position: relative;
+  width: 8.5in; height: 11in;
+  margin: 24px auto;
+  padding: 52px 56px 64px;
+  background: var(--paper);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  page-break-after: always; break-after: page;
+}
+@media print { html, body { background: var(--paper); } .page { margin: 0; } }
+
+.page-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 34px; font-size: 11px; color: var(--soft); letter-spacing: .02em; }
+.page-foot { position: absolute; left: 56px; right: 56px; bottom: 28px; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 10px; }
+
+.logo { display: inline-flex; align-items: center; gap: 2px; font-weight: 600; font-size: 15px; letter-spacing: -0.03em; color: var(--text); }
+.logo-light { font-weight: 300; margin-left: 4px; }
+.logo-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--purple); margin-left: 3px; transform: translateY(4px); }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.eyebrow::before { content: ""; width: 18px; height: 1.5px; background: currentColor; }
+
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; }
+h2 { font-size: 34px; margin-bottom: 12px; }
+h3 { font-size: 15px; letter-spacing: -0.01em; margin-bottom: 4px; }
+em.serif { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--purple); letter-spacing: -0.01em; }
+.lead { font-size: 14px; color: var(--muted); max-width: 560px; margin-bottom: 26px; }
+p { color: var(--muted); }
+strong { color: var(--text); font-weight: 600; }
+
+/* ============================================================
+   3. COMPONENTES
+   ============================================================ */
+.shot { display: flex; flex-direction: column; gap: 10px; }
+.frame { position: relative; border-radius: 18px; overflow: hidden; background: #111; box-shadow: 0 18px 40px -22px rgba(30,20,80,.45), 0 0 0 1px rgba(10,10,11,.06); }
+.frame svg { width: 100%; height: auto; }
+.shot figcaption { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+.shot figcaption b { display: block; color: var(--text); font-size: 12.5px; font-weight: 600; margin-bottom: 2px; }
+.tag { display: inline-block; font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; background: var(--purple-tint); color: var(--purple); margin-bottom: 6px; }
+.tag--ok { background: #E3F5EC; color: var(--ok); }
+.tag--no { background: #FDECEC; color: var(--no); }
+
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+.card { background: var(--mist); border-radius: 16px; padding: 18px 18px 16px; }
+.card p { font-size: 11.5px; line-height: 1.55; }
+.card .num { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; font-weight: 600; align-items: center; justify-content: center; margin-bottom: 10px; }
+
+.callout { display: flex; gap: 16px; align-items: flex-start; background: var(--ink); color: #fff; border-radius: 18px; padding: 20px 22px; }
+.callout p { color: rgba(255,255,255,.72); font-size: 12px; }
+.callout strong { color: #fff; }
+.callout .big { font-size: 30px; font-weight: 600; letter-spacing: -0.04em; color: var(--purple-on-dark); line-height: 1; white-space: nowrap; }
+
+.list { list-style: none; display: grid; gap: 7px; }
+.list li { position: relative; padding-left: 22px; font-size: 12px; color: var(--muted); }
+.list li::before { content: ""; position: absolute; left: 0; top: 5px; width: 12px; height: 12px; border-radius: 4px; background: var(--purple-tint); box-shadow: inset 0 0 0 1.5px var(--purple); }
+.list--check li::before { background: var(--purple) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 6.2l2 2 4-4.4' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat; box-shadow: none; }
+
+.spacer { flex: 1; }
+
+/* ============================================================
+   4. PORTADA Y CIERRE
+   ============================================================ */
+.cover { background: var(--ink); color: #fff; padding: 56px; }
+.cover::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.cover::after { content: ""; position: absolute; width: 620px; height: 620px; right: -220px; top: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(108,71,255,.55), rgba(108,71,255,0) 65%); }
+.cover > * { position: relative; z-index: 1; }
+.cover .logo { color: #fff; font-size: 18px; }
+.cover h1 { font-size: 60px; margin: 28px 0 18px; max-width: 520px; }
+.cover h1 em.serif { color: var(--purple-on-dark); }
+.cover .lead { color: rgba(255,255,255,.7); font-size: 15px; max-width: 470px; }
+.cover .eyebrow { color: var(--purple-on-dark); }
+.cover-frames { display: flex; gap: 16px; align-items: flex-end; margin-top: 8px; }
+.cover-frames .frame { box-shadow: 0 30px 60px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.12); }
+.cover-frames .frame:nth-child(1) { width: 190px; }
+.cover-frames .frame:nth-child(2) { width: 220px; }
+.cover-frames .frame:nth-child(3) { width: 190px; }
+.cover-meta { display: flex; gap: 28px; font-size: 11.5px; color: rgba(255,255,255,.6); margin-top: 30px; }
+.cover-meta b { display: block; color: #fff; font-weight: 600; font-size: 13px; }
+
+/* ============================================================
+   5. PIEZAS ESPECÍFICAS
+   ============================================================ */
+.rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.rules .card { display: flex; gap: 14px; }
+.rules .card .num { flex: none; margin: 0; }
+
+.priority { display: grid; grid-template-columns: 250px 1fr; gap: 26px; align-items: start; }
+.priority .stack { display: grid; gap: 12px; }
+.prio-item { display: grid; grid-template-columns: 62px 1fr; gap: 14px; align-items: center; background: var(--mist); border-radius: 14px; padding: 10px; }
+.prio-item .frame { border-radius: 8px; }
+.prio-item p { font-size: 11.5px; line-height: 1.5; }
+.prio-item .tag { margin-bottom: 3px; }
+
+.timeline-wrap { background: var(--mist); border-radius: 18px; padding: 16px 18px 10px; margin-bottom: 18px; }
+.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 14px; }
+.board .frame { width: 128px; border-radius: 12px; }
+.board .shot { gap: 6px; }
+.board .shot figcaption { font-size: 10.5px; line-height: 1.4; }
+.board .shot figcaption b { font-size: 11.5px; }
+.board .time { font-size: 10px; font-weight: 600; color: var(--purple); letter-spacing: .06em; }
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 22px; }
+.compare .frame { aspect-ratio: auto; }
+
+.gear { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+.gear .card { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: start; padding: 18px; }
+.gear .icon { width: 96px; height: 96px; border-radius: 14px; background: #fff; display: grid; place-items: center; }
+.gear .badge { display: inline-block; font-size: 9.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--purple); margin-bottom: 4px; }
+
+.settings { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.settings div { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.settings b { display: block; font-size: 15px; letter-spacing: -0.02em; }
+.settings span { font-size: 10.5px; color: var(--muted); }
+
+.checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.checklist .card h3 { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PÁGINA 1 · PORTADA
+     ============================================================ -->
+<section class="page cover">
+  <div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div>
+  <div style="margin-top:70px">
+    <div class="eyebrow">Guía visual · Videomarketing inmobiliario</div>
+    <h1>Cómo grabar una propiedad que se <em class="serif">vende sola</em></h1>
+    <p class="lead">Encuadres, ritmo de cámara, orden, iluminación y equipo. Todo lo que necesitas para que cada video de tus propiedades se vea profesional, aunque lo grabes con tu teléfono.</p>
+  </div>
+  <div class="spacer"></div>
+  <div class="cover-frames">
+    <div class="frame" data-scene="balcony" data-person="stand"></div>
+    <div class="frame" data-scene="kitchen" data-person="medium"></div>
+    <div class="frame" data-scene="pool" data-person="none"></div>
+  </div>
+  <div class="cover-meta">
+    <div><b>Para</b>Realtors y equipos comerciales</div>
+    <div><b>Formato</b>Reels · TikTok · Shorts (9:16)</div>
+    <div><b>Equipo mínimo</b>Teléfono + trípode + micrófono</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 2 · LAS 6 REGLAS
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Guía de grabación</span></div>
+  <div class="eyebrow">Antes de empezar</div>
+  <h2>Las 6 reglas de <em class="serif">oro</em></h2>
+  <p class="lead">Si solo recuerdas una página de esta guía, que sea esta. Cada regla tiene su propia página con escenas de referencia para que veas exactamente cómo se hace.</p>
+
+  <div class="rules">
+    <div class="card"><span class="num">1</span><div><h3>Graba en lo más atractivo</h3><p>Tú apareces siempre en el espacio que más impacta: el balcón con vista, la sala elegante, la cocina de lujo o la piscina.</p></div></div>
+    <div class="card"><span class="num">2</span><div><h3>Empieza por la mayor amplitud</h3><p>El primer plano del video es el lado de la propiedad que se ve más grande, abierto y luminoso.</p></div></div>
+    <div class="card"><span class="num">3</span><div><h3>Usa 3 encuadres</h3><p>Plano general (cuerpo completo), plano medio (del ombligo hacia arriba) y panorámica (solo la propiedad).</p></div></div>
+    <div class="card"><span class="num">4</span><div><h3>Cambia de ángulo cada 3 a 5 s</h3><p>De pie, sentada, en otro espacio, un detalle. Nunca más de 5 segundos en la misma toma.</p></div></div>
+    <div class="card"><span class="num">5</span><div><h3>Orden y buena luz</h3><p>Propiedad recogida, cortinas abiertas, todas las luces encendidas. Si el día está gris, lleva luz.</p></div></div>
+    <div class="card"><span class="num">6</span><div><h3>Equipo correcto</h3><p>Teléfono (idealmente iPhone), trípode, micrófono y, si se puede, una luz LED.</p></div></div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="callout">
+    <div class="big">3–5 s</div>
+    <div><strong>La regla que más se olvida.</strong><p>El espectador decide en los primeros 2 segundos si sigue mirando. Un cambio de ángulo constante mantiene la atención y hace que la propiedad se sienta más grande y más viva.</p></div>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>02</span></div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 3 · REGLA 1 Y 2: LO MÁS ATRACTIVO + AMPLITUD
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Reglas 1 y 2</span></div>
+  <div class="eyebrow">Dónde grabar</div>
+  <h2>Siempre en la parte <em class="serif">más atractiva</em></h2>
+  <p class="lead">Antes de sacar el trípode, recorre la propiedad y pregúntate: <strong>¿qué es lo que enamora aquí?</strong> Ese es tu set. Tú hablas a cámara desde ese lugar.</p>
+
+  <div class="priority">
+    <figure class="shot">
+      <div class="frame" data-scene="balcony" data-person="stand"></div>
+      <figcaption><b>Ejemplo: balcón con vista al mar</b>Si la propiedad tiene una vista espectacular, ese es tu fondo. La vista vende más que cualquier palabra.</figcaption>
+    </figure>
+    <div class="stack">
+      <div class="prio-item"><div class="frame" data-scene="balcony" data-person="none"></div><div><span class="tag">Si tiene vista</span><h3>Balcón o terraza</h3><p>Graba con la vista detrás de ti. Hazlo a la hora con mejor luz natural.</p></div></div>
+      <div class="prio-item"><div class="frame" data-scene="living" data-person="none"></div><div><span class="tag">Si es elegante</span><h3>Sala</h3><p>Ventanales, techos altos, buen mobiliario: colócate donde se vean todos.</p></div></div>
+      <div class="prio-item"><div class="frame" data-scene="kitchen" data-person="none"></div><div><span class="tag">Si es de lujo</span><h3>Cocina</h3><p>Isla, acabados y lámparas. Párate detrás de la isla, mirando a cámara.</p></div></div>
+      <div class="prio-item"><div class="frame" data-scene="pool" data-person="none"></div><div><span class="tag">Si tiene piscina</span><h3>Piscina</h3><p>Siempre aparece en el video. Enfócala con la casa de fondo.</p></div></div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="callout">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="flex:none"><rect x="1" y="1" width="38" height="38" rx="10" stroke="#A992FF" stroke-width="1.5"/><path d="M9 28 L20 12 L31 28" stroke="#A992FF" stroke-width="2" stroke-linejoin="round"/><path d="M6 31h28" stroke="#A992FF" stroke-width="2" stroke-linecap="round"/></svg>
+    <div><strong>Regla 2 · Empieza por el lado con mayor amplitud.</strong><p>La primera toma del video siempre es la vista más abierta: desde una esquina, abarcando el espacio más grande y luminoso. Así el espectador entiende desde el primer segundo que la propiedad es amplia.</p></div>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>03</span></div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 4 · REGLA 3: LOS 3 ENCUADRES
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Regla 3</span></div>
+  <div class="eyebrow">Encuadres</div>
+  <h2>Los 3 planos que <em class="serif">siempre</em> debes tener</h2>
+  <p class="lead">El mismo espacio, tres formas de grabarlo. Alterna entre los tres durante todo el video. Graba siempre en vertical (9:16).</p>
+
+  <div class="grid-3">
+    <figure class="shot">
+      <span class="tag">Plano general</span>
+      <div class="frame" data-scene="living" data-person="stand" data-label="PLANO GENERAL"></div>
+      <figcaption><b>Cuerpo completo, desde lejos</b>Se te ve de pies a cabeza con el espacio alrededor. Ideal para presentarte y mostrar la escala del lugar. Deja aire sobre tu cabeza y que los pies no queden cortados.</figcaption>
+    </figure>
+    <figure class="shot">
+      <span class="tag">Plano medio</span>
+      <div class="frame" data-scene="living" data-person="medium" data-label="PLANO MEDIO"></div>
+      <figcaption><b>Del ombligo hacia arriba</b>Para hablar a cámara y explicar. Tus ojos quedan en la línea superior de la cuadrícula. El fondo se ve, pero el protagonista es tu mensaje.</figcaption>
+    </figure>
+    <figure class="shot">
+      <span class="tag">Panorámica</span>
+      <div class="frame" data-scene="living" data-person="none" data-label="PANORÁMICA"></div>
+      <figcaption><b>Solo la propiedad</b>Sin ti en cuadro. Movimiento lento y estable de lado a lado, o fijo desde una esquina. Aquí habla tu voz en off sobre la imagen.</figcaption>
+    </figure>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="grid-3" style="gap:14px">
+    <div class="card"><h3>Altura de cámara</h3><p>A la altura de tu pecho para el plano general; a la altura de tus ojos para el plano medio.</p></div>
+    <div class="card"><h3>Líneas rectas</h3><p>Activa la cuadrícula del teléfono. Paredes y marcos de puertas siempre verticales, nunca inclinados.</p></div>
+    <div class="card"><h3>Mirada</h3><p>Mira al lente, no a la pantalla. Habla como si le explicaras la casa a un cliente frente a ti.</p></div>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>04</span></div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 5 · REGLA 4: RITMO 3–5 SEGUNDOS
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Regla 4</span></div>
+  <div class="eyebrow">Ritmo</div>
+  <h2>Un ángulo nuevo cada <em class="serif">3 a 5 segundos</em></h2>
+  <p class="lead">Si estás de pie, siéntate. Si estás en la sala, aparece en la cocina. Si estás hablando, corta a un detalle. Este es un guion de 30 segundos de ejemplo:</p>
+
+  <div class="timeline-wrap"><svg id="timeline" viewBox="0 0 680 74" width="100%"></svg></div>
+
+  <div class="board">
+    <figure class="shot"><div class="frame" data-scene="living" data-person="none"></div><figcaption><span class="time">0 – 4 s</span><b>Apertura amplia</b>Panorámica desde la esquina con más amplitud.</figcaption></figure>
+    <figure class="shot"><div class="frame" data-scene="living" data-person="stand"></div><figcaption><span class="time">4 – 8 s</span><b>De pie · presentación</b>Plano general: “Te muestro esta propiedad…”.</figcaption></figure>
+    <figure class="shot"><div class="frame" data-scene="living" data-person="sit"></div><figcaption><span class="time">8 – 12 s</span><b>Sentada en la sala</b>Cambias de postura: cercanía y comodidad.</figcaption></figure>
+    <figure class="shot"><div class="frame" data-scene="kitchen" data-person="medium"></div><figcaption><span class="time">12 – 16 s</span><b>Otro espacio · cocina</b>Plano medio detrás de la isla.</figcaption></figure>
+    <figure class="shot"><div class="frame" data-scene="detail" data-person="none"></div><figcaption><span class="time">16 – 19 s</span><b>Detalle</b>Acabados, lámparas, grifería. Toma cerrada.</figcaption></figure>
+    <figure class="shot"><div class="frame" data-scene="balcony" data-person="stand"></div><figcaption><span class="time">19 – 23 s</span><b>Balcón · la vista</b>El momento “wow” del video.</figcaption></figure>
+    <figure class="shot"><div class="frame" data-scene="pool" data-person="none"></div><figcaption><span class="time">23 – 27 s</span><b>Piscina</b>Panorámica lenta con la casa de fondo.</figcaption></figure>
+    <figure class="shot"><div class="frame" data-scene="balcony" data-person="medium"></div><figcaption><span class="time">27 – 30 s</span><b>Cierre a cámara</b>Plano medio + llamada a la acción.</figcaption></figure>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>05</span></div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 6 · RECORRIDO POR TODOS LOS LADOS
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Regla 4 · Recorrido</span></div>
+  <div class="eyebrow">Plan de tomas</div>
+  <h2>Graba cada espacio <em class="serif">por todos sus lados</em></h2>
+  <p class="lead">Cada ambiente se graba desde al menos dos esquinas distintas. Así tienes material suficiente para cambiar de ángulo sin repetir. Ejemplo de recorrido:</p>
+
+  <div class="card" style="padding:16px;background:var(--mist);margin-bottom:22px"><svg id="floorplan" viewBox="0 0 680 400" width="100%"></svg></div>
+
+  <div class="grid-2" style="gap:14px">
+    <div class="card"><h3>Desde las esquinas</h3><p>Coloca el trípode en una esquina y apunta en diagonal: es el ángulo que hace ver cualquier espacio más grande.</p></div>
+    <div class="card"><h3>Mínimo 2 tomas por espacio</h3><p>Una desde la entrada del ambiente y otra desde el lado opuesto, mirando hacia donde entraste.</p></div>
+    <div class="card"><h3>Tú cambias de lugar</h3><p>Apareces de pie en la sala, sentada en el sofá, apoyada en la isla, caminando hacia el balcón.</p></div>
+    <div class="card"><h3>Exterior también cuenta</h3><p>Fachada, entrada, jardín y piscina. Empieza siempre por el lado con más amplitud.</p></div>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>06</span></div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 7 · REGLA 5: ORDEN E ILUMINACIÓN
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Regla 5</span></div>
+  <div class="eyebrow">Preparación</div>
+  <h2>Organizada y <em class="serif">bien iluminada</em></h2>
+  <p class="lead">La misma sala, dos resultados. Lo que ve el cliente en el video es lo que cree que va a comprar.</p>
+
+  <div class="compare">
+    <figure class="shot"><span class="tag tag--no">Así no</span><div class="frame" data-scene="living" data-person="none" data-variant="messy" data-ratio="wide"></div><figcaption><b>Oscura y desordenada</b>Cortinas cerradas, luces apagadas, objetos personales y cosas fuera de lugar. Se ve pequeña y descuidada.</figcaption></figure>
+    <figure class="shot"><span class="tag tag--ok">Así sí</span><div class="frame" data-scene="living" data-person="none" data-ratio="wide"></div><figcaption><b>Luminosa y despejada</b>Cortinas abiertas, todas las luces encendidas, superficies limpias, cojines alineados. Se ve amplia y lista para vivir.</figcaption></figure>
+  </div>
+
+  <div class="checklist">
+    <div class="card"><h3>Orden</h3><ul class="list list--check">
+      <li>Retira objetos personales, fotos familiares y papeles.</li>
+      <li>Superficies despejadas: mesas, encimeras y baños.</li>
+      <li>Camas hechas, cojines y toallas alineados.</li>
+      <li>Sin cables, bolsas, mascotas ni basura a la vista.</li>
+      <li>Piscina limpia y muebles exteriores en su lugar.</li>
+    </ul></div>
+    <div class="card"><h3>Iluminación</h3><ul class="list list--check">
+      <li>Abre todas las cortinas y persianas.</li>
+      <li>Enciende todas las luces, incluso de día.</li>
+      <li>Graba con la luz de la ventana de frente o de lado, nunca a tu espalda.</li>
+      <li>Mejor horario: media mañana o la hora dorada.</li>
+      <li>Día nublado o lluvioso: usa una luz LED frente a ti.</li>
+    </ul></div>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>07</span></div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 8 · REGLA 6: EQUIPO
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Regla 6</span></div>
+  <div class="eyebrow">Equipo</div>
+  <h2>Tu kit de <em class="serif">grabación</em></h2>
+  <p class="lead">No necesitas una cámara profesional. Con estas cuatro piezas tus videos se ven y se escuchan como los de una productora.</p>
+
+  <div class="gear">
+    <div class="card"><div class="icon" data-icon="phone"></div><div><span class="badge">Imprescindible</span><h3>Teléfono · idealmente iPhone</h3><p>La cámara de los iPhone recientes da colores naturales y una estabilización excelente. Cualquier teléfono de gama alta también funciona. Limpia el lente antes de grabar.</p></div></div>
+    <div class="card"><div class="icon" data-icon="tripod"></div><div><span class="badge">Imprescindible</span><h3>Trípode</h3><p>Elimina el temblor y te permite aparecer en cuadro tú sola. Busca uno con soporte vertical para teléfono y altura de al menos 1,5 m.</p></div></div>
+    <div class="card"><div class="icon" data-icon="mic"></div><div><span class="badge">Imprescindible</span><h3>Micrófono</h3><p>Un micrófono inalámbrico de solapa. Las casas vacías hacen eco: el audio es lo primero que delata un video amateur.</p></div></div>
+    <div class="card"><div class="icon" data-icon="light"></div><div><span class="badge">Recomendado</span><h3>Iluminación LED</h3><p>Para días nublados, lluviosos o espacios oscuros. Un panel o aro de luz frente a ti, a la altura de tu rostro, ligeramente de lado.</p></div></div>
+  </div>
+
+  <div class="eyebrow" style="margin-bottom:10px">Configuración del teléfono</div>
+  <div class="settings">
+    <div><b>Vertical</b><span>Formato 9:16 para Reels, TikTok y Shorts.</span></div>
+    <div><b>4K · 30 fps</b><span>Máxima nitidez. 60 fps si vas a caminar.</span></div>
+    <div><b>Cuadrícula</b><span>Ajustes › Cámara › Cuadrícula activada.</span></div>
+    <div><b>Bloqueo AE/AF</b><span>Mantén presionado en pantalla para fijar luz y foco.</span></div>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>08</span></div>
+</section>
+
+<!-- ============================================================
+     PÁGINA 9 · CHECKLIST FINAL
+     ============================================================ -->
+<section class="page">
+  <div class="page-head"><div class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div><span>Checklist</span></div>
+  <div class="eyebrow">El día de la grabación</div>
+  <h2>Checklist antes de <em class="serif">darle a grabar</em></h2>
+  <p class="lead">Imprime esta página y repásala en cada propiedad.</p>
+
+  <div class="checklist">
+    <div class="card"><h3>Antes de llegar</h3><ul class="list">
+      <li>Teléfono cargado y con espacio libre.</li>
+      <li>Trípode, micrófono y luz LED cargados.</li>
+      <li>Guion corto: 3 puntos fuertes de la propiedad.</li>
+      <li>Revisa el clima y elige el horario con mejor luz.</li>
+    </ul></div>
+    <div class="card"><h3>Al llegar</h3><ul class="list">
+      <li>Recorre la casa y elige el espacio más atractivo.</li>
+      <li>Identifica el lado con mayor amplitud: será tu apertura.</li>
+      <li>Ordena, abre cortinas y enciende todas las luces.</li>
+      <li>Haz una prueba de audio de 5 segundos.</li>
+    </ul></div>
+    <div class="card"><h3>Mientras grabas</h3><ul class="list">
+      <li>Vertical, 4K, cuadrícula activada.</li>
+      <li>Plano general, plano medio y panorámica en cada espacio.</li>
+      <li>Cambia de ángulo o postura cada 3 a 5 segundos.</li>
+      <li>Si hay piscina, grábala con la casa de fondo.</li>
+    </ul></div>
+    <div class="card"><h3>Antes de irte</h3><ul class="list">
+      <li>Revisa que tienes cada espacio desde 2 lados.</li>
+      <li>Graba 3 cierres distintos a cámara.</li>
+      <li>Graba detalles extra: acabados, vistas, entrada.</li>
+      <li>Deja la propiedad como la encontraste.</li>
+    </ul></div>
+  </div>
+
+  <div class="eyebrow" style="margin:24px 0 10px">Estructura base del guion</div>
+  <div class="grid-3" style="gap:14px">
+    <div class="card"><span class="num">1</span><h3>Gancho · 0 a 3 s</h3><p>Panorámica del lado con más amplitud y una frase que detenga el scroll: “Mira la vista que tiene esta sala”.</p></div>
+    <div class="card"><span class="num">2</span><h3>Recorrido · 3 a 25 s</h3><p>Tú en distintos espacios y posturas, cambiando de ángulo cada 3 a 5 segundos. Termina en lo más atractivo.</p></div>
+    <div class="card"><span class="num">3</span><h3>Cierre · últimos 5 s</h3><p>Plano medio a cámara con la llamada a la acción: “Escríbeme para agendar tu visita”.</p></div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="callout" style="align-items:center">
+    <div style="flex:1"><strong style="font-size:17px;letter-spacing:-0.02em">Graba en lo más atractivo. Cambia cada 3 a 5 segundos. Luz, orden y buen audio.</strong><p style="margin-top:6px">Si cumples estas tres cosas, tu video ya está por encima del 90&nbsp;% de lo que se publica.</p></div>
+    <div class="logo" style="color:#fff;font-size:17px">RM<span class="logo-light">Marketing</span><span class="logo-dot"></span></div>
+  </div>
+  <div class="page-foot"><span>RM Marketing · Guía visual de grabación</span><span>09</span></div>
+</section>
+
+<script>
+/* ============================================================
+   ESCENAS ILUSTRADAS (SVG 360×640, formato vertical 9:16)
+   ============================================================ */
+(function () {
+  var W = 360, H = 640, uid = 0;
+
+  // Figura de la Realtor en un lienzo local de 100×300 (pies en y≈295).
+  function person(pose) {
+    var skin = '#D9A982', hair = '#3A2618', blazer = '#16161A', pants = '#EDE6DA', top = '#F7F3EC', shoe = '#1D1D1F';
+    var s = '';
+    s += '<path d="M30 30 Q28 7 50 6 Q72 7 70 30 L73 80 Q62 86 50 82 Q38 86 27 80 Z" fill="' + hair + '"/>';
+    if (pose === 'sit') {
+      pants = '#BBA584';
+      s += '<path d="M30 140 L70 140 Q76 146 74 152 L112 158 Q122 162 120 176 L112 180 L40 176 Q28 170 30 140 Z" fill="' + pants + '"/>';
+      s += '<path d="M100 166 L120 168 L116 236 L102 236 Z" fill="' + pants + '"/>';
+      s += '<path d="M100 234h17l5 4q4 5-2 6h-20z" fill="' + shoe + '"/>';
+    } else {
+      s += '<path d="M33 146 L31 288 L47 288 L50 166 L53 288 L69 288 L67 146 Z" fill="' + pants + '"/>';
+      s += '<path d="M30 286h18v6q0 3-3 3H28q-4 0-2-5z M52 286h18l2 4q2 5-2 5H55q-3 0-3-3z" fill="' + shoe + '"/>';
+    }
+    // brazos
+    if (pose === 'sit') {
+      s += '<path d="M27 64 Q17 72 18 104 L22 146 L31 146 L31 104 Z" fill="' + blazer + '"/><ellipse cx="26" cy="151" rx="5.5" ry="5.5" fill="' + skin + '"/>';
+      s += '<path d="M73 64 Q83 72 82 104 L94 150 L85 154 L70 108 Z" fill="' + blazer + '"/><ellipse cx="91" cy="157" rx="6" ry="5" fill="' + skin + '"/>';
+    } else {
+      s += '<path d="M27 64 Q17 70 18 100 L20 142 L30 142 L31 100 Z" fill="' + blazer + '"/><ellipse cx="25" cy="147" rx="5" ry="6" fill="' + skin + '"/>';
+      s += '<path d="M73 64 Q86 68 92 92 L104 114 L95 120 L82 98 Z" fill="' + blazer + '"/><ellipse cx="101" cy="120" rx="5.5" ry="5" fill="' + skin + '"/>';
+    }
+    // torso
+    s += '<path d="M30 60 Q50 54 70 60 Q77 64 74 80 L70 150 Q50 155 30 150 L26 80 Q23 64 30 60 Z" fill="' + blazer + '"/>';
+    s += '<path d="M42 60 L50 88 L58 60 Z" fill="' + top + '"/>';
+    s += '<path d="M42 60 L47 104 M58 60 L53 104" stroke="#000" stroke-opacity=".35" stroke-width="1.2" fill="none"/>';
+    s += '<circle cx="50" cy="118" r="1.8" fill="#3a3a40"/>';
+    // cabeza
+    s += '<rect x="45" y="44" width="10" height="17" rx="4" fill="' + skin + '"/>';
+    s += '<ellipse cx="50" cy="32" rx="14.5" ry="17.5" fill="' + skin + '"/>';
+    s += '<path d="M35 31 Q35 11 52 12 Q67 13 65 31 Q60 19 50 20 Q41 21 35 31 Z" fill="' + hair + '"/>';
+    s += '<circle cx="44.5" cy="33" r="1.4" fill="#2a1a10"/><circle cx="55.5" cy="33" r="1.4" fill="#2a1a10"/>';
+    s += '<path d="M45 41 Q50 45 55 41" stroke="#8a4a3a" stroke-width="1.3" fill="none" stroke-linecap="round"/>';
+    // micrófono de solapa
+    s += '<circle cx="43.5" cy="72" r="2.3" fill="#6C47FF"/><circle cx="43.5" cy="72" r="0.9" fill="#fff"/>';
+    return s;
+  }
+  function placed(pose, x, y, k) { return '<g transform="translate(' + x + ' ' + y + ') scale(' + k + ')">' + person(pose) + '</g>'; }
+  function zoom(k, cx, cy, inner) { return '<g transform="translate(' + cx + ' ' + cy + ') scale(' + k + ') translate(' + (-cx) + ' ' + (-cy) + ')">' + inner + '</g>'; }
+
+  /* ---------- SALA ---------- */
+  function living(id, variant) {
+    var messy = variant === 'messy';
+    var s = '<defs><linearGradient id="sky' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9DC7E4"/><stop offset="1" stop-color="#E3EFF6"/></linearGradient>' +
+      '<linearGradient id="sea' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E93B5"/><stop offset="1" stop-color="#7DB6CF"/></linearGradient></defs>';
+    s += '<rect width="360" height="640" fill="#EFE8DD"/>';
+    s += '<rect y="0" width="360" height="26" fill="#E6DED1"/>';
+    // ventanal
+    s += '<rect x="40" y="78" width="280" height="272" fill="url(#sky' + id + ')"/>';
+    s += '<path d="M40 248 Q100 228 160 244 T320 236 L320 262 L40 262 Z" fill="#9FB7A8"/>';
+    s += '<rect x="40" y="258" width="280" height="92" fill="url(#sea' + id + ')"/>';
+    s += '<path d="M60 290h40M180 300h60M110 320h50M250 330h40" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>';
+    s += '<rect x="40" y="78" width="280" height="272" fill="none" stroke="#2A2A2E" stroke-width="7"/>';
+    s += '<path d="M133 78v272M227 78v272" stroke="#2A2A2E" stroke-width="5"/>';
+    // cortinas
+    s += messy ? '<rect x="40" y="70" width="140" height="290" fill="#CDBFA9"/><rect x="180" y="70" width="140" height="290" fill="#C5B69F"/><path d="M80 70v290M120 70v290M220 70v290M270 70v290" stroke="#B3A38A" stroke-width="3"/>'
+               : '<path d="M14 66 Q30 210 20 362 L44 362 Q40 210 40 66 Z M346 66 Q330 210 340 362 L316 362 Q320 210 320 66 Z" fill="#E1D5C2"/>';
+    s += '<rect x="8" y="62" width="344" height="6" rx="3" fill="#B9A98F"/>';
+    // piso
+    s += '<rect y="430" width="360" height="210" fill="#C9A77F"/>';
+    s += '<path d="M0 470H360M0 520H360M0 580H360M70 430L40 640M150 430L140 640M230 430L250 640M300 430L340 640" stroke="#B48F65" stroke-width="1.5"/>';
+    s += '<rect y="426" width="360" height="6" fill="#DCD2C2"/>';
+    s += '<path d="M60 470 L300 470 L352 600 L8 600 Z" fill="#ECE5D9"/>';
+    // lámpara de pie
+    s += '<path d="M26 432V250" stroke="#2A2A2E" stroke-width="3"/><path d="M8 252h36l-8-34H16z" fill="#F4EBDB"/><ellipse cx="26" cy="432" rx="12" ry="3" fill="#2A2A2E"/>';
+    // sofá
+    s += '<rect x="44" y="340" width="272" height="62" rx="16" fill="#D6CEBF"/>';
+    s += '<rect x="26" y="372" width="34" height="62" rx="12" fill="#CCC3B2"/><rect x="300" y="372" width="34" height="62" rx="12" fill="#CCC3B2"/>';
+    s += '<rect x="52" y="392" width="256" height="40" rx="10" fill="#E3DCCF"/>';
+    s += '<path d="M180 394v36" stroke="#D2C9B8" stroke-width="2"/>';
+    s += '<rect x="58" y="350" width="44" height="40" rx="10" fill="#B9A7F2"/><rect x="258" y="350" width="44" height="40" rx="10" fill="#B9A7F2"/><rect x="104" y="356" width="38" height="34" rx="9" fill="#F3EEE4"/>';
+    s += '<rect x="40" y="432" width="8" height="10" fill="#6B5B45"/><rect x="312" y="432" width="8" height="10" fill="#6B5B45"/>';
+    // planta
+    s += '<path d="M306 300 Q296 250 318 220 Q320 260 312 300 M318 300 Q324 240 352 214 Q344 270 324 302 M300 310 Q276 280 280 246 Q300 270 308 306" fill="#4E7A55"/>';
+    s += '<rect x="298" y="300" width="34" height="38" rx="5" fill="#2A2A2E"/>';
+    // mesa de centro
+    s += '<ellipse cx="180" cy="520" rx="96" ry="20" fill="#2A2A2E"/><ellipse cx="180" cy="515" rx="96" ry="20" fill="#F4F0EA"/>';
+    s += '<rect x="150" y="503" width="34" height="8" rx="2" fill="#6C47FF" opacity=".75"/><circle cx="214" cy="507" r="7" fill="#7FA58A"/>';
+    if (messy) {
+      s += '<path d="M70 380 Q100 360 130 386 Q150 400 120 404 Q80 410 70 380Z" fill="#8E3B46"/><path d="M200 384 Q230 370 260 392 L240 404 Q210 406 200 384Z" fill="#3E6C8F"/>';
+      s += '<rect x="120" y="492" width="18" height="24" rx="3" fill="#6E9D4F"/><rect x="142" y="488" width="10" height="28" rx="3" fill="#7A3E2B"/><rect x="200" y="496" width="40" height="12" fill="#fff" transform="rotate(-12 220 502)"/><circle cx="244" cy="508" r="7" fill="#C9A15A"/>';
+      s += '<rect x="20" y="540" width="70" height="52" fill="#B08A5C" transform="rotate(-6 55 566)"/><path d="M28 548 L84 540" stroke="#8C6A42" stroke-width="2"/>';
+      s += '<path d="M260 560 Q290 540 330 566 Q300 590 266 580Z" fill="#4A4A55"/><circle cx="110" cy="610" r="10" fill="#E3B23C"/>';
+      s += '<rect width="360" height="640" fill="#1E1A2E" opacity=".46"/>';
+    }
+    return s;
+  }
+
+  /* ---------- BALCÓN ---------- */
+  function balcony(id) {
+    var s = '<defs><linearGradient id="bs' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FB2DD"/><stop offset=".7" stop-color="#F6D7B5"/><stop offset="1" stop-color="#F9E6CF"/></linearGradient>' +
+      '<linearGradient id="bw' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3F86AE"/><stop offset="1" stop-color="#2A6A92"/></linearGradient></defs>';
+    s += '<rect width="360" height="640" fill="url(#bs' + id + ')"/>';
+    s += '<circle cx="250" cy="250" r="34" fill="#FFE9C2"/><circle cx="250" cy="250" r="22" fill="#FFF4DD"/>';
+    s += '<path d="M0 300 Q60 268 120 286 Q170 262 220 290 L220 300 Z" fill="#8FA9B4" opacity=".8"/>';
+    s += '<path d="M10 300v-26h14v26M28 300v-40h16v40M48 300v-30h12v30M64 300v-52h18v52M86 300v-34h14v34M104 300v-22h12v22" fill="#6E8796"/>';
+    s += '<rect y="298" width="360" height="110" fill="url(#bw' + id + ')"/>';
+    s += '<path d="M200 312h80M230 326h60M180 344h50M260 352h70M40 330h50M90 360h60" stroke="#FFE7C4" stroke-opacity=".7" stroke-width="2.5" stroke-linecap="round"/>';
+    // piso
+    s += '<rect y="470" width="360" height="170" fill="#DCCDB7"/>';
+    s += '<path d="M180 470 L-60 640M180 470 L60 640M180 470 L180 640M180 470 L300 640M180 470 L420 640M0 510H360M0 562H360" stroke="#C8B79D" stroke-width="1.5"/>';
+    // baranda de vidrio
+    s += '<rect y="384" width="360" height="90" fill="#FFFFFF" opacity=".22"/>';
+    s += '<path d="M0 384H360" stroke="#2A2A2E" stroke-width="5"/><path d="M90 384v90M180 384v90M270 384v90" stroke="#2A2A2E" stroke-width="3"/><path d="M0 472H360" stroke="#2A2A2E" stroke-width="3"/>';
+    // marco de puerta corredera
+    s += '<rect x="0" y="0" width="30" height="640" fill="#2A2A2E"/><rect x="330" y="0" width="30" height="640" fill="#2A2A2E"/><rect x="0" y="0" width="360" height="24" fill="#2A2A2E"/>';
+    // tumbona y planta
+    s += '<path d="M240 560 L320 560 L340 520 L330 516 L312 548 L246 548 Z" fill="#F4EFE6"/><path d="M248 560v20M314 560v20" stroke="#2A2A2E" stroke-width="3"/>';
+    s += '<path d="M54 470 Q40 420 62 392 Q64 430 60 470 M64 470 Q70 410 96 388 Q90 440 70 472" fill="#4E7A55"/><rect x="42" y="468" width="40" height="46" rx="6" fill="#F4EFE6"/>';
+    return s;
+  }
+
+  /* ---------- COCINA ---------- */
+  function kitchen(id) {
+    var s = '<defs><radialGradient id="kg' + id + '" cx=".5" cy="0" r=".9"><stop offset="0" stop-color="#FFE7B0" stop-opacity=".9"/><stop offset="1" stop-color="#FFE7B0" stop-opacity="0"/></radialGradient></defs>';
+    s += '<rect width="360" height="640" fill="#F4F1EC"/>';
+    s += '<rect x="0" y="80" width="360" height="130" fill="#E6DFD4"/><path d="M90 80v130M180 80v130M270 80v130" stroke="#D3CABC" stroke-width="2"/><path d="M84 140v18M96 140v18M174 140v18M186 140v18M264 140v18M276 140v18" stroke="#B59A6A" stroke-width="2.5" stroke-linecap="round"/>';
+    s += '<rect y="210" width="360" height="96" fill="#EEECE8"/><path d="M20 230 Q80 250 120 236 T240 262 T360 240M0 280 Q60 268 140 290 T300 276" stroke="#D2CFCA" stroke-width="1.5" fill="none"/>';
+    s += '<rect y="300" width="360" height="14" fill="#FAF9F7"/><rect y="314" width="360" height="116" fill="#34343A"/><path d="M90 314v116M180 314v116M270 314v116" stroke="#26262B" stroke-width="2"/>';
+    s += '<rect y="430" width="360" height="210" fill="#D9D3CA"/>';
+    // lámparas colgantes
+    s += '<ellipse cx="110" cy="280" rx="90" ry="140" fill="url(#kg' + id + ')"/><ellipse cx="250" cy="280" rx="90" ry="140" fill="url(#kg' + id + ')"/>';
+    s += '<path d="M110 0v150M250 0v150" stroke="#2A2A2E" stroke-width="2"/>';
+    s += '<path d="M86 172 Q86 148 110 148 Q134 148 134 172 Z M226 172 Q226 148 250 148 Q274 148 274 172 Z" fill="#C9A15A"/>';
+    s += '<ellipse cx="110" cy="172" rx="24" ry="4" fill="#FFF3D1"/><ellipse cx="250" cy="172" rx="24" ry="4" fill="#FFF3D1"/>';
+    // grifería y florero sobre encimera trasera
+    s += '<path d="M290 300v-36q0-10 12-10h6" stroke="#9A9AA2" stroke-width="4" fill="none"/>';
+    s += '<rect x="40" y="270" width="16" height="30" rx="5" fill="#fff"/><circle cx="42" cy="262" r="8" fill="#B9A7F2"/><circle cx="54" cy="258" r="7" fill="#9E8AF0"/>';
+    return s;
+  }
+  function kitchenIsland() {
+    var s = '<rect x="10" y="452" width="340" height="22" rx="3" fill="#F7F5F1"/><path d="M40 462 Q120 456 200 466 T340 460" stroke="#DAD6CF" stroke-width="1.5" fill="none"/>';
+    s += '<rect x="18" y="474" width="324" height="140" fill="#2E2E33"/><path d="M126 474v140M234 474v140" stroke="#232327" stroke-width="2"/>';
+    s += '<rect x="250" y="430" width="44" height="24" rx="4" fill="#fff"/><circle cx="262" cy="440" r="5" fill="#E6A243"/><circle cx="276" cy="438" r="5" fill="#9CB860"/>';
+    return s;
+  }
+
+  /* ---------- PISCINA ---------- */
+  function pool(id) {
+    var s = '<defs><linearGradient id="ps' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8CC1E8"/><stop offset="1" stop-color="#DDEEF8"/></linearGradient>' +
+      '<linearGradient id="pw' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5FCBE0"/><stop offset="1" stop-color="#2496BA"/></linearGradient></defs>';
+    s += '<rect width="360" height="640" fill="url(#ps' + id + ')"/>';
+    // casa moderna
+    s += '<rect x="20" y="170" width="200" height="110" fill="#F7F5F0"/><rect x="120" y="230" width="230" height="160" fill="#FFFFFF"/><rect x="10" y="164" width="220" height="8" fill="#2A2A2E"/><rect x="110" y="222" width="250" height="9" fill="#2A2A2E"/>';
+    s += '<rect x="36" y="190" width="160" height="70" fill="#4D6878"/><path d="M76 190v70M116 190v70M156 190v70" stroke="#F7F5F0" stroke-width="3"/>';
+    s += '<rect x="138" y="250" width="200" height="130" fill="#56748A"/><path d="M188 250v130M238 250v130M288 250v130" stroke="#fff" stroke-width="3"/>';
+    s += '<path d="M150 270 L170 270 L160 380 L140 380 Z" fill="#fff" opacity=".18"/><path d="M250 260 L270 260 L262 380 L242 380 Z" fill="#fff" opacity=".18"/>';
+    s += '<rect x="20" y="280" width="118" height="110" fill="#E9E4DA"/>';
+    // palmera
+    s += '<path d="M318 400 Q326 280 314 170" stroke="#8A6A45" stroke-width="7" fill="none"/>';
+    s += '<path d="M314 170 Q270 150 240 180 Q280 168 314 176 M314 170 Q350 140 370 170 Q340 162 316 176 M314 170 Q300 120 270 112 Q300 140 312 172 M314 170 Q340 118 364 120 Q334 136 318 172" stroke="#3F7A4C" stroke-width="10" stroke-linecap="round" fill="none"/>';
+    // deck y piscina
+    s += '<rect y="388" width="360" height="252" fill="#E9DFCE"/>';
+    s += '<path d="M44 424 L316 424 L372 592 L-12 592 Z" fill="#F9F6F0"/>';
+    s += '<path d="M56 432 L304 432 L352 582 L8 582 Z" fill="url(#pw' + id + ')"/>';
+    s += '<path d="M70 460q20-8 40 0t40 0M190 470q20-8 40 0t40 0M60 520q24-10 48 0t48 0M200 540q24-10 48 0t48 0M120 560q20-8 40 0" stroke="#D8F6FB" stroke-width="2.5" fill="none" opacity=".75"/>';
+    // tumbonas
+    s += '<path d="M10 410 L80 410 L96 386 L88 382 L76 400 L14 400 Z M270 410 L340 410 L356 386 L348 382 L336 400 L274 400 Z" fill="#fff" stroke="#CFC6B6"/>';
+    s += '<rect x="96" y="596" width="40" height="10" rx="3" fill="#F4EFE6"/>';
+    return s;
+  }
+
+  /* ---------- DETALLE (acabados) ---------- */
+  function detail(id) {
+    var s = '<defs><radialGradient id="dg' + id + '" cx=".5" cy=".1" r=".9"><stop offset="0" stop-color="#FFE7B0" stop-opacity=".95"/><stop offset="1" stop-color="#FFE7B0" stop-opacity="0"/></radialGradient></defs>';
+    s += '<rect width="360" height="640" fill="#EEECE8"/>';
+    s += '<path d="M-20 120 Q80 170 160 140 T380 180M-20 260 Q100 220 200 270 T380 250M40 0 Q70 100 30 200" stroke="#CFCBC4" stroke-width="2" fill="none"/>';
+    s += '<ellipse cx="180" cy="120" rx="220" ry="280" fill="url(#dg' + id + ')"/>';
+    s += '<path d="M180 0v90" stroke="#2A2A2E" stroke-width="3"/><path d="M110 170 Q110 90 180 90 Q250 90 250 170 Z" fill="#C9A15A"/><ellipse cx="180" cy="170" rx="70" ry="10" fill="#FFF3D1"/>';
+    s += '<rect y="400" width="360" height="40" fill="#FAF9F7"/><path d="M0 420 Q120 410 220 426 T360 416" stroke="#DAD6CF" stroke-width="2" fill="none"/><rect y="440" width="360" height="200" fill="#2E2E33"/>';
+    s += '<path d="M220 400 V300 Q220 270 250 270 H290 Q306 270 306 286 V300" stroke="#A9A9B1" stroke-width="12" fill="none" stroke-linecap="round"/><rect x="198" y="390" width="44" height="14" rx="4" fill="#A9A9B1"/>';
+    s += '<rect x="60" y="330" width="40" height="70" rx="10" fill="#fff"/><path d="M80 330 Q70 290 60 270 M80 330 Q86 280 104 262 M80 330 Q80 300 84 250" stroke="#4E7A55" stroke-width="5" fill="none" stroke-linecap="round"/>';
+    return s;
+  }
+
+  // Superposición de visor de cámara.
+  function overlay(label, wide) {
+    var w = wide ? 640 : 360, h = wide ? 400 : 640;
+    var s = '<g pointer-events="none">';
+    s += '<path d="M' + (w / 3) + ' 0V' + h + 'M' + (2 * w / 3) + ' 0V' + h + 'M0 ' + (h / 3) + 'H' + w + 'M0 ' + (2 * h / 3) + 'H' + w + '" stroke="#fff" stroke-opacity=".38" stroke-width="1.2"/>';
+    var c = 22, m = 16;
+    s += '<path d="M' + m + ' ' + (m + c) + 'V' + m + 'H' + (m + c) + 'M' + (w - m - c) + ' ' + m + 'H' + (w - m) + 'V' + (m + c) + 'M' + (w - m) + ' ' + (h - m - c) + 'V' + (h - m) + 'H' + (w - m - c) + 'M' + (m + c) + ' ' + (h - m) + 'H' + m + 'V' + (h - m - c) + '" stroke="#fff" stroke-width="3" fill="none"/>';
+    s += '<rect x="' + (m + 10) + '" y="' + (m + 10) + '" width="58" height="22" rx="11" fill="#000" fill-opacity=".45"/><circle cx="' + (m + 23) + '" cy="' + (m + 21) + '" r="5" fill="#FF3B30"/><text x="' + (m + 33) + '" y="' + (m + 25.5) + '" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#fff">REC</text>';
+    s += '<text x="' + (w - m - 12) + '" y="' + (m + 25.5) + '" text-anchor="end" font-family="Poppins,sans-serif" font-size="11" font-weight="600" fill="#fff" fill-opacity=".9">4K · 30</text>';
+    if (label) {
+      var lw = label.length * 8.6 + 24;
+      s += '<rect x="' + (w / 2 - lw / 2) + '" y="' + (h - m - 44) + '" width="' + lw + '" height="26" rx="13" fill="#6C47FF"/><text x="' + (w / 2) + '" y="' + (h - m - 26.5) + '" text-anchor="middle" font-family="Poppins,sans-serif" font-size="12" font-weight="600" letter-spacing="1" fill="#fff">' + label + '</text>';
+    }
+    return s + '</g>';
+  }
+
+  function scene(name, who, variant, id) {
+    var bg, fig = '', fg = '';
+    var blur = '<filter id="bl' + id + '"><feGaussianBlur stdDeviation="2.4"/></filter>';
+    if (name === 'living') {
+      bg = living(id, variant);
+      if (who === 'stand') fig = placed('stand', 120, 222, 1.25);
+      if (who === 'sit') fig = placed('sit', 110, 226, 1.15);
+      if (who === 'medium') { bg = '<defs>' + blur + '</defs><g filter="url(#bl' + id + ')">' + zoom(1.6, 180, 330, bg) + '</g>'; fig = placed('stand', -15, 92, 3.9); }
+    } else if (name === 'balcony') {
+      bg = balcony(id);
+      if (who === 'stand') fig = placed('stand', 110, 252, 1.2);
+      if (who === 'medium') { bg = '<defs>' + blur + '</defs><g filter="url(#bl' + id + ')">' + zoom(1.5, 180, 330, bg) + '</g>'; fig = placed('stand', -15, 92, 3.9); }
+    } else if (name === 'kitchen') {
+      bg = kitchen(id); fg = kitchenIsland();
+      if (who === 'stand') fig = placed('stand', 120, 214, 1.3);
+      if (who === 'medium') { bg = '<defs>' + blur + '</defs><g filter="url(#bl' + id + ')">' + zoom(1.4, 180, 300, bg) + '</g>'; fg = ''; fig = placed('stand', -15, 92, 3.9); }
+    } else if (name === 'pool') {
+      bg = pool(id);
+      if (who === 'stand') fig = placed('stand', 250, 420, 0.62);
+    } else if (name === 'detail') {
+      bg = detail(id);
+    }
+    return bg + fig + fg;
+  }
+
+  document.querySelectorAll('.frame[data-scene]').forEach(function (el) {
+    var id = 'f' + (++uid);
+    var wide = el.dataset.ratio === 'wide';
+    var inner = scene(el.dataset.scene, el.dataset.person, el.dataset.variant, id);
+    var svg;
+    if (wide) {
+      // Versión horizontal: la escena vertical recortada al centro.
+      svg = '<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0 -520) scale(1.7778)">' + inner + '</g>' + overlay(el.dataset.label, true) + '</svg>';
+    } else {
+      svg = '<svg viewBox="0 0 360 640" xmlns="http://www.w3.org/2000/svg">' + inner + overlay(el.dataset.label, false) + '</svg>';
+    }
+    el.innerHTML = svg;
+  });
+
+  /* ---------- ÍCONOS DE EQUIPO ---------- */
+  var icons = {
+    phone: '<svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="17" y="4" width="30" height="56" rx="7" stroke="#0A0A0B" stroke-width="2.5"/><rect x="21" y="8" width="13" height="13" rx="4" fill="#0A0A0B"/><circle cx="25" cy="12" r="2.4" fill="#6C47FF"/><circle cx="30" cy="17" r="2.4" fill="#6C47FF"/><circle cx="25" cy="17" r="1.6" fill="#fff"/><rect x="27" y="52" width="10" height="2" rx="1" fill="#0A0A0B"/></svg>',
+    tripod: '<svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="24" y="4" width="16" height="22" rx="3" stroke="#0A0A0B" stroke-width="2.5"/><circle cx="32" cy="10" r="2" fill="#6C47FF"/><path d="M22 28h20" stroke="#0A0A0B" stroke-width="3" stroke-linecap="round"/><path d="M32 28v12M32 32L14 60M32 32L50 60M32 40v20" stroke="#0A0A0B" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    mic: '<svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="20" y="8" width="24" height="30" rx="8" stroke="#0A0A0B" stroke-width="2.5"/><circle cx="32" cy="20" r="5" fill="#6C47FF"/><path d="M26 30h12" stroke="#0A0A0B" stroke-width="2" stroke-linecap="round"/><path d="M24 38v8h16v-8" stroke="#0A0A0B" stroke-width="2.5" stroke-linejoin="round"/><path d="M14 52q18 8 36 0" stroke="#6C47FF" stroke-width="2.5" stroke-linecap="round"/><path d="M8 46q24 16 48 0" stroke="#6C47FF" stroke-opacity=".4" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    light: '<svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="17" stroke="#0A0A0B" stroke-width="2.5"/><circle cx="32" cy="22" r="10" stroke="#6C47FF" stroke-width="5"/><path d="M32 39v21M24 60h16" stroke="#0A0A0B" stroke-width="2.5" stroke-linecap="round"/><path d="M8 10l-4-3M56 10l4-3M4 26H0M60 26h4" stroke="#6C47FF" stroke-width="2.5" stroke-linecap="round"/></svg>'
+  };
+  document.querySelectorAll('[data-icon]').forEach(function (el) { el.innerHTML = icons[el.dataset.icon]; });
+
+  /* ---------- LÍNEA DE TIEMPO ---------- */
+  (function () {
+    var segs = [[0, 4, 'Panorámica'], [4, 8, 'De pie'], [8, 12, 'Sentada'], [12, 16, 'Cocina'], [16, 19, 'Detalle'], [19, 23, 'Balcón'], [23, 27, 'Piscina'], [27, 30, 'Cierre']];
+    var x0 = 4, w = 672, s = '';
+    segs.forEach(function (g, i) {
+      var x = x0 + g[0] / 30 * w, ww = (g[1] - g[0]) / 30 * w - 4;
+      s += '<rect x="' + x + '" y="6" width="' + ww + '" height="36" rx="9" fill="' + (i % 2 ? '#6C47FF' : '#0A0A0B') + '"/>';
+      s += '<text x="' + (x + ww / 2) + '" y="29" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11.5" font-weight="600" fill="#fff">' + g[2] + '</text>';
+      s += '<text x="' + x + '" y="62" font-family="Poppins,sans-serif" font-size="10" fill="#8C8A96">' + g[0] + 's</text>';
+    });
+    s += '<text x="676" y="62" text-anchor="end" font-family="Poppins,sans-serif" font-size="10" fill="#8C8A96">30s</text>';
+    document.getElementById('timeline').innerHTML = s;
+  })();
+
+  /* ---------- PLANO DE LA VIVIENDA ---------- */
+  (function () {
+    var f = 'font-family="Poppins,sans-serif"';
+    var s = '<defs><pattern id="wtr" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#BFE7F0"/><path d="M0 10q4-4 8 0t8 0" stroke="#fff" stroke-width="1.4" fill="none"/></pattern></defs>';
+    // habitaciones
+    s += '<rect x="20" y="20" width="400" height="300" rx="6" fill="#fff" stroke="#0A0A0B" stroke-width="4"/>';
+    s += '<path d="M220 20v120M220 180v140M20 170h120M180 170h40M300 170h120" stroke="#0A0A0B" stroke-width="3"/>';
+    s += '<rect x="20" y="320" width="400" height="56" fill="#F2EEFF" stroke="#0A0A0B" stroke-width="2" stroke-dasharray="5 4"/>';
+    s += '<rect x="450" y="40" width="200" height="300" rx="10" fill="#EFE8DA"/><rect x="474" y="80" width="152" height="220" rx="8" fill="url(#wtr)" stroke="#fff" stroke-width="5"/>';
+    s += '<text x="120" y="100" text-anchor="middle" ' + f + ' font-size="14" font-weight="600" fill="#0A0A0B">Cocina</text>';
+    s += '<text x="320" y="100" text-anchor="middle" ' + f + ' font-size="14" font-weight="600" fill="#0A0A0B">Habitación</text>';
+    s += '<text x="120" y="250" text-anchor="middle" ' + f + ' font-size="14" font-weight="600" fill="#0A0A0B">Sala</text>';
+    s += '<text x="320" y="250" text-anchor="middle" ' + f + ' font-size="14" font-weight="600" fill="#0A0A0B">Comedor</text>';
+    s += '<text x="290" y="354" text-anchor="middle" ' + f + ' font-size="13" font-weight="600" fill="#6C47FF">Balcón con vista</text>';
+    s += '<text x="550" y="66" text-anchor="middle" ' + f + ' font-size="13" font-weight="600" fill="#0A0A0B">Piscina</text>';
+    // cámaras: [x, y, ángulo de mira en grados, n]
+    var cams = [[34, 306, -45, 1], [206, 186, 135, 2], [34, 34, 45, 3], [206, 126, -135, 4], [406, 306, -135, 5], [234, 34, 45, 6], [44, 348, 0, 7], [466, 326, -60, 8]];
+    cams.forEach(function (c) {
+      var a = c[2] * Math.PI / 180, r = 92, sp = 0.42;
+      var x1 = c[0] + r * Math.cos(a - sp), y1 = c[1] + r * Math.sin(a - sp), x2 = c[0] + r * Math.cos(a + sp), y2 = c[1] + r * Math.sin(a + sp);
+      s += '<path d="M' + c[0] + ' ' + c[1] + 'L' + x1.toFixed(1) + ' ' + y1.toFixed(1) + 'A' + r + ' ' + r + ' 0 0 1 ' + x2.toFixed(1) + ' ' + y2.toFixed(1) + 'Z" fill="#6C47FF" fill-opacity=".14"/>';
+    });
+    cams.forEach(function (c) {
+      s += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="11" fill="' + (c[3] === 1 ? '#6C47FF' : '#0A0A0B') + '"/><text x="' + c[0] + '" y="' + (c[1] + 4) + '" text-anchor="middle" ' + f + ' font-size="11" font-weight="600" fill="#fff">' + c[3] + '</text>';
+    });
+    s += '<path d="M60 290 C 120 200, 160 150, 200 130 S 300 120, 330 300 S 300 340, 230 330" stroke="#6C47FF" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#arr)"/>';
+    s = s.replace('</defs>', '<marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6C47FF"/></marker></defs>');
+    // leyenda
+    s += '<circle cx="460" cy="372" r="8" fill="#6C47FF"/><text x="474" y="376" ' + f + ' font-size="11" fill="#5D5B66">Toma 1: la de mayor amplitud</text>';
+    s += '<path d="M452 392h20" stroke="#6C47FF" stroke-width="2" stroke-dasharray="6 5"/><text x="480" y="396" ' + f + ' font-size="11" fill="#5D5B66">Tu recorrido a cámara</text>';
+    document.getElementById('floorplan').innerHTML = s;
+  })();
+})();
+</script>
+</body>
+</html>
