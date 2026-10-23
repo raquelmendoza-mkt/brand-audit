@@ -333,7 +333,40 @@ p { color: var(--muted); }
 .plan-note strong { color: var(--text); font-weight: 600; }
 .plan-note--accent { background: var(--purple-tint); color: #3D2C8F; }
 .plan-note--accent strong { color: #2A1D72; }
+/* Plan destacado */
+.plan--featured { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: 0 40px 80px -40px rgba(56,32,160,0.55); }
+.plan--featured:hover { box-shadow: 0 50px 90px -40px rgba(56,32,160,0.65); }
+.plan--featured::before {
+  content: ""; position: absolute; top: -1px; left: 32px; right: 32px; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple-on-dark), transparent);
+}
+.plan--featured .plan-name, .plan--featured .plan-price .amount { color: #fff; }
+.plan--featured .plan-price .per { color: rgba(255,255,255,0.45); }
+.plan--featured .plan-extra { color: var(--purple-on-dark); }
+.plan--featured .plan-desc { color: rgba(255,255,255,0.7); }
+.plan--featured .plan-body { border-top-color: var(--line-dark); }
+.plan--featured .plan-label { color: var(--purple-on-dark); }
+.plan--featured .checks li { color: rgba(255,255,255,0.88); }
+.plan--featured .checks li::before {
+  background-color: rgba(169,146,255,0.16);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23A992FF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.plan--featured .plan-note { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.62); }
+.plan--featured .plan-note strong { color: #fff; }
+.plan--featured .plan-note--accent { background: rgba(169,146,255,0.14); color: #D9CEFF; }
+.plan--featured .plan-note--accent strong { color: #fff; }
+.plan--featured .btn--dark { --bg: #fff; --fg: var(--ink); }
+.plan--featured .btn--dark:hover { --bg: #EDEBF3; }
+
+.badge {
+  position: absolute; top: clamp(28px, 3vw, 38px); right: clamp(28px, 3vw, 38px);
+  padding: 6px 12px; border-radius: 999px;
+  background: var(--purple); color: #fff;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+
 @media (max-width: 760px) { .plans { grid-template-columns: 1fr; gap: 16px; } .plan-desc { min-height: 0; } }
+@media (max-width: 420px) { .badge { position: static; display: inline-block; margin-bottom: 14px; } .plan-name { display: block; } }
 
 /* ============================================================
    11. ADD-ONS
@@ -357,15 +390,24 @@ p { color: var(--muted); }
 /* ============================================================
    12. PAGO
    ============================================================ */
-.pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+.pay-title { font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); margin-top: 40px; }
+.pay-title:first-of-type { margin-top: 0; }
+.pay-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 14px; }
+.pay-flag {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); background: var(--mist); border: 1px solid var(--line);
+  padding: 5px 11px; border-radius: 999px;
+}
+.pay-card .pay-flag + strong { margin-top: 14px; }
 .pay-card { border: 1px solid var(--line); border-radius: 18px; padding: 24px; background: #fff; }
+.pay-grid--main .pay-card { padding: 28px; }
 .pay-card.is-main { border-color: var(--purple); background: var(--purple-tint); }
 .pay-card small { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
 .pay-card.is-main small { color: var(--purple); }
 .pay-card strong { display: block; margin-top: 8px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
 .pay-card p { margin-top: 8px; font-size: 14px; line-height: 1.6; }
 .pay-card.is-main p { color: #3D2C8F; }
-@media (max-width: 760px) { .pay-grid { grid-template-columns: 1fr; } }
+@media (max-width: 680px) { .pay-grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
    13. TESTIMONIOS
@@ -692,7 +734,8 @@ p { color: var(--muted); }
 
     <div class="plans">
       <!-- ---------- MÉTODO 180 ---------- -->
-      <article class="plan reveal" aria-labelledby="plan-180">
+      <article class="plan plan--featured reveal" aria-labelledby="plan-180">
+        <span class="badge">Más recomendada</span>
         <h3 class="plan-name" id="plan-180">MÉTODO 180</h3>
         <p class="plan-price"><span class="amount">$399,99</span><span class="per">USD</span></p>
         <p class="plan-extra">6 sesiones 1 a 1 · 90 minutos cada una</p>
@@ -713,7 +756,7 @@ p { color: var(--muted); }
             <li>Clases grabadas y guardadas en la nube</li>
             <li>Acompañamiento hasta que funcione</li>
           </ul>
-          <p class="plan-note plan-note--accent"><strong>Plan de financiamiento disponible:</strong> puedes pagarlo en <strong>6 cuotas semanales de $70</strong> en lugar de todo de una vez.</p>
+          <p class="plan-note plan-note--accent"><strong>Plan de financiamiento disponible:</strong> paga <strong>$70 por sesión</strong>, una cuota cada semana, en lugar de todo de una vez.</p>
           <p class="plan-note"><strong>Sales con el sistema montado</strong>, no con apuntes. Pasas de cero a un sistema que te genera clientes.</p>
         </div>
       </article>
@@ -789,25 +832,35 @@ p { color: var(--muted); }
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Formas de pago</span>
-      <h2>Sin transferencias internacionales <span class="serif accent">de por medio</span></h2>
-      <p class="lead">Tengo cuenta propia en Bancolombia, así que el pago se hace local y el proceso arranca el mismo día.</p>
+      <h2>Paga desde donde estés, <span class="serif accent">sin complicaciones</span></h2>
+      <p class="lead">Trabajo con realtors en varios países, así que tengo cuentas locales en Colombia y Venezuela, además de los métodos internacionales.</p>
     </div>
 
-    <div class="pay-grid reveal">
+    <p class="pay-title reveal">Los más rápidos</p>
+    <div class="pay-grid pay-grid--main reveal">
       <div class="pay-card is-main">
-        <small>Recomendada</small>
-        <strong>Bancolombia</strong>
-        <p>Cuenta propia en Colombia. Transferencia local, sin intermediarios ni esperas.</p>
-      </div>
-      <div class="pay-card">
-        <small>Alternativa</small>
+        <small>Recomendado</small>
         <strong>Zelle</strong>
-        <p>Si prefieres pagar en dólares desde una cuenta en Estados Unidos.</p>
+        <p>La forma más ágil de pagar en dólares. Llega al instante y el proceso arranca el mismo día.</p>
+      </div>
+      <div class="pay-card is-main">
+        <small>Recomendado</small>
+        <strong>USDT</strong>
+        <p>Pago en cripto, sin bancos de por medio ni esperas. Ideal si cobras o manejas dólares digitales.</p>
+      </div>
+    </div>
+
+    <p class="pay-title reveal">Cuentas locales</p>
+    <div class="pay-grid pay-grid--local reveal">
+      <div class="pay-card">
+        <span class="pay-flag">Exclusivo para clientes de Colombia</span>
+        <strong>Bancolombia</strong>
+        <p>Cuenta propia en Colombia. Transferencia local, sin intermediarios ni cambio de divisa.</p>
       </div>
       <div class="pay-card">
-        <small>Alternativa</small>
-        <strong>USDT</strong>
-        <p>Pago en cripto, si es lo que mejor te funciona.</p>
+        <span class="pay-flag">Exclusivo para clientes de Venezuela</span>
+        <strong>Pago móvil</strong>
+        <p>A tasa euro del día. Pagas en bolívares desde tu banco, sin necesidad de cuenta en el exterior.</p>
       </div>
     </div>
   </div>
