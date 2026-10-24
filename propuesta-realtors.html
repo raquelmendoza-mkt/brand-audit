@@ -372,7 +372,7 @@ p { color: var(--muted); }
    11. ADD-ONS
    ============================================================ */
 .addons-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
-.addons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+.addons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: stretch; }
 .addon {
   background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px;
   display: flex; flex-direction: column; gap: 18px;
@@ -383,9 +383,15 @@ p { color: var(--muted); }
 .addon p { font-size: 14.5px; line-height: 1.65; }
 .addon .price { margin-top: auto; font-size: 14px; color: var(--muted); }
 .addon .btn { margin-top: 4px; }
+.addon--top { border-color: var(--purple); box-shadow: 0 24px 50px -34px rgba(108,71,255,0.45); }
+.addon-flag {
+  align-self: flex-start; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #fff; background: var(--purple); padding: 5px 12px; border-radius: 999px;
+}
+.addon .price-alt { display: block; font-size: 13.5px; color: var(--soft); margin-top: 4px; }
+.addon--top .checks li { font-size: 14px; }
 .addon .price b { display: block; font-size: 30px; font-weight: 600; color: var(--purple); letter-spacing: -0.03em; line-height: 1.2; }
-@media (max-width: 980px) { .addons { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px) { .addons { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .addons { grid-template-columns: 1fr; } }
 
 /* ============================================================
    12. PAGO
@@ -808,15 +814,33 @@ p { color: var(--muted); }
         <a class="btn btn--ghost btn--block" href="#" data-wa="hora">Agendar una hora <span class="arrow" aria-hidden="true">→</span></a>
       </article>
 
-      <article class="addon reveal" data-delay="1">
+      <article class="addon addon--top reveal" data-delay="1">
+        <span class="addon-flag">Promoción</span>
+        <h3>Paquete TOP de Videomarketing</h3>
+        <p>Para delegar solo el videomarketing de un inmueble. Me encargo del paquete completo:</p>
+        <ul class="checks" style="margin-top:4px;">
+          <li>Diseño creativo de la estrategia del inmueble</li>
+          <li>Edición de video profesional</li>
+          <li>Campaña de ADS para ese inmueble</li>
+        </ul>
+        <p class="price">
+          <b>$150</b>
+          pagando en Zelle, divisas o USDT
+          <span class="price-alt">$170 si pagas en bolívares</span>
+        </p>
+        <p class="plan-note" style="margin-top:0;">Incluye <strong>un (1) video</strong>. Si necesitas que vaya a grabar el inmueble, tiene un costo adicional que cotizamos aparte.</p>
+        <a class="btn btn--primary btn--block" href="#" data-wa="paquete">Quiero el Paquete TOP <span class="arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="addon reveal" data-delay="2">
         <h3>Videomarketing inmobiliario con IA</h3>
-        <p>Te creo la <strong>estrategia del video</strong> para una propiedad concreta: qué grabar, cómo y en qué orden. Tú grabas con tu teléfono, me lo envías y te lo devuelvo editado con IA, listo para publicar.</p>
+        <p>Solo la pieza de video, <strong>sin campaña</strong>. Te creo la estrategia para una propiedad concreta: qué grabar, cómo y en qué orden. Tú grabas con tu teléfono, me lo envías y te lo devuelvo editado con IA.</p>
         <p class="plan-note" style="margin-top:0;">El precio depende de la duración y del tipo de video: las plataformas de IA consumen créditos por cada generación, y ese costo va incluido.</p>
         <p class="price"><b>A cotizar</b> según la propiedad</p>
         <a class="btn btn--ghost btn--block" href="#" data-wa="video">Cotizar por WhatsApp <span class="arrow" aria-hidden="true">→</span></a>
       </article>
 
-      <article class="addon reveal" data-delay="2">
+      <article class="addon reveal" data-delay="3">
         <h3>Ads inmobiliario</h3>
         <p>Creación, segmentación, lanzamiento y optimización de tus campañas, con seguimiento de resultados. El precio depende del objetivo, el mercado y la cantidad de campañas.</p>
         <p class="plan-note plan-note--accent" style="margin-top:0;"><strong>La inversión publicitaria no está incluida</strong>, se paga directo a la plataforma.</p>
@@ -1001,6 +1025,7 @@ var MENSAJES = {
   metodo:  'Hola Raquel, me interesa la mentoría 1 a 1 de 6 sesiones por $399,99. ¿Cómo empezamos?',
   redes:   'Hola Raquel, me interesa que lleves mis redes completas por $799,99 al mes. ¿Cómo funciona?',
   hora:    'Hola Raquel, quiero una mentoría puntual de una hora sobre un tema específico. ¿Cuándo tienes disponibilidad?',
+  paquete: 'Hola Raquel, me interesa el Paquete TOP de Videomarketing por $150 (estrategia, edición y campaña de ADS) para un inmueble. ¿Cómo empezamos?',
   video:   'Hola Raquel, quiero cotizar el servicio de videomarketing inmobiliario con IA para una propiedad. Te cuento de cuál se trata.',
   ads:     'Hola Raquel, quiero cotizar el servicio de ads inmobiliario. Te cuento sobre mi caso.'
 };
