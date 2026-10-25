@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Propuesta · Mentoría Claude AI como tu equipo creativo</title>
+<style>
+/* RM MARKETING IA — Propuesta en PDF (carta 8.5 × 11 in). Estilo limpio de la marca. */
+@font-face { font-family: 'Poppins'; font-weight: 300; src: url('../../carruseles/fonts/Poppins-300.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 400; src: url('../../carruseles/fonts/Poppins-400.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('../../carruseles/fonts/Poppins-500.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 600; src: url('../../carruseles/fonts/Poppins-600.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('../../carruseles/fonts/Poppins-700.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 800; src: url('../../carruseles/fonts/Poppins-800.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 500; font-style: italic; src: url('../../carruseles/fonts/PlayfairDisplay-500-italic.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 600; font-style: italic; src: url('../../carruseles/fonts/PlayfairDisplay-600-italic.ttf'); }
+
+@page { size: 8.5in 11in; margin: 0; }
+:root {
+  --ink: #0E0E0E; --muted: #5E5B6B; --purple: #5446D6; --purple-soft: #A99FF5; --lav: #F1EFFD; --lav-2: #E6E2FB;
+  --mist: #ECEDF2; --white: #FFFFFF; --night-1: #0D0B2B; --night-2: #2A2080;
+  --sans: 'Poppins', system-ui, sans-serif; --serif: 'Playfair Display', Georgia, serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #888; }
+body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { position: relative; width: 8.5in; height: 11in; overflow: hidden; page-break-after: always; background: var(--white); }
+.page:last-child { page-break-after: auto; }
+@media screen { .page { margin: 24px auto; box-shadow: 0 10px 40px rgba(0,0,0,.25); } }
+
+/* Cabecera y pie de cada página */
+.top, .foot { position: absolute; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); font-weight: 500; z-index: 5; }
+.top { top: 40px; } .foot { bottom: 36px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 600; }
+.mono { width: 28px; height: 28px; border-radius: 50%; background: var(--purple); color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 800; letter-spacing: -0.02em; }
+.inner { position: absolute; left: 64px; right: 64px; top: 104px; bottom: 84px; display: flex; flex-direction: column; gap: 22px; }
+
+/* Tipografía */
+.kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+.display { font-size: 60px; font-weight: 800; line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
+.h1 { font-size: 40px; font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; text-wrap: balance; }
+.h2 { font-size: 24px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.lead { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 520px; text-wrap: pretty; }
+.lead b { color: var(--ink); font-weight: 600; }
+.c { color: var(--purple); }
+.serif { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; }
+.thin { font-weight: 300; }
+.h1:has(.hl) { line-height: 1.28; }
+.hl { background: var(--purple); color: #fff; padding: 0 0.18em; border-radius: 0.14em; white-space: nowrap; }
+.rule { width: 64px; height: 4px; border-radius: 2px; background: var(--purple); }
+
+/* PORTADA */
+.cover { background: radial-gradient(ellipse 70% 55% at 25% 20%, #FAFAFC 0%, transparent 70%), var(--mist); }
+.cover .inner { top: 150px; right: 300px; gap: 20px; }
+.cover .display { font-size: 62px; }
+.cover-photo { position: absolute; right: -40px; bottom: 0; width: 420px; z-index: 2; }
+.cover-photo img { width: 100%; display: block; }
+.chips { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 6px; }
+.chip { font-size: 11.5px; font-weight: 600; padding: 7px 14px; border-radius: 100px; background: #fff; border: 1px solid rgba(14,14,14,0.06); box-shadow: 0 8px 22px -14px rgba(40,30,120,0.35); }
+.chip i { font-style: normal; color: var(--purple); margin-right: 4px; }
+.cover-sign { position: absolute; left: 64px; bottom: 76px; z-index: 3; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.cover-sign b { color: var(--ink); font-weight: 700; display: block; font-size: 14px; }
+
+/* ANTES / DESPUÉS */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 6px; }
+.col { border-radius: 22px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; background: #fff; border: 1px solid rgba(14,14,14,0.07); box-shadow: 0 16px 40px -26px rgba(40,30,120,0.35); }
+.col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.col li { font-size: 13.5px; line-height: 1.45; display: grid; grid-template-columns: 20px 1fr; gap: 8px; }
+.col li::before { content: '✕'; color: #B3AFC2; font-weight: 700; }
+.col.good { background: var(--purple); color: #fff; border-color: transparent; }
+.col.good h4 { color: #D8D3FF; }
+.col.good li::before { content: '✓'; color: #fff; }
+.statement { margin-top: auto; padding: 26px 28px; border-radius: 22px; background: var(--lav); font-size: 22px; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+
+/* QUÉ INCLUYE */
+.mods { display: flex; flex-direction: column; gap: 14px; }
+.mod { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 22px 24px; border-radius: 22px; background: #fff; border: 1px solid rgba(14,14,14,0.07); box-shadow: 0 16px 40px -26px rgba(40,30,120,0.35); }
+.mod .ico { width: 64px; height: 64px; border-radius: 18px; background: var(--lav); display: grid; place-items: center; }
+.mod .ico svg { width: 30px; height: 30px; stroke: var(--purple); }
+.mod h3 { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+.mod h3 span { color: var(--purple); }
+.mod ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.mod li { font-size: 12.5px; line-height: 1.5; color: var(--muted); display: grid; grid-template-columns: 14px 1fr; gap: 6px; }
+.mod li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--purple); margin-top: 7px; }
+
+/* PRUEBA */
+.lav-page { background: linear-gradient(180deg, #F4F2FE 0%, #ECE9FC 100%); }
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.shots img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; display: block; box-shadow: 0 18px 40px -22px rgba(40,30,120,0.5); }
+.shots figcaption { font-size: 10.5px; color: var(--muted); margin-top: 8px; text-align: center; }
+.outcome { margin-top: auto; padding: 24px 26px; border-radius: 22px; background: var(--lav); display: grid; grid-template-columns: auto 1fr 1fr 1fr; gap: 18px; align-items: center; }
+.outcome h4 { font-size: 15px; font-weight: 700; line-height: 1.25; }
+.outcome div { font-size: 12.5px; line-height: 1.4; display: flex; gap: 8px; align-items: flex-start; }
+.outcome div::before { content: '✓'; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--purple); color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: auto; }
+.step { background: #fff; border-radius: 18px; padding: 18px; border: 1px solid rgba(14,14,14,0.06); }
+.step b { display: block; font-size: 12px; color: var(--purple); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
+.step p { font-size: 13px; line-height: 1.45; }
+
+/* INVERSIÓN */
+.night { background: linear-gradient(120deg, var(--night-1) 0%, var(--night-2) 60%, #4433B8 100%); color: #fff; }
+.night .top, .night .foot { color: rgba(255,255,255,0.7); }
+.night .brand { color: #fff; }
+.night .mono { background: #fff; color: var(--purple); }
+.night .kicker { color: rgba(255,255,255,0.65); }
+.night .c { color: var(--purple-soft); }
+.price-card { background: #fff; color: var(--ink); border-radius: 26px; padding: 30px 32px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+.price { font-size: 76px; font-weight: 800; letter-spacing: -0.04em; line-height: 0.9; color: var(--purple); }
+.price small { font-size: 18px; font-weight: 600; letter-spacing: 0; color: var(--ink); margin-left: 6px; }
+.price-card p { font-size: 13px; line-height: 1.5; color: var(--muted); }
+.price-card p b { color: var(--ink); }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fact { border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); border-radius: 18px; padding: 18px 20px; }
+.fact b { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 6px; font-weight: 600; }
+.fact p { font-size: 13.5px; line-height: 1.45; }
+.note { font-size: 11.5px; line-height: 1.55; color: rgba(255,255,255,0.72); border-left: 3px solid var(--purple-soft); padding-left: 14px; }
+
+/* CIERRE */
+.close-photo { position: absolute; right: -30px; bottom: 0; width: 380px; z-index: 2; }
+.close-photo img { width: 100%; display: block; }
+.close .inner { right: 330px; }
+.quote { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 24px; line-height: 1.35; }
+.pill { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; background: var(--purple); color: #fff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 100px; }
+.pill svg { width: 20px; height: 20px; }
+.contact { display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+.contact a { color: var(--ink); text-decoration: none; }
+.contact span { color: var(--muted); display: inline-block; width: 86px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="page cover">
+  <div class="top"><div class="brand"><span class="mono">RM</span>Raquel Mendoza · Marketing con IA</div><div>@raquelmendoza.mkt</div></div>
+  <div class="inner">
+    <span class="kicker">Mentoría personalizada 1:1</span>
+    <h1 class="display">Tu agencia virtual de <span class="c">marketing</span> <em class="serif">inmobiliario</em></h1>
+    <div class="rule"></div>
+    <p class="lead">Convierte a <b>Claude AI</b> en tu editor de video profesional y tu diseñador gráfico. Todo con un clic, sin pagarle a otra persona.</p>
+    <div class="chips">
+      <span class="chip"><i>●</i>Edita tus videos con IA</span>
+      <span class="chip"><i>●</i>Sistematiza tus posts de Instagram</span>
+      <span class="chip"><i>●</i>Tu agencia en tu computadora</span>
+    </div>
+  </div>
+  <div class="cover-photo"><img src="../../carruseles/recursos/raquel-6109-recorte.png" alt=""></div>
+  <div class="cover-sign"><b>Lcda. Raquel Mendoza</b>Estratega de marketing inmobiliario con IA<br>RM Marketing IA</div>
+</section>
+
+<!-- 2 · EL CAMBIO -->
+<section class="page">
+  <div class="top"><div class="brand"><span class="mono">RM</span>Raquel Mendoza · Marketing con IA</div><div>Propuesta · Claude AI como tu equipo creativo</div></div>
+  <div class="inner">
+    <span class="kicker">Por qué esta mentoría</span>
+    <h2 class="h1">Deja de depender de <span class="c">editores</span> y <em class="serif">diseñadores</em> externos</h2>
+    <p class="lead">Cada video y cada post no tiene por qué pasar por otra persona. Te dejo configurado un equipo creativo con IA que trabaja con <b>tu marca, tus colores y tu estilo</b>, para que crees contenido profesional en una fracción del tiempo.</p>
+    <div class="compare">
+      <div class="col">
+        <h4>Hoy</h4>
+        <ul>
+          <li>Pagas a un editor por cada video y a un diseñador por cada post.</li>
+          <li>Esperas días por una entrega o una corrección.</li>
+          <li>Tus diseños cambian según quién los haga.</li>
+          <li>Si no hay presupuesto ese mes, no hay contenido.</li>
+        </ul>
+      </div>
+      <div class="col good">
+        <h4>Con Claude</h4>
+        <ul>
+          <li>Claude edita tus videos: subtítulos, transiciones, música y animaciones.</li>
+          <li>Diseña tus posts y carruseles con tu identidad de marca.</li>
+          <li>Lo pides en lenguaje natural y lo tienes en minutos.</li>
+          <li>Tu agencia queda instalada en tu propio equipo.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="statement">No se trata solo de conocer la inteligencia artificial. <span class="c">Se trata de usarla</span> para llevar tu marketing inmobiliario al siguiente nivel.</p>
+  </div>
+  <div class="foot"><div>RM Marketing IA</div><div>2</div></div>
+</section>
+
+<!-- 3 · QUÉ INCLUYE -->
+<section class="page">
+  <div class="top"><div class="brand"><span class="mono">RM</span>Raquel Mendoza · Marketing con IA</div><div>Propuesta · Claude AI como tu equipo creativo</div></div>
+  <div class="inner">
+    <span class="kicker">Qué incluye</span>
+    <h2 class="h1">Tu equipo creativo, <span class="hl">instalado</span> y funcionando</h2>
+    <div class="mods">
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+        <div>
+          <h3><span>01</span> · Claude como editor de video profesional</h3>
+          <ul>
+            <li>Instalación y configuración de Remotion y FFmpeg.</li>
+            <li>Configuración de Claude para editar videos inmobiliarios, Reels y contenido para redes sociales.</li>
+            <li>Incorporación de subtítulos, transiciones, efectos, música y animaciones.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <div>
+          <h3><span>02</span> · Claude como diseñador gráfico</h3>
+          <ul>
+            <li>Instalación y configuración de las skills necesarias.</li>
+            <li>Personalización con tus colores, tipografías e identidad de marca.</li>
+            <li>Preparación para crear posts, carruseles y diseños para Instagram.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mod">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M8 10l2.5 2.5L16 7"/></svg></div>
+        <div>
+          <h3><span>03</span> · Implementación y pruebas</h3>
+          <ul>
+            <li>Instalación y configuración de las herramientas en tu equipo.</li>
+            <li>Primeras pruebas: 1 video editado y 1 diseño gráfico.</li>
+            <li>Explicación paso a paso para que aprendas a usar tu nuevo asistente creativo de IA.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="outcome">
+      <h4>Al terminar<br><span class="c">te llevas</span></h4>
+      <div>Tu primer video editado con Claude</div>
+      <div>Tu primer diseño con tu marca</div>
+      <div>Tu sistema listo para seguir creando</div>
+    </div>
+  </div>
+  <div class="foot"><div>RM Marketing IA</div><div>3</div></div>
+</section>
+
+<!-- 4 · ASÍ SE VE -->
+<section class="page lav-page">
+  <div class="top"><div class="brand"><span class="mono">RM</span>Raquel Mendoza · Marketing con IA</div><div>Propuesta · Claude AI como tu equipo creativo</div></div>
+  <div class="inner">
+    <span class="kicker">Así se ve en la práctica</span>
+    <h2 class="h1">Este carrusel lo diseñó <span class="c">Claude</span> con mi <em class="serif">identidad de marca</em></h2>
+    <p class="lead">Mismos colores, mismas tipografías y mis fotos, en cada slide. Es el mismo sistema que vas a tener configurado con tu propia marca.</p>
+    <div class="shots">
+      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/01.png" alt=""><figcaption>Portada</figcaption></figure>
+      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/03.png" alt=""><figcaption>Formato tuit</figcaption></figure>
+      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/08.png" alt=""><figcaption>Paso a paso</figcaption></figure>
+      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/11.png" alt=""><figcaption>Cierre con foto</figcaption></figure>
+    </div>
+    <div class="steps">
+      <div class="step"><b>Tú pides</b><p>«Hazme un carrusel sobre cómo preparar una casa para fotos.»</p></div>
+      <div class="step"><b>Claude diseña</b><p>Escribe, diseña y revisa cada slide con tu identidad visual.</p></div>
+      <div class="step"><b>Tú publicas</b><p>Recibes las imágenes listas en 1080 × 1350 para Instagram.</p></div>
+    </div>
+  </div>
+  <div class="foot"><div>RM Marketing IA</div><div>4</div></div>
+</section>
+
+<!-- 5 · INVERSIÓN -->
+<section class="page night">
+  <div class="top"><div class="brand"><span class="mono">RM</span>Raquel Mendoza · Marketing con IA</div><div>Propuesta · Claude AI como tu equipo creativo</div></div>
+  <div class="inner" style="justify-content:center">
+    <span class="kicker">Inversión</span>
+    <h2 class="h1" style="font-size:44px"><span class="thin">Una sola inversión.</span> Tu agencia para <span class="c">siempre</span></h2>
+    <div class="price-card">
+      <div class="price">$160<small>USD</small></div>
+      <p><b>Inversión única.</b> Incluye la configuración completa de Claude como editor de video y diseñador gráfico, las primeras pruebas y la explicación paso a paso.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>Modalidad</b><p>Mentoría personalizada 1:1</p></div>
+      <div class="fact"><b>Fecha y horario</b><p>A coordinar según disponibilidad</p></div>
+    </div>
+    <p class="note"><b>Importante:</b> para usar Claude necesitas una suscripción a la herramienta. El plan Pro cuesta $20 USD mensuales (facturación mensual, antes de impuestos). Se paga directamente a la plataforma y no está incluido en la mentoría.</p>
+  </div>
+  <div class="foot"><div>RM Marketing IA</div><div>5</div></div>
+</section>
+
+<!-- 6 · CIERRE -->
+<section class="page cover close">
+  <div class="top"><div class="brand"><span class="mono">RM</span>Raquel Mendoza · Marketing con IA</div><div>@raquelmendoza.mkt</div></div>
+  <div class="inner" style="justify-content:center">
+    <span class="kicker">Mi objetivo</span>
+    <p class="quote">«Dejarte todo configurado y funcionando, para que uses Claude como tu propio editor y diseñador, ahorres tiempo y reduzcas los costos de creación de contenido.»</p>
+    <div class="rule"></div>
+    <h2 class="h1" style="font-size:36px">¿Empezamos a montar <span class="c">tu agencia</span>?</h2>
+    <a class="pill" href="https://wa.me/584227163477?text=Hola%20Raquel%2C%20quiero%20la%20mentor%C3%ADa%20de%20Claude%20AI"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 21l2.2-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>Escríbeme por WhatsApp</a>
+    <div class="contact">
+      <div><span>WhatsApp</span><a href="https://wa.me/584227163477">+58 422 716 3477</a></div>
+      <div><span>Instagram</span><a href="https://instagram.com/raquelmendoza.mkt">@raquelmendoza.mkt</a></div>
+    </div>
+  </div>
+  <div class="close-photo"><img src="../../carruseles/recursos/raquel-6092-recorte.png" alt=""></div>
+</section>
+
+</body>
+</html>
