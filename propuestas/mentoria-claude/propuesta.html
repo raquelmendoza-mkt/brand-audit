@@ -50,13 +50,20 @@ body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: anti
 
 /* PORTADA */
 .cover { background: radial-gradient(ellipse 70% 55% at 25% 20%, #FAFAFC 0%, transparent 70%), var(--mist); }
-.cover .inner { top: 150px; right: 300px; gap: 20px; }
-.cover .display { font-size: 62px; }
+.cover .inner { top: 150px; right: 64px; gap: 22px; }
+.cover .display { font-size: 76px; max-width: 640px; }
 .cover-photo { position: absolute; right: -40px; bottom: 0; width: 420px; z-index: 2; }
 .cover-photo img { width: 100%; display: block; }
 .chips { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 6px; }
 .chip { font-size: 11.5px; font-weight: 600; padding: 7px 14px; border-radius: 100px; background: #fff; border: 1px solid rgba(14,14,14,0.06); box-shadow: 0 8px 22px -14px rgba(40,30,120,0.35); }
 .chip i { font-style: normal; color: var(--purple); margin-right: 4px; }
+.svc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+.svc div { background: #fff; border-radius: 20px; padding: 22px 20px; display: flex; flex-direction: column; gap: 6px; border: 1px solid rgba(14,14,14,0.06); box-shadow: 0 16px 40px -26px rgba(40,30,120,0.4); }
+.svc svg { width: 28px; height: 28px; stroke: var(--purple); margin-bottom: 6px; }
+.svc b { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+.svc span { font-size: 12px; line-height: 1.45; color: var(--muted); }
+.svc .on { background: var(--purple); color: #fff; border-color: transparent; }
+.svc .on svg { stroke: #fff; } .svc .on span { color: #DCD7FF; }
 .cover-sign { position: absolute; left: 64px; bottom: 76px; z-index: 3; font-size: 12px; color: var(--muted); line-height: 1.5; }
 .cover-sign b { color: var(--ink); font-weight: 700; display: block; font-size: 14px; }
 
@@ -118,7 +125,9 @@ body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: anti
 /* CIERRE */
 .close-photo { position: absolute; right: -30px; bottom: 0; width: 380px; z-index: 2; }
 .close-photo img { width: 100%; display: block; }
-.close .inner { right: 330px; }
+.close .inner { right: 64px; }
+.close .quote { font-size: 30px; max-width: 600px; }
+.close .h1 { font-size: 44px !important; }
 .quote { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 24px; line-height: 1.35; }
 .pill { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; background: var(--purple); color: #fff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 100px; }
 .pill svg { width: 20px; height: 20px; }
@@ -137,13 +146,12 @@ body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: anti
     <h1 class="display">Tu agencia virtual de <span class="c">marketing</span> <em class="serif">inmobiliario</em></h1>
     <div class="rule"></div>
     <p class="lead">Convierte a <b>Claude AI</b> en tu editor de video profesional y tu diseñador gráfico. Todo con un clic, sin pagarle a otra persona.</p>
-    <div class="chips">
-      <span class="chip"><i>●</i>Edita tus videos con IA</span>
-      <span class="chip"><i>●</i>Sistematiza tus posts de Instagram</span>
-      <span class="chip"><i>●</i>Tu agencia en tu computadora</span>
+    <div class="svc">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><b>Edita tus videos</b><span>con IA, como un editor profesional</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg><b>Sistematiza tus posts</b><span>de Instagram con tu identidad de marca</span></div>
+      <div class="on"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg><b>Todo con un clic</b><span>tu agencia en tu propio equipo</span></div>
     </div>
   </div>
-  <div class="cover-photo"><img src="../../carruseles/recursos/raquel-6109-recorte.png" alt=""></div>
   <div class="cover-sign"><b>Lcda. Raquel Mendoza</b>Estratega de marketing inmobiliario con IA<br>RM Marketing IA</div>
 </section>
 
@@ -236,12 +244,12 @@ body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: anti
   <div class="inner">
     <span class="kicker">Así se ve en la práctica</span>
     <h2 class="h1">Este carrusel lo diseñó <span class="c">Claude</span> con mi <em class="serif">identidad de marca</em></h2>
-    <p class="lead">Mismos colores, mismas tipografías y mis fotos, en cada slide. Es el mismo sistema que vas a tener configurado con tu propia marca.</p>
+    <p class="lead">Mismos colores y mismas tipografías en cada slide. Es el mismo sistema que vas a tener configurado con tu propia marca.</p>
     <div class="shots">
       <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/01.png" alt=""><figcaption>Portada</figcaption></figure>
-      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/03.png" alt=""><figcaption>Formato tuit</figcaption></figure>
+      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/05.png" alt=""><figcaption>Tarjetas</figcaption></figure>
       <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/08.png" alt=""><figcaption>Paso a paso</figcaption></figure>
-      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/11.png" alt=""><figcaption>Cierre con foto</figcaption></figure>
+      <figure><img src="../../carruseles/proyectos/03-ia-video-viral/export/10.png" alt=""><figcaption>Contraste oscuro</figcaption></figure>
     </div>
     <div class="steps">
       <div class="step"><b>Tú pides</b><p>«Hazme un carrusel sobre cómo preparar una casa para fotos.»</p></div>
@@ -285,7 +293,6 @@ body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: anti
       <div><span>Instagram</span><a href="https://instagram.com/raquelmendoza.mkt">@raquelmendoza.mkt</a></div>
     </div>
   </div>
-  <div class="close-photo"><img src="../../carruseles/recursos/raquel-6092-recorte.png" alt=""></div>
 </section>
 
 </body>
