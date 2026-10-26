@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carrusel ADS · Apartamento Simón Bolívar – La América (Felipe Peláez)</title>
+<!--
+  Brief
+  Cliente: Felipe Peláez, Realtor (marca propia, no la de Raquel)
+  Uso: campaña de ADS en Meta. 5 slides 1080×1350
+  Estilo: minimalista y elegante. Negro, dorado y blanco. Sin iconos ni emojis:
+          jerarquía con tipografía (Cormorant Garamond + Montserrat) y filetes dorados.
+  Fotos: drive/ (24 originales) → img/ (5 elegidas con retoque suave)
+-->
+<style>
+@font-face { font-family: 'Cormorant'; font-weight: 400; src: url('../../fonts/CormorantGaramond-400.ttf'); }
+@font-face { font-family: 'Cormorant'; font-weight: 500; src: url('../../fonts/CormorantGaramond-500.ttf'); }
+@font-face { font-family: 'Cormorant'; font-weight: 600; src: url('../../fonts/CormorantGaramond-600.ttf'); }
+@font-face { font-family: 'Cormorant'; font-weight: 400; font-style: italic; src: url('../../fonts/CormorantGaramond-400-italic.ttf'); }
+@font-face { font-family: 'Cormorant'; font-weight: 500; font-style: italic; src: url('../../fonts/CormorantGaramond-500-italic.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 300; src: url('../../fonts/Montserrat-300.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 400; src: url('../../fonts/Montserrat-400.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 500; src: url('../../fonts/Montserrat-500.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 600; src: url('../../fonts/Montserrat-600.ttf'); }
+
+:root {
+  --black: #0B0B0C; --black-2: #141415; --white: #FFFFFF; --ivory: #F7F4EE;
+  --gold: #C6A15B; --gold-2: #E3C88F; --muted-d: rgba(255,255,255,0.68); --muted-l: rgba(11,11,12,0.62);
+  --serif: 'Cormorant', Georgia, serif; --sans: 'Montserrat', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #2a2a2e; }
+body { font-family: var(--sans); -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums; }
+.serif, .spec b, .price, .badge b, .row em, .list li i { font-variant-numeric: lining-nums; }
+.deck { display: flex; width: max-content; }
+body.preview { padding: 40px; }
+body.preview .deck { zoom: 0.36; gap: 30px; }
+.slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; flex: none; background: var(--black); color: var(--white); }
+
+/* Elementos comunes */
+.photo { position: absolute; overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.brand { position: absolute; z-index: 10; font-size: 19px; font-weight: 500; letter-spacing: 0.42em; text-transform: uppercase; }
+.brand b { font-weight: 600; color: var(--gold-2); }
+.kicker { font-size: 20px; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); }
+.serif { font-family: var(--serif); font-weight: 500; line-height: 0.98; letter-spacing: -0.01em; }
+.serif { text-wrap: balance; }
+.serif i { font-style: italic; font-weight: 400; color: var(--gold-2); }
+.rule { width: 90px; height: 1.5px; background: var(--gold); }
+.content { position: absolute; z-index: 10; display: flex; flex-direction: column; }
+.frame { position: absolute; z-index: 9; inset: 36px; border: 1px solid rgba(198,161,91,0.45); pointer-events: none; }
+
+/* 1 · PORTADA */
+.s1 .photo { inset: 0; }
+.s1 .photo::after { content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0) 22%, rgba(11,11,12,0) 38%, rgba(11,11,12,0.86) 66%, #0B0B0C 100%); }
+.s1 .brand { top: 82px; left: 0; right: 0; text-align: center; }
+.s1 .content { left: 96px; right: 96px; bottom: 112px; gap: 26px; align-items: center; text-align: center; }
+.s1 h1 { font-size: 112px; }
+.s1 .loc { font-size: 22px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; }
+.s1 .desc { font-size: 26px; font-weight: 300; color: var(--muted-d); letter-spacing: 0.01em; }
+.s1 .m2 { display: flex; align-items: baseline; gap: 10px; font-family: var(--serif); color: var(--gold-2); font-size: 40px; }
+
+/* 2 · CARACTERÍSTICAS */
+.s2 .photo { left: 0; right: 0; top: 0; height: 760px; }
+.s2 .photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,11,12,0.35) 0%, transparent 25%, transparent 70%, #0B0B0C 100%); }
+.s2 .brand { top: 82px; left: 96px; font-size: 16px; }
+.s2 .content { left: 96px; right: 96px; top: 640px; bottom: 96px; gap: 36px; justify-content: flex-end; }
+.s2 h2 { font-size: 88px; }
+.specs { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(198,161,91,0.45); }
+.spec { padding: 32px 18px 30px 0; border-bottom: 1px solid rgba(255,255,255,0.10); display: flex; flex-direction: column; gap: 6px; }
+.spec:nth-child(3n+2), .spec:nth-child(3n+3) { padding-left: 22px; border-left: 1px solid rgba(255,255,255,0.10); }
+.spec b { font-family: var(--serif); font-weight: 500; font-size: 84px; line-height: 0.9; color: var(--gold-2); }
+.spec b.w { font-size: 46px; line-height: 1.1; color: var(--white); }
+.spec span { font-size: 19px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted-d); line-height: 1.5; }
+
+/* 3 · UBICACIÓN (blanco) */
+.s3 { background: var(--ivory); color: var(--black); }
+.s3 .photo { left: 64px; right: 64px; top: 64px; height: 720px; }
+.s3 .brand { top: 826px; left: 96px; font-size: 16px; color: var(--muted-l); }
+.s3 .brand b { color: var(--gold); }
+.s3 .content { left: 96px; right: 96px; top: 880px; bottom: 96px; gap: 30px; justify-content: center; }
+.s3 h2 { font-size: 96px; }
+.s3 h2 i { color: var(--gold); }
+.rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+.row { display: flex; justify-content: space-between; align-items: baseline; padding: 22px 0; border-bottom: 1px solid rgba(11,11,12,0.14); font-size: 27px; font-weight: 500; }
+.row em { font-style: normal; font-family: var(--serif); font-size: 36px; color: var(--gold); }
+.badge { position: absolute; z-index: 11; right: 100px; top: 100px; width: 170px; height: 170px; border-radius: 50%; background: rgba(11,11,12,0.78);
+  border: 1px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--white); }
+.badge b { font-family: var(--serif); font-weight: 500; font-size: 78px; line-height: 0.85; color: var(--gold-2); }
+.badge span { font-size: 14px; letter-spacing: 0.3em; text-transform: uppercase; margin-top: 8px; }
+
+/* 4 · TECNOLOGÍA */
+.s4 .photo { right: 0; top: 0; bottom: 0; width: 470px; }
+.s4 .photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #0B0B0C 0%, rgba(11,11,12,0) 30%); }
+.s4 .brand { top: 82px; left: 96px; font-size: 16px; }
+.s4 .content { left: 96px; width: 560px; top: 200px; bottom: 120px; gap: 34px; justify-content: center; }
+.s4 h2 { font-size: 96px; }
+.list { list-style: none; display: flex; flex-direction: column; border-top: 1px solid rgba(198,161,91,0.45); }
+.list li { display: grid; grid-template-columns: 60px 1fr; align-items: baseline; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.10); font-size: 28px; font-weight: 400; line-height: 1.3; }
+.list li i { font-style: normal; font-family: var(--serif); font-size: 26px; color: var(--gold); }
+
+/* 5 · PRECIO + CTA */
+.s5 .photo { inset: 0; }
+.s5 .photo::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 75% 45% at 50% 52%, rgba(11,11,12,0.78) 0%, rgba(11,11,12,0.45) 70%, transparent 100%), linear-gradient(180deg, rgba(11,11,12,0.6) 0%, rgba(11,11,12,0.4) 35%, rgba(11,11,12,0.82) 72%, #0B0B0C 100%); }
+.s5 .brand { top: 82px; left: 0; right: 0; text-align: center; }
+.s5 .content { left: 96px; right: 96px; top: 230px; bottom: 120px; gap: 26px; align-items: center; text-align: center; justify-content: center; }
+.s5 h2 { font-size: 84px; }
+.s5 .loc { font-size: 20px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted-d); }
+.price { font-family: var(--serif); font-weight: 500; font-size: 128px; line-height: 1; color: var(--gold-2); letter-spacing: -0.01em; }
+.price small { font-family: var(--sans); font-size: 26px; font-weight: 500; letter-spacing: 0.3em; color: var(--white); margin-left: 12px; vertical-align: middle; }
+.s5 .desc { font-size: 26px; font-weight: 300; color: var(--muted-d); }
+.cta { margin-top: 10px; display: inline-flex; align-items: center; gap: 16px; padding: 26px 46px; background: var(--gold); color: var(--black);
+  font-size: 22px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+.cta svg { width: 26px; height: 26px; }
+.sign { position: absolute; z-index: 10; left: 0; right: 0; bottom: 78px; text-align: center; font-family: var(--serif); font-size: 34px; }
+.sign i { font-style: italic; color: var(--gold-2); }
+</style>
+</head>
+<body>
+<main class="deck">
+
+  <!-- 1 · PORTADA -->
+  <section class="slide s1" data-chrome="off" data-progress="off">
+    <div class="photo"><img src="img/portada.jpg" alt="" style="object-position:40% 60%"></div>
+    <div class="frame"></div>
+    <div class="brand">Felipe Peláez <b>·</b> Realtor</div>
+    <div class="content">
+      <span class="kicker">Para estrenar</span>
+      <h1 class="serif">Estrena apartamento <i>en Medellín</i></h1>
+      <div class="rule"></div>
+      <p class="loc">Simón Bolívar · La América</p>
+      <p class="desc">100 m² de modernidad, comodidad y tecnología.</p>
+    </div>
+  </section>
+
+  <!-- 2 · CARACTERÍSTICAS -->
+  <section class="slide s2" data-chrome="off" data-progress="off">
+    <div class="photo"><img src="img/vestier.jpg" alt="" style="object-position:50% 45%"></div>
+    <div class="brand">Felipe Peláez <b>·</b> Realtor</div>
+    <div class="content">
+      <h2 class="serif">Espacios <i>diseñados para ti</i></h2>
+      <div class="specs">
+        <div class="spec"><b>3</b><span>Habitaciones</span></div>
+        <div class="spec"><b>2</b><span>Baños</span></div>
+        <div class="spec"><b>2</b><span>Vestieres</span></div>
+        <div class="spec"><b class="w">Balcón</b><span>&nbsp;</span></div>
+        <div class="spec"><b class="w">Sala</b><span>y comedor</span></div>
+        <div class="spec"><b class="w">Parqueadero</b><span>+ cuarto útil</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · UBICACIÓN Y COMODIDAD -->
+  <section class="slide s3" data-chrome="off" data-progress="off">
+    <div class="photo"><img src="img/vista.jpg" alt="" style="object-position:50% 55%"></div>
+    <div class="badge"><b>7</b><span>Piso</span></div>
+    <div class="brand">Felipe Peláez <b>·</b> Realtor</div>
+    <div class="content">
+      <h2 class="serif">Vive con <i>mayor confort</i></h2>
+      <div class="rows">
+        <div class="row">Piso 7 <em>con ascensor</em></div>
+        <div class="row">Estrato <em>4</em></div>
+        <div class="row">Orientación <em>no poniente</em></div>
+        <div class="row">Zona <em>de ropas</em></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · TECNOLOGÍA Y ACABADOS -->
+  <section class="slide s4" data-chrome="off" data-progress="off">
+    <div class="photo"><img src="img/bano.jpg" alt="" style="object-position:55% 50%"></div>
+    <div class="brand">Felipe Peláez <b>·</b> Realtor</div>
+    <div class="content">
+      <span class="kicker">Tecnología y acabados</span>
+      <h2 class="serif">Un hogar <i>inteligente</i></h2>
+      <ul class="list">
+        <li><i>01</i>Cerradura digital y videoportero</li>
+        <li><i>02</i>5 cámaras de seguridad</li>
+        <li><i>03</i>2 aires acondicionados</li>
+        <li><i>04</i>2 torres de ducha</li>
+        <li><i>05</i>Estación de café</li>
+        <li><i>06</i>Sanitario inteligente</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5 · PRECIO Y CTA -->
+  <section class="slide s5" data-chrome="off" data-progress="off">
+    <div class="photo"><img src="img/pasillo.jpg" alt="" style="object-position:50% 50%"></div>
+    <div class="frame"></div>
+    <div class="brand">Felipe Peláez <b>·</b> Realtor</div>
+    <div class="content">
+      <h2 class="serif">Tu próximo hogar<br><i>te espera</i></h2>
+      <p class="loc">Simón Bolívar · La América · Medellín</p>
+      <div class="rule"></div>
+      <p class="price">$695.000.000<small>COP</small></p>
+      <p class="desc">Moderno, amplio y listo para estrenar.</p>
+      <span class="cta">Haz clic abajo para más info<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+    </div>
+    <div class="sign">Felipe Peláez <i>Realtor</i></div>
+  </section>
+
+</main>
+<script src="../../carrusel.js"></script>
+</body>
+</html>
