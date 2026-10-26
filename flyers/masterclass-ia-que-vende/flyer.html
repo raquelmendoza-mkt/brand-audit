@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flyer · Masterclass IA que vende</title>
+<!--
+  Brief
+  Pieza: flyer de la masterclass gratuita «IA que vende» · 27 de noviembre
+  Ponentes: Raquel Mendoza (Venezuela) y Francesco Palumbi (Colombia)
+  Público: realtors, marcas personales y dueños de negocio
+  Estilo: elegante y minimalista. Fondo negro carbón con skyline de edificios,
+          luz morada de la marca detrás de los ponentes. Inspirado en la
+          referencia (retrato con luz dramática sobre negro) sin copiarla.
+  Formatos: historia 1080×1920 y post 1080×1350
+-->
+<style>
+@font-face { font-family: 'Poppins'; font-weight: 300; src: url('../../carruseles/fonts/Poppins-300.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 400; src: url('../../carruseles/fonts/Poppins-400.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('../../carruseles/fonts/Poppins-500.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 600; src: url('../../carruseles/fonts/Poppins-600.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('../../carruseles/fonts/Poppins-700.ttf'); }
+@font-face { font-family: 'Poppins'; font-weight: 800; src: url('../../carruseles/fonts/Poppins-800.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 500; font-style: italic; src: url('../../carruseles/fonts/PlayfairDisplay-500-italic.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 600; font-style: italic; src: url('../../carruseles/fonts/PlayfairDisplay-600-italic.ttf'); }
+
+:root {
+  --bg: #0A0912; --ink: #F5F4FA; --muted: rgba(245,244,250,0.62); --line: rgba(255,255,255,0.14);
+  --purple: #7B6FE8; --purple-ink: #5446D6; --lav: #C9C2FA; --gold: #D9B26A;
+  --sans: 'Poppins', system-ui, sans-serif; --serif: 'Playfair Display', Georgia, serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #333; font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; display: flex; gap: 60px; padding: 40px; align-items: flex-start; }
+body.render { padding: 0; gap: 0; background: var(--bg); }
+
+.art { position: relative; width: 1080px; overflow: hidden; background: var(--bg); flex: none; }
+.story { height: 1920px; }
+.post { height: 1350px; }
+
+/* Fondo: degradado carbón + halo morado + skyline */
+.bg { position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 38% at 50% 46%, rgba(123,111,232,0.42) 0%, rgba(84,70,214,0.12) 45%, transparent 72%),
+    radial-gradient(ellipse 90% 40% at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #0C0B16 0%, #0A0912 55%, #07060D 100%); }
+.skyline { position: absolute; left: 0; right: 0; z-index: 1; opacity: 0.95; }
+.grain { position: absolute; inset: 0; z-index: 30; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+.fade { position: absolute; left: 0; right: 0; z-index: 6; pointer-events: none; background: linear-gradient(180deg, transparent 0%, rgba(10,9,18,0.85) 55%, var(--bg) 100%); }
+
+/* Cabecera */
+.head { position: absolute; left: 80px; right: 80px; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 800; font-size: 30px; letter-spacing: 0.02em; display: flex; align-items: baseline; gap: 10px; }
+.logo em { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 1.12em; color: var(--lav); letter-spacing: 0; }
+.date { display: flex; align-items: center; gap: 12px; padding: 12px 22px; border-radius: 100px; border: 1px solid var(--line); background: rgba(255,255,255,0.05); font-size: 22px; font-weight: 600; letter-spacing: 0.04em; }
+.date i { width: 9px; height: 9px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 14px var(--purple); }
+
+/* Titular */
+.title { position: absolute; left: 0; right: 0; z-index: 10; text-align: center; }
+.title .eyebrow { font-size: 22px; font-weight: 600; letter-spacing: 0.42em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.title h1 { font-weight: 800; letter-spacing: -0.035em; line-height: 0.92; text-transform: uppercase; }
+.title h2 { font-family: var(--serif); font-style: italic; font-weight: 500; line-height: 1; color: var(--lav); letter-spacing: -0.01em; }
+
+/* Ponentes */
+.duo { position: absolute; left: 0; right: 0; z-index: 4; }
+.person { position: absolute; bottom: 0; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); }
+.person.rm img { filter: brightness(0.9) contrast(1.06) saturate(0.95); }
+.person img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: block; }
+.tag { position: absolute; z-index: 12; display: flex; align-items: center; gap: 14px; padding: 12px 22px 12px 12px; border-radius: 100px;
+  background: rgba(16,14,30,0.72); border: 1px solid var(--line); backdrop-filter: blur(10px); }
+.tag .flag { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; flex: none; box-shadow: 0 0 0 2px rgba(255,255,255,0.85); }
+.tag .flag svg { width: 100%; height: 100%; display: block; }
+.tag b { display: block; font-size: 24px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
+.tag span { display: block; font-size: 16px; color: var(--muted); line-height: 1.3; }
+.x { position: absolute; z-index: 11; left: 50%; transform: translateX(-50%); font-family: var(--serif); font-style: italic; font-size: 64px; color: var(--lav); opacity: 0.9; }
+
+/* Bloque de texto inferior */
+.copy { position: absolute; left: 80px; right: 80px; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.copy h3 { font-weight: 800; letter-spacing: -0.03em; line-height: 1; text-transform: uppercase; }
+.copy h3 span { color: var(--lav); }
+.aud { margin-top: 18px; display: inline-flex; align-items: center; gap: 12px; font-weight: 500; color: var(--ink); }
+.aud b { font-weight: 800; letter-spacing: 0.06em; }
+.aud .ln { display: inline-block; width: 40px; height: 2px; background: var(--purple); }
+.sub { margin-top: 16px; color: var(--muted); font-weight: 400; line-height: 1.45; text-wrap: balance; }
+.sub b { color: var(--ink); font-weight: 600; }
+.cta { margin-top: 30px; display: inline-flex; align-items: center; gap: 14px; padding: 24px 44px; border-radius: 100px;
+  background: linear-gradient(135deg, #7B6FE8 0%, #5446D6 100%); color: #fff; font-weight: 700; letter-spacing: -0.01em;
+  box-shadow: 0 20px 60px -16px rgba(123,111,232,0.75), inset 0 1px 0 rgba(255,255,255,0.25); }
+.cta svg { flex: none; }
+.free { display: inline-block; margin-top: 14px; font-size: 18px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+/* ---------- Medidas por formato ---------- */
+.story .head { top: 210px; }
+.story .title { top: 330px; }
+.story .title h1 { font-size: 132px; }
+.story .title h2 { font-size: 104px; margin-top: 4px; }
+.story .duo { top: 640px; height: 640px; }
+.story .skyline { top: 610px; height: 700px; }
+.story .fade { top: 1080px; height: 240px; }
+.story .copy { top: 1290px; }
+.story .copy h3 { font-size: 84px; }
+.story .aud { font-size: 28px; }
+.story .sub { font-size: 27px; max-width: 820px; }
+.story .cta { font-size: 30px; margin-top: 34px; }
+
+.post .head { top: 64px; }
+.post .title { top: 150px; }
+.post .title .eyebrow { font-size: 18px; margin-bottom: 10px; }
+.post .title h1 { font-size: 118px; }
+.post .title h2 { font-size: 80px; }
+.post .duo { top: 380px; height: 520px; }
+.post .skyline { top: 350px; height: 580px; }
+.post .fade { top: 740px; height: 190px; }
+.post .copy { top: 905px; }
+.post .copy h3 { font-size: 62px; }
+.post .aud { font-size: 22px; margin-top: 14px; }
+.post .sub { font-size: 21px; max-width: 760px; margin-top: 12px; }
+.post .cta { font-size: 24px; padding: 20px 38px; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<!-- ================= HISTORIA 1080 × 1920 ================= -->
+<section class="art story" id="story">
+  <div class="bg"></div>
+  <svg class="skyline" viewBox="0 0 1080 700" preserveAspectRatio="none"></svg>
+
+  <div class="head">
+    <div class="logo">IA QUE <em>vende</em></div>
+    <div class="date"><i></i>27 DE NOVIEMBRE</div>
+  </div>
+
+  <div class="title">
+    <p class="eyebrow">En vivo</p>
+    <h1>Masterclass</h1>
+    <h2>totalmente gratis</h2>
+  </div>
+
+  <div class="duo">
+    <div class="person rm" style="left:70px;width:470px;height:640px"><img src="../../carruseles/recursos/raquel-6092-recorte.png" alt="" style="width:470px"></div>
+    <div class="person" style="right:60px;width:480px;height:640px"><img src="francesco-recorte.png" alt="" style="width:450px"></div>
+  </div>
+  <div class="fade"></div>
+  <div class="tag" style="left:80px;top:1150px">
+    <span class="flag"><svg viewBox="0 0 60 60" class="ve"></svg></span>
+    <div><b>Raquel Mendoza</b><span>Marketing inmobiliario con IA</span></div>
+  </div>
+  <div class="tag" style="right:80px;top:1150px">
+    <span class="flag"><svg viewBox="0 0 60 60" class="co"></svg></span>
+    <div><b>Francesco Palumbi</b><span>Automatización y agentes de IA</span></div>
+  </div>
+
+  <div class="copy">
+    <h3>Automatiza <span>tu negocio</span></h3>
+    <div class="aud"><span class="ln"></span><span>Para <b>REALTORS</b> y marcas personales</span><span class="ln"></span></div>
+    <p class="sub">El sistema de IA que <b>atiende, califica y da seguimiento</b> a tus clientes por ti</p>
+    <span class="cta"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v5"/></svg>Responde esta historia y reserva tu cupo</span>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- ================= POST 1080 × 1350 ================= -->
+<section class="art post" id="post">
+  <div class="bg"></div>
+  <svg class="skyline" viewBox="0 0 1080 580" preserveAspectRatio="none"></svg>
+
+  <div class="head">
+    <div class="logo">IA QUE <em>vende</em></div>
+    <div class="date"><i></i>27 DE NOVIEMBRE</div>
+  </div>
+
+  <div class="title">
+    <p class="eyebrow">En vivo</p>
+    <h1>Masterclass</h1>
+    <h2>totalmente gratis</h2>
+  </div>
+
+  <div class="duo">
+    <div class="person rm" style="left:90px;width:400px;height:520px"><img src="../../carruseles/recursos/raquel-6092-recorte.png" alt="" style="width:380px"></div>
+    <div class="person" style="right:80px;width:410px;height:520px"><img src="francesco-recorte.png" alt="" style="width:370px"></div>
+  </div>
+  <div class="fade"></div>
+  <div class="tag" style="left:80px;top:820px;padding:10px 20px 10px 10px">
+    <span class="flag" style="width:40px;height:40px"><svg viewBox="0 0 60 60" class="ve"></svg></span>
+    <div><b style="font-size:21px">Raquel Mendoza</b><span style="font-size:14px">Marketing inmobiliario con IA</span></div>
+  </div>
+  <div class="tag" style="right:80px;top:820px;padding:10px 20px 10px 10px">
+    <span class="flag" style="width:40px;height:40px"><svg viewBox="0 0 60 60" class="co"></svg></span>
+    <div><b style="font-size:21px">Francesco Palumbi</b><span style="font-size:14px">Automatización y agentes de IA</span></div>
+  </div>
+
+  <div class="copy">
+    <h3>Automatiza <span>tu negocio</span></h3>
+    <div class="aud"><span class="ln"></span><span>Para <b>REALTORS</b> y marcas personales</span><span class="ln"></span></div>
+    <p class="sub">El sistema de IA que <b>atiende, califica y da seguimiento</b> a tus clientes por ti</p>
+    <span class="cta">Haz clic abajo y reserva tu lugar<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<script>
+  if (new URLSearchParams(location.search).has('render')) document.body.classList.add('render');
+
+  // Banderas
+  const ve = `<rect width="60" height="20" fill="#FCD116"/><rect y="20" width="60" height="20" fill="#00247D"/><rect y="40" width="60" height="20" fill="#CF142B"/>` +
+    Array.from({ length: 8 }, (_, k) => { const a = Math.PI * (0.85 - k * 0.1); const x = 30 + 13 * Math.cos(a), y = 34 - 13 * Math.sin(a) * 0.55; return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.6" fill="#fff"/>`; }).join('');
+  const co = `<rect width="60" height="30" fill="#FCD116"/><rect y="30" width="60" height="15" fill="#003893"/><rect y="45" width="60" height="15" fill="#CE1126"/>`;
+  document.querySelectorAll('svg.ve').forEach(s => s.innerHTML = ve);
+  document.querySelectorAll('svg.co').forEach(s => s.innerHTML = co);
+
+  // Skyline de torres residenciales (determinista)
+  function rng(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+  document.querySelectorAll('svg.skyline').forEach((svg) => {
+    const H = svg.viewBox.baseVal.height, W = 1080, r = rng(7);
+    let out = `<defs>
+      <linearGradient id="tw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2546"/><stop offset="1" stop-color="#0D0B18"/></linearGradient>
+      <linearGradient id="tw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B1830"/><stop offset="1" stop-color="#0A0912"/></linearGradient>
+    </defs>`;
+    const layer = (n, minH, maxH, fill, lit, op) => {
+      let x = -20;
+      while (x < W) {
+        const w = 60 + r() * 90, h = minH + r() * (maxH - minH), y = H - h;
+        out += `<rect x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}" fill="${fill}" opacity="${op}"/>`;
+        if (r() > 0.55) out += `<rect x="${(x + w / 2 - 1).toFixed(0)}" y="${(y - 26).toFixed(0)}" width="2" height="26" fill="${fill}" opacity="${op}"/>`;
+        // ventanas
+        for (let wy = y + 18; wy < H - 10; wy += 22) for (let wx = x + 10; wx < x + w - 12; wx += 16) {
+          const p = r();
+          if (p < lit) out += `<rect x="${wx.toFixed(0)}" y="${wy.toFixed(0)}" width="7" height="10" fill="${p < lit * 0.25 ? '#E9D9A8' : '#A99FF5'}" opacity="${(0.18 + r() * 0.5) * op}"/>`;
+        }
+        x += w + 4 + r() * 18;
+      }
+    };
+    layer(0, H * 0.45, H * 0.92, 'url(#tw2)', 0.10, 0.7);  // fondo
+    layer(1, H * 0.30, H * 0.70, 'url(#tw)', 0.16, 1);     // frente
+    svg.innerHTML = out;
+  });
+  document.fonts.ready.then(() => window.__ready = true);
+</script>
+</body>
+</html>
