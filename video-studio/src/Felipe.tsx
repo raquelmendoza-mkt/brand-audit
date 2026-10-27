@@ -14,7 +14,7 @@ import {helvetica, poppins} from './fonts';
 
 // Room tour del apartamento en Simón Bolívar, La América (Medellín) para Felipe Peláez Real.
 // 7 ambientes animados con Google Omni (Higgsfield) + fotos con movimiento de cámara,
-// especificaciones con emojis en cada ambiente, precio y botón "Agendar visita".
+// especificaciones minimalistas en cada ambiente, precio y botón "Agendar visita".
 // La música se mezcla después con FFmpeg.
 
 const FPS = 30;
@@ -139,11 +139,10 @@ const Txt: React.FC<{
 	);
 };
 
-// Etiqueta de especificación: emoji + texto en una píldora de vidrio
-const Chip: React.FC<{readonly from: number; readonly to: number; readonly emoji: string; readonly text: string; readonly top: number; readonly gold?: boolean}> = ({
+// Etiqueta de especificación: punto dorado + texto en una píldora de vidrio
+const Chip: React.FC<{readonly from: number; readonly to: number; readonly text: string; readonly top: number; readonly gold?: boolean}> = ({
 	from,
 	to,
-	emoji,
 	text,
 	top,
 	gold,
@@ -162,7 +161,7 @@ const Chip: React.FC<{readonly from: number; readonly to: number; readonly emoji
 					display: 'flex',
 					alignItems: 'center',
 					gap: 18,
-					padding: '18px 36px 18px 24px',
+					padding: '18px 38px 18px 30px',
 					borderRadius: 999,
 					background: gold ? `linear-gradient(135deg, #F3D79A, ${GOLD})` : 'rgba(255,255,255,0.94)',
 					border: '2px solid rgba(255,255,255,0.9)',
@@ -176,7 +175,7 @@ const Chip: React.FC<{readonly from: number; readonly to: number; readonly emoji
 					whiteSpace: 'nowrap',
 				}}
 			>
-				<span style={{fontSize: 54, lineHeight: 1}}>{emoji}</span>
+				<span style={{width: 12, height: 12, borderRadius: 999, background: gold ? INK : GOLD, flexShrink: 0}} />
 				{text}
 			</div>
 		</div>
@@ -248,8 +247,6 @@ const CtaButton: React.FC<{readonly from: number}> = ({from}) => {
 	const pop = interpolate(k, [0, 12], [0.4, 1], {...clamp, easing: Easing.out(Easing.back(2))});
 	const press = k >= tap && k < tap + 6 ? 0.92 : 1;
 	const ripple = interpolate(k, [tap, tap + 20], [0, 1], clamp);
-	const handY = interpolate(k, [8, tap, tap + 8, tap + 22], [260, 30, 45, 230], {...clamp, easing: ease});
-	const handO = interpolate(k, [8, 12, tap + 16, tap + 22], [0, 1, 1, 0], clamp);
 	const glow = 0.5 + 0.5 * Math.sin(k / 6);
 	return (
 		<div style={{position: 'absolute', top: 1330, left: 0, right: 0, display: 'flex', justifyContent: 'center'}}>
@@ -278,10 +275,8 @@ const CtaButton: React.FC<{readonly from: number}> = ({from}) => {
 						whiteSpace: 'nowrap',
 					}}
 				>
-					<span style={{fontSize: 62}}>📅</span>
 					AGENDAR VISITA
 				</div>
-				<div style={{position: 'absolute', right: 40, top: handY, fontSize: 120, opacity: handO, rotate: '-15deg'}}>👆</div>
 			</div>
 		</div>
 	);
@@ -317,57 +312,54 @@ export const FelipeComponent: React.FC = () => {
 				<Txt from={0.4} to={1.75} top={410} big size={140}>
 					en Medellín?
 				</Txt>
-				<Chip from={1.75} to={S(1) + 0.05} emoji="✨" text="NUEVO · ESPECTACULAR" top={300} gold />
+				<Chip from={1.75} to={S(1) + 0.05} text="NUEVO · ESPECTACULAR" top={300} gold />
 				<Txt from={1.85} to={S(1) + 0.05} top={420} big size={96}>
 					Simón Bolívar
 				</Txt>
 				<Txt from={2.0} to={S(1) + 0.05} top={525} size={60} color={GOLD} spacing={8}>
-					LA AMÉRICA 🏡
+					LA AMÉRICA
 				</Txt>
 
 				{/* ---------- Entrada ---------- */}
-				<Chip from={S(1) + 0.2} to={S(2)} emoji="🔐" text="Cerradura inteligente" top={1240} />
-				<Chip from={S(1) + 0.75} to={S(2)} emoji="🛗" text="Piso 7 con ascensor" top={1360} />
+				<Chip from={S(1) + 0.2} to={S(2)} text="Cerradura inteligente" top={1240} />
+				<Chip from={S(1) + 0.75} to={S(2)} text="Piso 7 con ascensor" top={1360} />
 
 				{/* ---------- Sala, comedor y cocina ---------- */}
 				<Stat from={S(2) + 0.1} to={S(3)} value="100 m²" label="DE ÁREA" />
-				<Chip from={S(2) + 0.6} to={S(3)} emoji="🛋️" text="Sala" top={1240} />
-				<Chip from={S(2) + 1.0} to={S(3)} emoji="🍽️" text="Comedor" top={1360} />
-				<Chip from={S(2) + 1.4} to={S(3)} emoji="🏢" text="Estrato 4" top={1480} />
+				<Chip from={S(2) + 0.6} to={S(3)} text="Sala" top={1240} />
+				<Chip from={S(2) + 1.0} to={S(3)} text="Comedor" top={1360} />
+				<Chip from={S(2) + 1.4} to={S(3)} text="Estrato 4" top={1480} />
 
-				<Chip from={S(3) + 0.1} to={S(4)} emoji="🌤️" text="No poniente" top={1240} />
-				<Chip from={S(3) + 0.5} to={S(4)} emoji="🌇" text="Balcón" top={1360} />
-				<Chip from={S(3) + 0.9} to={S(4)} emoji="📺" text="Mueble para TV" top={1480} />
+				<Chip from={S(3) + 0.1} to={S(4)} text="No poniente" top={1240} />
+				<Chip from={S(3) + 0.5} to={S(4)} text="Balcón" top={1360} />
+				<Chip from={S(3) + 0.9} to={S(4)} text="Mueble para TV" top={1480} />
 
 				<Txt from={S(4) + 0.1} to={S(5)} top={300} big size={130}>
 					Cocina
 				</Txt>
-				<Chip from={S(4) + 0.5} to={S(5)} emoji="☕" text="Mueble estación de café" top={1300} />
+				<Chip from={S(4) + 0.5} to={S(5)} text="Mueble estación de café" top={1300} />
 
 				{/* ---------- Habitaciones y vestier ---------- */}
 				<Stat from={S(5) + 0.1} to={S(6)} value="3" label="HABITACIONES" />
-				<Chip from={S(5) + 0.7} to={S(6)} emoji="❄️" text="2 aires acondicionados" top={1300} />
+				<Chip from={S(5) + 0.7} to={S(6)} text="2 aires acondicionados" top={1300} />
 
 				<Stat from={S(6) + 0.1} to={S(7)} value="2" label="VESTIER" />
-				<Chip from={S(6) + 0.7} to={S(7)} emoji="👔" text="Clóset en linox" top={1300} />
+				<Chip from={S(6) + 0.7} to={S(7)} text="Clóset en linox" top={1300} />
 
-				<Chip from={S(7) + 0.1} to={S(8)} emoji="📹" text="Videoportero" top={1300} />
-				<Chip from={S(8) + 0.1} to={S(9)} emoji="📷" text="5 cámaras de seguridad" top={1300} />
+				<Chip from={S(7) + 0.1} to={S(8)} text="Videoportero" top={1300} />
+				<Chip from={S(8) + 0.1} to={S(9)} text="5 cámaras de seguridad" top={1300} />
 
 				{/* ---------- Baños ---------- */}
 				<Stat from={S(9) + 0.1} to={S(10)} value="2" label="BAÑOS" />
-				<Chip from={S(9) + 0.6} to={S(10)} emoji="🚿" text="2 torres de duchas" top={1240} />
-				<Chip from={S(9) + 1.1} to={S(10)} emoji="🪞" text="Espejos en los baños" top={1360} />
-				<Chip from={S(10) + 0.1} to={S(11)} emoji="🚽" text="Pozuelo inteligente" top={1300} />
+				<Chip from={S(9) + 0.6} to={S(10)} text="2 torres de duchas" top={1240} />
+				<Chip from={S(9) + 1.1} to={S(10)} text="Espejos en los baños" top={1360} />
+				<Chip from={S(10) + 0.1} to={S(11)} text="Pozuelo inteligente" top={1300} />
 
 				{/* ---------- Zona de ropas y parqueadero ---------- */}
-				<Chip from={S(11) + 0.1} to={S(12)} emoji="🧺" text="Zona de ropas" top={1240} />
-				<Chip from={S(11) + 0.5} to={S(12)} emoji="📦" text="Cuarto útil" top={1360} />
+				<Chip from={S(11) + 0.1} to={S(12)} text="Zona de ropas" top={1240} />
+				<Chip from={S(11) + 0.5} to={S(12)} text="Cuarto útil" top={1360} />
 				<Txt from={S(12) + 0.1} to={S(13)} top={300} big size={120}>
 					Parqueadero
-				</Txt>
-				<Txt from={S(12) + 0.3} to={S(13)} top={1280} size={110}>
-					🚗
 				</Txt>
 
 				{/* ---------- Precio ---------- */}
@@ -376,7 +368,7 @@ export const FelipeComponent: React.FC = () => {
 				</Txt>
 				<Price from={S(13)} to={S(14)} />
 				<Txt from={S(13) + 1.4} to={S(14)} top={960} size={56}>
-					Para vivir o invertir 🔑
+					Para vivir o invertir
 				</Txt>
 
 				{/* ---------- Cierre ---------- */}
@@ -388,9 +380,6 @@ export const FelipeComponent: React.FC = () => {
 				</Txt>
 				<Txt from={S(14) + 0.4} to={DURATION} top={640} size={60} color={GOLD} spacing={22}>
 					REAL
-				</Txt>
-				<Txt from={S(14) + 0.6} to={DURATION} top={1180} size={90}>
-					👇
 				</Txt>
 				<CtaButton from={S(14) + 0.7} />
 			</AbsoluteFill>
@@ -408,7 +397,7 @@ export const FelipeComponent: React.FC = () => {
 			<Sfx at={S(9) + 0.1} src="sfx/impacto.wav" volume={0.3} />
 			{[
 				S(1) + 0.2, S(1) + 0.75, S(2) + 0.6, S(2) + 1.0, S(2) + 1.4, S(3) + 0.1, S(3) + 0.5, S(3) + 0.9, S(4) + 0.5, S(5) + 0.7, S(6) + 0.7,
-				S(7) + 0.1, S(8) + 0.1, S(9) + 0.6, S(9) + 1.1, S(10) + 0.1, S(11) + 0.1, S(11) + 0.5, S(12) + 0.3,
+				S(7) + 0.1, S(8) + 0.1, S(9) + 0.6, S(9) + 1.1, S(10) + 0.1, S(11) + 0.1, S(11) + 0.5,
 			].map((t, i) => (
 				<Sfx key={`p${i}`} at={t} src="sfx/pop.wav" volume={0.26} />
 			))}
