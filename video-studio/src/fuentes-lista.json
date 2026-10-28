@@ -1,0 +1,410 @@
+[
+ {
+  "family": "Cormorant Garamond",
+  "weight": "300",
+  "style": "italic",
+  "file": "fonts/cormorant-garamond-300-italic.woff2"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "400",
+  "style": "italic",
+  "file": "fonts/cormorant-garamond-400-italic.woff2"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "500",
+  "style": "italic",
+  "file": "fonts/cormorant-garamond-500-italic.woff2"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/cormorant-garamond-300.woff2"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/cormorant-garamond-400.woff2"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/cormorant-garamond-500.woff2"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/cormorant-garamond-600.woff2"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/cormorant-garamond-700.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "400",
+  "style": "italic",
+  "file": "fonts/playfair-display-400-italic.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "500",
+  "style": "italic",
+  "file": "fonts/playfair-display-500-italic.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "700",
+  "style": "italic",
+  "file": "fonts/playfair-display-700-italic.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/playfair-display-400.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/playfair-display-500.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/playfair-display-600.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/playfair-display-700.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "800",
+  "style": "normal",
+  "file": "fonts/playfair-display-800.woff2"
+ },
+ {
+  "family": "Playfair Display",
+  "weight": "900",
+  "style": "normal",
+  "file": "fonts/playfair-display-900.woff2"
+ },
+ {
+  "family": "Bodoni Moda",
+  "weight": "400",
+  "style": "italic",
+  "file": "fonts/bodoni-moda-400-italic.woff2"
+ },
+ {
+  "family": "Bodoni Moda",
+  "weight": "500",
+  "style": "italic",
+  "file": "fonts/bodoni-moda-500-italic.woff2"
+ },
+ {
+  "family": "Bodoni Moda",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/bodoni-moda-400.woff2"
+ },
+ {
+  "family": "Bodoni Moda",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/bodoni-moda-500.woff2"
+ },
+ {
+  "family": "Bodoni Moda",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/bodoni-moda-600.woff2"
+ },
+ {
+  "family": "Bodoni Moda",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/bodoni-moda-700.woff2"
+ },
+ {
+  "family": "DM Serif Display",
+  "weight": "400",
+  "style": "italic",
+  "file": "fonts/dm-serif-display-400-italic.woff2"
+ },
+ {
+  "family": "DM Serif Display",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/dm-serif-display-400.woff2"
+ },
+ {
+  "family": "Cinzel",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/cinzel-400.woff2"
+ },
+ {
+  "family": "Cinzel",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/cinzel-500.woff2"
+ },
+ {
+  "family": "Cinzel",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/cinzel-600.woff2"
+ },
+ {
+  "family": "Cinzel",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/cinzel-700.woff2"
+ },
+ {
+  "family": "Italiana",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/italiana-400.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "300",
+  "style": "italic",
+  "file": "fonts/montserrat-300-italic.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "400",
+  "style": "italic",
+  "file": "fonts/montserrat-400-italic.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "200",
+  "style": "normal",
+  "file": "fonts/montserrat-200.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/montserrat-300.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/montserrat-400.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/montserrat-500.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/montserrat-600.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/montserrat-700.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "800",
+  "style": "normal",
+  "file": "fonts/montserrat-800.woff2"
+ },
+ {
+  "family": "Montserrat",
+  "weight": "900",
+  "style": "normal",
+  "file": "fonts/montserrat-900.woff2"
+ },
+ {
+  "family": "Inter",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/inter-300.woff2"
+ },
+ {
+  "family": "Inter",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/inter-400.woff2"
+ },
+ {
+  "family": "Inter",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/inter-500.woff2"
+ },
+ {
+  "family": "Inter",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/inter-600.woff2"
+ },
+ {
+  "family": "Inter",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/inter-700.woff2"
+ },
+ {
+  "family": "Inter",
+  "weight": "800",
+  "style": "normal",
+  "file": "fonts/inter-800.woff2"
+ },
+ {
+  "family": "Inter",
+  "weight": "900",
+  "style": "normal",
+  "file": "fonts/inter-900.woff2"
+ },
+ {
+  "family": "Josefin Sans",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/josefin-sans-300.woff2"
+ },
+ {
+  "family": "Josefin Sans",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/josefin-sans-400.woff2"
+ },
+ {
+  "family": "Josefin Sans",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/josefin-sans-600.woff2"
+ },
+ {
+  "family": "Josefin Sans",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/josefin-sans-700.woff2"
+ },
+ {
+  "family": "Jost",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/jost-300.woff2"
+ },
+ {
+  "family": "Jost",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/jost-400.woff2"
+ },
+ {
+  "family": "Jost",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/jost-500.woff2"
+ },
+ {
+  "family": "Jost",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/jost-600.woff2"
+ },
+ {
+  "family": "Bebas Neue",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/bebas-neue-400.woff2"
+ },
+ {
+  "family": "Anton",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/anton-400.woff2"
+ },
+ {
+  "family": "Archivo Black",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/archivo-black-400.woff2"
+ },
+ {
+  "family": "Oswald",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/oswald-400.woff2"
+ },
+ {
+  "family": "Oswald",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/oswald-500.woff2"
+ },
+ {
+  "family": "Oswald",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/oswald-600.woff2"
+ },
+ {
+  "family": "Oswald",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/oswald-700.woff2"
+ },
+ {
+  "family": "Space Grotesk",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/space-grotesk-400.woff2"
+ },
+ {
+  "family": "Space Grotesk",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/space-grotesk-500.woff2"
+ },
+ {
+  "family": "Space Grotesk",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/space-grotesk-700.woff2"
+ },
+ {
+  "family": "Great Vibes",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/great-vibes-400.woff2"
+ },
+ {
+  "family": "Allura",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/allura-400.woff2"
+ },
+ {
+  "family": "Pinyon Script",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/pinyon-script-400.woff2"
+ }
+]

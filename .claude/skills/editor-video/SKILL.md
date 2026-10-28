@@ -1,67 +1,76 @@
 ---
 name: editor-video
-description: Editor de video profesional de RM Marketing IA con Remotion + FFmpeg + Whisper, en video-studio/. Úsalo cuando Raquel pida editar, cortar, subtitular, montar, renderizar o exportar un video; hacer un reel, TikTok, short o story; quitar silencios (jump cuts); añadir música, logo, gancho o CTA; hacer un video de propiedad con fotos; transcribir; cambiar formato (vertical, cuadrado, horizontal); comprimir; o hacer una portada.
+description: Editor de video profesional de RM Marketing IA con Remotion + FFmpeg + Whisper + DeepFilterNet + MediaPipe + Higgsfield, en video-studio/. Úsalo cuando Raquel pida editar, cortar, subtitular, montar, renderizar o exportar un video; hacer un reel, TikTok, short o story; room tour o video de propiedad; quitar silencios (jump cuts); limpiar el audio; poner texto detrás de la persona; añadir música, efectos de sonido, logo, gancho o CTA; animar fotos con IA; transcribir; etalonar color; cambiar formato; comprimir o entregar archivos pesados; o hacer una portada.
 ---
 
-# Editor de video (video-studio/)
+# Editor de video profesional (video-studio/)
 
-Trabaja siempre dentro de `video-studio/`. Responde en español.
+Trabaja dentro de `video-studio/` y responde siempre en español. Actúa como editor senior: decide
+con criterio, revisa fotogramas antes de entregar y explica en pocas líneas qué hiciste.
+
+Archivos de esta skill (léelos cuando apliquen):
+- `estilos.md` — fichas de estilo (lujo, dinámico, impacto, editorial...): fuentes, colores, ritmo,
+  transiciones, sonido y tamaños. **Elige una antes de diseñar cualquier video.**
+- `kit.md` — componentes de `src/kit/Kit.tsx` (revelados de texto, rótulos, contador, botón CTA,
+  grano, viñeta, destellos, movimientos de cámara, zonas seguras) y efectos de sonido disponibles.
+- `flujos.md` — recetas probadas: voz limpia + jump cuts por detección de voz, texto detrás de la
+  persona, sincronía labios-voz, room tour con Higgsfield Omni, Drive, entregas pesadas.
+- `checklist.md` — control de calidad obligatorio antes de entregar.
 
 ## 0. Preparación (cada sesión nueva)
 
-`bash video-studio/scripts/setup.sh` — instala dependencias y el modelo de Whisper solo si faltan.
-En la nube de Claude Code, `remotion.config.ts` usa el Chromium headless preinstalado; no intentes
-descargar el de Remotion (remotion.media está bloqueado). Hugging Face también está bloqueado: el
-modelo de Whisper sale del paquete npm `sts-whisper-small` (solo pesos ONNX).
+`bash video-studio/scripts/setup.sh` — instala lo que falte: dependencias, Whisper, efectos de sonido,
+MediaPipe (recorte y caras), DeepFilterNet (limpieza de voz) y la biblioteca de fuentes.
+Entorno en la nube: `remotion.config.ts` usa el Chromium preinstalado; Hugging Face y remotion.media
+pueden estar bloqueados (Whisper sale del paquete npm `sts-whisper-small`). Renders de prueba: no más
+de 3 `remotion still` en paralelo (más agotan la memoria).
 
-## 1. Material
+## 1. Lo que Raquel prefiere (no lo vuelvas a preguntar)
 
-Los videos crudos van en `video-studio/input/` (ignorado por git). Si Raquel los sube a la
-conversación, cópialos ahí. Inspecciona siempre primero: `npm run ff -- info input/video.mp4`.
+- **Fuentes por defecto: Poppins (títulos) + Helvetica (apoyo)** salvo que pida otra cosa o el estilo
+  sea de lujo/minimalista (ver `estilos.md`). Biblioteca completa en `src/fonts.ts` (`FUENTES`, `PARES`).
+- **Calidad máxima**: no comprimas los originales; entrega en 1080x1920. Si pesa más de 30 MB, súbelo
+  a `entregas/` del repo y comparte el enlace raw de GitHub (ver `flujos.md`), más una vista previa
+  liviana por el chat.
+- **La voz siempre pegada a su toma**: nada de voz en off encima de otra imagen salvo que lo pida;
+  medir la sincronía si hay dudas.
+- **Sin silencios**: deja solo el guión; quita pausas, cuentas regresivas y la voz de quien graba.
+- **Audio limpio**: pasa toda voz por DeepFilterNet (`acabado.sh limpiar-voz` o `vinedo_base.py`).
+- **Texto clave detrás de la persona** (cifras, nombre del lugar, palabra del CTA) en reels hablados.
+- **Música**: movida (afro house / electro) y siempre por debajo de la voz con ducking; en estilos de
+  lujo pregunta o usa solo efectos de sonido. Créditos de Higgsfield: **pregunta antes de gastarlos**
+  y di el costo (Omni Flash 1.1 ≈ 3 créditos/s a 720p).
+- CTA típico: "Comenta la palabra X". Nombres: escríbelos como ella los da (p. ej. "Stefany").
 
 ## 2. Elige la herramienta
 
-- **Reel hablado a cámara (lo más común)** → `npm run reel -- input/x.mp4 --hook "..." --cta "..." [--sub "..."] [--handle @...] [--hook-top 780] [--musica input/m.mp3] [--sin-cortes] [--sin-cierre] [--sin-progreso] [--out out/x.mp4]`.
-  Hace: vertical 1080x1920 → audio limpio -14 LUFS → jump cuts → Whisper → render Remotion `Reel`.
-  Si Raquel no da gancho/CTA, propón uno con la metodología de la skill `remi-ai` (Método CLAVE, hooks) o pregúntale.
-- **Propiedad con fotos** → composición `PropertyPromo`: copia las fotos a `public/work/<nombre>/` y
-  `npx remotion render PropertyPromo out/x.mp4 --props='{"photos":["work/<nombre>/1.jpg",...],"secondsPerPhoto":3.5,"title":"...","location":"...","price":"...","features":["3 hab","2 baños"],"agent":"...","phone":"..."}'`
-- **Video ya montado + textos por segmento + cierre con marca** (p. ej. promos de clientes) →
-  composición `PromoTextos`: detecta los cortes con
-  `ffmpeg -i x.mp4 -vf "select='gt(scene,0.25)',showinfo" -f null - 2>&1 | grep pts_time`, copia el
-  video a `public/work/<n>/` y pasa `segments` (from/to en segundos, `small` en Helvetica, `big` en
-  Poppins, `position` arriba|abajo según dónde no tape lo importante), `brandName`, colores del cierre.
-  Al final normaliza: `ffmpeg -i out/x.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11 -c:v copy ...`.
-- **Música de fondo** → si Raquel no da una pista, genera una original y libre de derechos:
-  `python3 -I scripts/musica.py public/work/<n>/musica.wav <segundos> --bpm 120 --estilo movida|suave`.
-  Las bibliotecas de música en línea están bloqueadas en este entorno.
-- **Fuentes**: `src/brand.ts` (marca RM: Syne + DM Sans) y `src/fonts.ts` (Poppins y Helvetica;
-  Helvetica es de pago, se usa su clon libre TeX Gyre Heros). Fuentes nuevas: archivos en
-  `public/fonts/` y `loadFont` en `src/fonts.ts`.
-- **Portada** → `npx remotion still Thumbnail out/portada.png --props='{"photo":"...","title":"...","highlight":"..."}'`
-  (la foto puede salir de `npm run ff -- foto input/x.mp4 00:00:03 public/work/<n>/frame.jpg`).
-- **Operaciones sueltas** → `npm run ff -- <comando>` (`npm run ff` lista todos): cortar, vertical
-  (`desenfoque` para horizontales sin recortar), cuadrado, horizontal, audio, musica (ducking),
-  silencios, unir, transicion, velocidad, subtitulos (SRT quemado), logo, foto, gif, comprimir,
-  extraer-audio, fotos-a-video.
-- **Algo nuevo (motion graphics, intro, animación de datos, otra plantilla)** → crea una composición
-  nueva en `video-studio/src/` y regístrala en `src/Root.tsx`. Antes, carga la skill
-  `remotion-best-practices` y sigue sus reglas (animar solo con `useCurrentFrame`/`interpolate`,
-  nunca CSS transitions; `premountFor={fps}`; `<Video>` de `@remotion/media`). Usa los tokens y
-  fuentes de `src/brand.ts`. Texto: mínimo 84px titulares y 44px apoyo en 1080 de ancho, 80px de
-  margen lateral; Syne es muy ancha, comprueba que nada se salga.
+- **Reel hablado a cámara** → `npm run reel -- input/x.mp4 --hook "..." --cta "..." [...]` (rápido) o,
+  para un trabajo fino guiado por guión, la receta "voz limpia + piezas" de `flujos.md` (Viñedo).
+  Si no hay gancho/CTA, propón uno con la skill `remi-ai` (Método CLAVE, hooks) o pregunta.
+- **Room tour / propiedad con fotos** → fotos interiores (descarta barrio, vistas y fachada si lo pide),
+  anímalas con Higgsfield Omni (`flujos.md`) o con `camara()` del kit; composición nueva por proyecto
+  basada en `src/Felipe.tsx` (lujo) o `src/RoomTour.tsx`; `PropertyPromo` para algo simple.
+- **Video ya montado + textos por segmento + cierre de marca** → `PromoTextos`.
+- **Motion graphics nuevos** → composición nueva en `src/` registrada en `src/Root.tsx`, usando el kit
+  (`src/kit/Kit.tsx`) y una ficha de `estilos.md`. Antes carga `remotion-best-practices`.
+- **Acabado** → `bash scripts/acabado.sh` (sin argumentos lista todo): `color <lujo|limpio|calido|cine|vivo|noche>`,
+  `escalar` (720p de IA → 1080 nítido), `estabilizar`, `lenta` (cámara lenta interpolada), `grano`,
+  `limpiar-voz`, `normalizar` (-14 LUFS, 2 pasadas), `entregar` (tamaño justo + preview), `revisar`.
+- **Operaciones sueltas** → `npm run ff -- <comando>` (cortar, vertical, unir, subtítulos SRT, logo, gif...).
+- **Música original** (libre de derechos): `scripts/electro.py` (electro/afro house rápido, `--drops`
+  en los segundos clave), `scripts/afrohouse.py` (`--estilo afro|elegante`), `scripts/musica.py`.
+  Mezcla con ducking: ver `flujos.md`.
+- **Portada** → `npx remotion still Thumbnail out/portada.png --props='{...}'`.
+- **Muestras para elegir estilo con Raquel** → `npx remotion still Tipografias out/tipografias.png` y
+  la composición `KitDemo` (carpeta Kit).
 
-## 3. Revisa antes de entregar (obligatorio)
+## 3. Revisa antes de entregar
 
-1. Corrige la transcripción: abre `public/work/<n>/captions.json`, arregla palabras mal oídas
-   (nombres, marcas, cifras) manteniendo los tiempos y el espacio inicial de cada `text`, y vuelve a
-   renderizar con `npx remotion render Reel ... --props=...` (los props están en el log de `reel.mjs`).
-2. Mira fotogramas: `npx remotion still <Comp> out/check.png --frame=N --scale=0.33` o
-   `ffmpeg -i out/x.mp4 -vf "select='eq(n\,30)+eq(n\,150)',scale=360:-1,tile=2x1" -frames:v 1 check.png`
-   y léelos con Read. Busca texto cortado, gancho tapando la cara (ajusta `--hook-top`), subtítulos ilegibles.
-3. `npm run ff -- info out/x.mp4`: 1080x1920, 30 fps, h264/aac, cerca de -14 LUFS.
+Sigue `checklist.md`. Mínimo: fotogramas clave vistos con Read (texto cortado, caras tapadas, zonas
+seguras), transcripción corregida, sincronía, volumen -14 LUFS (-16 si solo hay efectos), 1080x1920 30 fps.
 
 ## 4. Entrega
 
-Envía el video con SendUserFile. Los archivos de `out/` y `input/` no se suben a git (son pesados);
-solo se hace commit de plantillas y scripts nuevos.
+Envía con SendUserFile si pesa menos de 30 MB; si no, `entregas/` + enlace raw de GitHub + preview.
+`input/`, `out/` y `public/work/` no van a git; sí plantillas, scripts y las entregas que Raquel pida.
+Resume la entrega en una tabla corta (qué hay en cada momento) y señala lo que debe confirmar ella.

@@ -8,6 +8,7 @@ import {CatalogoComposition} from './Catalogo';
 import {ReelComposition} from './Reel';
 import {RoomTourBosqueComposition, RoomTourBosqueOmniComposition} from './RoomTour';
 import {ThumbnailStill} from './Thumbnail';
+import {MuestrasKit} from './kit/Muestras';
 
 export const RemotionRoot: React.FC = () => {
 	return (
@@ -26,6 +27,9 @@ export const RemotionRoot: React.FC = () => {
 			</Folder>
 			<Folder name="Portadas">
 				<ThumbnailStill />
+			</Folder>
+			<Folder name="Kit">
+				<MuestrasKit />
 			</Folder>
 		</>
 	);

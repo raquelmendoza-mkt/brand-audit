@@ -25,7 +25,7 @@ if [[ ! -f $MODEL/onnx/encoder_model_quantized.onnx ]]; then
 fi
 
 # Efectos de sonido sintetizados (siempre disponibles, sin internet)
-if [[ ! -f public/sfx/whoosh.wav ]]; then
+if [[ ! -f public/sfx/reveal.wav ]]; then
 	python3 -I scripts/sfx.py >/dev/null
 fi
 
@@ -48,6 +48,26 @@ SEG=.models/mediapipe/selfie_multiclass_256x256.tflite
 if [[ ! -f $SEG ]]; then
 	mkdir -p .models/mediapipe
 	curl -sSf -o "$SEG" https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_multiclass_256x256/float32/latest/selfie_multiclass_256x256.tflite
+fi
+
+# Sincronía labios-voz (scripts/sincronia.py): Face Landmarker de MediaPipe
+FACE=.models/mediapipe/face_landmarker.task
+if [[ ! -f $FACE ]]; then
+	curl -sSf -o "$FACE" https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task || true
+fi
+
+# Limpieza de voz con IA (DeepFilterNet 3, binario autónomo, sin Python ni GPU)
+DF=.models/bin/deep-filter
+if [[ ! -x $DF ]]; then
+	echo "Descargando DeepFilterNet..."
+	mkdir -p .models/bin
+	curl -sSfL -o "$DF" https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/deep-filter-0.5.6-x86_64-unknown-linux-musl && chmod +x "$DF" || rm -f "$DF"
+fi
+
+# Biblioteca de fuentes (Google Fonts, OFL) en public/fonts
+if [[ ! -f src/fuentes-lista.json ]] || [[ ! -f public/fonts/cormorant-garamond-400.woff2 ]]; then
+	echo "Descargando fuentes..."
+	python3 -I scripts/fuentes.py >/dev/null
 fi
 
 echo "Estudio listo."
