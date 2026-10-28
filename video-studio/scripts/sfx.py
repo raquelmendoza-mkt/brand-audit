@@ -9,6 +9,10 @@ Línea "premium" (lujo, minimalista): aire.wav (whoosh suave y largo), aire-cort
 (subida de tensión 1.5 s), sub.wav (golpe grave cinematográfico), brillo.wav (destello suave),
 tic.wav (clic fino de interfaz), texto.wav (soplo cortito para textos que aparecen) y
 reveal.wav (barrido + campana suave para revelar precio o logo).
+Variaciones y especiales: whoosh-2/whoosh-3 (no repetir siempre el mismo), sube/baja (barridos con
+tono que sube o baja), impacto-2 (golpe metálico), braam (tráiler), drop (caída de bajo), reverso
+(platillo al revés, antes de un corte), glitch, caja (ka-ching de dinero), obturador (foto),
+notificacion (tres tonos tipo celular), latido, burbuja y tecla-mecanica.
 Si remotion.media está permitido en la red, scripts/setup.sh descarga además los
 efectos grabados de @remotion/sfx a public/sfx/remotion/.
 """
@@ -204,6 +208,110 @@ i = int(0.55 * SR)
 rv[i: i + len(b1)] += b1[: len(rv) - i] * 0.6
 rv[i: i + len(b2)] += b2[: len(rv) - i] * 0.35
 save('reveal.wav', rv)
+
+
+# ---------------- Variaciones y especiales ----------------
+save('whoosh-2.wav', whoosh(0.42) * 0.9)
+w3 = whoosh(0.7)
+save('whoosh-3.wav', onepole(w3, 2500))
+
+# Barridos con tono: sube (entra algo) / baja (sale algo)
+for nombre, f0, f1 in (('sube', 300, 2400), ('baja', 2400, 300)):
+    tt = t(0.5)
+    p = tt / 0.5
+    f = f0 * (f1 / f0) ** p
+    tone = np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.35
+    air = bandpass(rng.normal(0, 1, len(tt)), f * 0.5, f * 1.5) * 0.6
+    save(f'{nombre}.wav', (tone + air) * np.sin(np.pi * p) ** 1.4)
+
+# Impacto metálico: golpe + resonancias inarmónicas
+tt = t(1.4)
+met = sum(np.sin(2 * np.pi * f * tt) * np.exp(-tt * d) * a for f, d, a in ((110, 3, 1), (277, 4, 0.5), (523, 6, 0.3), (1290, 9, 0.15)))
+save('impacto-2.wav', np.tanh((met + bandpass(rng.normal(0, 1, len(tt)), 200, 5000) * np.exp(-tt * 30) * 0.6) * 1.8))
+
+# Braam de tráiler: metales graves desafinados con crescendo y caída
+tt = t(2.2)
+env = np.minimum(tt / 0.05, 1) * np.exp(-tt * 1.4)
+br = np.zeros(len(tt))
+for f in (55, 55.6, 82.4, 110.3):
+    ph = (tt * f) % 1
+    br += 2 * ph - 1
+save('braam.wav', np.tanh(onepole(br, 900) * env * 2.5))
+
+# Drop: caída de tono de bajo
+tt = t(1.2)
+f = 140 * np.exp(-tt * 3) + 35
+save('drop.wav', np.tanh(np.sin(2 * np.pi * np.cumsum(f) / SR) * (1 - np.exp(-tt * 40)) * np.exp(-tt * 1.8) * 1.8))
+
+# Reverso: platillo al revés (crece hasta el corte)
+tt = t(1.6)
+cym = bandpass(rng.normal(0, 1, len(tt)), 4000, 14000) * np.exp(-tt * 2.5)
+save('reverso.wav', cym[::-1] * 0.8)
+
+# Glitch: fragmentos digitales cortados
+gl = np.zeros(int(0.5 * SR))
+pos = 0
+while pos < len(gl) - 2000:
+    n = int(rng.uniform(0.01, 0.05) * SR)
+    kind = rng.integers(0, 3)
+    seg_t = np.arange(n) / SR
+    if kind == 0:
+        seg = np.sign(np.sin(2 * np.pi * rng.uniform(200, 2000) * seg_t))
+    elif kind == 1:
+        seg = rng.normal(0, 1, n)
+    else:
+        seg = np.round(np.sin(2 * np.pi * rng.uniform(80, 400) * seg_t) * 4) / 4
+    gl[pos: pos + n] += seg[: len(gl) - pos] * rng.uniform(0.4, 1)
+    pos += n + int(rng.uniform(0, 0.02) * SR)
+save('glitch.wav', gl * 0.7)
+
+# Caja registradora: campanita + monedas
+cj = np.zeros(int(1.2 * SR))
+b = bell(2637, 1.0, 4, [(1, 1), (2.4, 0.4), (3.9, 0.2)])
+cj[int(0.12 * SR): int(0.12 * SR) + len(b)] += b[: len(cj) - int(0.12 * SR)]
+for k in range(10):
+    c = bell(rng.uniform(3000, 6000), 0.12, 40, [(1, 1), (1.7, 0.5)])
+    i = int((0.02 + k * 0.025) * SR)
+    cj[i: i + len(c)] += c * 0.35
+save('caja.wav', cj)
+
+# Obturador de cámara: dos clics mecánicos
+ob = np.zeros(int(0.25 * SR))
+for at, br_ in ((0.0, 1.0), (0.09, 0.7)):
+    tt = t(0.04)
+    c = bandpass(rng.normal(0, 1, len(tt)), 800, 7000) * np.exp(-tt * 120) * br_
+    i = int(at * SR)
+    ob[i: i + len(c)] += c
+save('obturador.wav', ob)
+
+# Notificación: tres tonos ascendentes
+nt = np.zeros(int(0.9 * SR))
+for k, f0 in enumerate((1318.5, 1568, 2093)):
+    b = bell(f0, 0.5, 7, [(1, 1), (2.0, 0.2)])
+    i = int(k * 0.11 * SR)
+    nt[i: i + len(b)] += b[: len(nt) - i] * 0.7
+save('notificacion.wav', nt)
+
+# Latido: dos golpes graves (tensión, expectativa)
+lt = np.zeros(int(0.9 * SR))
+for at, a in ((0.0, 1.0), (0.22, 0.75)):
+    tt = t(0.25)
+    f = 45 + 30 * np.exp(-tt * 20)
+    c = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 14) * a
+    i = int(at * SR)
+    lt[i: i + len(c)] += c
+save('latido.wav', lt)
+
+# Burbuja: pop acuoso que sube de tono
+tt = t(0.14)
+f = 300 + 1500 * (tt / 0.14) ** 0.6
+save('burbuja.wav', np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 28))
+
+# Tecla mecánica: clic + rebote
+tt = t(0.06)
+tm = bandpass(rng.normal(0, 1, len(tt)), 1500, 8000) * np.exp(-tt * 180)
+tm[int(0.025 * SR):] += bandpass(rng.normal(0, 1, len(tt) - int(0.025 * SR)), 2000, 9000) * 0.4 * np.exp(-tt[: len(tt) - int(0.025 * SR)] * 250)
+save('tecla-mecanica.wav', tm)
 
 print('Efectos listos en', os.path.abspath(out))
 for f in sorted(os.listdir(out)):

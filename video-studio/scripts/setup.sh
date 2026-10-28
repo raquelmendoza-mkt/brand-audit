@@ -25,7 +25,7 @@ if [[ ! -f $MODEL/onnx/encoder_model_quantized.onnx ]]; then
 fi
 
 # Efectos de sonido sintetizados (siempre disponibles, sin internet)
-if [[ ! -f public/sfx/reveal.wav ]]; then
+if [[ ! -f public/sfx/tecla-mecanica.wav ]]; then
 	python3 -I scripts/sfx.py >/dev/null
 fi
 
@@ -62,6 +62,24 @@ if [[ ! -x $DF ]]; then
 	echo "Descargando DeepFilterNet..."
 	mkdir -p .models/bin
 	curl -sSfL -o "$DF" https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/deep-filter-0.5.6-x86_64-unknown-linux-musl && chmod +x "$DF" || rm -f "$DF"
+fi
+
+# Chrome reciente para render (las transiciones con shader necesitan Chrome 149+)
+CH=.models/chrome/chrome-headless-shell-linux64/chrome-headless-shell
+if [[ ! -x $CH ]] && [[ $(uname -s) == Linux ]]; then
+	echo "Descargando Chrome headless reciente..."
+	v=$(curl -sSf https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | python3 -c "import json,sys; print(json.load(sys.stdin)['channels']['Stable']['version'])") || v=""
+	if [[ -n $v ]]; then
+		mkdir -p .models/chrome
+		curl -sSf -o .models/chrome/hs.zip "https://storage.googleapis.com/chrome-for-testing-public/$v/linux64/chrome-headless-shell-linux64.zip" \
+			&& python3 -c "import zipfile; zipfile.ZipFile('.models/chrome/hs.zip').extractall('.models/chrome')" && chmod +x "$CH"
+		rm -f .models/chrome/hs.zip
+	fi
+fi
+
+# Emojis 3D (Microsoft Fluent Emoji, MIT)
+if [[ ! -f src/emoji3d-lista.json ]] || [[ ! -f public/emoji3d/casa.png ]]; then
+	python3 -I scripts/emojis3d.py >/dev/null || true
 fi
 
 # Biblioteca de fuentes (Google Fonts, OFL) en public/fonts

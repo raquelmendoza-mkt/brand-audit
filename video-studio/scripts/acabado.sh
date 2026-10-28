@@ -16,6 +16,9 @@ Comandos:
   estabilizar <in> <out>      Quita temblor de cámara en mano (vid.stab, 2 pasadas).
   lenta <in> <out> <factor>   Cámara lenta real con fotogramas interpolados (factor 2 = mitad de velocidad).
   grano <in> <out> [fuerza]   Grano de película fino (fuerza 4-10, por defecto 6).
+  rampa <in> <out> "<ini-fin:vel,...>"
+                              Rampa de velocidad (speed ramp), sin audio: p. ej. "0-1.5:1,1.5-3:0.35,3-5:2.5"
+                              (tramos lentos < 0.6 se interpolan para que no se vean a saltos).
   limpiar-voz <in> <out> [db] Limpia la voz con IA (DeepFilterNet 3, sin retardo) + EQ de presencia
                               + compresión suave. db = reducción máxima (por defecto 40; 100 = total).
   normalizar <in> <out> [lufs] Volumen final medido en 2 pasadas (por defecto -14 LUFS, pico -1.5 dB).
@@ -57,6 +60,21 @@ lenta)
 	f=$4
 	ffmpeg -v error -y -i "$2" -an -vf "minterpolate=fps=$(python3 -c "print(30*$f)"):mi_mode=mci:mc_mode=aobmc:vsbmc=1,setpts=$f*PTS,fps=30,format=yuv420p" \
 		-c:v libx264 -preset slow -crf 15 "$3"
+	;;
+rampa)
+	in=$2 out=$3
+	IFS=',' read -ra tramos <<<"$4"
+	fc="" n=0
+	for tr in "${tramos[@]}"; do
+		rango=${tr%%:*} vel=${tr##*:} ini=${rango%%-*} fin=${rango##*-}
+		extra=""
+		python3 -c "import sys; sys.exit(0 if $vel < 0.6 else 1)" && extra=",minterpolate=fps=$(python3 -c "print(round(30/$vel))"):mi_mode=mci:mc_mode=aobmc"
+		fc+="[0:v]trim=start=$ini:end=$fin,setpts=PTS-STARTPTS,fps=30${extra},setpts=PTS/$vel,fps=30[t$n];"
+		n=$((n + 1))
+	done
+	for ((i = 0; i < n; i++)); do fc+="[t$i]"; done
+	fc+="concat=n=$n:v=1:a=0,format=yuv420p[v]"
+	ffmpeg -v error -y -i "$in" -filter_complex "$fc" -map "[v]" -c:v libx264 -preset slow -crf 15 "$out"
 	;;
 grano)
 	ffmpeg -v error -y -i "$2" -vf "noise=c0s=${4:-6}:c0f=t+u,format=yuv420p" -c:v libx264 -preset slow -crf 15 -c:a copy "$3"

@@ -22,6 +22,12 @@ const headless = existsSync(pwDir)
 			.map((d) => `${pwDir}/${d}/chrome-linux/headless_shell`)
 			.find((p) => existsSync(p))
 	: undefined;
-if (headless) {
+// Preferimos el Chrome for Testing reciente que baja scripts/setup.sh (.models/chrome): las
+// transiciones con shader de @remotion/transitions (quemadura, zoom cruzado...) necesitan Chrome 149+.
+const moderno = '.models/chrome/chrome-headless-shell-linux64/chrome-headless-shell';
+if (existsSync(moderno)) {
+	Config.setBrowserExecutable(moderno);
+	Config.setChromiumOpenGlRenderer('swangle');
+} else if (headless) {
 	Config.setBrowserExecutable(headless);
 }

@@ -3,6 +3,8 @@
 import {Video} from '@remotion/media';
 import {AbsoluteFill, Composition, Img, Sequence, Still, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {FUENTES, PARES, type Estilo} from '../fonts';
+import {PruebaTransicionComposition} from './PruebaTransiciones';
+import {MuestrasEfectos} from './MuestrasEfectos';
 import {BotonCTA, camara, Contador, Degradados, Destello, entradaToma, Grano, Polvo, Rotulo, Texto, Vineta, ZonaSegura} from './Kit';
 
 const NOMBRES: Record<Estilo, string> = {
@@ -92,6 +94,8 @@ const Demo: React.FC<{readonly zonas: boolean}> = ({zonas}) => {
 export const MuestrasKit: React.FC = () => (
 	<>
 		<Still id="Tipografias" component={Lamina} width={1080} height={1920} />
+		<PruebaTransicionComposition />
+		<MuestrasEfectos />
 		<Composition id="KitDemo" component={Demo} durationInFrames={240} fps={30} width={1080} height={1920} defaultProps={{zonas: false}} />
 	</>
 );

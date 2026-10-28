@@ -20,7 +20,8 @@ Archivos de esta skill (léelos cuando apliquen):
 ## 0. Preparación (cada sesión nueva)
 
 `bash video-studio/scripts/setup.sh` — instala lo que falte: dependencias, Whisper, efectos de sonido,
-MediaPipe (recorte y caras), DeepFilterNet (limpieza de voz) y la biblioteca de fuentes.
+MediaPipe (recorte y caras), DeepFilterNet (limpieza de voz), Chrome reciente (transiciones con
+shader), emojis 3D y la biblioteca de fuentes.
 Entorno en la nube: `remotion.config.ts` usa el Chromium preinstalado; Hugging Face y remotion.media
 pueden estar bloqueados (Whisper sale del paquete npm `sts-whisper-small`). Renders de prueba: no más
 de 3 `remotion still` en paralelo (más agotan la memoria).
@@ -53,16 +54,21 @@ de 3 `remotion still` en paralelo (más agotan la memoria).
 - **Video ya montado + textos por segmento + cierre de marca** → `PromoTextos`.
 - **Motion graphics nuevos** → composición nueva en `src/` registrada en `src/Root.tsx`, usando el kit
   (`src/kit/Kit.tsx`) y una ficha de `estilos.md`. Antes carga `remotion-best-practices`.
+- **Íconos, transiciones, subtítulos karaoke, texto cinético, notificaciones, trazos a mano** → kit
+  (`src/kit/`: `Kit.tsx`, `Iconos.tsx`, `Transiciones.tsx`, `Efectos.tsx`); ver `kit.md`.
+- **Cortar / animar al ritmo de la música** → `python3 -I scripts/beats.py musica.wav beats.json`
+  (BPM, beats, compases y golpes fuertes) y usa esos tiempos para cortes, golpes de zoom y títulos.
+- **Video horizontal → vertical siguiendo a la persona** → `python3 scripts/reencuadre.py in.mp4 out.mp4`.
 - **Acabado** → `bash scripts/acabado.sh` (sin argumentos lista todo): `color <lujo|limpio|calido|cine|vivo|noche>`,
   `escalar` (720p de IA → 1080 nítido), `estabilizar`, `lenta` (cámara lenta interpolada), `grano`,
-  `limpiar-voz`, `normalizar` (-14 LUFS, 2 pasadas), `entregar` (tamaño justo + preview), `revisar`.
+  `rampa` (speed ramp), `limpiar-voz`, `normalizar` (-14 LUFS, 2 pasadas), `entregar` (tamaño justo + preview), `revisar`.
 - **Operaciones sueltas** → `npm run ff -- <comando>` (cortar, vertical, unir, subtítulos SRT, logo, gif...).
 - **Música original** (libre de derechos): `scripts/electro.py` (electro/afro house rápido, `--drops`
   en los segundos clave), `scripts/afrohouse.py` (`--estilo afro|elegante`), `scripts/musica.py`.
   Mezcla con ducking: ver `flujos.md`.
 - **Portada** → `npx remotion still Thumbnail out/portada.png --props='{...}'`.
-- **Muestras para elegir estilo con Raquel** → `npx remotion still Tipografias out/tipografias.png` y
-  la composición `KitDemo` (carpeta Kit).
+- **Muestras para elegir estilo con Raquel** → stills `Tipografias` e `Iconos`, composiciones
+  `KitDemo` y `EfectosDemo` (carpeta Kit) y `PruebaTransicion` para cualquier transición.
 
 ## 3. Revisa antes de entregar
 

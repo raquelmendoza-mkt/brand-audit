@@ -33,6 +33,7 @@ Para: penthouses, apartamentos premium, room tours "limpios" (Felipe).
 - Sonido: `aire`, `aire-corto`, `texto`, `tic`, `brillo`, `reveal` (precio), `sub` (logo/cierre).
   Música opcional: piano/deep house elegante (`afrohouse.py --estilo elegante`) o solo efectos.
 - Cierre: nombre del agente + antetítulo + `<BotonCTA texto="AGENDAR VISITA" />` + `<Polvo />`.
+- Íconos: `vidrio`/`dorado` o `IconoDibujado`. Subtítulos: `lujo`. Transiciones: `ventana`, `cortina`, `zoomSueno`.
 
 ## dinamico — Reel de marca de Raquel (por defecto)
 Para: reels hablados, tips, contenido educativo, promos de propiedades con energía.
@@ -45,6 +46,7 @@ Para: reels hablados, tips, contenido educativo, promos de propiedades con energ
 - Sonido: whoosh en cada corte, whip + impacto en titulares, pop en píldoras, ding en cifras,
   teclado en CTA escritos. Música electro/afro house 122-128 BPM con ducking (-13 dB bajo la voz).
 - Cierre: palabra del CTA gigante detrás de la persona + burbuja "Comenta 'X'" que se escribe sola.
+- Íconos: `emoji`/`solido` o `Emoji3D`. Subtítulos: `hormozi` o `caja`. Transiciones: `barrido`, `zoomGolpe`, `empujon`.
 
 ## impacto — Viral / ofertas / listas
 Para: "3 errores...", precios llamativos, lanzamientos, comparativas.
@@ -52,6 +54,7 @@ Para: "3 errores...", precios llamativos, lanzamientos, comparativas.
 - Colores: blanco y negro con un color de alto contraste (rojo `#E8173A` o amarillo `#FFD84D`).
 - Ritmo: muy rápido (0.8-1.5 s por plano), números con `<Contador />`, entradas `golpe` y `letras`.
 - Sonido: `impacto`, `sub`, `whoosh-corto`, `error` (lo que NO hay que hacer), `riser` antes de revelar.
+- Íconos: `Emoji3D` grandes y `TrazoMano` (equis / check / círculo). Subtítulos: `hormozi`. Transiciones: `glitch`, `destello`.
 
 ## editorial — Revista / marca personal premium
 Para: entrevistas, testimonios, perfiles de agentes, contenido de autoridad.
@@ -74,7 +77,8 @@ Para: tiendas como Detallitos Dyan, cosmética, ropa.
 ## moderno — Tecnología, IA, cursos
 - Fuentes: **Space Grotesk 500-700** + **Inter**.
 - Colores: negro `#0B0D10`, blanco, acento eléctrico `#7B6FE8` o cian `#2EE6D6`.
-- Sonido: `tic`, `tecla`, `swipe`, `riser`. Animaciones de interfaz (tarjetas, cursores, checks).
+- Sonido: `tic`, `tecla`, `swipe`, `riser`, `glitch`. Animaciones de interfaz (tarjetas, cursores, checks).
+- Íconos: `neon`. Subtítulos: `neon` o `minimal`. Transiciones: `glitch`, `zoomCruzado`. Usa `Celular` y `Notificacion`.
 
 ---
 

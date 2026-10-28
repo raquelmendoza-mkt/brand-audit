@@ -75,3 +75,19 @@ Fondo blanco → titular en azul/negro; fondo oscuro o fachada → blanco con so
   `curl -sIL https://github.com/raquelmendoza-mkt/brand-audit/raw/<rama>/entregas/<archivo>` (200 y
   mismo tamaño) → comparte ese enlace + la `-preview.mp4` por el chat.
 - El repo es público: no subas material de clientes que Raquel no quiera publicar; si dudas, pregunta.
+
+## H. Montaje al ritmo (beat sync)
+1. `python3 -I scripts/beats.py public/work/<p>/musica.wav public/work/<p>/beats.json` → BPM, `beats`,
+   `compases` (cada 4) y `fuertes` (golpes marcados). Si conoces el BPM, pásalo con `--bpm`.
+2. Cortes de B-roll en `compases` (ritmo lento/lujo) o en `beats` (dinámico); golpes de zoom,
+   `Flash` y títulos en `fuertes`; el CTA en el último compás fuerte.
+3. Con `electro.py` ya sabes dónde caen los drops (`--drops`): haz coincidir ahí el momento clave.
+
+## I. Material horizontal para reels
+`python3 scripts/reencuadre.py input/x.mp4 public/work/<p>/x-vertical.mp4` sigue a la persona
+(segmentación MediaPipe, suavizado tipo operador de cámara). Para paisajes o fotos horizontales sin
+persona usa `npm run ff -- vertical` con `desenfoque` o `camara('derecha')` del kit.
+
+## J. Rampas de velocidad
+`bash scripts/acabado.sh rampa in.mp4 out.mp4 "0-1.2:1,1.2-2.4:0.35,2.4-4:2.2"` (sin audio): ideal en
+B-roll de room tour (entra rápido, se frena en el detalle bonito, sale rápido) con un `aire` en cada cambio.
