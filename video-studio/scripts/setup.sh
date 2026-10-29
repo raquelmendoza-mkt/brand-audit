@@ -82,6 +82,14 @@ if [[ ! -f src/emoji3d-lista.json ]] || [[ ! -f public/emoji3d/casa.png ]]; then
 	python3 -I scripts/emojis3d.py >/dev/null || true
 fi
 
+# Conector con CapCut (pyCapCut, Apache-2.0; MediaInfo para leer duraciones)
+if ! python3 -c "import pycapcut" 2>/dev/null; then
+	echo "Instalando el conector de CapCut..."
+	pip install -q pycapcut==0.0.4 2>/dev/null || pip install -q --break-system-packages pycapcut==0.0.4
+fi
+python3 -c "import pymediainfo,sys; sys.exit(0 if pymediainfo.MediaInfo.can_parse() else 1)" 2>/dev/null || \
+	(command -v apt-get >/dev/null && apt-get install -y -q libmediainfo0v5 >/dev/null 2>&1) || true
+
 # Biblioteca de fuentes (Google Fonts, OFL) en public/fonts
 if [[ ! -f src/fuentes-lista.json ]] || [[ ! -f public/fonts/cormorant-garamond-400.woff2 ]]; then
 	echo "Descargando fuentes..."

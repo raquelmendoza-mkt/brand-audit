@@ -1,6 +1,6 @@
 ---
 name: editor-video
-description: Editor de video profesional de RM Marketing IA con Remotion + FFmpeg + Whisper + DeepFilterNet + MediaPipe + Higgsfield, en video-studio/. Úsalo cuando Raquel pida editar, cortar, subtitular, montar, renderizar o exportar un video; hacer un reel, TikTok, short o story; room tour o video de propiedad; quitar silencios (jump cuts); limpiar el audio; poner texto detrás de la persona; añadir música, efectos de sonido, logo, gancho o CTA; animar fotos con IA; transcribir; etalonar color; cambiar formato; comprimir o entregar archivos pesados; o hacer una portada.
+description: Editor de video profesional de RM Marketing IA con Remotion + FFmpeg + Whisper + DeepFilterNet + MediaPipe + Higgsfield + conector con CapCut, en video-studio/. Úsalo cuando Raquel pida editar, cortar, subtitular, montar, renderizar o exportar un video; hacer un reel, TikTok, short o story; room tour o video de propiedad; quitar silencios (jump cuts); limpiar el audio; poner texto detrás de la persona; añadir música, efectos de sonido, logo, gancho o CTA; animar fotos con IA; pasar una edición a CapCut o crear un proyecto de CapCut; transcribir; etalonar color; cambiar formato; comprimir o entregar archivos pesados; o hacer una portada.
 ---
 
 # Editor de video profesional (video-studio/)
@@ -16,6 +16,8 @@ Archivos de esta skill (léelos cuando apliquen):
 - `flujos.md` — recetas probadas: voz limpia + jump cuts por detección de voz, texto detrás de la
   persona, sincronía labios-voz, room tour con Higgsfield Omni, Drive, entregas pesadas.
 - `checklist.md` — control de calidad obligatorio antes de entregar.
+- `capcut.md` — conector con CapCut: convierte una edición en un PROYECTO DE CAPCUT editable
+  (pista por pista) que Raquel abre en su CapCut de Mac, retoca y exporta.
 
 ## 0. Preparación (cada sesión nueva)
 
@@ -62,6 +64,10 @@ de 3 `remotion still` en paralelo (más agotan la memoria).
 - **Acabado** → `bash scripts/acabado.sh` (sin argumentos lista todo): `color <lujo|limpio|calido|cine|vivo|noche>`,
   `escalar` (720p de IA → 1080 nítido), `estabilizar`, `lenta` (cámara lenta interpolada), `grano`,
   `rampa` (speed ramp), `limpiar-voz`, `normalizar` (-14 LUFS, 2 pasadas), `entregar` (tamaño justo + preview), `revisar`.
+- **Proyecto editable en CapCut** (Raquel quiere retocar ella, o el cliente edita en CapCut) →
+  `python3 capcut/rm_capcut.py construir plan.json --semilla input/capcut/semilla.zip` (ver `capcut.md`;
+  ejemplo completo en `capcut/desde_vinedo.py`). Lo propio de Remotion (texto detrás de la persona,
+  kit, shaders) no pasa como animación a CapCut: avísalo.
 - **Operaciones sueltas** → `npm run ff -- <comando>` (cortar, vertical, unir, subtítulos SRT, logo, gif...).
 - **Música original** (libre de derechos): `scripts/electro.py` (electro/afro house rápido, `--drops`
   en los segundos clave), `scripts/afrohouse.py` (`--estilo afro|elegante`), `scripts/musica.py`.
