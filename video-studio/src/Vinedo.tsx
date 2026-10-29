@@ -515,7 +515,12 @@ const Emoji: React.FC<{readonly kind: keyof typeof EMOJI; readonly at: number; r
 	);
 };
 
-export const VinedoComponent: React.FC = () => {
+// Capas para CapCut (capcut/capas_vinedo.py): 'fondo' = video + B-roll con los mismos zooms;
+// 'graficos' = títulos, íconos y persona recortada sobre transparente; 'subtitulos' = solo
+// subtítulos sobre transparente; 'sfx' = solo efectos de sonido. 'todo' = el reel normal.
+type Capa = 'todo' | 'fondo' | 'graficos' | 'subtitulos' | 'sfx';
+
+export const VinedoComponent: React.FC<{readonly capa?: Capa}> = ({capa = 'todo'}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const scale = usePunchScale();
@@ -524,144 +529,159 @@ export const VinedoComponent: React.FC = () => {
 	const iaZoom = t >= T.ia1 && t < fin('ia2') ? interpolate(t, [T.ia1, fin('ia2')], [1, 1.08]) : 1;
 	const inRange = (a: number, b: number) => t >= a && t < b;
 
+	const ver = (c: Capa) => capa === 'todo' || capa === c;
+
 	return (
-		<AbsoluteFill style={{background: '#000'}}>
-			<AbsoluteFill style={{scale: String(scale * iaZoom), transformOrigin: '50% 40%', opacity: end}}>
-				<Video src={staticFile(`${W}/base.mp4`)} premountFor={fps} style={{position: 'absolute', width: '100%', height: '100%'}} />
-			</AbsoluteFill>
-			<AbsoluteFill style={{opacity: end}}>
-				{BROLL.map(([a, b, c]) => (
-					<Broll key={c} from={a} to={b} clip={c} />
-				))}
-			</AbsoluteFill>
+		<AbsoluteFill style={{background: ver('fondo') ? '#000' : 'transparent'}}>
+			{ver('fondo') ? (
+				<>
+					<AbsoluteFill style={{scale: String(scale * iaZoom), transformOrigin: '50% 40%', opacity: end}}>
+						<Video src={staticFile(`${W}/base.mp4`)} premountFor={fps} style={{position: 'absolute', width: '100%', height: '100%'}} />
+					</AbsoluteFill>
+					<AbsoluteFill style={{opacity: end}}>
+						{BROLL.map(([a, b, c]) => (
+							<Broll key={c} from={a} to={b} clip={c} />
+						))}
+					</AbsoluteFill>
+				</>
+			) : null}
 
-			<AbsoluteFill style={{opacity: end}}>
-				{/* ---------- Títulos DETRÁS de la persona ---------- */}
-				<Big from={T.inaug} to={T.vinedo} text="INAUGURACIÓN" size={126} top={905} />
-				<Big from={T.vinedo} to={at('gancho', 3.9)} text="EL VIÑEDO" size={150} top={890} />
-				<Big from={T.tuNegocio} to={fin('gancho')} text="TU NEGOCIO" size={150} top={890} />
+			{ver('graficos') ? (
+				<AbsoluteFill style={{opacity: end}}>
+					{/* ---------- Títulos DETRÁS de la persona ---------- */}
+					<Big from={T.inaug} to={T.vinedo} text="INAUGURACIÓN" size={126} top={905} />
+					<Big from={T.vinedo} to={at('gancho', 3.9)} text="EL VIÑEDO" size={150} top={890} />
+					<Big from={T.tuNegocio} to={fin('gancho')} text="TU NEGOCIO" size={150} top={890} />
 
-				<Big from={T.corazon} to={T.rest} text="EL VIÑEDO" size={170} top={770} color={BLUE} glow={false} />
+					<Big from={T.corazon} to={T.rest} text="EL VIÑEDO" size={170} top={770} color={BLUE} glow={false} />
 
-				<Big from={T.m450} to={T.m600} text="450 m²" size={250} top={560} color={BLUE} glow={false} />
-				<Big from={T.m600} to={T.m2niv} text="600 m²" size={250} top={490} color={BLUE} glow={false} />
-				<Big from={T.m2niv} to={T.m14} text="2 NIVELES" size={190} top={450} color={BLUE} glow={false} />
-				<Big from={T.m14} to={T.m10} text="14" size={300} top={330} color={BLUE} glow={false} />
-				<Big from={T.m10} to={fin('metros')} text="10" size={300} top={320} color={BLUE} glow={false} />
+					<Big from={T.m450} to={T.m600} text="450 m²" size={250} top={560} color={BLUE} glow={false} />
+					<Big from={T.m600} to={T.m2niv} text="600 m²" size={250} top={490} color={BLUE} glow={false} />
+					<Big from={T.m2niv} to={T.m14} text="2 NIVELES" size={190} top={450} color={BLUE} glow={false} />
+					<Big from={T.m14} to={T.m10} text="14" size={300} top={330} color={BLUE} glow={false} />
+					<Big from={T.m10} to={fin('metros')} text="10" size={300} top={320} color={BLUE} glow={false} />
 
-				<Big from={T.clinica} to={T.finRest} text="CLÍNICA" size={130} top={150} color={BLUE} glow={false} />
-				<Big from={T.spa} to={T.finRest} text="SPA" size={130} top={280} color={NAVY} glow={false} />
-				<Big from={T.restaurantes} to={T.finRest} text="RESTAURANTES" size={100} top={405} color={BLUE} glow={false} />
+					<Big from={T.clinica} to={T.finRest} text="CLÍNICA" size={130} top={150} color={BLUE} glow={false} />
+					<Big from={T.spa} to={T.finRest} text="SPA" size={130} top={280} color={NAVY} glow={false} />
+					<Big from={T.restaurantes} to={T.finRest} text="RESTAURANTES" size={100} top={405} color={BLUE} glow={false} />
 
-				<Big from={T.alquila} to={fin('espacios')} text="SE ALQUILA" size={140} top={250} color={BLUE} glow={false} />
-				<Big from={T.porEspacios} to={fin('espacios')} text="POR ESPACIOS" size={112} top={400} color={NAVY} glow={false} />
+					<Big from={T.alquila} to={fin('espacios')} text="SE ALQUILA" size={140} top={250} color={BLUE} glow={false} />
+					<Big from={T.porEspacios} to={fin('espacios')} text="POR ESPACIOS" size={112} top={400} color={NAVY} glow={false} />
 
-				<Big from={T.vinedoCta} to={DURATION} text="VIÑEDO" size={240} top={500} />
+					<Big from={T.vinedoCta} to={DURATION} text="VIÑEDO" size={240} top={500} />
 
-				{/* Persona recortada delante de los títulos (mismo zoom que el video) */}
-				<AbsoluteFill style={{scale: String(scale), transformOrigin: '50% 40%'}}>
-					{inRange(T.inaug - 0.1, fin('gancho')) ? <Cutout {...CUTOUTS.gancho} /> : null}
-					{inRange(T.corazon - 0.1, T.rest) ? <Cutout {...CUTOUTS.ubicacion} /> : null}
-					{inRange(T.m450 - 0.1, fin('metros')) ? <Cutout {...CUTOUTS.metros} /> : null}
-					{inRange(T.clinica - 0.1, fin('espacios')) ? <Cutout {...CUTOUTS.espacios} /> : null}
-					{t >= T.vinedoCta - 0.1 ? <Cutout {...CUTOUTS.cta} /> : null}
+					{/* Persona recortada delante de los títulos (mismo zoom que el video) */}
+					<AbsoluteFill style={{scale: String(scale), transformOrigin: '50% 40%'}}>
+						{inRange(T.inaug - 0.1, fin('gancho')) ? <Cutout {...CUTOUTS.gancho} /> : null}
+						{inRange(T.corazon - 0.1, T.rest) ? <Cutout {...CUTOUTS.ubicacion} /> : null}
+						{inRange(T.m450 - 0.1, fin('metros')) ? <Cutout {...CUTOUTS.metros} /> : null}
+						{inRange(T.clinica - 0.1, fin('espacios')) ? <Cutout {...CUTOUTS.espacios} /> : null}
+						{t >= T.vinedoCta - 0.1 ? <Cutout {...CUTOUTS.cta} /> : null}
+					</AbsoluteFill>
+
+					{/* Íconos tipo emoji para clínica, spa y restaurantes */}
+					<Emoji kind="clinica" at={T.clinica} to={T.finRest} x={300} y={1180} />
+					<Emoji kind="spa" at={T.spa} to={T.finRest} x={540} y={1180} />
+					<Emoji kind="restaurante" at={T.restaurantes} to={T.finRest} x={780} y={1180} />
+
+					{/* ---------- Textos delante ---------- */}
+					<Small from={at('gancho', 1.1)} to={T.vinedo} text="LA PRÓXIMA" top={815} size={58} spacing={8} />
+					<Small from={T.vinedo} to={at('gancho', 3.9)} text="en" top={815} size={58} />
+					<Small from={T.negocio} to={fin('gancho')} text="puede ser la de" top={810} size={58} />
+					<Confetti at={T.snip} />
+
+					{/* Dron con IA */}
+					<Small from={T.dron + 0.15} to={T.dronAereo - 0.05} text="CASA COMERCIAL" top={1580} size={50} spacing={12} />
+					<Pill from={T.dronAereo} to={fin('dron')} text="El Viñedo · Valencia" icon={Ico.pin('#E8173A')} top={260} />
+					<Big from={T.dronAereo + 0.1} to={fin('dron')} text="EL VIÑEDO" size={170} top={1520} />
+
+					<Pill from={T.rest} to={fin('ubicacion')} text="Restaurantes" icon={Ico.plato(BLUE)} top={240} />
+					<Pill from={T.comercios} to={fin('ubicacion')} text="Comercios reconocidos" icon={Ico.tienda(BLUE)} top={350} />
+
+					<Big from={T.dosNiveles} to={fin('niveles')} text="2 NIVELES" size={170} top={250} color={BLUE} glow={false} />
+					<Small from={T.dosNiveles + 0.15} to={fin('niveles')} text="planta baja + planta alta" top={440} size={50} color={NAVY} />
+
+					<Flash at={T.ia1} />
+					<Flash at={T.ia2} />
+
+					<Small from={T.m450 + 0.1} to={T.m600} text="DE TERRENO" top={470} size={50} color={NAVY} spacing={8} />
+					<Small from={T.m600 + 0.1} to={T.m2niv} text="DE CONSTRUCCIÓN" top={400} size={50} color={NAVY} spacing={8} />
+					<Small from={T.m14 + 0.1} to={T.m10} text="HABITACIONES" top={250} size={56} color={NAVY} spacing={8} />
+					<Small from={T.m10 + 0.1} to={fin('metros')} text="BAÑOS" top={240} size={56} color={NAVY} spacing={8} />
+
+					<Small from={T.casaMarca - 0.05} to={fin('marca')} text="Tu" top={250} size={56} />
+					<Big from={T.casaMarca} to={fin('marca')} text="CASA DE MARCAS" size={108} top={320} />
+
+					<Small from={T.comenta} to={DURATION} text="Comenta la palabra" top={430} size={56} />
+					<Comment at={T.pill} />
 				</AbsoluteFill>
-
-				{/* Íconos tipo emoji para clínica, spa y restaurantes */}
-				<Emoji kind="clinica" at={T.clinica} to={T.finRest} x={300} y={1180} />
-				<Emoji kind="spa" at={T.spa} to={T.finRest} x={540} y={1180} />
-				<Emoji kind="restaurante" at={T.restaurantes} to={T.finRest} x={780} y={1180} />
-
-				{/* ---------- Textos delante ---------- */}
-				<Small from={at('gancho', 1.1)} to={T.vinedo} text="LA PRÓXIMA" top={815} size={58} spacing={8} />
-				<Small from={T.vinedo} to={at('gancho', 3.9)} text="en" top={815} size={58} />
-				<Small from={T.negocio} to={fin('gancho')} text="puede ser la de" top={810} size={58} />
-				<Confetti at={T.snip} />
-
-				{/* Dron con IA */}
-				<Small from={T.dron + 0.15} to={T.dronAereo - 0.05} text="CASA COMERCIAL" top={1580} size={50} spacing={12} />
-				<Pill from={T.dronAereo} to={fin('dron')} text="El Viñedo · Valencia" icon={Ico.pin('#E8173A')} top={260} />
-				<Big from={T.dronAereo + 0.1} to={fin('dron')} text="EL VIÑEDO" size={170} top={1520} />
-
-				<Pill from={T.rest} to={fin('ubicacion')} text="Restaurantes" icon={Ico.plato(BLUE)} top={240} />
-				<Pill from={T.comercios} to={fin('ubicacion')} text="Comercios reconocidos" icon={Ico.tienda(BLUE)} top={350} />
-
-				<Big from={T.dosNiveles} to={fin('niveles')} text="2 NIVELES" size={170} top={250} color={BLUE} glow={false} />
-				<Small from={T.dosNiveles + 0.15} to={fin('niveles')} text="planta baja + planta alta" top={440} size={50} color={NAVY} />
-
-				<Flash at={T.ia1} />
-				<Flash at={T.ia2} />
-
-				<Small from={T.m450 + 0.1} to={T.m600} text="DE TERRENO" top={470} size={50} color={NAVY} spacing={8} />
-				<Small from={T.m600 + 0.1} to={T.m2niv} text="DE CONSTRUCCIÓN" top={400} size={50} color={NAVY} spacing={8} />
-				<Small from={T.m14 + 0.1} to={T.m10} text="HABITACIONES" top={250} size={56} color={NAVY} spacing={8} />
-				<Small from={T.m10 + 0.1} to={fin('metros')} text="BAÑOS" top={240} size={56} color={NAVY} spacing={8} />
-
-				<Small from={T.casaMarca - 0.05} to={fin('marca')} text="Tu" top={250} size={56} />
-				<Big from={T.casaMarca} to={fin('marca')} text="CASA DE MARCAS" size={108} top={320} />
-
-				<Small from={T.comenta} to={DURATION} text="Comenta la palabra" top={430} size={56} />
-				<Comment at={T.pill} />
-
-				<Captions />
-			</AbsoluteFill>
+			) : null}
+			{ver('subtitulos') ? (
+				<AbsoluteFill style={{opacity: end}}>
+					<Captions />
+				</AbsoluteFill>
+			) : null}
 
 			{/* ---------- Efectos de sonido ---------- */}
-			<Sfx at={T.inaug - 0.06} src="sfx/remotion/whip.wav" volume={0.42} />
-			<Sfx at={T.inaug} src="sfx/impacto.wav" volume={0.38} />
-			<Sfx at={T.vinedo} src="sfx/pop.wav" volume={0.3} />
-			<Sfx at={T.tuNegocio - 0.06} src="sfx/remotion/whip.wav" volume={0.42} />
-			<Sfx at={fin('gancho') - 0.08} src="sfx/whoosh-corto.wav" volume={0.35} />
-			<Sfx at={T.snip - 0.05} src="sfx/remotion/shutter-modern.wav" volume={0.4} />
-			<Sfx at={T.snip} src="sfx/impacto.wav" volume={0.45} />
-			<Sfx at={T.snip + 0.05} src="sfx/sparkle.wav" volume={0.4} />
-			<Sfx at={T.dron - 0.12} src="sfx/whoosh.wav" volume={0.45} />
-			<Sfx at={T.dronAereo} src="sfx/remotion/whip.wav" volume={0.4} />
-			<Sfx at={T.dronAereo + 0.1} src="sfx/remotion/ding.wav" volume={0.32} />
-			<Sfx at={at('corre', 0) - 0.08} src="sfx/whoosh-corto.wav" volume={0.38} />
-			<Sfx at={at('cuentame', 0) - 0.05} src="sfx/swipe.wav" volume={0.32} />
-			<Sfx at={at('pasa', 0) - 0.06} src="sfx/whoosh-corto.wav" volume={0.32} />
-			<Sfx at={at('ubicacion', 0) - 0.06} src="sfx/swipe.wav" volume={0.32} />
-			{BROLL.map(([a, , c]) => (
-				<Sfx key={`b-${c}`} at={a - 0.06} src="sfx/whoosh-corto.wav" volume={0.3} />
-			))}
-			<Sfx at={T.corazon - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
-			<Sfx at={T.corazon} src="sfx/impacto.wav" volume={0.35} />
-			<Sfx at={T.rest} src="sfx/pop.wav" volume={0.3} />
-			<Sfx at={T.comercios} src="sfx/pop.wav" volume={0.3} />
-			<Sfx at={at('niveles', 0) - 0.1} src="sfx/whoosh.wav" volume={0.38} />
-			<Sfx at={T.dosNiveles - 0.05} src="sfx/remotion/whip.wav" volume={0.4} />
-			<Sfx at={T.dosNiveles} src="sfx/ding.wav" volume={0.28} />
-			<Sfx at={T.ia1 - 0.15} src="sfx/whoosh.wav" volume={0.45} />
-			<Sfx at={T.ia1 + 0.3} src="sfx/sparkle.wav" volume={0.38} />
-			<Sfx at={T.ia2 - 0.12} src="sfx/whoosh-corto.wav" volume={0.4} />
-			<Sfx at={T.ia2 + 0.4} src="sfx/sparkle.wav" volume={0.32} />
-			<Sfx at={at('metros', 7.69) - 0.12} src="sfx/whoosh.wav" volume={0.4} />
-			<Sfx at={T.m450 - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
-			<Sfx at={T.m450} src="sfx/impacto.wav" volume={0.4} />
-			<Sfx at={T.m600 - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
-			<Sfx at={T.m600} src="sfx/impacto.wav" volume={0.4} />
-			<Sfx at={T.m2niv - 0.05} src="sfx/remotion/whip.wav" volume={0.38} />
-			<Sfx at={T.m14} src="sfx/pop.wav" volume={0.33} />
-			<Sfx at={T.m14 + 0.03} src="sfx/ding.wav" volume={0.26} />
-			<Sfx at={T.m10} src="sfx/pop.wav" volume={0.33} />
-			<Sfx at={T.m10 + 0.03} src="sfx/ding.wav" volume={0.26} />
-			<Sfx at={at('marca', 0) - 0.08} src="sfx/whoosh-corto.wav" volume={0.36} />
-			<Sfx at={T.casaMarca} src="sfx/sparkle.wav" volume={0.33} />
-			<Sfx at={at('espacios', 2.69) - 0.1} src="sfx/whoosh.wav" volume={0.38} />
-			<Sfx at={T.clinica} src="sfx/pop.wav" volume={0.33} />
-			<Sfx at={T.spa} src="sfx/pop.wav" volume={0.33} />
-			<Sfx at={T.restaurantes} src="sfx/pop.wav" volume={0.33} />
-			<Sfx at={T.alquila - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
-			<Sfx at={T.alquila} src="sfx/impacto.wav" volume={0.38} />
-			<Sfx at={T.porEspacios - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
-			<Sfx at={T.porEspacios} src="sfx/impacto.wav" volume={0.36} />
-			<Sfx at={at('cta', 0.55) - 0.1} src="sfx/whoosh.wav" volume={0.4} />
-			<Sfx at={T.comenta} src="sfx/pop.wav" volume={0.28} />
-			<Sfx at={T.vinedoCta - 0.06} src="sfx/remotion/whip.wav" volume={0.48} />
-			<Sfx at={T.vinedoCta} src="sfx/impacto.wav" volume={0.45} />
-			<Sfx at={T.pill} src="sfx/remotion/snapchat-notification.wav" volume={0.32} />
-			<Sfx at={T.pill + 0.25} src="sfx/teclado-iphone.wav" volume={0.28} />
+			{ver('sfx') ? (
+				<>
+				<Sfx at={T.inaug - 0.06} src="sfx/remotion/whip.wav" volume={0.42} />
+				<Sfx at={T.inaug} src="sfx/impacto.wav" volume={0.38} />
+				<Sfx at={T.vinedo} src="sfx/pop.wav" volume={0.3} />
+				<Sfx at={T.tuNegocio - 0.06} src="sfx/remotion/whip.wav" volume={0.42} />
+				<Sfx at={fin('gancho') - 0.08} src="sfx/whoosh-corto.wav" volume={0.35} />
+				<Sfx at={T.snip - 0.05} src="sfx/remotion/shutter-modern.wav" volume={0.4} />
+				<Sfx at={T.snip} src="sfx/impacto.wav" volume={0.45} />
+				<Sfx at={T.snip + 0.05} src="sfx/sparkle.wav" volume={0.4} />
+				<Sfx at={T.dron - 0.12} src="sfx/whoosh.wav" volume={0.45} />
+				<Sfx at={T.dronAereo} src="sfx/remotion/whip.wav" volume={0.4} />
+				<Sfx at={T.dronAereo + 0.1} src="sfx/remotion/ding.wav" volume={0.32} />
+				<Sfx at={at('corre', 0) - 0.08} src="sfx/whoosh-corto.wav" volume={0.38} />
+				<Sfx at={at('cuentame', 0) - 0.05} src="sfx/swipe.wav" volume={0.32} />
+				<Sfx at={at('pasa', 0) - 0.06} src="sfx/whoosh-corto.wav" volume={0.32} />
+				<Sfx at={at('ubicacion', 0) - 0.06} src="sfx/swipe.wav" volume={0.32} />
+				{BROLL.map(([a, , c]) => (
+					<Sfx key={`b-${c}`} at={a - 0.06} src="sfx/whoosh-corto.wav" volume={0.3} />
+				))}
+				<Sfx at={T.corazon - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
+				<Sfx at={T.corazon} src="sfx/impacto.wav" volume={0.35} />
+				<Sfx at={T.rest} src="sfx/pop.wav" volume={0.3} />
+				<Sfx at={T.comercios} src="sfx/pop.wav" volume={0.3} />
+				<Sfx at={at('niveles', 0) - 0.1} src="sfx/whoosh.wav" volume={0.38} />
+				<Sfx at={T.dosNiveles - 0.05} src="sfx/remotion/whip.wav" volume={0.4} />
+				<Sfx at={T.dosNiveles} src="sfx/ding.wav" volume={0.28} />
+				<Sfx at={T.ia1 - 0.15} src="sfx/whoosh.wav" volume={0.45} />
+				<Sfx at={T.ia1 + 0.3} src="sfx/sparkle.wav" volume={0.38} />
+				<Sfx at={T.ia2 - 0.12} src="sfx/whoosh-corto.wav" volume={0.4} />
+				<Sfx at={T.ia2 + 0.4} src="sfx/sparkle.wav" volume={0.32} />
+				<Sfx at={at('metros', 7.69) - 0.12} src="sfx/whoosh.wav" volume={0.4} />
+				<Sfx at={T.m450 - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
+				<Sfx at={T.m450} src="sfx/impacto.wav" volume={0.4} />
+				<Sfx at={T.m600 - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
+				<Sfx at={T.m600} src="sfx/impacto.wav" volume={0.4} />
+				<Sfx at={T.m2niv - 0.05} src="sfx/remotion/whip.wav" volume={0.38} />
+				<Sfx at={T.m14} src="sfx/pop.wav" volume={0.33} />
+				<Sfx at={T.m14 + 0.03} src="sfx/ding.wav" volume={0.26} />
+				<Sfx at={T.m10} src="sfx/pop.wav" volume={0.33} />
+				<Sfx at={T.m10 + 0.03} src="sfx/ding.wav" volume={0.26} />
+				<Sfx at={at('marca', 0) - 0.08} src="sfx/whoosh-corto.wav" volume={0.36} />
+				<Sfx at={T.casaMarca} src="sfx/sparkle.wav" volume={0.33} />
+				<Sfx at={at('espacios', 2.69) - 0.1} src="sfx/whoosh.wav" volume={0.38} />
+				<Sfx at={T.clinica} src="sfx/pop.wav" volume={0.33} />
+				<Sfx at={T.spa} src="sfx/pop.wav" volume={0.33} />
+				<Sfx at={T.restaurantes} src="sfx/pop.wav" volume={0.33} />
+				<Sfx at={T.alquila - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
+				<Sfx at={T.alquila} src="sfx/impacto.wav" volume={0.38} />
+				<Sfx at={T.porEspacios - 0.05} src="sfx/remotion/whip.wav" volume={0.42} />
+				<Sfx at={T.porEspacios} src="sfx/impacto.wav" volume={0.36} />
+				<Sfx at={at('cta', 0.55) - 0.1} src="sfx/whoosh.wav" volume={0.4} />
+				<Sfx at={T.comenta} src="sfx/pop.wav" volume={0.28} />
+				<Sfx at={T.vinedoCta - 0.06} src="sfx/remotion/whip.wav" volume={0.48} />
+				<Sfx at={T.vinedoCta} src="sfx/impacto.wav" volume={0.45} />
+				<Sfx at={T.pill} src="sfx/remotion/snapchat-notification.wav" volume={0.32} />
+				<Sfx at={T.pill + 0.25} src="sfx/teclado-iphone.wav" volume={0.28} />
+				</>
+			) : null}
 		</AbsoluteFill>
 	);
 };
@@ -675,6 +695,7 @@ export const VinedoComposition: React.FC = () => {
 			fps={FPS}
 			width={1080}
 			height={1920}
+			defaultProps={{capa: 'todo' as Capa}}
 		/>
 	);
 };

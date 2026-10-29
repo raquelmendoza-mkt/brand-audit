@@ -5,7 +5,8 @@ import lista from './fuentes-lista.json';
 // Fuentes alojadas en public/fonts (el render headless no puede pedirlas a Google Fonts).
 // Helvetica es de pago: si el equipo la tiene instalada (Mac) se usa la real;
 // si no, TeX Gyre Heros, su clon libre con el mismo diseño.
-// La biblioteca de Google Fonts (licencia OFL, uso comercial libre) la baja scripts/fuentes.py.
+// La biblioteca de Google Fonts (licencia OFL) y las de Fontshare (ITF FFL: libres para video y
+// publicidad, pero no se suben a git) las baja scripts/fuentes.py.
 export const poppins = 'Poppins';
 export const helvetica = "Helvetica, 'TeX Gyre Heros', Arial, sans-serif";
 
@@ -42,6 +43,12 @@ export const FUENTES = {
 	archivoBlack: fam('Archivo Black', 'Arial Black, sans-serif'),
 	oswald: fam('Oswald', 'Arial Narrow, sans-serif'),
 	spaceGrotesk: fam('Space Grotesk', 'Arial, sans-serif'),
+	// Display moderno de agencia (Fontshare)
+	clash: fam('Clash Display', 'Arial, sans-serif'),
+	cabinet: fam('Cabinet Grotesk', 'Arial, sans-serif'),
+	satoshi: fam('Satoshi', 'Arial, sans-serif'),
+	generalSans: fam('General Sans', 'Arial, sans-serif'),
+	fraunces: fam('Fraunces', 'Georgia, serif'),
 	// Firma
 	greatVibes: fam('Great Vibes', 'cursive'),
 	allura: fam('Allura', 'cursive'),
@@ -66,5 +73,11 @@ export const PARES = {
 	impacto: {titulo: FUENTES.anton, apoyo: FUENTES.inter, firma: FUENTES.greatVibes},
 	// Tech / IA / moderno
 	moderno: {titulo: FUENTES.spaceGrotesk, apoyo: FUENTES.inter, firma: FUENTES.allura},
+	// Agencia premium / marca personal (look de estudio de diseño)
+	agencia: {titulo: FUENTES.clash, apoyo: FUENTES.satoshi, firma: FUENTES.allura},
+	// Anuncio directo / Meta Ads (cifras y ofertas con peso, sin verse barato)
+	anuncio: {titulo: FUENTES.cabinet, apoyo: FUENTES.generalSans, firma: FUENTES.greatVibes},
+	// Editorial cálido (historias, testimonios, propiedades boutique)
+	boutique: {titulo: FUENTES.fraunces, apoyo: FUENTES.generalSans, firma: FUENTES.pinyon},
 } as const;
 export type Estilo = keyof typeof PARES;

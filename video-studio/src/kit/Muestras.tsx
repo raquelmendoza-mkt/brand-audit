@@ -15,20 +15,23 @@ const NOMBRES: Record<Estilo, string> = {
 	dinamico: 'Dinámico (Raquel)',
 	impacto: 'Impacto viral',
 	moderno: 'Moderno / IA',
+	agencia: 'Agencia premium',
+	anuncio: 'Anuncio / Meta Ads',
+	boutique: 'Boutique editorial',
 };
 
 const Lamina: React.FC = () => (
-	<AbsoluteFill style={{background: '#0F1114', padding: '90px 70px', gap: 34, display: 'flex', flexDirection: 'column'}}>
+	<AbsoluteFill style={{background: '#0F1114', padding: '60px 70px', gap: 16, display: 'flex', flexDirection: 'column'}}>
 		<div style={{fontFamily: FUENTES.montserrat, fontWeight: 500, fontSize: 28, letterSpacing: '0.4em', color: '#D9B36A'}}>TIPOGRAFÍAS DEL EDITOR</div>
 		{(Object.keys(PARES) as Estilo[]).map((k) => {
 			const p = PARES[k];
 			return (
-				<div key={k} style={{borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: 22}}>
-					<div style={{fontFamily: FUENTES.montserrat, fontSize: 24, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.55)'}}>{NOMBRES[k].toUpperCase()}</div>
-					<div style={{fontFamily: p.titulo, fontWeight: k === 'impacto' || k === 'dinamico' ? 800 : 500, fontSize: 86, color: '#FFFFFF', lineHeight: 1.1}}>Tu próximo hogar</div>
+				<div key={k} style={{borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: 12}}>
+					<div style={{fontFamily: FUENTES.montserrat, fontSize: 20, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.55)'}}>{NOMBRES[k].toUpperCase()}</div>
+					<div style={{fontFamily: p.titulo, fontWeight: k === 'impacto' || k === 'dinamico' || k === 'anuncio' ? 800 : k === 'agencia' ? 600 : 500, fontSize: 66, color: '#FFFFFF', lineHeight: 1.1}}>Tu próximo hogar</div>
 					<div style={{display: 'flex', alignItems: 'baseline', gap: 26}}>
-						<div style={{fontFamily: p.apoyo, fontSize: 36, color: 'rgba(255,255,255,0.85)'}}>3 habitaciones · 100 m² · $695.000.000</div>
-						<div style={{fontFamily: p.firma, fontSize: 50, color: '#D9B36A'}}>Felipe</div>
+						<div style={{fontFamily: p.apoyo, fontSize: 30, color: 'rgba(255,255,255,0.85)'}}>3 habitaciones · 100 m² · $695.000.000</div>
+						<div style={{fontFamily: p.firma, fontSize: 42, color: '#D9B36A'}}>Felipe</div>
 					</div>
 				</div>
 			);

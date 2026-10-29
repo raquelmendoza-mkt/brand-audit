@@ -14,3 +14,7 @@ input/*
 public/work
 # Efectos generados o descargados por scripts/setup.sh
 public/sfx
+
+# Fontshare (ITF FFL): no se puede redistribuir; scripts/fuentes.py las baja en cada equipo
+public/fonts/fontshare
+__pycache__/

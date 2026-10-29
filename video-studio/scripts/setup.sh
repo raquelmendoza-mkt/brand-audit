@@ -90,8 +90,8 @@ fi
 python3 -c "import pymediainfo,sys; sys.exit(0 if pymediainfo.MediaInfo.can_parse() else 1)" 2>/dev/null || \
 	(command -v apt-get >/dev/null && apt-get install -y -q libmediainfo0v5 >/dev/null 2>&1) || true
 
-# Biblioteca de fuentes (Google Fonts, OFL) en public/fonts
-if [[ ! -f src/fuentes-lista.json ]] || [[ ! -f public/fonts/cormorant-garamond-400.woff2 ]]; then
+# Biblioteca de fuentes: Google Fonts (OFL) en public/fonts y Fontshare (ITF FFL, fuera de git) en public/fonts/fontshare
+if [[ ! -f src/fuentes-lista.json ]] || [[ ! -f public/fonts/cormorant-garamond-400.woff2 ]] || [[ ! -f public/fonts/fontshare/satoshi-400.woff2 ]]; then
 	echo "Descargando fuentes..."
 	python3 -I scripts/fuentes.py >/dev/null
 fi

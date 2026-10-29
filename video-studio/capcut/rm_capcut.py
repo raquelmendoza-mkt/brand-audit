@@ -26,7 +26,7 @@ Formato del plan (tiempos en segundos; textos y nombres de efectos en español, 
      "zoom": 1.1, "x": 0, "y": 0, "entrada": "zoom", "salida": null, "transicion": "fundido",
      "filtro": "limpio", "intensidad_filtro": 60, "fundido_audio": [0.03, 0.04]}
   ],
-  "superpuestos": [ {"archivo": "...", "en": 12.0, "desde": 0, "hasta": 2, "zoom": 1.0} ],  # B-roll encima
+  "superpuestos": [ {"archivo": "...", "en": 12.0, "desde": 0, "hasta": 2, "zoom": 1.0, "x": 0, "y": 0, "pista": "encima"} ],  # B-roll o capa .mov transparente
   "textos": [
     {"texto": "INAUGURACIÓN", "en": 1.1, "hasta": 3.2, "fuente": "poppins", "tam": 14, "color": "#FFFFFF",
      "negrita": true, "x": 0, "y": 0.35, "entrada": "pop", "salida": "desaparecer", "bucle": null,
@@ -219,19 +219,25 @@ def construir(plan, semilla=None, salida='out/capcut'):
         script.add_segment(seg, 'principal')
         t = (rango.start + rango.duration) / SEC
 
-    # --- Tomas encima (B-roll)
+    # --- Tomas encima (B-roll o capas transparentes de Remotion); "pista" las separa y la
+    # primera pista nombrada queda más abajo
+    capas = []
+    for c in plan.get('superpuestos', []):
+        if c.get('pista', 'encima') not in capas:
+            capas.append(c.get('pista', 'encima'))
+            script.add_track(cc.TrackType.video, capas[-1], relative_index=len(capas))
     if plan.get('superpuestos'):
-        script.add_track(cc.TrackType.video, 'encima', relative_index=1)
         for c in plan['superpuestos']:
+            capa = c.get('pista', 'encima')
             mat = cc.VideoMaterial(medio(c['archivo']))
             desde = c.get('desde', 0.0)
             hasta = min(c.get('hasta', mat.duration / SEC), mat.duration / SEC)
-            rango = _hueco('encima', c['en'], hasta - desde)
+            rango = _hueco(capa, c['en'], hasta - desde)
             seg = cc.VideoSegment(mat, rango, source_timerange=cc.Timerange(int(round(desde * SEC)), rango.duration), volume=c.get('volumen', 0.0),
-                                  clip_settings=cc.ClipSettings(scale_x=c.get('zoom', 1.0), scale_y=c.get('zoom', 1.0)))
+                                  clip_settings=cc.ClipSettings(scale_x=c.get('zoom', 1.0), scale_y=c.get('zoom', 1.0), transform_x=c.get('x', 0.0), transform_y=c.get('y', 0.0)))
             if (e := _elegir(cc.IntroType, ENTRADAS_VIDEO, c.get('entrada'), 'Entrada')):
                 seg.add_animation(e)
-            script.add_segment(seg, 'encima')
+            script.add_segment(seg, capa)
 
     # --- Textos (cada uno en su pista para poder superponerlos)
     pistas_creadas = set()

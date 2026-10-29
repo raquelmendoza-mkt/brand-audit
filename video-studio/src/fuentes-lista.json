@@ -390,6 +390,48 @@
   "file": "fonts/space-grotesk-700.woff2"
  },
  {
+  "family": "Fraunces",
+  "weight": "300",
+  "style": "italic",
+  "file": "fonts/fraunces-300-italic.woff2"
+ },
+ {
+  "family": "Fraunces",
+  "weight": "400",
+  "style": "italic",
+  "file": "fonts/fraunces-400-italic.woff2"
+ },
+ {
+  "family": "Fraunces",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/fraunces-300.woff2"
+ },
+ {
+  "family": "Fraunces",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/fraunces-400.woff2"
+ },
+ {
+  "family": "Fraunces",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/fraunces-600.woff2"
+ },
+ {
+  "family": "Fraunces",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/fraunces-700.woff2"
+ },
+ {
+  "family": "Fraunces",
+  "weight": "900",
+  "style": "normal",
+  "file": "fonts/fraunces-900.woff2"
+ },
+ {
   "family": "Great Vibes",
   "weight": "400",
   "style": "normal",
@@ -406,5 +448,161 @@
   "weight": "400",
   "style": "normal",
   "file": "fonts/pinyon-script-400.woff2"
+ },
+ {
+  "family": "Clash Display",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/fontshare/clash-display-400.woff2"
+ },
+ {
+  "family": "Clash Display",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/fontshare/clash-display-500.woff2"
+ },
+ {
+  "family": "Clash Display",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/fontshare/clash-display-600.woff2"
+ },
+ {
+  "family": "Clash Display",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/fontshare/clash-display-700.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-400.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-500.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-700.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "900",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-900.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-300.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-400.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-500.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-700.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "900",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-900.woff2"
+ },
+ {
+  "family": "General Sans",
+  "weight": "300",
+  "style": "normal",
+  "file": "fonts/fontshare/general-sans-300.woff2"
+ },
+ {
+  "family": "General Sans",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/fontshare/general-sans-400.woff2"
+ },
+ {
+  "family": "General Sans",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/fontshare/general-sans-500.woff2"
+ },
+ {
+  "family": "General Sans",
+  "weight": "600",
+  "style": "normal",
+  "file": "fonts/fontshare/general-sans-600.woff2"
+ },
+ {
+  "family": "General Sans",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/fontshare/general-sans-700.woff2"
+ },
+ {
+  "family": "Cabinet Grotesk",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/fontshare/cabinet-grotesk-400.woff2"
+ },
+ {
+  "family": "Cabinet Grotesk",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/fontshare/cabinet-grotesk-500.woff2"
+ },
+ {
+  "family": "Cabinet Grotesk",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/fontshare/cabinet-grotesk-700.woff2"
+ },
+ {
+  "family": "Cabinet Grotesk",
+  "weight": "800",
+  "style": "normal",
+  "file": "fonts/fontshare/cabinet-grotesk-800.woff2"
+ },
+ {
+  "family": "Cabinet Grotesk",
+  "weight": "900",
+  "style": "normal",
+  "file": "fonts/fontshare/cabinet-grotesk-900.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "400",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-400.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "500",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-500.woff2"
+ },
+ {
+  "family": "Satoshi",
+  "weight": "700",
+  "style": "normal",
+  "file": "fonts/fontshare/satoshi-700.woff2"
  }
 ]

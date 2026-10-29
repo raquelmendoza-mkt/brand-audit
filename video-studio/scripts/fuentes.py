@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Descarga la biblioteca de fuentes del editor (Google Fonts, licencia OFL: uso comercial libre).
+"""Descarga la biblioteca de fuentes del editor.
+
+- Google Fonts (licencia OFL, uso comercial libre): public/fonts/, se guardan en git.
+- Fontshare (ITF Free Font License: uso comercial libre en video, redes y publicidad, pero NO
+  se pueden redistribuir ni subir a un repositorio público ni convertir de formato): se bajan
+  tal cual a public/fonts/fontshare/, carpeta fuera de git. Cada equipo las baja con este script.
 
 Uso: python3 -I scripts/fuentes.py            (solo baja las que falten)
      python3 -I scripts/fuentes.py --todas    (vuelve a bajarlas todas)
@@ -39,10 +44,21 @@ FAMILIAS = [
     ('Archivo Black', [400], []),
     ('Oswald', [400, 500, 600, 700], []),
     ('Space Grotesk', [400, 500, 700], []),
+    # Serif display moderna (titulares editoriales con carácter)
+    ('Fraunces', [300, 400, 600, 700, 900], [300, 400]),
     # Firma / manuscrita (nombres de agentes, toques de lujo)
     ('Great Vibes', [400], []),
     ('Allura', [400], []),
     ('Pinyon Script', [400], []),
+]
+
+
+# Fontshare (Indian Type Foundry): (familia en la API, pesos)
+FONTSHARE = [
+    ('clash-display', [400, 500, 600, 700]),
+    ('satoshi', [300, 400, 500, 700, 900]),
+    ('general-sans', [300, 400, 500, 600, 700]),
+    ('cabinet-grotesk', [400, 500, 700, 800, 900]),
 ]
 
 
@@ -77,6 +93,22 @@ for fam, normales, italicas in FAMILIAS:
                 f.write(get(src))
         lista.append({'family': fam, 'weight': peso, 'style': estilo, 'file': f'fonts/{nombre}'})
     print(f'  {fam}: listo')
+
+os.makedirs(os.path.join(OUT, 'fontshare'), exist_ok=True)
+for fam, pesos in FONTSHARE:
+    css = get(f'https://api.fontshare.com/v2/css?f[]={fam}@{",".join(map(str, pesos))}&display=swap').decode()
+    for bloque in re.findall(r'@font-face \{(.*?)\}', css, re.S):
+        nombre_fam = re.search(r"font-family: '([^']+)'", bloque).group(1)
+        peso = re.search(r'font-weight: (\d+)', bloque).group(1)
+        estilo = re.search(r'font-style: (\w+)', bloque).group(1)
+        src = 'https:' + re.search(r"url\('(//[^']+\.woff2)'\)", bloque).group(1)
+        nombre = f'{slug(nombre_fam)}-{peso}{"-italic" if estilo == "italic" else ""}.woff2'
+        destino = os.path.join(OUT, 'fontshare', nombre)
+        if todas or not os.path.exists(destino):
+            with open(destino, 'wb') as f:
+                f.write(get(src))
+        lista.append({'family': nombre_fam, 'weight': peso, 'style': estilo, 'file': f'fonts/fontshare/{nombre}'})
+    print(f'  {fam} (Fontshare): listo')
 
 json.dump(lista, open(LISTA, 'w'), indent=1, ensure_ascii=False)
 print(f'{len(lista)} archivos en public/fonts/ · índice en src/fuentes-lista.json')
