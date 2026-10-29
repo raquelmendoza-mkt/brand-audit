@@ -61,7 +61,12 @@ DF=.models/bin/deep-filter
 if [[ ! -x $DF ]]; then
 	echo "Descargando DeepFilterNet..."
 	mkdir -p .models/bin
-	curl -sSfL -o "$DF" https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/deep-filter-0.5.6-x86_64-unknown-linux-musl && chmod +x "$DF" || rm -f "$DF"
+	case "$(uname -s)-$(uname -m)" in
+		Darwin-arm64) DFB=aarch64-apple-darwin ;;
+		Darwin-x86_64) DFB=x86_64-apple-darwin ;;
+		*) DFB=x86_64-unknown-linux-musl ;;
+	esac
+	curl -sSfL -o "$DF" "https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/deep-filter-0.5.6-$DFB" && chmod +x "$DF" || rm -f "$DF"
 fi
 
 # Chrome reciente para render (las transiciones con shader necesitan Chrome 149+)
@@ -94,6 +99,24 @@ python3 -c "import pymediainfo,sys; sys.exit(0 if pymediainfo.MediaInfo.can_pars
 if [[ ! -f src/fuentes-lista.json ]] || [[ ! -f public/fonts/cormorant-garamond-400.woff2 ]] || [[ ! -f public/fonts/fontshare/satoshi-400.woff2 ]]; then
 	echo "Descargando fuentes..."
 	python3 -I scripts/fuentes.py >/dev/null
+fi
+
+# Herramientas de análisis en un entorno aislado (.venv-ia, no toca el Python del sistema):
+# faster-whisper (transcripción + detección de voz Silero), PySceneDetect, OpenCV, librosa, pyCapCut
+PAQ="faster-whisper==1.2.1 scenedetect==0.7.2 opencv-python-headless librosa==1.0.0 soundfile==0.14.0 pillow numpy pycapcut==0.0.4 pymediainfo"
+if ! .venv-ia/bin/python -c "import faster_whisper, scenedetect, cv2, librosa, pycapcut" 2>/dev/null; then
+	echo "Instalando herramientas de análisis (.venv-ia)..."
+	if command -v uv >/dev/null; then
+		uv venv -q .venv-ia && VIRTUAL_ENV=.venv-ia uv pip install -q $PAQ
+	else
+		python3 -m venv .venv-ia && .venv-ia/bin/pip install -q $PAQ
+	fi
+fi
+# Whisper large-v3-turbo para faster-whisper (1.6 GB; mucho más preciso en español que small)
+if [[ ! -d .models/hf/hub/models--mobiuslabsgmbh--faster-whisper-large-v3-turbo ]]; then
+	echo "Descargando Whisper turbo (1.6 GB)..."
+	HF_HOME=.models/hf .venv-ia/bin/python -c "from huggingface_hub import snapshot_download; snapshot_download('mobiuslabsgmbh/faster-whisper-large-v3-turbo')" >/dev/null 2>&1 \
+		|| echo "  No se pudo (Hugging Face bloqueado): usa scripts/transcribe.mjs o flujo_auto.py --modelo small"
 fi
 
 echo "Estudio listo."

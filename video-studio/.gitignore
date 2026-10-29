@@ -18,3 +18,5 @@ public/sfx
 # Fontshare (ITF FFL): no se puede redistribuir; scripts/fuentes.py las baja en cada equipo
 public/fonts/fontshare
 __pycache__/
+# Entorno de Python de las herramientas de análisis (scripts/setup.sh)
+.venv-ia

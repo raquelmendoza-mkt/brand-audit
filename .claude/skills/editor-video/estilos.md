@@ -80,6 +80,30 @@ Para: tiendas como Detallitos Dyan, cosmética, ropa.
 - Sonido: `tic`, `tecla`, `swipe`, `riser`, `glitch`. Animaciones de interfaz (tarjetas, cursores, checks).
 - Íconos: `neon`. Subtítulos: `neon` o `minimal`. Transiciones: `glitch`, `zoomCruzado`. Usa `Celular` y `Notificacion`.
 
+## agencia — Marca personal premium / estudio creativo
+Para: Raquel como marca (RM Marketing IA), lanzamientos de cursos, testimonios de clientes.
+- Fuentes: **Clash Display 600** (titulares, poco texto, tamaño grande) + **Satoshi 400-500** (apoyo
+  y subtítulos). Fontshare: se bajan con `scripts/fuentes.py` (no van a git).
+- Colores: crema `#F4EFE6`, negro `#0E0E10`, un acento (morado RM `#7B6FE8`).
+- Ritmo: medio (2-3 s), entradas `mascara` y `letras`, cortes con `zoomCruzado`.
+- Sonido: `aire`, `tic`, `reveal`; música elegante baja o afro house suave.
+- Subtítulos: `minimal` o `caja`. Íconos: `IconoDibujado` o `solido`.
+
+## anuncio — Meta Ads / publicidad directa
+Para: anuncios de 15-30 s con oferta, beneficio y llamada a la acción clara.
+- Fuentes: **Cabinet Grotesk 800** (titular y cifras) + **General Sans 500** (apoyo). General Sans
+  no trae "²": escribe "m2" o usa Satoshi para esa línea.
+- Estructura: gancho 0-3 s (problema o resultado) → 2-3 beneficios con cifras → prueba (testimonio,
+  antes/después) → oferta → CTA con botón y texto en pantalla durante 3 s.
+- Ritmo rápido; texto siempre dentro de la zona segura; subtítulos `caja` (se leen sin sonido).
+- Sonido: `whoosh`, `pop`, `ding` en cifras, `riser` antes de la oferta.
+
+## boutique — Editorial cálido
+Para: propiedades boutique, historias, testimonios largos, gastronomía.
+- Fuentes: **Fraunces 400-600** (titulares, cursiva 300-400 para acentos) + **General Sans 400**.
+- Colores: arena `#E9DFD0`, terracota `#B4643C`, verde oliva `#5E6B4E`.
+- Ritmo lento (3-4 s), `acabado.sh color calido`, `<Grano intensidad={0.06} />`, transiciones `fundido`.
+
 ---
 
 ## Colorimetría (FFmpeg, antes de Remotion)

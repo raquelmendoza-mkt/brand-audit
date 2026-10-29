@@ -47,6 +47,23 @@ estructura exacta de su versión. Windows: `C:\Users\<usuario>\AppData\Local\Cap
 4. Ejemplo completo: `python3 capcut/desde_vinedo.py --semilla ...` exporta el reel de El Viñedo
    (piezas sin silencios, voz limpia, subtítulos, títulos, música y efectos) desde la versión Remotion.
 
+## Por capas: idéntico a Remotion (`capcut/capas_vinedo.py`)
+Probado aquí: la vista previa de las capas coincide con el render normal (PSNR ~40 dB, la diferencia
+es solo la compresión H.264). Falta confirmar en el CapCut de Raquel que lee la transparencia.
+1. La composición recibe la prop `capa`: `fondo` (video + B-roll con sus zooms), `graficos`
+   (títulos, íconos, persona recortada, sobre transparente), `subtitulos`, `sfx` (solo efectos).
+   Ver `src/Vinedo.tsx` (`ver('fondo')`, etc.).
+2. Capas transparentes: `--codec=prores --prores-profile=4444 --pixel-format=yuva444p10le
+   --image-format=png`, y luego `prores_ks -qscale:v 9` (la mitad del peso, visualmente igual).
+   Subtítulos recortados a su franja (1080x280) y colocados con `y` en CapCut. HEVC con alfa no
+   sale de este FFmpeg; WebM con alfa no es seguro en CapCut Mac.
+3. Pistas: `principal` = fondo cortado en las mismas piezas (se pueden borrar o recortar),
+   `graficos-remotion`, `subtitulos-remotion` (bórrala si prefieres los subtítulos automáticos de
+   CapCut), y audio `voz`, `musica`, `sfx` con la mezcla del reel (-14 LUFS).
+4. Peso: ~130 MB por 27 s (ProRes). Más de 95 MB → `split -b 90m` en `entregas/` y en la Mac
+   `cat parte* > proyecto.zip`.
+5. Límite: si mueves un corte del fondo, los gráficos no lo siguen.
+
 ## Medios y tamaño
 - Usa clips 1080x1920 30 fps con la voz YA limpia (DeepFilterNet), H.264 CRF 20-21, música en M4A:
   un reel de 70 s queda en ~60 MB. Clips completos (no solo el tramo) para poder alargar en CapCut.

@@ -17,13 +17,18 @@ Archivos de esta skill (léelos cuando apliquen):
   persona, sincronía labios-voz, room tour con Higgsfield Omni, Drive, entregas pesadas.
 - `checklist.md` — control de calidad obligatorio antes de entregar.
 - `capcut.md` — conector con CapCut: convierte una edición en un PROYECTO DE CAPCUT editable
-  (pista por pista) que Raquel abre en su CapCut de Mac, retoca y exporta.
+  (pista por pista, o por capas idénticas a Remotion) que Raquel abre en su CapCut de Mac.
+
+Skills especializadas (usan esta como base): `reels-virales`, `inmobiliario-premium`,
+`marca-personal`, `publicidad-meta-ads`, `capcut-project-builder`, `control-calidad-audiovisual`.
+Manual para Raquel: `video-studio/MANUAL_EDITOR_IA_CLAUDE.md`.
 
 ## 0. Preparación (cada sesión nueva)
 
 `bash video-studio/scripts/setup.sh` — instala lo que falte: dependencias, Whisper, efectos de sonido,
 MediaPipe (recorte y caras), DeepFilterNet (limpieza de voz), Chrome reciente (transiciones con
-shader), emojis 3D y la biblioteca de fuentes.
+shader), emojis 3D, la biblioteca de fuentes (Google + Fontshare) y el entorno `.venv-ia`
+(faster-whisper large-v3-turbo, PySceneDetect, OpenCV, librosa, pyCapCut).
 Entorno en la nube: `remotion.config.ts` usa el Chromium preinstalado; Hugging Face y remotion.media
 pueden estar bloqueados (Whisper sale del paquete npm `sts-whisper-small`). Renders de prueba: no más
 de 3 `remotion still` en paralelo (más agotan la memoria).
@@ -47,6 +52,12 @@ de 3 `remotion still` en paralelo (más agotan la memoria).
 
 ## 2. Elige la herramienta
 
+- **Pedido completo en una frase** ("edita este video como reel inmobiliario de 35 s, con
+  subtítulos, música y entrégamelo en CapCut") → `.venv-ia/bin/python scripts/flujo_auto.py
+  input/a.mov [input/b.mov] --nombre X --estilo viral|inmobiliario|marca|anuncio --gancho "..."
+  --cta "..." --dur 35 [--corregir "Stephanie=Stefany"]`: analiza, limpia la voz, transcribe,
+  quita silencios, monta, renderiza, crea el proyecto de CapCut y mide la calidad
+  (`out/entregas/X/informe.md`). Revisa los fotogramas `revisar-*.jpg` y la transcripción antes de entregar.
 - **Reel hablado a cámara** → `npm run reel -- input/x.mp4 --hook "..." --cta "..." [...]` (rápido) o,
   para un trabajo fino guiado por guión, la receta "voz limpia + piezas" de `flujos.md` (Viñedo).
   Si no hay gancho/CTA, propón uno con la skill `remi-ai` (Método CLAVE, hooks) o pregunta.
@@ -65,9 +76,10 @@ de 3 `remotion still` en paralelo (más agotan la memoria).
   `escalar` (720p de IA → 1080 nítido), `estabilizar`, `lenta` (cámara lenta interpolada), `grano`,
   `rampa` (speed ramp), `limpiar-voz`, `normalizar` (-14 LUFS, 2 pasadas), `entregar` (tamaño justo + preview), `revisar`.
 - **Proyecto editable en CapCut** (Raquel quiere retocar ella, o el cliente edita en CapCut) →
-  `python3 capcut/rm_capcut.py construir plan.json --semilla input/capcut/semilla.zip` (ver `capcut.md`;
-  ejemplo completo en `capcut/desde_vinedo.py`). Lo propio de Remotion (texto detrás de la persona,
-  kit, shaders) no pasa como animación a CapCut: avísalo.
+  skill `capcut-project-builder`. **Por capas** (se ve idéntico a Remotion: fondo + gráficos
+  transparentes + audio por pistas) con `capcut/capas_vinedo.py` como plantilla, o **nativo**
+  con `python3 capcut/rm_capcut.py construir plan.json --semilla input/capcut/semilla.zip`
+  (ejemplo `capcut/desde_vinedo.py`). Lo de Remotion no se edita por dentro en CapCut: avísalo.
 - **Operaciones sueltas** → `npm run ff -- <comando>` (cortar, vertical, unir, subtítulos SRT, logo, gif...).
 - **Música original** (libre de derechos): `scripts/electro.py` (electro/afro house rápido, `--drops`
   en los segundos clave), `scripts/afrohouse.py` (`--estilo afro|elegante`), `scripts/musica.py`.
