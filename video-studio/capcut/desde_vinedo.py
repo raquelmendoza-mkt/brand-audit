@@ -131,6 +131,26 @@ for a in audio:
     if k in vistos:
         a['en'] = round(a['en'] + 0.31, 2)
     vistos[(a.get('pista'), a['en'])] = 1
+# --hasta S: versión corta de prueba (cortes, títulos, subtítulos y audio hasta S segundos)
+if '--hasta' in sys.argv:
+    H = float(sys.argv[sys.argv.index('--hasta') + 1])
+    plan['nombre'] = f'RM - Prueba Vinedo {int(H)}s'
+    plan['video'] = [v for v in plan['video'] if v['en'] < H - 0.05]
+    plan['textos'] = [dict(t, hasta=min(t['hasta'], H)) for t in plan['textos'] if t['en'] < H - 0.2]
+    plan['audio'] = [dict(a, hasta=min(a['hasta'], H)) if 'hasta' in a else a for a in plan['audio'] if a['en'] < H - 0.1]
+    plan['efectos'] = [e for e in plan['efectos'] if e['en'] < H]
+    bloques = open(srt, encoding='utf-8').read().strip().split('\n\n')
+    corto = os.path.join(MED, f'subtitulos-{int(H)}s.srt')
+    with open(corto, 'w', encoding='utf-8') as f:
+        n = 0
+        for b in bloques:
+            ln = b.split('\n')
+            ini = ln[1].split(' --> ')[0]
+            seg = int(ini[:2]) * 3600 + int(ini[3:5]) * 60 + int(ini[6:8]) + int(ini[9:]) / 1000
+            if seg < H - 0.2:
+                n += 1
+                f.write(f"{n}\n" + '\n'.join(ln[1:]) + '\n\n')
+    plan['subtitulos']['srt'] = corto
 json.dump(plan, open('out/capcut/plan-vinedo.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 semilla = sys.argv[sys.argv.index('--semilla') + 1] if '--semilla' in sys.argv else None
 d, z, datos = rm_capcut.construir(plan, semilla)

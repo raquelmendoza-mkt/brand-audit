@@ -317,19 +317,59 @@ def construir(plan, semilla=None, salida='out/capcut'):
     if base_sem is not None:
         conservar = {'new_version', 'version', 'platform', 'last_modified_platform', 'id', 'create_time', 'path'}
         for k, v in datos.items():
-            if k not in conservar:
+            if k in conservar:
+                continue
+            if k == 'materials' and isinstance(base_sem.get(k), dict):
+                # Todas las categorías que conoce SU CapCut quedan (vacías) y se llenan con las nuestras
+                mats = {kk: ([] if isinstance(vv, list) else vv) for kk, vv in base_sem[k].items()}
+                mats.update(v)
+                base_sem[k] = mats
+            elif k in ('config', 'canvas_config') and isinstance(base_sem.get(k), dict) and isinstance(v, dict):
+                base_sem[k].update(v)
+            else:
                 base_sem[k] = v
         timelines = [d for d in glob.glob(os.path.join(destino, 'Timelines', '*')) if os.path.isdir(d)]
         if len(timelines) == 1:
-            base_sem['id'] = os.path.basename(timelines[0])
+            # Identificadores NUEVOS (no los de la semilla) para que CapCut no confunda los proyectos
+            viejo = os.path.basename(timelines[0])
+            nuevo = str(uuid.uuid4()).upper()
+            os.rename(timelines[0], os.path.join(destino, 'Timelines', nuevo))
+            for rel in ('Timelines/project.json', 'timeline_layout.json'):
+                ruta = os.path.join(destino, rel)
+                if os.path.exists(ruta):
+                    txt = open(ruta, encoding='utf-8').read().replace(viejo, nuevo)
+                    if rel == 'Timelines/project.json':
+                        pj = json.loads(txt)
+                        pj['id'] = str(uuid.uuid4()).upper()
+                        ahora_us = int(time.time() * 1_000_000)
+                        pj['create_time'] = pj['update_time'] = ahora_us
+                        for tl in pj.get('timelines', []):
+                            tl['create_time'] = tl['update_time'] = ahora_us
+                        txt = json.dumps(pj, ensure_ascii=False)
+                    open(ruta, 'w', encoding='utf-8').write(txt)
+            base_sem['id'] = nuevo
         datos = base_sem
     texto = json.dumps(datos, ensure_ascii=False)
-    # Windows lee draft_content.json; Mac lee draft_info.json; CapCut 8.7+ además Timelines/<id>/draft_info.json
-    for objetivo in ['draft_content.json', 'draft_info.json'] + [os.path.relpath(p, destino) for p in glob.glob(os.path.join(destino, 'Timelines', '*', 'draft_info.json'))]:
+    # Windows lee draft_content.json; Mac lee draft_info.json; CapCut 8.7+ además Timelines/<id>/draft_info.json.
+    # Con semilla se escriben solo los archivos que SU versión usa.
+    raiz_json = ['draft_info.json'] if base_sem is not None else ['draft_content.json', 'draft_info.json']
+    for objetivo in raiz_json + [os.path.relpath(p, destino) for p in glob.glob(os.path.join(destino, 'Timelines', '*', 'draft_info.json'))]:
         with open(os.path.join(destino, objetivo), 'w', encoding='utf-8') as f:
             f.write(texto)
     for bak in glob.glob(os.path.join(destino, '**', '*.bak'), recursive=True):
         os.remove(bak)
+    if sem_dir:
+        # Limpieza de restos de la semilla: portada vieja y registro de sus medios
+        for cov in glob.glob(os.path.join(destino, '**', 'draft_cover.jpg'), recursive=True):
+            os.remove(cov)
+        kv = os.path.join(destino, 'key_value.json')
+        if os.path.exists(kv):
+            json.dump({}, open(kv, 'w'))
+        for grupo in meta.get('draft_materials', []):
+            if isinstance(grupo, dict) and isinstance(grupo.get('value'), list):
+                grupo['value'] = []
+        meta['draft_materials_copied_info'] = []
+        meta['draft_cover'] = ''
 
     ahora = int(time.time() * 1_000_000)
     meta.update({
