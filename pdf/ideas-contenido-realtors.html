@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RM Marketing · Ideas de contenido para Realtors</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0A0A0B; --paper: #FFFFFF; --mist: #F7F6FA; --line: #E8E6EE;
+  --muted: #5D5B66; --soft: #8C8A96;
+  --purple: #6C47FF; --purple-tint: #F2EEFF; --purple-on-dark: #A992FF;
+  --font: 'Poppins', system-ui, sans-serif; --serif: 'Playfair Display', Georgia, serif;
+}
+@page { size: Letter; margin: 0; }
+html, body { font-family: var(--font); color: var(--ink); background: var(--paper); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; padding: 0.7in 0.75in 0.6in; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; }
+.dark { background: var(--ink); color: #fff; }
+
+.logo { font-weight: 600; font-size: 17px; letter-spacing: -0.03em; display: inline-flex; align-items: center; }
+.logo .l { font-weight: 300; margin-left: 5px; }
+.logo .d { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); margin-left: 3px; transform: translateY(5px); }
+.topbar { display: flex; justify-content: space-between; align-items: center; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); }
+.dark .topbar { color: rgba(255,255,255,.5); }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10.5px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.eyebrow::before { content: ""; width: 18px; height: 1.5px; background: var(--purple); }
+.dark .eyebrow { color: rgba(255,255,255,.6); }
+.dark .eyebrow::before { background: var(--purple-on-dark); }
+.serif { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: -0.02em; }
+.accent { color: var(--purple); }
+.dark .accent { color: var(--purple-on-dark); }
+
+/* Portada */
+.cover-body { margin-top: auto; }
+.cover h1 { font-size: 64px; font-weight: 600; letter-spacing: -0.04em; line-height: 1.02; margin: 22px 0 22px; }
+.cover .lead { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,.66); max-width: 460px; }
+.glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; right: -180px; top: -160px; background: radial-gradient(circle, rgba(108,71,255,.55), rgba(108,71,255,0) 65%); }
+.mix { margin-top: 56px; }
+.mix-bar { display: flex; height: 12px; border-radius: 999px; overflow: hidden; gap: 3px; }
+.mix-bar span { display: block; }
+.mix-legend { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 3px; margin-top: 16px; }
+.mix-legend div { font-size: 11px; color: rgba(255,255,255,.6); line-height: 1.5; }
+.mix-legend b { display: block; color: #fff; font-weight: 600; font-size: 13px; letter-spacing: -0.01em; }
+.mix-legend .pct { color: var(--purple-on-dark); font-weight: 500; }
+.cover-foot { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; font-size: 10.5px; color: rgba(255,255,255,.45); letter-spacing: .04em; }
+
+/* Etapas */
+.stage-head { margin-top: 34px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.stage-head h2 { font-size: 42px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; margin-top: 14px; }
+.badge { flex-shrink: 0; text-align: right; }
+.badge .n { font-size: 54px; font-weight: 600; letter-spacing: -0.05em; line-height: 1; color: var(--purple); }
+.badge .t { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--soft); margin-top: 4px; }
+.desc { margin-top: 18px; padding: 16px 20px; background: var(--mist); border-radius: 16px; font-size: 12.5px; line-height: 1.6; color: var(--muted); display: flex; gap: 14px; align-items: flex-start; }
+.desc strong { color: var(--ink); font-weight: 600; }
+.desc .ico { width: 28px; height: 28px; border-radius: 9px; background: var(--purple-tint); color: var(--purple); flex-shrink: 0; display: grid; place-items: center; font-weight: 600; font-size: 13px; }
+
+.ideas { list-style: none; margin-top: 26px; counter-reset: i; }
+.ideas li { counter-increment: i; display: grid; grid-template-columns: 44px 1fr; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--line); font-size: 18px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.4; }
+.ideas li::before { content: counter(i, decimal-leading-zero); font-size: 12px; font-weight: 600; color: var(--purple); letter-spacing: .02em; }
+.ideas.compact li { padding: 15px 0; font-size: 15.5px; }
+.ideas.grid2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; }
+
+.note { margin-top: 28px; background: var(--ink); color: #fff; border-radius: 20px; padding: 24px 26px; position: relative; overflow: hidden; }
+.note .eyebrow { color: rgba(255,255,255,.6); }
+.note .eyebrow::before { background: var(--purple-on-dark); }
+.note p { margin-top: 12px; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,.78); }
+.note p strong { color: #fff; font-weight: 600; }
+.note::after { content: ""; position: absolute; right: -80px; bottom: -120px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(108,71,255,.5), rgba(108,71,255,0) 65%); }
+.tag { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--purple); background: var(--purple-tint); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: 2px; }
+
+.foot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 10px; color: var(--soft); letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<section class="page dark cover">
+  <div class="glow"></div>
+  <div class="topbar">
+    <span class="logo" style="color:#fff">RM<span class="l">Marketing</span><span class="d"></span></span>
+    <span>Guía de contenido · Realtors</span>
+  </div>
+  <div class="cover-body">
+    <span class="eyebrow">Estrategia de contenido</span>
+    <h1>Ideas de contenido<br>para <span class="serif accent">Realtors</span></h1>
+    <p class="lead">Temas listos para grabar, organizados por etapa del embudo: atraer, generar confianza y convertir. Usa la proporción para equilibrar tu calendario.</p>
+    <div class="mix">
+      <div class="mix-bar">
+        <span style="flex:2;background:#A992FF"></span>
+        <span style="flex:2;background:#6C47FF"></span>
+        <span style="flex:1;background:#fff"></span>
+      </div>
+      <div class="mix-legend">
+        <div><b>TOFU · Atraer</b><span class="pct">40%</span> del contenido</div>
+        <div><b>MOFU · Confianza</b><span class="pct">40%</span> del contenido</div>
+        <div><b>BOFU · Convertir</b><span class="pct">20%</span> del contenido</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-foot"><span>RM Marketing · Marketing inmobiliario con IA</span><span>01</span></div>
+</section>
+
+<!-- TOFU -->
+<section class="page">
+  <div class="topbar"><span class="logo">RM<span class="l">Marketing</span><span class="d"></span></span><span>Etapa 1 de 3</span></div>
+  <div class="stage-head">
+    <div>
+      <span class="eyebrow">TOFU · Top of funnel</span>
+      <h2>Para <span class="serif accent">atraer</span></h2>
+    </div>
+    <div class="badge"><div class="n">40%</div><div class="t">del contenido</div></div>
+  </div>
+  <div class="desc"><span class="ico">↗</span><div><strong>Reels de alcance, comparaciones, preguntas polémicas y curiosidades.</strong> Aquí atraes nuevos clientes.</div></div>
+  <ol class="ideas">
+    <li>¿Qué es mejor: comprar una casa nueva o usada?</li>
+    <li>¿Vivir en apartamento o en casa? ¿Qué elegirías?</li>
+    <li>¿Cuáles son las ciudades más atractivas para vivir en XXXX?</li>
+    <li>¿Comprar casa antes de los 30 es una buena decisión?</li>
+    <li>¿Por qué una casa barata puede terminar saliéndote muy cara?</li>
+    <li>¿Tener un buen salario significa que puedes comprar cualquier casa?</li>
+  </ol>
+  <div class="foot"><span>RM Marketing · Ideas de contenido para Realtors</span><span>02</span></div>
+</section>
+
+<!-- MOFU -->
+<section class="page">
+  <div class="topbar"><span class="logo">RM<span class="l">Marketing</span><span class="d"></span></span><span>Etapa 2 de 3</span></div>
+  <div class="stage-head">
+    <div>
+      <span class="eyebrow">MOFU · Middle of funnel</span>
+      <h2>Para generar <span class="serif accent">confianza</span></h2>
+    </div>
+    <div class="badge"><div class="n">40%</div><div class="t">del contenido</div></div>
+  </div>
+  <div class="desc"><span class="ico">✓</span><div><strong>Carruseles educativos, tutoriales, análisis y casos reales.</strong> Aquí demuestras que sabes y que pueden confiar en ti.</div></div>
+  <ol class="ideas compact">
+    <li>¿Qué documentos necesitas para comprar una vivienda?</li>
+    <li>¿Cómo saber si una propiedad está a un precio justo?</li>
+    <li>¿Qué gastos adicionales debes considerar antes de comprar?</li>
+    <li>¿Cómo identificar una buena oportunidad de inversión inmobiliaria?</li>
+    <li>¿Qué debes revisar antes de firmar un contrato de compraventa?</li>
+    <li>¿Cómo saber si una propiedad aumentará su valor con el tiempo?</li>
+    <li>¿Qué preguntas debes hacer antes de visitar una propiedad?</li>
+    <li>¿Cómo elegir la ubicación ideal para comprar una vivienda?</li>
+    <li>¿Qué errores debes evitar al vender tu propiedad?</li>
+    <li>¿Cómo preparar tu vivienda para venderla más rápido?</li>
+    <li>¿Qué factores influyen en el precio de una propiedad?</li>
+  </ol>
+  <div class="foot"><span>RM Marketing · Ideas de contenido para Realtors</span><span>03</span></div>
+</section>
+
+<!-- BOFU -->
+<section class="page">
+  <div class="topbar"><span class="logo">RM<span class="l">Marketing</span><span class="d"></span></span><span>Etapa 3 de 3</span></div>
+  <div class="stage-head">
+    <div>
+      <span class="eyebrow">BOFU · Bottom of funnel</span>
+      <h2>Para <span class="serif accent">convertir</span></h2>
+    </div>
+    <div class="badge"><div class="n">20%</div><div class="t">del contenido</div></div>
+  </div>
+  <div class="desc"><span class="ico">★</span><div><strong>Propiedades, testimonios, oportunidades y llamados a agendar citas.</strong> Aquí conviertes seguidores en clientes.</div></div>
+  <ol class="ideas">
+    <li><span>Así fue como vendí la propiedad de mi clienta en 20 días.<span class="tag">Storytime</span></span></li>
+    <li><span>Casos de éxito.<span class="tag">Testimonio</span></span></li>
+    <li><span>Por tan solo $XXXXX esta propiedad puede ser tuya.<span class="tag">Room tour</span></span></li>
+  </ol>
+  <div class="note">
+    <span class="eyebrow">Nota importante</span>
+    <p>En los <strong>room tours</strong>, coloca el <strong>precio de la propiedad al inicio del video</strong>. Así filtras a tu cliente desde el primer segundo y no pierdes tiempo.</p>
+  </div>
+  <div class="foot"><span>RM Marketing · Ideas de contenido para Realtors</span><span>04</span></div>
+</section>
+
+</body>
+</html>
