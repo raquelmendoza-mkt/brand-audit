@@ -662,7 +662,7 @@ export const FunnelComponent: React.FC = () => {
 				<Detras from={at('ejemplo', 11.74)} to={fin('ejemplo')} lineas={['¿COMPRAR', 'O ALQUILAR?']} top={290} size={108} colores={['#FFFFFF', ROJO]} paso={0.62} />
 				<Detras from={ini('zonas2') - 0.05} to={fin('zonas2')} lineas={['ZONAS']} top={330} size={190} />
 				<Detras from={ini('documentos')} to={fin('documentos')} lineas={['DOCUMENTOS']} top={340} size={120} />
-				<Detras from={ini('catalogo')} to={fin('catalogo')} lineas={['PERFIL', 'CATÁLOGO']} top={290} size={112} colores={['#FFFFFF', ROJO]} paso={0.3} />
+				<Detras from={ini('catalogo')} to={fin('catalogo')} lineas={['CATÁLOGO']} top={292} size={150} colores={[ROJO]} />
 				<Detras from={ini('resultados')} to={fin('resultados')} lineas={['RESULTADOS', 'REALES']} top={300} size={124} colores={['#FFFFFF', ROJO]} paso={0.45} />
 				<Detras from={ini('clientes')} to={fin('clientes')} lineas={['CLIENTES']} top={350} size={160} colores={[ROJO]} />
 
@@ -676,6 +676,7 @@ export const FunnelComponent: React.FC = () => {
 				<Ante from={H(1.9)} to={fin('hook')} texto="PARA ASESORES INMOBILIARIOS" top={250} icono={<L.House size={34} color="#FFFFFF" strokeWidth={1.8} />} />
 				<Ante from={ini('ejemplo')} to={fin('ejemplo')} texto="EJEMPLO DE GANCHO" top={248} />
 				<Ante from={ini('zonas')} to={fin('zonas2')} texto="MOFU · EDUCA" top={250} />
+				<Ante from={ini('catalogo')} to={fin('catalogo')} texto="NO HAGAS UN PERFIL" top={250} />
 				<Placa from={ini('zonas2') + 0.1} to={fin('zonas2')} x={880} y={760} Ic={L.MapPin} texto="PARA COMPRAR" />
 				<Placa from={ini('documentos') + 0.3} to={fin('documentos')} x={880} y={780} Ic={L.FileText} texto="COMPRA · VENTA" />
 				<Placa from={ini('catalogo') + 0.35} to={fin('catalogo')} x={880} y={780} Ic={L.X} texto="NO LO HAGAS" />
