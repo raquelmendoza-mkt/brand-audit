@@ -25,11 +25,12 @@ DF = '.models/bin/deep-filter'
 PIEZAS = [
     ('hook', 'M', 0.22, 3.34, 'TOFU, MOFU y BOFU para asesores inmobiliarios.'),
     ('tofu', 'M', 3.40, 7.62, 'TOFU, que es el top of the funnel, aquí es donde tú vas a hacer el ángulo de atracción,'),
-    ('ejemplo', 'M', 10.66, 13.84, 'como por ejemplo, ¿qué es mejor, comprar o alquilar?'),
+    ('ejemplo', 'M', 11.72, 13.84, '¿qué es mejor, comprar o alquilar?'),
+    ('g29', 'G29', 0.0, 3.05, '(gancho: Christian Villar, con estadísticas)'),
     ('g28', 'G28', 0.0, 1.76, '(gancho: ¿Qué conviene más, comprar o rentar?)'),
     ('g27', 'G27', 0.36, 2.40, '(gancho: ¿Qué es mejor? ¿Comprar una casa o alquilarla?)'),
-    ('g29', 'G29', 0.0, 3.05, '(gancho: Christian Villar, con estadísticas)'),
-    ('tendencias', 'M', 15.82, 19.06, 'Te puedes unir a tendencias también para llegar a muchas más personas.'),
+    ('tendencias', 'M', 15.82, 18.04, 'Te puedes unir a tendencias también para llegar a'),
+    ('tendencias2', 'M', 18.40, 19.06, 'más personas.'),  # sin "muchas" (corte en la micropausa)
     ('mofu', 'M', 22.87, 23.64, 'Middle of the funnel:'),
     ('confianza', 'M', 26.79, 28.86, 'tú estás educando, estás emitiendo confianza.'),
     ('zonas', 'M', 32.03, 33.27, 'Aquí tú puedes hablar sobre'),
@@ -42,8 +43,6 @@ PIEZAS = [
     ('testimonios', 'M', 72.40, 74.26, 'vas a subir testimonios de tus clientes.'),
     ('roomtour', 'N', 0.0, 6.96, 'Y en el BOFU también es importante que puedas incluir room tours inmobiliarios, las captaciones que tienes actualmente, pero siempre saliendo detrás de cámara.'),
     ('catalogo', 'N', 7.02, 8.36, 'No hagas un perfil catálogo.'),
-    ('resultados', 'M', 85.30, 87.44, 'Cuando muestras resultados reales, esas personas'),
-    ('clientes', 'M', 89.62, 91.06, 'terminan siendo clientes.'),
     ('importante', 'M', 112.93, 115.58, 'Es muy importante siempre utilizar TOFU, MOFU y BOFU'),
     ('vender', 'M', 116.45, 118.75, 'para vender y captar más.'),
 ]

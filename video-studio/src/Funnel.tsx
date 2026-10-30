@@ -38,11 +38,12 @@ const at = (id: string, s: number) => pieza(id).t + (s - pieza(id).a);
 // mitad de una: piezas seguidas con el mismo encuadre se ven como una sola toma.
 type Encuadre = 'ancho' | 'medio' | 'cerca' | 'split' | 'gancho';
 const ENCUADRE: Record<string, Encuadre> = {
-	hook: 'ancho', tofu: 'split', ejemplo: 'cerca', g28: 'gancho', g27: 'gancho', g29: 'gancho', tendencias: 'split',
+	hook: 'ancho', tofu: 'split', ejemplo: 'cerca', g29: 'gancho', g28: 'gancho', g27: 'gancho', tendencias: 'split', tendencias2: 'split',
 	mofu: 'split', confianza: 'split', zonas: 'ancho', zonas2: 'ancho', documentos: 'cerca', bofu: 'split', conversion: 'split',
-	casos: 'medio', dias: 'medio', testimonios: 'ancho', roomtour: 'split', catalogo: 'cerca', resultados: 'medio', clientes: 'medio',
-	importante: 'split', vender: 'split',
+	casos: 'medio', dias: 'medio', testimonios: 'ancho', roomtour: 'split', catalogo: 'cerca', importante: 'split', vender: 'split',
 };
+// Acercamiento extra en una pieza (disimula un corte dentro de la frase: "más personas")
+const ZOOM_PIEZA: Record<string, number> = {tendencias2: 1.07};
 const ESCALA: Record<Encuadre, number> = {ancho: 1, medio: 1.14, cerca: 1.3, split: 1, gancho: 1};
 const ORIGEN = '540px 880px'; // la cara
 const PANEL = 860; // alto del panel en pantalla dividida
@@ -68,7 +69,7 @@ const useToma = () => {
 	const golpe = e === 'split' ? 1 : interpolate(k, [0, 9], [1.045, 1], {...clamp, easing: ease});
 	// Empuje lento dentro de la toma para que nunca esté quieta
 	const empuje = interpolate(k, [0, largo * FPS], [1, 1.03], clamp);
-	const s = ESCALA[e] * golpe * empuje;
+	const s = ESCALA[e] * golpe * empuje * (ZOOM_PIEZA[p.id] ?? 1);
 	return {e, style: {transformOrigin: ORIGEN, scale: String(s), translate: e === 'split' ? `0px ${BAJAR}px` : '0px 0px'} as React.CSSProperties};
 };
 
@@ -353,8 +354,6 @@ const Stat: React.FC<{readonly from: number; readonly Ic: L.LucideIcon; readonly
 // Los 3 ganchos pasan uno por uno al celular del centro (con su audio, que ya va en la base); los
 // otros dos esperan a los lados con un fotograma fijo. Misma pregunta, tres cuentas, alcance viral.
 const GANCHOS: {id: string; clip: string; desde: number; cuenta: string; stats?: [L.LucideIcon, number, boolean?][]}[] = [
-	{id: 'g28', clip: '3928', desde: 0, cuenta: '¿Comprar o rentar?'},
-	{id: 'g27', clip: '3927', desde: 0.36, cuenta: '¿Comprar o alquilar?'},
 	{
 		id: 'g29',
 		clip: '3929',
@@ -367,6 +366,8 @@ const GANCHOS: {id: string; clip: string; desde: number; cuenta: string; stats?:
 			[L.Send, 14300],
 		],
 	},
+	{id: 'g28', clip: '3928', desde: 0, cuenta: '¿Comprar o rentar?'},
+	{id: 'g27', clip: '3927', desde: 0.36, cuenta: '¿Comprar o alquilar?'},
 ];
 // Posiciones del carrusel: centro, derecha, izquierda
 const SLOTS = [
@@ -377,8 +378,8 @@ const SLOTS = [
 
 const Ganchos: React.FC = () => {
 	const frame = useCurrentFrame();
-	const a = ini('g28');
-	const b = fin('g29');
+	const a = ini(GANCHOS[0].id);
+	const b = fin(GANCHOS[GANCHOS.length - 1].id);
 	const fa = Math.round(a * FPS);
 	const fb = Math.round(b * FPS);
 	if (frame < fa - 2 || frame >= fb) return null;
@@ -606,9 +607,9 @@ const Sfx: React.FC<{readonly at: number; readonly src: string; readonly volume?
 // pieza, última pieza]
 const TRAMOS_PERSONA: [string, string, string][] = [
 	['hook', 'hook', 'hook'],
-	['ejemplo', 'ejemplo', 'ejemplo'],
+	['ejemplo2', 'ejemplo', 'ejemplo'],
 	['zonas', 'zonas', 'documentos'],
-	['catalogo', 'catalogo', 'clientes'],
+	['catalogo', 'catalogo', 'catalogo'],
 ];
 const Persona: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -642,7 +643,7 @@ export const FunnelComponent: React.FC = () => {
 	const toma = useToma();
 	const finOp = interpolate(t, [DURACION - 0.35, DURACION], [1, 0], clamp);
 	// La persona recortada solo hace falta donde hay texto DETRÁS
-	const detras = ['hook', 'ejemplo', 'zonas', 'zonas2', 'documentos', 'catalogo', 'resultados', 'clientes'].includes(piezaEn(t).id);
+	const detras = ['hook', 'ejemplo', 'zonas', 'zonas2', 'documentos', 'catalogo'].includes(piezaEn(t).id);
 
 	const H = (s: number) => at('hook', s);
 	const IMP = (s: number) => at('importante', s);
@@ -659,12 +660,10 @@ export const FunnelComponent: React.FC = () => {
 
 				{/* ---------- Palabras clave DETRÁS de la persona ---------- */}
 				<FilaDetras palabras={[['TOFU', H(0.3)], ['MOFU', H(1.14)], ['BOFU', H(1.74)]]} hasta={fin('hook')} top={300} size={140} />
-				<Detras from={at('ejemplo', 11.74)} to={fin('ejemplo')} lineas={['¿COMPRAR', 'O ALQUILAR?']} top={290} size={108} colores={['#FFFFFF', ROJO]} paso={0.62} />
+				<Detras from={at('ejemplo', 11.76)} to={fin('ejemplo')} lineas={['¿COMPRAR', 'O ALQUILAR?']} top={286} size={98} colores={['#FFFFFF', ROJO]} paso={0.62} />
 				<Detras from={ini('zonas2') - 0.05} to={fin('zonas2')} lineas={['ZONAS']} top={330} size={190} />
 				<Detras from={ini('documentos')} to={fin('documentos')} lineas={['DOCUMENTOS']} top={340} size={120} />
 				<Detras from={ini('catalogo')} to={fin('catalogo')} lineas={['CATÁLOGO']} top={292} size={150} colores={[ROJO]} />
-				<Detras from={ini('resultados')} to={fin('resultados')} lineas={['RESULTADOS', 'REALES']} top={300} size={124} colores={['#FFFFFF', ROJO]} paso={0.45} />
-				<Detras from={ini('clientes')} to={fin('clientes')} lineas={['CLIENTES']} top={350} size={160} colores={[ROJO]} />
 
 				{detras ? (
 					<AbsoluteFill style={toma.style}>
@@ -674,13 +673,12 @@ export const FunnelComponent: React.FC = () => {
 
 				{/* ---------- Delante ---------- */}
 				<Ante from={H(1.9)} to={fin('hook')} texto="PARA ASESORES INMOBILIARIOS" top={250} icono={<L.House size={34} color="#FFFFFF" strokeWidth={1.8} />} />
-				<Ante from={ini('ejemplo')} to={fin('ejemplo')} texto="EJEMPLO DE GANCHO" top={248} />
+				<Ante from={ini('ejemplo')} to={fin('ejemplo')} texto="EJEMPLO DE GANCHO" top={244} />
 				<Ante from={ini('zonas')} to={fin('zonas2')} texto="MOFU · EDUCA" top={250} />
 				<Ante from={ini('catalogo')} to={fin('catalogo')} texto="NO HAGAS UN PERFIL" top={250} />
 				<Placa from={ini('zonas2') + 0.1} to={fin('zonas2')} x={880} y={760} Ic={L.MapPin} texto="PARA COMPRAR" />
 				<Placa from={ini('documentos') + 0.3} to={fin('documentos')} x={880} y={780} Ic={L.FileText} texto="COMPRA · VENTA" />
 				<Placa from={ini('catalogo') + 0.35} to={fin('catalogo')} x={880} y={780} Ic={L.X} texto="NO LO HAGAS" />
-				<Placa from={ini('clientes') + 0.15} to={fin('clientes')} x={880} y={800} Ic={L.KeyRound} />
 
 				{/* BOFU: qué publicar (tarjetas de ejemplo, sin datos inventados) */}
 				<Tarjeta from={ini('casos') + 0.1} to={fin('casos')}>
@@ -748,13 +746,13 @@ export const FunnelComponent: React.FC = () => {
 				/>
 
 				{/* ---------- Pizarras: tendencias y room tours ---------- */}
-				<Pizarra from={ini('tendencias')} to={fin('tendencias')} izquierda={<DibujoCelular from={ini('tendencias') + 0.1} tendencia />}>
+				<Pizarra from={ini('tendencias')} to={fin('tendencias2')} izquierda={<DibujoCelular from={ini('tendencias') + 0.1} tendencia />}>
 					<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: ROJO}}>TOFU · ALCANCE</div>
 					<Marcador from={ini('tendencias') + 0.25} texto="Únete a" size={64} color={GRIS} />
 					<Marcador from={ini('tendencias') + 0.55} texto="tendencias" subrayar />
 					<div style={{height: 18}} />
 					<Marcador from={at('tendencias', 17.44)} texto="Llegas a" size={64} color={GRIS} />
-					<Marcador from={at('tendencias', 18.1)} texto="más personas" size={72} color={ROJO} />
+					<Marcador from={ini('tendencias2')} texto="más personas" size={72} color={ROJO} />
 				</Pizarra>
 				<Pizarra from={ini('roomtour')} to={fin('roomtour')} izquierda={<DibujoCelular from={ini('roomtour') + 0.1} casa />}>
 					<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: ROJO}}>BOFU · TAMBIÉN</div>
@@ -779,19 +777,19 @@ export const FunnelComponent: React.FC = () => {
 			<Sfx at={at('tofu', 7.0)} src="pop" volume={0.26} />
 			<Sfx at={ini('ejemplo') - 0.08} src="whoosh-corto" volume={0.36} />
 			<Sfx at={at('ejemplo', 11.74)} src="tic" volume={0.35} />
-			<Sfx at={ini('g28') - 1.0} src="riser" volume={0.2} />
-			<Sfx at={ini('g28') - 0.06} src="swipe" volume={0.38} />
+			<Sfx at={ini('g29') - 1.0} src="riser" volume={0.2} />
+			<Sfx at={ini('g29') - 0.06} src="swipe" volume={0.38} />
+			<Sfx at={ini('g28') - 0.08} src="swipe" volume={0.32} />
 			<Sfx at={ini('g28') + 0.15} src="pop" volume={0.2} />
 			<Sfx at={ini('g27') - 0.08} src="swipe" volume={0.32} />
 			<Sfx at={ini('g27') + 0.15} src="pop" volume={0.2} />
-			<Sfx at={ini('g29') - 0.08} src="swipe" volume={0.32} />
 			<Sfx at={ini('g29') + 0.3} src="ding" volume={0.22} />
 			<Sfx at={ini('g29') + 0.55} src="pop" volume={0.2} />
 			<Sfx at={ini('g29') + 0.8} src="pop" volume={0.2} />
 			<Sfx at={ini('g29') + 1.05} src="pop" volume={0.2} />
 			<Sfx at={ini('tendencias') - 0.1} src="whoosh-2" volume={0.36} />
 			<Sfx at={ini('tendencias') + 0.2} src="texto" volume={0.28} />
-			<Sfx at={at('tendencias', 18.1)} src="sube" volume={0.28} />
+			<Sfx at={ini('tendencias2')} src="sube" volume={0.28} />
 			<Sfx at={ini('mofu') - 0.1} src="whoosh" volume={0.38} />
 			<Sfx at={at('confianza', 27.0)} src="pop" volume={0.26} />
 			<Sfx at={at('confianza', 27.9)} src="pop" volume={0.26} />
@@ -813,8 +811,6 @@ export const FunnelComponent: React.FC = () => {
 			<Sfx at={RT(5.15)} src="pop" volume={0.24} />
 			<Sfx at={ini('catalogo') - 0.06} src="whoosh-corto" volume={0.34} />
 			<Sfx at={ini('catalogo') + 0.35} src="error" volume={0.22} />
-			<Sfx at={ini('resultados') - 0.08} src="whoosh-2" volume={0.34} />
-			<Sfx at={ini('clientes')} src="caja" volume={0.26} />
 			<Sfx at={ini('importante') - 0.1} src="whoosh" volume={0.38} />
 			<Sfx at={IMP(114.23)} src="tic" volume={0.36} />
 			<Sfx at={IMP(114.83)} src="tic" volume={0.36} />
