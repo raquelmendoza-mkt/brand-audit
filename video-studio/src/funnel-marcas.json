@@ -1,6 +1,6 @@
 {
- "total": 39.41,
- "frames": 1182,
+ "total": 53.61,
+ "frames": 1608,
  "piezas": [
   {
    "id": "hook",
@@ -14,54 +14,54 @@
    "id": "tofu",
    "fuente": "M",
    "t": 3.12,
-   "d": 0.44,
+   "d": 4.22,
    "a": 3.4,
-   "texto": "TOFU,"
+   "texto": "TOFU, que es el top of the funnel, aquí es donde tú vas a hacer el ángulo de atracción,"
   },
   {
-   "id": "atraccion",
+   "id": "ejemplo",
    "fuente": "M",
-   "t": 3.56,
-   "d": 2.54,
-   "a": 5.08,
-   "texto": "aquí es donde tú vas a hacer el ángulo de atracción,"
+   "t": 7.34,
+   "d": 3.18,
+   "a": 10.66,
+   "texto": "como por ejemplo, ¿qué es mejor, comprar o alquilar?"
   },
   {
-   "id": "pregunta",
-   "fuente": "M",
-   "t": 6.1,
-   "d": 2.12,
-   "a": 11.72,
-   "texto": "¿qué es mejor, comprar o alquilar?"
+   "id": "g28",
+   "fuente": "G28",
+   "t": 10.52,
+   "d": 1.76,
+   "a": 0.0,
+   "texto": "(gancho: ¿Qué conviene más, comprar o rentar?)"
   },
   {
-   "id": "gancho",
-   "fuente": "G",
-   "t": 8.22,
+   "id": "g27",
+   "fuente": "G27",
+   "t": 12.28,
+   "d": 2.04,
+   "a": 0.36,
+   "texto": "(gancho: ¿Qué es mejor? ¿Comprar una casa o alquilarla?)"
+  },
+  {
+   "id": "g29",
+   "fuente": "G29",
+   "t": 14.32,
    "d": 3.05,
    "a": 0.0,
-   "texto": "(gancho de referencia: Christian Villar)"
+   "texto": "(gancho: Christian Villar, con estadísticas)"
   },
   {
    "id": "tendencias",
    "fuente": "M",
-   "t": 11.27,
-   "d": 1.38,
+   "t": 17.37,
+   "d": 3.24,
    "a": 15.82,
-   "texto": "Te puedes unir a tendencias"
-  },
-  {
-   "id": "alcance",
-   "fuente": "M",
-   "t": 12.65,
-   "d": 1.62,
-   "a": 17.44,
-   "texto": "para llegar a muchas más personas."
+   "texto": "Te puedes unir a tendencias también para llegar a muchas más personas."
   },
   {
    "id": "mofu",
    "fuente": "M",
-   "t": 14.27,
+   "t": 20.61,
    "d": 0.77,
    "a": 22.87,
    "texto": "Middle of the funnel:"
@@ -69,7 +69,7 @@
   {
    "id": "confianza",
    "fuente": "M",
-   "t": 15.04,
+   "t": 21.38,
    "d": 2.07,
    "a": 26.79,
    "texto": "tú estás educando, estás emitiendo confianza."
@@ -77,15 +77,23 @@
   {
    "id": "zonas",
    "fuente": "M",
-   "t": 17.11,
-   "d": 2.69,
+   "t": 23.45,
+   "d": 1.24,
    "a": 32.03,
-   "texto": "Aquí tú puedes hablar sobre zonas para comprar,"
+   "texto": "Aquí tú puedes hablar sobre"
+  },
+  {
+   "id": "zonas2",
+   "fuente": "M",
+   "t": 24.69,
+   "d": 1.01,
+   "a": 33.71,
+   "texto": "zonas para comprar,"
   },
   {
    "id": "documentos",
    "fuente": "M",
-   "t": 19.8,
+   "t": 25.7,
    "d": 2.14,
    "a": 34.98,
    "texto": "documentos que necesitas para comprar o para vender."
@@ -93,7 +101,7 @@
   {
    "id": "bofu",
    "fuente": "M",
-   "t": 21.94,
+   "t": 27.84,
    "d": 1.68,
    "a": 39.64,
    "texto": "Y al final, que es el BOFU,"
@@ -101,7 +109,7 @@
   {
    "id": "conversion",
    "fuente": "M",
-   "t": 23.62,
+   "t": 29.52,
    "d": 1.94,
    "a": 43.7,
    "texto": "aquí lo que vas a hacer es conversión."
@@ -109,7 +117,7 @@
   {
    "id": "casos",
    "fuente": "M",
-   "t": 25.56,
+   "t": 31.46,
    "d": 1.34,
    "a": 68.3,
    "texto": "Vas a subir casos de éxito,"
@@ -117,7 +125,7 @@
   {
    "id": "dias",
    "fuente": "M",
-   "t": 26.9,
+   "t": 32.8,
    "d": 2.12,
    "a": 69.88,
    "texto": "número de días en los que cerraste una vivienda,"
@@ -125,15 +133,31 @@
   {
    "id": "testimonios",
    "fuente": "M",
-   "t": 29.02,
+   "t": 34.92,
    "d": 1.86,
    "a": 72.4,
    "texto": "vas a subir testimonios de tus clientes."
   },
   {
+   "id": "roomtour",
+   "fuente": "N",
+   "t": 36.78,
+   "d": 6.96,
+   "a": 0.0,
+   "texto": "Y en el BOFU también es importante que puedas incluir room tours inmobiliarios, las captaciones que tienes actualmente, pero siempre saliendo detrás de cámara."
+  },
+  {
+   "id": "catalogo",
+   "fuente": "N",
+   "t": 43.74,
+   "d": 1.34,
+   "a": 7.02,
+   "texto": "No hagas un perfil catálogo."
+  },
+  {
    "id": "resultados",
    "fuente": "M",
-   "t": 30.88,
+   "t": 45.08,
    "d": 2.14,
    "a": 85.3,
    "texto": "Cuando muestras resultados reales, esas personas"
@@ -141,7 +165,7 @@
   {
    "id": "clientes",
    "fuente": "M",
-   "t": 33.02,
+   "t": 47.22,
    "d": 1.44,
    "a": 89.62,
    "texto": "terminan siendo clientes."
@@ -149,7 +173,7 @@
   {
    "id": "importante",
    "fuente": "M",
-   "t": 34.46,
+   "t": 48.66,
    "d": 2.65,
    "a": 112.93,
    "texto": "Es muy importante siempre utilizar TOFU, MOFU y BOFU"
@@ -157,7 +181,7 @@
   {
    "id": "vender",
    "fuente": "M",
-   "t": 37.11,
+   "t": 51.31,
    "d": 2.3,
    "a": 116.45,
    "texto": "para vender y captar más."

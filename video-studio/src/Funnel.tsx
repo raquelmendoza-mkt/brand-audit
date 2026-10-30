@@ -6,8 +6,8 @@ import marcas from './funnel-marcas.json';
 import {Celular} from './kit/Efectos';
 import {Grano, Vineta} from './kit/Kit';
 
-// Reel "TOFU · MOFU · BOFU para asesores inmobiliarios". La base (frases elegidas, voz limpia y el
-// gancho de referencia) la arma scripts/funnel_base.py y deja cada pieza en funnel-marcas.json.
+// Reel "TOFU · MOFU · BOFU para asesores inmobiliarios". La base (frases elegidas, voz limpia, los 3
+// ganchos de referencia y la escena extra de BOFU) la arma scripts/funnel_base.py y deja cada pieza en funnel-marcas.json.
 // Sin subtítulos (Raquel los pone en otra app): la franja y 1150-1500 queda libre en las tomas
 // a cámara. Todo lo importante va entre y 250 y 1150 para que la cuadrícula 3:4 de Instagram
 // (y 240-1680) y la interfaz de Reels no lo tapen.
@@ -34,12 +34,14 @@ const fin = (id: string) => pieza(id).t + pieza(id).d;
 // Segundo del video original -> segundo del reel (dentro de la pieza)
 const at = (id: string, s: number) => pieza(id).t + (s - pieza(id).a);
 
-// Encuadre de cada pieza: un ángulo distinto cada 1,5-3 s (una sola cámara -> reencuadres)
+// Encuadre de cada pieza (una sola cámara -> reencuadres). El ángulo cambia entre frases, nunca a
+// mitad de una: piezas seguidas con el mismo encuadre se ven como una sola toma.
 type Encuadre = 'ancho' | 'medio' | 'cerca' | 'split' | 'gancho';
 const ENCUADRE: Record<string, Encuadre> = {
-	hook: 'ancho', tofu: 'split', atraccion: 'split', pregunta: 'cerca', gancho: 'gancho', tendencias: 'medio', alcance: 'cerca',
-	mofu: 'split', confianza: 'split', zonas: 'ancho', documentos: 'cerca', bofu: 'split', conversion: 'split', casos: 'medio',
-	dias: 'ancho', testimonios: 'cerca', resultados: 'medio', clientes: 'cerca', importante: 'split', vender: 'split',
+	hook: 'ancho', tofu: 'split', ejemplo: 'cerca', g28: 'gancho', g27: 'gancho', g29: 'gancho', tendencias: 'split',
+	mofu: 'split', confianza: 'split', zonas: 'ancho', zonas2: 'ancho', documentos: 'cerca', bofu: 'split', conversion: 'split',
+	casos: 'medio', dias: 'medio', testimonios: 'ancho', roomtour: 'split', catalogo: 'cerca', resultados: 'medio', clientes: 'medio',
+	importante: 'split', vender: 'split',
 };
 const ESCALA: Record<Encuadre, number> = {ancho: 1, medio: 1.14, cerca: 1.3, split: 1, gancho: 1};
 const ORIGEN = '540px 880px'; // la cara
@@ -54,11 +56,18 @@ const useToma = () => {
 	const t = frame / FPS;
 	const p = piezaEn(t);
 	const e = ENCUADRE[p.id];
-	const k = frame - Math.round(p.t * FPS);
+	// Inicio de la toma: la primera pieza seguida con este mismo encuadre
+	let i = PIEZAS.indexOf(p);
+	while (i > 0 && ENCUADRE[PIEZAS[i - 1].id] === e) i--;
+	let j = PIEZAS.indexOf(p);
+	while (j < PIEZAS.length - 1 && ENCUADRE[PIEZAS[j + 1].id] === e) j++;
+	const inicio = PIEZAS[i].t;
+	const largo = PIEZAS[j].t + PIEZAS[j].d - inicio;
+	const k = frame - Math.round(inicio * FPS);
 	// Cada cambio de ángulo entra con un mini zoom que se asienta (se siente como otra cámara)
 	const golpe = e === 'split' ? 1 : interpolate(k, [0, 9], [1.045, 1], {...clamp, easing: ease});
 	// Empuje lento dentro de la toma para que nunca esté quieta
-	const empuje = interpolate(k, [0, p.d * FPS], [1, 1.03], clamp);
+	const empuje = interpolate(k, [0, largo * FPS], [1, 1.03], clamp);
 	const s = ESCALA[e] * golpe * empuje;
 	return {e, style: {transformOrigin: ORIGEN, scale: String(s), translate: e === 'split' ? `0px ${BAJAR}px` : '0px 0px'} as React.CSSProperties};
 };
@@ -206,7 +215,7 @@ const Placa: React.FC<{readonly from: number; readonly to: number; readonly x: n
 type Nivel = 'tofu' | 'mofu' | 'bofu';
 const NIVELES: {id: Nivel; nombre: string; ingles: string; etapa: string; Ic: L.LucideIcon}[] = [
 	{id: 'tofu', nombre: 'TOFU', ingles: 'Top of the funnel', etapa: 'ATRACCIÓN', Ic: L.Megaphone},
-	{id: 'mofu', nombre: 'MOFU', ingles: 'Middle of the funnel', etapa: 'EDUCACIÓN', Ic: L.GraduationCap},
+	{id: 'mofu', nombre: 'MOFU', ingles: 'Middle of the funnel', etapa: 'CONFIANZA', Ic: L.ShieldCheck},
 	{id: 'bofu', nombre: 'BOFU', ingles: 'Bottom of the funnel', etapa: 'CONVERSIÓN', Ic: L.KeyRound},
 ];
 
@@ -341,50 +350,203 @@ const Stat: React.FC<{readonly from: number; readonly Ic: L.LucideIcon; readonly
 	);
 };
 
+// Los 3 ganchos pasan uno por uno al celular del centro (con su audio, que ya va en la base); los
+// otros dos esperan a los lados con un fotograma fijo. Misma pregunta, tres cuentas, alcance viral.
+const GANCHOS: {id: string; clip: string; desde: number; cuenta: string; stats?: [L.LucideIcon, number, boolean?][]}[] = [
+	{id: 'g28', clip: '3928', desde: 0, cuenta: '¿Comprar o rentar?'},
+	{id: 'g27', clip: '3927', desde: 0.36, cuenta: '¿Comprar o alquilar?'},
+	{
+		id: 'g29',
+		clip: '3929',
+		desde: 0,
+		cuenta: '¿Comprar o alquilar?',
+		stats: [
+			[L.Heart, 167200, true],
+			[L.MessageCircle, 1118],
+			[L.Bookmark, 19300],
+			[L.Send, 14300],
+		],
+	},
+];
+// Posiciones del carrusel: centro, derecha, izquierda
+const SLOTS = [
+	{x: 540, y: 905, ancho: 420, rot: 0, z: 3, o: 1},
+	{x: 870, y: 905, ancho: 290, rot: 8, z: 1, o: 0.78},
+	{x: 210, y: 905, ancho: 290, rot: -8, z: 1, o: 0.78},
+];
+
 const Ganchos: React.FC = () => {
 	const frame = useCurrentFrame();
-	const a = ini('gancho');
-	const b = fin('gancho');
+	const a = ini('g28');
+	const b = fin('g29');
 	const fa = Math.round(a * FPS);
 	const fb = Math.round(b * FPS);
 	if (frame < fa - 2 || frame >= fb) return null;
-	const q = (d: number) => interpolate(frame, [fa + d, fa + d + 14], [0, 1], {...clamp, easing: ease});
 	const out = interpolate(frame, [fb - 6, fb], [1, 0], clamp);
+	const entra = interpolate(frame, [fa, fa + 12], [0, 1], {...clamp, easing: ease});
+	// Paso actual del carrusel (0, 1, 2) con 9 fotogramas de transición al cambiar
+	const paso = (k: number) => Math.round(ini(GANCHOS[k].id) * FPS);
+	let pos = 0;
+	for (let k = 1; k < GANCHOS.length; k++) pos += interpolate(frame, [paso(k) - 4, paso(k) + 5], [0, 1], {...clamp, easing: ease});
+	const actual = Math.min(GANCHOS.length - 1, Math.round(pos));
+	const g = GANCHOS[actual];
+	const mezcla = (s0: (typeof SLOTS)[number], s1: (typeof SLOTS)[number], f: number) => ({
+		x: s0.x + (s1.x - s0.x) * f,
+		y: s0.y + (s1.y - s0.y) * f,
+		ancho: s0.ancho + (s1.ancho - s0.ancho) * f,
+		rot: s0.rot + (s1.rot - s0.rot) * f,
+		o: s0.o + (s1.o - s0.o) * f,
+		z: f < 0.5 ? s0.z : s1.z,
+	});
+	const orden = GANCHOS.map((h, k) => {
+		// El gancho k está en el centro cuando pos == k; gira hacia la izquierda al terminar
+		const rel = (((k - pos) % 3) + 3) % 3; // 0 centro, 1 derecha, 2 izquierda (continuo)
+		const s0 = Math.floor(rel) % 3;
+		const s1 = (s0 + 1) % 3;
+		const f = rel - Math.floor(rel);
+		// rel baja con el tiempo: de derecha (1) a centro (0) a izquierda (2 ~ -1)
+		const sl = mezcla(SLOTS[s0], SLOTS[s1], f);
+		return {h, k, sl};
+	});
 	return (
 		<AbsoluteFill style={{opacity: out}}>
-			<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(20,20,22,0.55), rgba(20,20,22,0.8))'}} />
-			<Ante from={a} to={b} texto="GANCHOS QUE SE HICIERON VIRALES" top={262} />
-			{/* Celulares de los lados: otros dos creadores con el mismo gancho */}
-			<div style={{opacity: q(4), translate: `${(1 - q(4)) * -120}px 0px`}}>
-				<Celular x={215} y={900} ancho={300} rotar={-8}>
-					<Sequence from={fa} premountFor={FPS}>
-						<Clip src={`${W}/gancho-3927.mp4`} />
-					</Sequence>
-				</Celular>
-			</div>
-			<div style={{opacity: q(4), translate: `${(1 - q(4)) * 120}px 0px`}}>
-				<Celular x={865} y={900} ancho={300} rotar={8}>
-					<Sequence from={fa} premountFor={FPS}>
-						<Clip src={`${W}/gancho-3928.mp4`} />
-					</Sequence>
-				</Celular>
-			</div>
-			{/* Celular central: Christian Villar, con su audio */}
-			<div style={{scale: String(0.85 + 0.15 * q(0)), opacity: q(0)}}>
-				<Celular x={540} y={905} ancho={420}>
-					<Sequence from={fa} premountFor={FPS}>
-						<Clip src={`${W}/gancho-3929.mp4`} />
-					</Sequence>
-				</Celular>
-			</div>
-			{/* Estadísticas reales de ese video (captura de Raquel) */}
-			<div style={{position: 'absolute', top: 1360, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 14}}>
-				<Stat from={a + 0.5} Ic={L.Heart} valor={167200} lleno />
-				<Stat from={a + 0.8} Ic={L.MessageCircle} valor={1118} />
-				<Stat from={a + 1.1} Ic={L.Bookmark} valor={19300} />
-				<Stat from={a + 1.4} Ic={L.Send} valor={14300} />
+			<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(20,20,22,0.55), rgba(20,20,22,0.82))'}} />
+			<Ante from={a} to={b} texto="EL MISMO GANCHO, VIRAL" top={262} />
+			{[...orden]
+				.sort((p, q) => p.sl.z - q.sl.z)
+				.map(({h, k, sl}) => {
+					const centro = k === actual;
+					const ini0 = Math.round(ini(h.id) * FPS);
+					return (
+						<div key={h.id} style={{opacity: sl.o * entra, scale: String(0.9 + 0.1 * entra)}}>
+							<Celular x={sl.x} y={sl.y} ancho={sl.ancho} rotar={sl.rot}>
+								{centro && frame >= ini0 ? (
+									<Sequence from={ini0} premountFor={FPS}>
+										<Clip src={`${W}/gancho-${h.clip}.mp4`} desde={h.desde} />
+									</Sequence>
+								) : (
+									<Img src={staticFile(`${W}/gancho-${h.clip}.jpg`)} style={{position: 'absolute', width: '100%', height: '100%', objectFit: 'cover'}} />
+								)}
+							</Celular>
+						</div>
+					);
+				})}
+			{/* Debajo del celular: contador 1/3 y alcance (estadísticas reales solo del que las tenemos) */}
+			<div style={{position: 'absolute', top: 1362, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 14}}>
+				{g.stats ? (
+					g.stats.map(([Ic, v, lleno], n) => <Stat key={n} from={ini(g.id) + 0.3 + n * 0.25} Ic={Ic} valor={v} lleno={lleno} />)
+				) : (
+					<Chip key={g.id} from={ini(g.id) + 0.15} texto={`${actual + 1}/3 · ${g.cuenta}`} />
+				)}
 			</div>
 		</AbsoluteFill>
+	);
+};
+
+const Chip: React.FC<{readonly from: number; readonly texto: string}> = ({from, texto}) => {
+	const frame = useCurrentFrame();
+	const a = Math.round(from * FPS);
+	if (frame < a) return null;
+	const q = interpolate(frame, [a, a + 10], [0, 1], {...clamp, easing: Easing.out(Easing.back(1.6))});
+	return (
+		<div style={{display: 'flex', alignItems: 'center', gap: 10, scale: String(q), background: 'rgba(255,255,255,0.95)', borderRadius: 999, padding: '12px 26px', boxShadow: '0 10px 26px rgba(0,0,0,0.3)'}}>
+			<L.Flame size={30} color={ROJO} fill={ROJO} strokeWidth={2} />
+			<div style={{fontFamily: poppins, fontWeight: 700, fontSize: 30, color: TINTA}}>{texto}</div>
+		</div>
+	);
+};
+
+// ------------------------------------------------------------------ pizarra (dibujos a mano)
+// Trazo que se dibuja: dash = largo aproximado del trazo
+const Trazo: React.FC<{readonly d: string; readonly p: number; readonly color?: string; readonly ancho?: number; readonly dash?: number}> = ({d, p, color = TINTA, ancho = 7, dash = 1600}) => (
+	<path d={d} fill="none" stroke={color} strokeWidth={ancho} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={dash} strokeDashoffset={dash * (1 - p)} />
+);
+
+// Celular dibujado con botón de play (y, si se pide, una casa en la pantalla = room tour)
+const DibujoCelular: React.FC<{readonly from: number; readonly casa?: boolean; readonly tendencia?: boolean}> = ({from, casa, tendencia}) => {
+	const frame = useCurrentFrame();
+	const a = Math.round(from * FPS);
+	const p = (d0: number, d1: number) => interpolate(frame, [a + d0, a + d1], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
+	const lat = interpolate(Math.sin((frame - a) / 9), [-1, 1], [0.92, 1.06]);
+	return (
+		<svg width={420} height={520} viewBox="0 0 420 520" style={{overflow: 'visible'}}>
+			<Trazo d="M120,40 Q110,40 110,60 L110,470 Q110,490 130,490 L290,490 Q310,490 310,470 L310,60 Q310,40 290,40 Z" p={p(0, 22)} />
+			<Trazo d="M185,62 L235,62" p={p(18, 24)} ancho={6} dash={60} />
+			{casa ? (
+				<>
+					<Trazo d="M150,250 L210,195 L270,250 L270,330 L150,330 Z" p={p(22, 40)} color={ROJO} dash={500} />
+					<Trazo d="M195,330 L195,290 L225,290 L225,330" p={p(36, 44)} color={ROJO} ancho={6} dash={120} />
+				</>
+			) : null}
+			{/* Botón de play (late suave) */}
+			<g transform={`translate(210 ${casa ? 400 : 265}) scale(${p(30, 44) * lat})`}>
+				<circle r={44} fill={ROJO} />
+				<path d="M-14,-22 L24,0 L-14,22 Z" fill="#FFFFFF" />
+			</g>
+			{tendencia ? (
+				<>
+					<Trazo d="M330,330 Q360,240 400,170" p={p(40, 54)} color={ROJO} dash={260} />
+					<Trazo d="M372,168 L402,166 L398,198" p={p(52, 58)} color={ROJO} dash={80} />
+				</>
+			) : null}
+		</svg>
+	);
+};
+
+const Pizarra: React.FC<{readonly from: number; readonly to: number; readonly izquierda: React.ReactNode; readonly children: React.ReactNode}> = ({from, to, izquierda, children}) => {
+	const frame = useCurrentFrame();
+	const a = Math.round(from * FPS);
+	const b = Math.round(to * FPS);
+	if (frame < a || frame >= b) return null;
+	const entra = interpolate(frame, [a, a + 12], [0, 1], {...clamp, easing: ease});
+	const sale = interpolate(frame, [b - 8, b], [0, 1], {...clamp, easing: Easing.in(Easing.cubic)});
+	return (
+		<div
+			style={{
+				position: 'absolute',
+				left: 0,
+				right: 0,
+				top: 0,
+				height: PANEL,
+				background: '#FBF9F4',
+				borderBottomLeftRadius: 56,
+				borderBottomRightRadius: 56,
+				boxShadow: '0 24px 60px rgba(0,0,0,0.35)',
+				translate: `0px ${(-1 + entra - sale) * (PANEL + 60)}px`,
+				overflow: 'hidden',
+			}}
+		>
+			<div style={{position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(20,20,22,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(20,20,22,0.06) 1px, transparent 1px)', backgroundSize: '54px 54px'}} />
+			<div style={{position: 'absolute', top: 290, left: 40}}>{izquierda}</div>
+			<div style={{position: 'absolute', top: 300, left: 500, right: 50, display: 'flex', flexDirection: 'column', gap: 16}}>
+				{children}
+			</div>
+		</div>
+	);
+};
+
+// Palabra de pizarra: aparece con subrayado de marcador rojo
+const Marcador: React.FC<{readonly from: number; readonly texto: string; readonly size?: number; readonly color?: string; readonly subrayar?: boolean}> = ({
+	from,
+	texto,
+	size = 78,
+	color = TINTA,
+	subrayar,
+}) => {
+	const frame = useCurrentFrame();
+	const a = Math.round(from * FPS);
+	if (frame < a) return null;
+	const q = interpolate(frame, [a, a + 10], [0, 1], {...clamp, easing: ease});
+	const u = interpolate(frame, [a + 8, a + 20], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
+	return (
+		<div style={{position: 'relative', opacity: q, translate: `0px ${(1 - q) * 24}px`}}>
+			<div style={{fontFamily: poppins, fontWeight: 800, fontSize: size, lineHeight: 1, color, letterSpacing: '-0.02em'}}>{texto}</div>
+			{subrayar ? (
+				<svg width="100%" height={26} viewBox="0 0 460 26" preserveAspectRatio="none" style={{position: 'absolute', left: 0, bottom: -18}}>
+					<Trazo d="M6,16 Q120,4 240,12 T454,10" p={u} color={ROJO} ancho={8} dash={480} />
+				</svg>
+			) : null}
+		</div>
 	);
 };
 
@@ -440,10 +602,36 @@ const Sfx: React.FC<{readonly at: number; readonly src: string; readonly volume?
 	</Sequence>
 );
 
+// Persona recortada (recorte_persona.py) solo en los tramos con texto detrás: [carpeta, primera
+// pieza, última pieza]
+const TRAMOS_PERSONA: [string, string, string][] = [
+	['hook', 'hook', 'hook'],
+	['ejemplo', 'ejemplo', 'ejemplo'],
+	['zonas', 'zonas', 'documentos'],
+	['catalogo', 'catalogo', 'clientes'],
+];
 const Persona: React.FC = () => {
 	const frame = useCurrentFrame();
-	if (frame >= marcas.frames) return null;
-	return <Img src={staticFile(`${W}/persona/${String(frame).padStart(4, '0')}.webp`)} style={{position: 'absolute', width: '100%', height: '100%'}} />;
+	const tramo = TRAMOS_PERSONA.find(([, a, b]) => frame >= Math.round(ini(a) * FPS) && frame < Math.round(fin(b) * FPS));
+	if (!tramo) return null;
+	// Por redondeo el recorte puede tener un fotograma menos: se repite el anterior
+	const n = Math.round((fin(tramo[2]) - ini(tramo[1])) * FPS);
+	const k = Math.min(frame - Math.round(ini(tramo[1]) * FPS), n - 2);
+	return <Img src={staticFile(`${W}/persona-${tramo[0]}/${String(k).padStart(4, '0')}.webp`)} style={{position: 'absolute', width: '100%', height: '100%'}} />;
+};
+
+// Fila "TOFU = Atracción" del cierre: se enciende cuando lo dice
+const Igual: React.FC<{readonly from: number; readonly nivel: string; readonly etapa: string}> = ({from, nivel, etapa}) => {
+	const frame = useCurrentFrame();
+	const a = Math.round(from * FPS);
+	const q = interpolate(frame, [a, a + 10], [0, 1], {...clamp, easing: ease});
+	return (
+		<div style={{display: 'flex', alignItems: 'baseline', gap: 14, opacity: 0.25 + 0.75 * q, translate: `${(1 - q) * 16}px 0px`}}>
+			<div style={{fontFamily: poppins, fontWeight: 800, fontSize: 50, color: q > 0.5 ? ROJO : TINTA, width: 150}}>{nivel}</div>
+			<div style={{fontFamily: poppins, fontWeight: 400, fontSize: 40, color: GRIS}}>=</div>
+			<div style={{fontFamily: poppins, fontWeight: 700, fontSize: 44, color: TINTA}}>{etapa}</div>
+		</div>
+	);
 };
 
 // ------------------------------------------------------------------ composición
@@ -454,15 +642,16 @@ export const FunnelComponent: React.FC = () => {
 	const toma = useToma();
 	const finOp = interpolate(t, [DURACION - 0.35, DURACION], [1, 0], clamp);
 	// La persona recortada solo hace falta donde hay texto DETRÁS
-	const detras = ['hook', 'pregunta', 'tendencias', 'alcance', 'zonas', 'documentos', 'resultados', 'clientes'].includes(piezaEn(t).id);
+	const detras = ['hook', 'ejemplo', 'zonas', 'zonas2', 'documentos', 'catalogo', 'resultados', 'clientes'].includes(piezaEn(t).id);
 
 	const H = (s: number) => at('hook', s);
 	const IMP = (s: number) => at('importante', s);
+	const RT = (s: number) => at('roomtour', s);
 
 	return (
 		<AbsoluteFill style={{background: TINTA}}>
 			<AbsoluteFill style={{opacity: finOp}}>
-				{/* Tomas (en el tramo del gancho: el clip de referencia, desenfocado de fondo) */}
+				{/* Tomas (en el tramo de los ganchos: el clip de referencia, desenfocado de fondo) */}
 				<AbsoluteFill style={{...toma.style, filter: toma.e === 'gancho' ? 'blur(28px) brightness(0.8)' : 'contrast(1.04) saturate(1.04)'}}>
 					<Video src={staticFile(`${W}/base.mp4`)} style={{position: 'absolute', width: '100%', height: '100%'}} />
 				</AbsoluteFill>
@@ -470,11 +659,10 @@ export const FunnelComponent: React.FC = () => {
 
 				{/* ---------- Palabras clave DETRÁS de la persona ---------- */}
 				<FilaDetras palabras={[['TOFU', H(0.3)], ['MOFU', H(1.14)], ['BOFU', H(1.74)]]} hasta={fin('hook')} top={300} size={140} />
-				<Detras from={ini('pregunta')} to={fin('pregunta')} lineas={['¿COMPRAR', 'O ALQUILAR?']} top={290} size={108} colores={['#FFFFFF', ROJO]} paso={0.62} />
-				<Detras from={ini('tendencias')} to={fin('tendencias')} lineas={['TENDENCIAS']} top={360} size={132} />
-				<Detras from={ini('alcance')} to={fin('alcance')} lineas={['MÁS', 'ALCANCE']} top={300} size={140} colores={['#FFFFFF', ROJO]} paso={0.3} />
-				<Detras from={ini('zonas')} to={fin('zonas')} lineas={['ZONAS']} top={330} size={190} />
+				<Detras from={at('ejemplo', 11.74)} to={fin('ejemplo')} lineas={['¿COMPRAR', 'O ALQUILAR?']} top={290} size={108} colores={['#FFFFFF', ROJO]} paso={0.62} />
+				<Detras from={ini('zonas2') - 0.05} to={fin('zonas2')} lineas={['ZONAS']} top={330} size={190} />
 				<Detras from={ini('documentos')} to={fin('documentos')} lineas={['DOCUMENTOS']} top={340} size={120} />
+				<Detras from={ini('catalogo')} to={fin('catalogo')} lineas={['PERFIL', 'CATÁLOGO']} top={290} size={112} colores={['#FFFFFF', ROJO]} paso={0.3} />
 				<Detras from={ini('resultados')} to={fin('resultados')} lineas={['RESULTADOS', 'REALES']} top={300} size={124} colores={['#FFFFFF', ROJO]} paso={0.45} />
 				<Detras from={ini('clientes')} to={fin('clientes')} lineas={['CLIENTES']} top={350} size={160} colores={[ROJO]} />
 
@@ -486,10 +674,11 @@ export const FunnelComponent: React.FC = () => {
 
 				{/* ---------- Delante ---------- */}
 				<Ante from={H(1.9)} to={fin('hook')} texto="PARA ASESORES INMOBILIARIOS" top={250} icono={<L.House size={34} color="#FFFFFF" strokeWidth={1.8} />} />
-				<Ante from={ini('pregunta')} to={fin('pregunta')} texto="EJEMPLO DE GANCHO" top={248} />
-				<Placa from={ini('alcance') + 0.1} to={fin('alcance')} x={890} y={760} Ic={L.TrendingUp} />
-				<Placa from={ini('zonas') + 0.35} to={fin('zonas')} x={880} y={760} Ic={L.MapPin} texto="PARA COMPRAR" />
+				<Ante from={ini('ejemplo')} to={fin('ejemplo')} texto="EJEMPLO DE GANCHO" top={248} />
+				<Ante from={ini('zonas')} to={fin('zonas2')} texto="MOFU · EDUCA" top={250} />
+				<Placa from={ini('zonas2') + 0.1} to={fin('zonas2')} x={880} y={760} Ic={L.MapPin} texto="PARA COMPRAR" />
 				<Placa from={ini('documentos') + 0.3} to={fin('documentos')} x={880} y={780} Ic={L.FileText} texto="COMPRA · VENTA" />
+				<Placa from={ini('catalogo') + 0.35} to={fin('catalogo')} x={880} y={780} Ic={L.X} texto="NO LO HAGAS" />
 				<Placa from={ini('clientes') + 0.15} to={fin('clientes')} x={880} y={800} Ic={L.KeyRound} />
 
 				{/* BOFU: qué publicar (tarjetas de ejemplo, sin datos inventados) */}
@@ -514,11 +703,11 @@ export const FunnelComponent: React.FC = () => {
 				{/* ---------- Pantalla dividida: el embudo ---------- */}
 				<Panel
 					from={ini('tofu')}
-					to={fin('atraccion')}
+					to={fin('tofu')}
 					nivel="tofu"
 					items={[
-						{at: at('atraccion', 6.5), Ic: L.Eye, texto: 'Que te descubran'},
-						{at: at('atraccion', 7.0), Ic: L.House, texto: 'Ganchos que atraen'},
+						{at: at('tofu', 6.5), Ic: L.Eye, texto: 'Que te descubran'},
+						{at: at('tofu', 7.0), Ic: L.House, texto: 'Ganchos que atraen'},
 					]}
 				/>
 				<Panel
@@ -527,7 +716,7 @@ export const FunnelComponent: React.FC = () => {
 					nivel="mofu"
 					items={[
 						{at: at('confianza', 27.0), Ic: L.BookOpen, texto: 'Educas'},
-						{at: at('confianza', 27.9), Ic: L.ShieldCheck, texto: 'Generas confianza'},
+						{at: at('confianza', 27.9), Ic: L.Award, texto: 'Te posicionas'},
 					]}
 				/>
 				<Panel
@@ -545,15 +734,33 @@ export const FunnelComponent: React.FC = () => {
 					nivel="todos"
 					encender={{tofu: IMP(114.23), mofu: IMP(114.83), bofu: IMP(115.19)}}
 					pie={
-						<div style={{display: 'flex', flexDirection: 'column', gap: 20}}>
-							<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: ROJO}}>TU ESTRATEGIA</div>
-							<div style={{fontFamily: poppins, fontWeight: 800, fontSize: 62, lineHeight: 1, color: TINTA}}>Usa los 3 niveles</div>
-							<Item from={at('vender', 116.5)} Ic={L.Handshake} texto="Para vender" />
-							<Item from={at('vender', 117.8)} Ic={L.Users} texto="Para captar más" />
-							<Item from={at('vender', 118.4)} Ic={L.Bookmark} texto="Guarda este video" />
+						<div style={{display: 'flex', flexDirection: 'column', gap: 18}}>
+							<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: ROJO, marginBottom: 6}}>TU ESTRATEGIA</div>
+							<Igual from={IMP(114.23)} nivel="TOFU" etapa="Atracción" />
+							<Igual from={IMP(114.83)} nivel="MOFU" etapa="Confianza" />
+							<Igual from={IMP(115.19)} nivel="BOFU" etapa="Conversión" />
+							<div style={{height: 10}} />
+							<Item from={at('vender', 116.5)} Ic={L.Users} texto="Para vender y captar más" />
+							<Item from={at('vender', 118.2)} Ic={L.Bookmark} texto="Guarda este video" />
 						</div>
 					}
 				/>
+
+				{/* ---------- Pizarras: tendencias y room tours ---------- */}
+				<Pizarra from={ini('tendencias')} to={fin('tendencias')} izquierda={<DibujoCelular from={ini('tendencias') + 0.1} tendencia />}>
+					<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: ROJO}}>TOFU · ALCANCE</div>
+					<Marcador from={ini('tendencias') + 0.25} texto="Únete a" size={64} color={GRIS} />
+					<Marcador from={ini('tendencias') + 0.55} texto="tendencias" subrayar />
+					<div style={{height: 18}} />
+					<Marcador from={at('tendencias', 17.44)} texto="Llegas a" size={64} color={GRIS} />
+					<Marcador from={at('tendencias', 18.1)} texto="más personas" size={72} color={ROJO} />
+				</Pizarra>
+				<Pizarra from={ini('roomtour')} to={fin('roomtour')} izquierda={<DibujoCelular from={ini('roomtour') + 0.1} casa />}>
+					<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: ROJO}}>BOFU · TAMBIÉN</div>
+					<Marcador from={RT(2.2)} texto="Room tours" size={66} subrayar />
+					<Item from={RT(3.5)} Ic={L.House} texto="Tus captaciones" />
+					<Item from={RT(5.15)} Ic={L.Video} texto="Saliendo detrás de cámara" />
+				</Pizarra>
 
 				<Ganchos />
 			</AbsoluteFill>
@@ -567,23 +774,28 @@ export const FunnelComponent: React.FC = () => {
 			<Sfx at={H(1.74)} src="impacto-2" volume={0.28} />
 			<Sfx at={H(1.9)} src="texto" volume={0.3} />
 			<Sfx at={ini('tofu') - 0.1} src="whoosh" volume={0.38} />
-			<Sfx at={at('atraccion', 6.5)} src="pop" volume={0.26} />
-			<Sfx at={at('atraccion', 7.0)} src="pop" volume={0.26} />
-			<Sfx at={ini('pregunta') - 0.08} src="whoosh-corto" volume={0.36} />
-			<Sfx at={ini('pregunta') + 0.62} src="tic" volume={0.35} />
-			<Sfx at={ini('gancho') - 1.1} src="riser" volume={0.22} />
-			<Sfx at={ini('gancho') - 0.06} src="swipe" volume={0.4} />
-			<Sfx at={ini('gancho') + 0.5} src="ding" volume={0.24} />
-			<Sfx at={ini('gancho') + 0.8} src="pop" volume={0.22} />
-			<Sfx at={ini('gancho') + 1.1} src="pop" volume={0.22} />
-			<Sfx at={ini('gancho') + 1.4} src="pop" volume={0.22} />
-			<Sfx at={ini('tendencias') - 0.08} src="whoosh-2" volume={0.36} />
-			<Sfx at={ini('alcance')} src="sube" volume={0.3} />
+			<Sfx at={at('tofu', 6.5)} src="pop" volume={0.26} />
+			<Sfx at={at('tofu', 7.0)} src="pop" volume={0.26} />
+			<Sfx at={ini('ejemplo') - 0.08} src="whoosh-corto" volume={0.36} />
+			<Sfx at={at('ejemplo', 11.74)} src="tic" volume={0.35} />
+			<Sfx at={ini('g28') - 1.0} src="riser" volume={0.2} />
+			<Sfx at={ini('g28') - 0.06} src="swipe" volume={0.38} />
+			<Sfx at={ini('g28') + 0.15} src="pop" volume={0.2} />
+			<Sfx at={ini('g27') - 0.08} src="swipe" volume={0.32} />
+			<Sfx at={ini('g27') + 0.15} src="pop" volume={0.2} />
+			<Sfx at={ini('g29') - 0.08} src="swipe" volume={0.32} />
+			<Sfx at={ini('g29') + 0.3} src="ding" volume={0.22} />
+			<Sfx at={ini('g29') + 0.55} src="pop" volume={0.2} />
+			<Sfx at={ini('g29') + 0.8} src="pop" volume={0.2} />
+			<Sfx at={ini('g29') + 1.05} src="pop" volume={0.2} />
+			<Sfx at={ini('tendencias') - 0.1} src="whoosh-2" volume={0.36} />
+			<Sfx at={ini('tendencias') + 0.2} src="texto" volume={0.28} />
+			<Sfx at={at('tendencias', 18.1)} src="sube" volume={0.28} />
 			<Sfx at={ini('mofu') - 0.1} src="whoosh" volume={0.38} />
 			<Sfx at={at('confianza', 27.0)} src="pop" volume={0.26} />
 			<Sfx at={at('confianza', 27.9)} src="pop" volume={0.26} />
 			<Sfx at={ini('zonas') - 0.08} src="whoosh-3" volume={0.34} />
-			<Sfx at={ini('zonas') + 0.35} src="ping" volume={0.24} />
+			<Sfx at={ini('zonas2') + 0.1} src="ping" volume={0.24} />
 			<Sfx at={ini('documentos') - 0.06} src="swipe" volume={0.32} />
 			<Sfx at={ini('documentos') + 0.3} src="click" volume={0.3} />
 			<Sfx at={ini('bofu') - 0.1} src="whoosh" volume={0.38} />
@@ -593,6 +805,13 @@ export const FunnelComponent: React.FC = () => {
 			<Sfx at={ini('casos') + 0.15} src="reveal" volume={0.26} />
 			<Sfx at={ini('dias') + 0.12} src="tic" volume={0.34} />
 			<Sfx at={ini('testimonios') + 0.35} src="brillo" volume={0.26} />
+			<Sfx at={ini('roomtour') - 0.1} src="whoosh" volume={0.38} />
+			<Sfx at={ini('roomtour') + 1.1} src="pop" volume={0.24} />
+			<Sfx at={RT(2.2)} src="texto" volume={0.28} />
+			<Sfx at={RT(3.5)} src="pop" volume={0.24} />
+			<Sfx at={RT(5.15)} src="pop" volume={0.24} />
+			<Sfx at={ini('catalogo') - 0.06} src="whoosh-corto" volume={0.34} />
+			<Sfx at={ini('catalogo') + 0.35} src="error" volume={0.22} />
 			<Sfx at={ini('resultados') - 0.08} src="whoosh-2" volume={0.34} />
 			<Sfx at={ini('clientes')} src="caja" volume={0.26} />
 			<Sfx at={ini('importante') - 0.1} src="whoosh" volume={0.38} />
@@ -600,8 +819,7 @@ export const FunnelComponent: React.FC = () => {
 			<Sfx at={IMP(114.83)} src="tic" volume={0.36} />
 			<Sfx at={IMP(115.19)} src="impacto-2" volume={0.26} />
 			<Sfx at={at('vender', 116.5)} src="pop" volume={0.24} />
-			<Sfx at={at('vender', 117.8)} src="pop" volume={0.24} />
-			<Sfx at={at('vender', 118.4)} src="brillo" volume={0.26} />
+			<Sfx at={at('vender', 118.2)} src="brillo" volume={0.26} />
 		</AbsoluteFill>
 	);
 };
