@@ -27,9 +27,9 @@ const at = (s: number): number => {
 };
 const f = (s: number) => Math.round(at(s) * FPS);
 
-// Persona recortada (recorte_persona.py sobre la base, de 26.2 s a 40.8 s del reel)
-const PERSONA_DESDE = Math.round(26.2 * FPS);
-const PERSONA_HASTA = Math.round(40.8 * FPS) - 2;
+// Persona recortada (recorte_persona.py sobre la base, de 27.2 s a 41.2 s del reel)
+const PERSONA_DESDE = Math.round(27.2 * FPS);
+const PERSONA_HASTA = Math.round(41.2 * FPS) - 2;
 
 const Detras: React.FC<{readonly de: number; readonly a: number; readonly lineas: [string, number][]; readonly top: number; readonly size: number; readonly rojas?: number[]}> = ({
 	de,
@@ -111,7 +111,7 @@ const Persona: React.FC = () => {
 	const frame = useCurrentFrame();
 	if (frame < PERSONA_DESDE || frame > PERSONA_HASTA + 1) return null;
 	const k = Math.min(frame - PERSONA_DESDE, PERSONA_HASTA - PERSONA_DESDE);
-	return <Img src={staticFile(`${W}/persona/${String(k).padStart(4, '0')}.webp`)} style={{position: 'absolute', width: '100%', height: '100%'}} />;
+	return <Img src={staticFile(`${W}/persona2/${String(k).padStart(4, '0')}.webp`)} style={{position: 'absolute', width: '100%', height: '100%'}} />;
 };
 
 export const PolemicoComponent: React.FC = () => {
