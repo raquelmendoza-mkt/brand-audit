@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!--
+  ============================================================
+  RM MARKETING · Mentoría individual — formulario previo
+  Página estática lista para Netlify (arrastra la carpeta o
+  conecta el repo). El formulario usa Netlify Forms:
+  llega a tu panel en Netlify → Forms → "diagnostico-mentoria".
+  WHATSAPP → busca "WHATSAPP_NUMERO" al final del archivo.
+  ============================================================
+-->
+<title>Antes de tu mentoría · RM Marketing</title>
+<meta name="description" content="Formulario previo a la mentoría individual de 90 minutos con Raquel Mendoza. Cuéntame de tu negocio para llegar a la sesión con la estrategia preparada.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A0A0B'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='%23fff'%3ERM%3C/text%3E%3Ccircle cx='50' cy='16' r='5' fill='%236C47FF'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:          #0A0A0B;
+  --paper:        #FFFFFF;
+  --mist:         #F7F6FA;
+  --line:         #E8E6EE;
+  --text:         #0A0A0B;
+  --muted:        #5D5B66;
+  --soft:         #8C8A96;
+  --purple:       #6C47FF;
+  --purple-hover: #5634E8;
+  --purple-tint:  #F2EEFF;
+
+  --font:  'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+
+  --maxw:   860px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 22px;
+  --ease:   cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--mist);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 8px; }
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ============================================================
+   2. TIPOGRAFÍA
+   ============================================================ */
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; }
+h1 { font-size: clamp(32px, 5.4vw, 54px); }
+h2 { font-size: clamp(22px, 2.6vw, 28px); letter-spacing: -0.03em; }
+.serif { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: -0.02em; }
+.accent { color: var(--purple); }
+p { color: var(--muted); }
+.lead { font-size: clamp(16.5px, 1.6vw, 19px); line-height: 1.65; color: var(--muted); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+}
+.eyebrow::before { content: ""; width: 18px; height: 1.5px; background: var(--purple); }
+
+/* ============================================================
+   3. CABECERA
+   ============================================================ */
+.top { background: var(--paper); border-bottom: 1px solid var(--line); }
+.top-inner { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.logo { display: inline-flex; align-items: center; gap: 2px; text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -0.03em; color: var(--text); }
+.logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); margin-left: 3px; transform: translateY(5px); }
+.logo-light { font-weight: 300; margin-left: 5px; }
+.top-meta { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 520px) { .top-meta { display: none; } }
+
+/* ============================================================
+   4. INTRO
+   ============================================================ */
+.intro { background: var(--paper); padding: clamp(48px, 8vw, 88px) 0 clamp(40px, 6vw, 64px); }
+.intro h1 { margin-bottom: 24px; }
+.intro .lead { max-width: 640px; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px; }
+.fact { border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; background: var(--mist); }
+.fact small { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+.fact strong { display: block; margin-top: 6px; font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+@media (max-width: 620px) { .facts { grid-template-columns: 1fr; } }
+
+.note {
+  margin-top: 32px; padding: 20px 22px; border-radius: 16px;
+  background: var(--purple-tint); border: 1px solid rgba(108,71,255,0.22);
+  font-size: 15px; line-height: 1.65; color: #3D2C8F;
+}
+.note strong { color: #2A1D72; font-weight: 600; }
+
+/* ============================================================
+   5. FORMULARIO
+   ============================================================ */
+.formwrap { padding: clamp(48px, 7vw, 80px) 0 clamp(64px, 9vw, 110px); }
+
+fieldset { border: 0; margin-bottom: 40px; }
+legend { padding: 0; margin-bottom: 6px; }
+.step {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple);
+}
+.step i { width: 22px; height: 22px; border-radius: 50%; background: var(--purple-tint); display: grid; place-items: center; font-size: 11px; font-style: normal; }
+.fs-title { font-size: clamp(20px, 2.4vw, 25px); font-weight: 600; letter-spacing: -0.03em; margin: 10px 0 6px; }
+.fs-desc { font-size: 14.5px; color: var(--soft); margin-bottom: 24px; }
+
+.field { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; margin-bottom: 14px; }
+.field > label, .field > .qlabel { display: block; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
+.hint { display: block; font-size: 13.5px; color: var(--soft); margin-top: 6px; line-height: 1.55; }
+.req { color: var(--purple); font-weight: 600; }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select {
+  width: 100%; margin-top: 14px;
+  font-family: var(--font); font-size: 15.5px; color: var(--text);
+  background: var(--mist); border: 1px solid var(--line); border-radius: 12px;
+  padding: 13px 15px; line-height: 1.55;
+  transition: border-color .2s, background-color .2s;
+}
+textarea { min-height: 118px; resize: vertical; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--purple); background: #fff; }
+input::placeholder, textarea::placeholder { color: #AEACB8; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 620px) { .grid2 { grid-template-columns: 1fr; } }
+
+.choices { display: grid; gap: 10px; margin-top: 16px; }
+.choice {
+  display: flex; align-items: flex-start; gap: 12px;
+  border: 1px solid var(--line); border-radius: 12px; padding: 13px 15px;
+  background: var(--mist); cursor: pointer; transition: border-color .2s, background-color .2s;
+  font-size: 15px; line-height: 1.5;
+}
+.choice:hover { border-color: var(--purple); }
+.choice input { width: auto; margin: 4px 0 0; accent-color: var(--purple); flex: none; }
+.choice input:checked ~ span { color: var(--text); font-weight: 500; }
+.choice:has(input:checked) { border-color: var(--purple); background: var(--purple-tint); }
+
+/* Honeypot: oculto para personas, visible para bots */
+.hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+.submit { margin-top: 36px; text-align: center; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 58px; padding: 0 34px; border-radius: 999px;
+  background: var(--purple); color: #fff; border: 0;
+  font-family: var(--font); font-size: 16.5px; font-weight: 500; letter-spacing: -0.005em;
+  text-decoration: none; cursor: pointer;
+  box-shadow: 0 12px 30px -12px rgba(108,71,255,0.7);
+  transition: transform .35s var(--ease), background-color .25s, box-shadow .35s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); background: var(--purple-hover); }
+.btn[disabled] { opacity: .6; cursor: progress; transform: none; }
+.submit .hint { margin-top: 14px; }
+
+/* ============================================================
+   6. PANTALLA DE GRACIAS
+   ============================================================ */
+.done { display: none; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(36px, 6vw, 60px); text-align: center; }
+.done.is-on { display: block; animation: rise .5s var(--ease) both; }
+.done .tick {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 24px;
+  background: var(--purple-tint); display: grid; place-items: center;
+}
+.done .tick::after { content: ""; width: 22px; height: 12px; border-left: 3px solid var(--purple); border-bottom: 3px solid var(--purple); transform: rotate(-45deg) translate(2px, -3px); border-radius: 2px; }
+.done h2 { margin-bottom: 14px; }
+.done p { max-width: 460px; margin: 0 auto; }
+.done .btn { margin-top: 30px; background: var(--ink); box-shadow: none; }
+.done .btn:hover { background: #26262C; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+
+.err { display: none; margin-top: 18px; font-size: 14.5px; color: #B4232A; }
+.err.is-on { display: block; }
+
+/* ============================================================
+   7. PIE
+   ============================================================ */
+footer { background: var(--paper); border-top: 1px solid var(--line); padding: 30px 0; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; font-size: 13.5px; color: var(--soft); }
+.foot a { color: var(--muted); text-decoration: none; }
+.foot a:hover { color: var(--text); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <span class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot" aria-hidden="true"></span></span>
+    <span class="top-meta">Mentoría individual · 90 minutos</span>
+  </div>
+</header>
+
+<!-- ========================= INTRO ========================= -->
+<section class="intro">
+  <div class="wrap">
+    <span class="eyebrow">Antes de nuestra sesión</span>
+    <h1>Cuéntame de tu negocio para que la sesión <span class="serif accent">valga cada minuto</span></h1>
+    <p class="lead">
+      Tenemos 90 minutos juntas y quiero que sean de estrategia, no de ponerme al día.
+      Estas preguntas me permiten llegar habiendo estudiado tu caso: tu mercado, tu cliente
+      y hacia dónde quieres llevar tu marca.
+    </p>
+
+    <div class="facts">
+      <div class="fact"><small>Duración</small><strong>90 minutos</strong></div>
+      <div class="fact"><small>Formato</small><strong>Individual, en vivo</strong></div>
+      <div class="fact"><small>Enfoque</small><strong>Estrategia de marca</strong></div>
+    </div>
+
+    <p class="note">
+      <strong>Tómate tu tiempo.</strong> Responde con el detalle que puedas: mientras mejor te
+      entienda, más concreto será lo que salgas aplicando. Si alguna pregunta no aplica a tu caso,
+      escríbelo y seguimos. Son 10 preguntas y toma unos 15 minutos.
+    </p>
+  </div>
+</section>
+
+<!-- ========================= FORMULARIO ========================= -->
+<section class="formwrap">
+  <div class="wrap">
+
+    <!-- Pantalla de confirmación -->
+    <div class="done" id="done" role="status" aria-live="polite">
+      <div class="tick" aria-hidden="true"></div>
+      <h2>Listo, ya me llegó</h2>
+      <p>Voy a estudiar tus respuestas antes de la sesión. Si necesito aclarar algo, te escribo por WhatsApp. Nos vemos pronto.</p>
+      <a class="btn" id="waDone" href="#" target="_blank" rel="noopener">Escribirme por WhatsApp</a>
+    </div>
+
+    <form
+      id="form"
+      name="diagnostico-mentoria"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <!-- Necesario para que Netlify identifique el formulario -->
+      <input type="hidden" name="form-name" value="diagnostico-mentoria">
+      <p class="hp" aria-hidden="true">
+        <label>No llenar este campo: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+      </p>
+
+      <!-- ---------- BLOQUE 1 ---------- -->
+      <fieldset>
+        <legend><span class="step"><i>1</i> Tus datos</span></legend>
+        <p class="fs-title">Para ubicarte</p>
+        <p class="fs-desc">Así sé a quién escribirle y dónde ver lo que ya tienes.</p>
+
+        <div class="field">
+          <div class="grid2">
+            <label>Nombre y apellido <span class="req">*</span>
+              <input type="text" name="nombre" required autocomplete="name" placeholder="Tu nombre completo">
+            </label>
+            <label>Correo electrónico <span class="req">*</span>
+              <input type="email" name="email" required autocomplete="email" placeholder="tucorreo@ejemplo.com">
+            </label>
+          </div>
+          <div class="grid2" style="margin-top:14px;">
+            <label>WhatsApp <span class="req">*</span>
+              <input type="tel" name="whatsapp" required placeholder="Con código de país">
+            </label>
+            <label>¿Desde qué ciudad y país trabajas?
+              <input type="text" name="ubicacion" placeholder="Ej. Caracas, Venezuela">
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ---------- BLOQUE 2 ---------- -->
+      <fieldset>
+        <legend><span class="step"><i>2</i> Tu punto de partida</span></legend>
+        <p class="fs-title">Dónde estás hoy</p>
+        <p class="fs-desc">Preguntas 1 y 2 de 10.</p>
+
+        <div class="field">
+          <span class="qlabel">1. ¿Ya tienes creado tu perfil profesional? <span class="req">*</span></span>
+          <span class="hint">Me refiero a la cuenta con la que vas a vender, no a tu perfil personal.</span>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="perfil_estado" value="Sí, ya publico con regularidad" required><span>Sí, ya existe y publico con regularidad</span></label>
+            <label class="choice"><input type="radio" name="perfil_estado" value="Existe pero está abandonado"><span>Existe, pero está abandonado o casi sin contenido</span></label>
+            <label class="choice"><input type="radio" name="perfil_estado" value="Uso mi cuenta personal"><span>Uso mi cuenta personal para todo, no tengo una profesional</span></label>
+            <label class="choice"><input type="radio" name="perfil_estado" value="Todavía no lo he creado"><span>Todavía no lo he creado</span></label>
+          </div>
+          <label style="margin-top:16px; display:block;">Si ya lo tienes, pásame el usuario
+            <input type="text" name="usuario" placeholder="@tuusuario — y otras redes o web si las tienes">
+          </label>
+        </div>
+
+        <div class="field">
+          <label>2. ¿Qué has publicado hasta ahora y qué resultados has visto? <span class="req">*</span>
+            <span class="hint">Sé honesta: si no has publicado nada, dímelo. Si publicaste y no pasó nada, también sirve — eso me dice mucho.</span>
+            <textarea name="publicado" required placeholder="Qué tipo de contenido has hecho, cada cuánto, si te ha escrito alguien por ahí, qué te funcionó y qué no…"></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ---------- BLOQUE 3 ---------- -->
+      <fieldset>
+        <legend><span class="step"><i>3</i> Tu negocio</span></legend>
+        <p class="fs-title">Qué vendes exactamente</p>
+        <p class="fs-desc">Preguntas 3 a 5 de 10. Esta es la parte que más me sirve.</p>
+
+        <div class="field">
+          <label>3. Describe tu negocio: ¿qué vendes y cómo ganas dinero? <span class="req">*</span>
+            <span class="hint">Tipo de inmueble, obra nueva o reventa, rango de precios, si trabajas con una agencia o por tu cuenta, y cómo cobras (comisión, referidos, alianzas).</span>
+            <textarea name="negocio" required placeholder="Ej. Vendo apartamentos de obra nueva entre $80.000 y $250.000 en… trabajo con la constructora X y cobro…"></textarea>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>4. ¿En qué mercados estás vendiendo o quieres vender? <span class="req">*</span>
+            <span class="hint">Dónde están las propiedades, desde qué países quieres que te contacten, y si necesitas comunicarte también en inglés u otro idioma.</span>
+            <textarea name="mercados" required placeholder="Ej. Las propiedades están en… quiero clientes de Estados Unidos, España y Panamá… necesito contenido en inglés…"></textarea>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>5. ¿Quién es tu cliente internacional ideal? <span class="req">*</span>
+            <span class="hint">Descríbemelo como si fuera una persona real: de dónde es, a qué se dedica, por qué compra fuera de su país, cuánto puede invertir y qué le da miedo de comprar a distancia.</span>
+            <textarea name="cliente" required placeholder="Ej. Venezolano residenciado en Madrid, 35-50 años, quiere invertir para rentar, presupuesto de… su mayor temor es…"></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ---------- BLOQUE 4 ---------- -->
+      <fieldset>
+        <legend><span class="step"><i>4</i> Tu posicionamiento</span></legend>
+        <p class="fs-title">Cómo quieres que te vean</p>
+        <p class="fs-desc">Preguntas 6 a 8 de 10.</p>
+
+        <div class="field">
+          <label>6. ¿Cómo quieres que te perciba ese cliente? <span class="req">*</span>
+            <span class="hint">Dame tres palabras y explícame por qué esas. Por ejemplo: cercana, experta, confiable. ¿Qué quieres que piensen de ti cuando entren a tu perfil?</span>
+            <textarea name="percepcion" required placeholder="Quiero que me vean como… porque…"></textarea>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>7. ¿Qué te hace diferente de otros asesores que le venden al mismo cliente? <span class="req">*</span>
+            <span class="hint">Tu experiencia, tu red de contactos, el tipo de proyecto que manejas, el acompañamiento que das, tu forma de ser. Lo que sea real, aunque te parezca pequeño.</span>
+            <textarea name="diferencial" required placeholder="Lo que yo hago distinto es…"></textarea>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>8. Referencias: ¿qué cuentas o marcas te gustan? <span class="req">*</span>
+            <span class="hint">Pueden ser competencia directa, realtors de otros países o marcas de cualquier sector. Dime el usuario y qué te gusta de cada una. Si hay alguna que NO quieres parecerte, también cuéntamelo.</span>
+            <textarea name="referencias" required placeholder="@cuenta — me gusta cómo… / @otra — me gusta que… / No quiero parecerme a… porque…"></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ---------- BLOQUE 5 ---------- -->
+      <fieldset>
+        <legend><span class="step"><i>5</i> Hacia dónde vas</span></legend>
+        <p class="fs-title">Tu proyección</p>
+        <p class="fs-desc">Preguntas 9 y 10 de 10.</p>
+
+        <div class="field">
+          <label>9. ¿Dónde quieres estar en los próximos 6 a 12 meses? <span class="req">*</span>
+            <span class="hint">Lo más concreto posible: cuántas operaciones, qué tipo de proyectos quieres captar, si buscas alianzas con constructoras, si quieres vivir de esto a tiempo completo.</span>
+            <textarea name="proyeccion" required placeholder="En 6 meses quiero… en un año me gustaría…"></textarea>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>10. ¿Qué te está frenando hoy y con qué cuentas para trabajar? <span class="req">*</span>
+            <span class="hint">Lo que más te cuesta (no saber qué publicar, la cámara, el tiempo, la constancia) y qué tienes disponible: cuántas horas a la semana, si te grabas en video, si tienes fotos o material de las propiedades, si alguien te ayuda.</span>
+            <textarea name="frenos" required placeholder="Lo que más me cuesta es… tengo X horas a la semana… sí/no me grabo en video… tengo material de…"></textarea>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>¿Algo más que deba saber antes de la sesión?
+            <span class="hint">Opcional. Cualquier contexto que creas importante.</span>
+            <textarea name="extra" style="min-height:90px;" placeholder="Opcional"></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="submit">
+        <button class="btn" type="submit" id="send">Enviar mis respuestas</button>
+        <span class="hint">Solo yo leo esto. No se comparte con nadie.</span>
+        <p class="err" id="err">No se pudo enviar. Revisa tu conexión e inténtalo de nuevo, o escríbeme por WhatsApp.</p>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>RM Marketing · Lcda. Raquel Mendoza</span>
+    <a id="waFoot" href="#" target="_blank" rel="noopener">WhatsApp 0422-716.34.77</a>
+  </div>
+</footer>
+
+<script>
+/* ==================================================================
+   WHATSAPP — CONFIGURACIÓN
+   Para cambiar el número, edita solo WHATSAPP_NUMERO.
+   ================================================================== */
+var WHATSAPP_NUMERO = '584227163477';
+var MENSAJE = 'Hola Raquel, ya llené el formulario previo a la mentoría.';
+
+(function () {
+  'use strict';
+
+  var wa = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(MENSAJE);
+  ['waDone', 'waFoot'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.href = wa;
+  });
+
+  var form = document.getElementById('form');
+  var done = document.getElementById('done');
+  var err  = document.getElementById('err');
+  var send = document.getElementById('send');
+  if (!form) return;
+
+  /* Envío sin recargar, para mostrar la confirmación en la misma página.
+     Si algo falla, se deja que el formulario se envíe de la forma normal
+     y Netlify muestra su propia página de confirmación. */
+  form.addEventListener('submit', function (e) {
+    if (!form.checkValidity()) return;          // deja que el navegador avise
+    e.preventDefault();
+    err.classList.remove('is-on');
+    send.disabled = true;
+    send.textContent = 'Enviando…';
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      form.style.display = 'none';
+      done.classList.add('is-on');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(function () {
+      send.disabled = false;
+      send.textContent = 'Enviar mis respuestas';
+      err.classList.add('is-on');
+    });
+  });
+})();
+</script>
+</body>
+</html>
