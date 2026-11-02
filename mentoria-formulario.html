@@ -192,8 +192,17 @@ input::placeholder, textarea::placeholder { color: #AEACB8; }
 .done .btn:hover { background: #26262C; }
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
 
-.err { display: none; margin-top: 18px; font-size: 14.5px; color: #B4232A; }
+.err { display: none; margin-top: 22px; text-align: left; background: #FFF4F4; border: 1px solid #F3D3D4; border-radius: 16px; padding: 20px 22px; }
 .err.is-on { display: block; }
+.err p { font-size: 14.5px; color: #8E2A2F; line-height: 1.6; }
+.err strong { color: #7A1F24; font-weight: 600; }
+.err-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.btn-alt {
+  min-height: 46px; padding: 0 20px; font-size: 14.5px;
+  background: #fff; color: var(--text); border: 1px solid var(--line); box-shadow: none;
+}
+.btn-alt:hover { background: var(--mist); border-color: var(--text); }
+.btn-alt.ok { background: var(--purple-tint); border-color: var(--purple); color: var(--purple); }
 
 /* ============================================================
    7. PIE
@@ -410,7 +419,13 @@ footer { background: var(--paper); border-top: 1px solid var(--line); padding: 3
       <div class="submit">
         <button class="btn" type="submit" id="send">Enviar mis respuestas</button>
         <span class="hint">Solo yo leo esto. No se comparte con nadie.</span>
-        <p class="err" id="err">No se pudo enviar. Revisa tu conexión e inténtalo de nuevo, o escríbeme por WhatsApp.</p>
+        <div class="err" id="err">
+          <p><strong>No se pudo enviar el formulario.</strong> No pierdas lo que escribiste: copia tus respuestas y mándamelas por WhatsApp, y yo las registro.</p>
+          <div class="err-actions">
+            <button type="button" class="btn btn-alt" id="copiar">Copiar mis respuestas</button>
+            <a class="btn btn-alt" id="waErr" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+          </div>
+        </div>
       </div>
     </form>
 
@@ -436,10 +451,49 @@ var MENSAJE = 'Hola Raquel, ya llené el formulario previo a la mentoría.';
   'use strict';
 
   var wa = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(MENSAJE);
-  ['waDone', 'waFoot'].forEach(function (id) {
+  ['waDone', 'waFoot', 'waErr'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.href = wa;
   });
+
+  /* Si el envío falla, que nadie pierda lo que escribió. */
+  var copiar = document.getElementById('copiar');
+  if (copiar) {
+    copiar.addEventListener('click', function () {
+      var f = document.getElementById('form');
+      var texto = [];
+      f.querySelectorAll('input, textarea').forEach(function (el) {
+        if (!el.name || el.name === 'form-name' || el.name === 'bot-field') return;
+        if ((el.type === 'radio' || el.type === 'checkbox') && !el.checked) return;
+        if (!el.value) return;
+        var cont = el.closest('.field');
+        var propia = el.closest('label');
+        var esOpcion = (el.type === 'radio' || el.type === 'checkbox');
+        // Para las opciones vale la pregunta; para el resto, su propia etiqueta.
+        var etiqueta = esOpcion
+          ? (cont && cont.querySelector('.qlabel'))
+          : (propia || (cont && (cont.querySelector('.qlabel') || cont.querySelector('label'))));
+        var titulo = etiqueta ? etiqueta.childNodes[0].textContent.trim().replace(/\s*\*$/, '') : el.name;
+        texto.push(titulo + '\n' + el.value);
+      });
+      var salida = texto.join('\n\n');
+      function hecho() {
+        copiar.textContent = '¡Copiado!';
+        copiar.classList.add('ok');
+        setTimeout(function () { copiar.textContent = 'Copiar mis respuestas'; copiar.classList.remove('ok'); }, 2600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(salida).then(hecho, respaldo);
+      } else { respaldo(); }
+      function respaldo() {
+        var ta = document.createElement('textarea');
+        ta.value = salida; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); hecho(); } catch (_) {}
+        document.body.removeChild(ta);
+      }
+    });
+  }
 
   var form = document.getElementById('form');
   var done = document.getElementById('done');
@@ -457,7 +511,10 @@ var MENSAJE = 'Hola Raquel, ya llené el formulario previo a la mentoría.';
     send.disabled = true;
     send.textContent = 'Enviando…';
 
-    fetch('/', {
+    // Netlify acepta el POST en la ruta de la propia página.
+    var destino = window.location.pathname || '/';
+
+    fetch(destino, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(form)).toString()
@@ -468,10 +525,14 @@ var MENSAJE = 'Hola Raquel, ya llené el formulario previo a la mentoría.';
       done.classList.add('is-on');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     })
-    .catch(function () {
+    .catch(function (e) {
+      // Pista para diagnosticar: un 404 significa que Netlify no tiene
+      // registrado el formulario (falta activar la detección de formularios).
+      console.error('[formulario] fallo el envío:', e && e.message);
       send.disabled = false;
       send.textContent = 'Enviar mis respuestas';
       err.classList.add('is-on');
+      err.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 })();
