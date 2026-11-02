@@ -2,6 +2,7 @@ import {Folder} from 'remotion';
 import {Dia2Composition} from './Dia2';
 import {VinedoComposition} from './Vinedo';
 import {FunnelComposition} from './Funnel';
+import {PolemicoComposition} from './Polemico';
 import {FelipeComposition} from './Felipe';
 import {DetallitosDyanComposition, PromoTextosComposition} from './PromoTextos';
 import {PropertyPromoComposition} from './PropertyPromo';
@@ -23,6 +24,7 @@ export const RemotionRoot: React.FC = () => {
 				<Dia2Composition />
 				<VinedoComposition />
 				<FunnelComposition />
+				<PolemicoComposition />
 				<FelipeComposition />
 				<RoomTourBosqueComposition />
 				<RoomTourBosqueOmniComposition />
