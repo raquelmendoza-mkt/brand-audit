@@ -3,8 +3,9 @@ import * as L from 'lucide-react';
 import {AbsoluteFill, Composition, Easing, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {helvetica, poppins} from './fonts';
 
-// Trial reel "¿Claude se va de Venezuela?". El video va completo, sin cortes. Del segundo 17.4 al
-// 24.8 (donde las manos se ven de cerca) entra una PIZARRA a pantalla completa, con el branding
+// Trial reel "¿Claude se va de Venezuela?". El video va completo, sin cortes. Del 12.7 al 17.4 un
+// panel de pizarra sube desde abajo y tapa las manos; del 17.4 al 24.8 (manos muy de cerca) entra
+// una PIZARRA a pantalla completa, con el branding
 // del reel TOFU · MOFU · BOFU: cuadrícula de libreta, trazos que se dibujan, Poppins tinta y rojo.
 // Mientras habla se dibuja el logo de Claude y aparecen las ideas que dice. Todo entre y 250 y
 // 1450 (zona segura de Reels y cuadrícula 3:4).
@@ -161,6 +162,56 @@ const Check: React.FC<{readonly from: number}> = ({from}) => {
 	);
 };
 
+// Panel inferior (12.7 s -> pizarra completa): tapa las manos frente al pecho en "Anthropic lanzó
+// sus nuevas políticas... no estaba permitido para estos países"; la cara sigue a la vista.
+const PANEL_DE = 12.7;
+const PANEL_TOP = 1150;
+const PanelInferior: React.FC = () => {
+	const frame = useCurrentFrame();
+	const a = F(PANEL_DE);
+	const b = F(ENTRA) + 12; // se va cuando la pizarra completa ya cubrió todo
+	if (frame < a || frame >= b) return null;
+	const entra = interpolate(frame, [a, a + 10], [0, 1], {...clamp, easing: ease});
+	const cita = 'No permitido para estos países';
+	const c0 = F(14.78);
+	const letras = Math.round(interpolate(frame, [c0, F(16.4)], [0, cita.length], clamp));
+	const cursor = frame >= c0 && Math.floor(frame / 8) % 2 === 0;
+	return (
+		<div
+			style={{
+				position: 'absolute',
+				left: 0,
+				right: 0,
+				top: PANEL_TOP,
+				height: 1920 - PANEL_TOP,
+				background: '#FBF9F4',
+				borderTopLeftRadius: 56,
+				borderTopRightRadius: 56,
+				boxShadow: '0 -20px 60px rgba(0,0,0,0.35)',
+				translate: `0px ${(1 - entra) * (1920 - PANEL_TOP + 60)}px`,
+				overflow: 'hidden',
+			}}
+		>
+			<div style={{position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(20,20,22,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(20,20,22,0.06) 1px, transparent 1px)', backgroundSize: '54px 54px'}} />
+			<div style={{position: 'absolute', top: 70, left: 70, right: 60, display: 'flex', alignItems: 'center', gap: 34}}>
+				<LogoClaude from={PANEL_DE + 0.1} tam={190} />
+				<div style={{display: 'flex', flexDirection: 'column', gap: 8}}>
+					<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 30, letterSpacing: '0.28em', color: ROJO, opacity: entra}}>ANTHROPIC · 12 NOV</div>
+					<Marcador from={PANEL_DE + 0.2} texto="Nuevas políticas" size={64} />
+					<Marcador from={PANEL_DE + 0.45} texto="territoriales" size={64} subrayar />
+				</div>
+			</div>
+			{frame >= c0 ? (
+				<div style={{position: 'absolute', top: 310, left: 70, right: 70, fontFamily: poppins, fontWeight: 700, fontSize: 50, color: TINTA}}>
+					<span style={{color: ROJO}}>“</span>
+					{cita.slice(0, letras)}
+					{letras >= cita.length ? <span style={{color: ROJO}}>”</span> : <span style={{opacity: cursor ? 1 : 0, color: ROJO}}>|</span>}
+				</div>
+			) : null}
+		</div>
+	);
+};
+
 const Sfx: React.FC<{readonly at: number; readonly src: string; readonly volume?: number}> = ({at, src, volume = 0.3}) => (
 	<Sequence from={F(at)} durationInFrames={3 * FPS}>
 		<Audio src={staticFile(`sfx/${src}.wav`)} volume={volume} />
@@ -170,8 +221,11 @@ const Sfx: React.FC<{readonly at: number; readonly src: string; readonly volume?
 export const ClaudeTrendComponent: React.FC = () => (
 	<AbsoluteFill style={{background: '#000'}}>
 		<Video src={staticFile(`${W}/base.mp4`)} style={{position: 'absolute', width: '100%', height: '100%'}} />
+		<PanelInferior />
 		<Pizarra />
 		{/* Efectos suaves (por debajo de la voz) */}
+		<Sfx at={PANEL_DE - 0.08} src="whoosh-corto" volume={0.16} />
+		<Sfx at={14.78} src="teclado-iphone" volume={0.12} />
 		<Sfx at={ENTRA - 0.08} src="whoosh" volume={0.18} />
 		<Sfx at={ENTRA + 0.15} src="texto" volume={0.14} />
 		<Sfx at={18.62} src="pop" volume={0.14} />
