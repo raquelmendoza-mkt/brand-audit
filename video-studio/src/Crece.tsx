@@ -19,9 +19,6 @@ const TINTA = '#141416';
 const CREMA = '#F4EFE7';
 const AMARILLO = '#F7D21E';
 const VERDE = '#1FB36B';
-const ZOOM = 1.35;
-const TX = 540 - 530 * ZOOM;
-const TY = 720 - 860 * ZOOM;
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const ease = Easing.bezier(0.22, 1, 0.36, 1);
 
@@ -251,10 +248,11 @@ export const CreceComponent: React.FC = () => {
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
 			<AbsoluteFill style={{opacity: fin}}>
-				{/* Reencuadre: 1.35x y subido para que la cara quede más grande y alta (cara del original en
-				    ~(530, 860) -> ~(540, 720)); la tabla y el título no se mueven */}
-				<AbsoluteFill style={{transformOrigin: '0px 0px', scale: String(ZOOM), translate: `${TX}px ${TY}px`}}>
-					<Video src={staticFile(`${W}/base.mp4`)} style={{position: 'absolute', width: '100%', height: '100%'}} />
+				{/* base-hd.mp4 ya viene reencuadrada en FFmpeg (1.35x, cara más grande y alta: recorte
+				    800x1422 desde (130, 327), escalado lanczos + enfoque cas); hacerlo aquí con CSS la
+				    suavizaba. Audio: el de la primera versión. */}
+				<AbsoluteFill>
+					<Video src={staticFile(`${W}/base-hd.mp4`)} style={{position: 'absolute', width: '100%', height: '100%'}} />
 				</AbsoluteFill>
 				<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.2) 100%)'}} />
 				<Tabla />
