@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!--
+  ============================================================
+  RM MARKETING · Quiz — Tu plan de contenidos 40/40/20
+  Página estática, sin dependencias. Lista para Netlify.
+  WHATSAPP → busca "WHATSAPP_NUMERO" al final del archivo.
+  CONTENIDO  → la lista NICHOS tiene las ideas de cada perfil.
+  ============================================================
+-->
+<title>Tu plan de contenidos personalizado · RM Marketing</title>
+<meta name="description" content="Responde 3 preguntas y recibe tu mezcla de contenido 40/40/20: qué publicar, en qué formato y con qué frecuencia, según a lo que te dedicas.">
+<meta name="theme-color" content="#FFFFFF">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="¿Qué deberías publicar tú? — Tu plan 40/40/20">
+<meta property="og:description" content="Publicar todos los días no te trae clientes. Publicar con estrategia, sí. Responde 3 preguntas y te armo tu mezcla de contenido.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A0A0B'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='%23fff'%3ERM%3C/text%3E%3Ccircle cx='50' cy='16' r='5' fill='%236C47FF'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:          #0A0A0B;
+  --paper:        #FFFFFF;
+  --mist:         #F7F6FA;
+  --line:         #E8E6EE;
+  --text:         #0A0A0B;
+  --muted:        #5D5B66;
+  --soft:         #8C8A96;
+  --purple:       #6C47FF;
+  --purple-hover: #5634E8;
+  --purple-tint:  #F2EEFF;
+  --gold:         #C9943A;
+  --gold-tint:    #FDF6E9;
+
+  --font:  'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+
+  --maxw:   780px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --radius: 22px;
+  --ease:   cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--mist);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 10px; }
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; }
+h1 { font-size: clamp(30px, 5.6vw, 48px); }
+h2 { font-size: clamp(23px, 3.4vw, 32px); letter-spacing: -0.03em; }
+h3 { font-size: clamp(18px, 2.2vw, 21px); letter-spacing: -0.025em; line-height: 1.3; }
+.serif { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: -0.02em; }
+.accent { color: var(--purple); }
+p { color: var(--muted); }
+.lead { font-size: clamp(16px, 1.7vw, 18.5px); line-height: 1.65; color: var(--muted); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 18px;
+}
+.eyebrow::before { content: ""; width: 18px; height: 1.5px; background: var(--purple); }
+
+/* ============================================================
+   2. CABECERA
+   ============================================================ */
+.top { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
+.top-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { display: inline-flex; align-items: center; gap: 2px; font-weight: 600; font-size: 17px; letter-spacing: -0.03em; text-decoration: none; color: var(--text); }
+.logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); margin-left: 3px; transform: translateY(5px); }
+.logo-light { font-weight: 300; margin-left: 5px; }
+.top-step { font-size: 13px; color: var(--soft); font-weight: 500; }
+
+.bar { height: 3px; background: var(--line); }
+.bar i { display: block; height: 100%; width: 0; background: var(--purple); transition: width .5s var(--ease); }
+
+/* ============================================================
+   3. PANTALLAS
+   ============================================================ */
+.screen { display: none; padding: clamp(36px, 7vw, 68px) 0 clamp(56px, 9vw, 90px); }
+.screen.is-on { display: block; animation: rise .45s var(--ease) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+
+/* ---- Intro ---- */
+.hook { margin-bottom: 22px; }
+.intro .lead { max-width: 580px; margin-bottom: 14px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 36px; }
+.pill {
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px;
+}
+.pill b { color: var(--purple); font-weight: 600; }
+
+/* ---- Preguntas ---- */
+.q-num { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple); margin-bottom: 14px; }
+.q-title { margin-bottom: 10px; }
+.q-hint { font-size: 14.5px; color: var(--soft); margin-bottom: 28px; }
+
+.opts { display: grid; gap: 10px; }
+.opt {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+  padding: 18px 20px; cursor: pointer; font-family: var(--font); font-size: 16px; color: var(--text);
+  transition: border-color .25s, transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.opt:hover { border-color: var(--purple); transform: translateY(-2px); box-shadow: 0 16px 34px -24px rgba(10,10,11,0.3); }
+.opt.is-sel { border-color: var(--purple); background: var(--purple-tint); }
+.opt .ic {
+  flex: none; width: 38px; height: 38px; border-radius: 11px; background: var(--mist);
+  display: grid; place-items: center; font-size: 18px;
+}
+.opt.is-sel .ic { background: #fff; }
+.opt .tx { font-weight: 500; letter-spacing: -0.01em; }
+.opt .tx small { display: block; font-size: 13.5px; font-weight: 400; color: var(--soft); letter-spacing: 0; margin-top: 1px; }
+
+.otro-wrap { margin-top: 12px; display: none; }
+.otro-wrap.is-on { display: block; }
+input[type="text"] {
+  width: 100%; font-family: var(--font); font-size: 16px; color: var(--text);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 15px 17px;
+}
+input[type="text"]:focus { outline: none; border-color: var(--purple); }
+
+.nav-row { display: flex; align-items: center; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+
+/* ---- Botones ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 30px; border-radius: 999px; border: 1px solid transparent;
+  background: var(--purple); color: #fff;
+  font-family: var(--font); font-size: 16px; font-weight: 500; letter-spacing: -0.005em;
+  text-decoration: none; cursor: pointer;
+  box-shadow: 0 12px 30px -14px rgba(108,71,255,0.75);
+  transition: transform .35s var(--ease), background-color .25s;
+}
+.btn:hover { transform: translateY(-2px); background: var(--purple-hover); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn--ghost { background: transparent; color: var(--muted); border-color: var(--line); box-shadow: none; min-height: 48px; padding: 0 20px; font-size: 14.5px; }
+.btn--ghost:hover { background: var(--paper); color: var(--text); border-color: var(--text); }
+.btn--dark { background: var(--ink); box-shadow: none; }
+.btn--dark:hover { background: #26262C; }
+.btn--wa { background: #25D366; box-shadow: 0 12px 30px -14px rgba(37,211,102,0.8); }
+.btn--wa:hover { background: #1FBA5A; }
+@media (max-width: 420px) { .btn { width: 100%; } }
+
+/* ============================================================
+   4. RESULTADO
+   ============================================================ */
+.res-head { text-align: center; margin-bottom: 36px; }
+.res-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--purple-tint); color: var(--purple);
+  border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 34px); margin-bottom: 16px; }
+.card-k { font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); margin-bottom: 14px; }
+
+/* Mezcla */
+.mix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 6px; }
+.mix-c { border-radius: 16px; padding: 20px 18px; text-align: center; }
+.mix-c .pc { font-size: clamp(26px, 4.4vw, 34px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.mix-c .nm { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+.mix-c .ct { font-size: 13.5px; margin-top: 6px; }
+.m-con { background: var(--purple-tint); color: #3D2C8F; }
+.m-con .pc { color: var(--purple); }
+.m-aut { background: var(--mist); color: var(--muted); border: 1px solid var(--line); }
+.m-aut .pc { color: var(--text); }
+.m-ven { background: var(--gold-tint); color: #7A5A1E; }
+.m-ven .pc { color: var(--gold); }
+@media (max-width: 560px) { .mix { grid-template-columns: 1fr; } }
+
+.mixnote { margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--muted); background: var(--mist); border-radius: 14px; padding: 14px 16px; }
+.mixnote strong { color: var(--text); font-weight: 600; }
+
+/* Pilares */
+.pilar { border-left: 3px solid var(--line); padding-left: 20px; margin-bottom: 26px; }
+.pilar:last-child { margin-bottom: 0; }
+.pilar--con { border-left-color: var(--purple); }
+.pilar--aut { border-left-color: var(--ink); }
+.pilar--ven { border-left-color: var(--gold); }
+.pilar h3 { margin-bottom: 4px; }
+.pilar .pct { font-size: 13px; font-weight: 600; color: var(--purple); letter-spacing: 0.04em; }
+.pilar--aut .pct { color: var(--text); }
+.pilar--ven .pct { color: var(--gold); }
+.pilar p { font-size: 15px; margin: 10px 0 14px; }
+.ideas { list-style: none; display: grid; gap: 9px; }
+.ideas li {
+  position: relative; padding-left: 26px; font-size: 15px; line-height: 1.55; color: var(--text);
+}
+.ideas li::before {
+  content: ""; position: absolute; left: 0; top: 7px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--purple-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%236C47FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat;
+}
+
+/* Formatos */
+.fmt { display: grid; gap: 12px; }
+.fmt-c { border: 1px solid var(--line); border-radius: 16px; padding: 20px; background: var(--mist); }
+.fmt-c .hd { display: flex; align-items: center; gap: 11px; margin-bottom: 9px; }
+.fmt-c .em { font-size: 20px; }
+.fmt-c strong { font-size: 16.5px; font-weight: 600; letter-spacing: -0.02em; }
+.fmt-c .tag { margin-left: auto; font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); background: var(--purple-tint); padding: 4px 10px; border-radius: 999px; }
+.fmt-c p { font-size: 14.5px; line-height: 1.6; }
+
+/* Regla 5-50 */
+.rule { background: var(--ink); color: #fff; border-radius: var(--radius); padding: clamp(26px, 4vw, 38px); margin-bottom: 16px; }
+.rule .card-k { color: rgba(255,255,255,0.5); }
+.rule h3 { color: #fff; margin-bottom: 14px; }
+.rule p { color: rgba(255,255,255,0.72); font-size: 15.5px; }
+.rule .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.rule .two div { background: rgba(255,255,255,0.06); border-radius: 14px; padding: 18px; }
+.rule .two b { display: block; font-size: 24px; font-weight: 600; color: #A992FF; letter-spacing: -0.03em; }
+.rule .two span { display: block; font-size: 14px; color: rgba(255,255,255,0.72); margin-top: 6px; line-height: 1.5; }
+@media (max-width: 560px) { .rule .two { grid-template-columns: 1fr; } }
+
+/* Cierre */
+.close { text-align: center; padding: clamp(30px, 5vw, 44px) 0 0; }
+.close h2 { margin-bottom: 14px; }
+.close p { max-width: 460px; margin: 0 auto 26px; }
+.close .btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+
+footer { background: var(--paper); border-top: 1px solid var(--line); padding: 26px 0; margin-top: 50px; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 13.5px; color: var(--soft); }
+.foot a { color: var(--muted); text-decoration: none; }
+.foot a:hover { color: var(--text); }
+
+@media print { .top, .nav-row, .close .btns, footer { display: none !important; } body { background: #fff; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <span class="logo">RM<span class="logo-light">Marketing</span><span class="logo-dot" aria-hidden="true"></span></span>
+    <span class="top-step" id="paso"></span>
+  </div>
+  <div class="bar"><i id="barra"></i></div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="screen intro is-on" id="s0">
+    <span class="eyebrow">Diagnóstico de contenido</span>
+    <h1 class="hook">Publicar todos los días no te trae clientes. Publicar con <span class="serif accent">estrategia, sí.</span></h1>
+    <p class="lead">
+      La mayoría publica sin saber qué función cumple cada post. Por eso suben cosas todos los días
+      y nadie les escribe.
+    </p>
+    <p class="lead">
+      Responde 3 preguntas y te armo tu mezcla de contenido con el método <strong>40/40/20</strong>:
+      qué publicar, en qué formato y para qué sirve cada pieza.
+    </p>
+
+    <div class="pills">
+      <span class="pill"><b>3</b>&nbsp;preguntas</span>
+      <span class="pill"><b>40</b>&nbsp;segundos</span>
+      <span class="pill">Resultado&nbsp;<b>inmediato</b></span>
+    </div>
+
+    <button class="btn" id="empezar">Armar mi plan →</button>
+  </section>
+
+  <!-- ===================== P1 ===================== -->
+  <section class="screen" id="s1">
+    <div class="q-num">Pregunta 1 de 3</div>
+    <h2 class="q-title">¿A qué te dedicas?</h2>
+    <p class="q-hint">De esto depende todo lo demás: las ideas de contenido cambian según a quién le hablas.</p>
+    <div class="opts" id="opts1"></div>
+    <div class="otro-wrap" id="otroWrap">
+      <input type="text" id="otroTxt" placeholder="Escribe tu profesión o sector" maxlength="60">
+    </div>
+    <div class="nav-row">
+      <button class="btn" id="n1" disabled>Continuar →</button>
+    </div>
+  </section>
+
+  <!-- ===================== P2 ===================== -->
+  <section class="screen" id="s2">
+    <div class="q-num">Pregunta 2 de 3</div>
+    <h2 class="q-title">¿Qué necesitas ahora mismo?</h2>
+    <p class="q-hint">Tu plan será el mismo método, pero con el acento puesto donde más te hace falta.</p>
+    <div class="opts" id="opts2"></div>
+    <div class="nav-row">
+      <button class="btn btn--ghost" data-back="1">← Atrás</button>
+      <button class="btn" id="n2" disabled>Continuar →</button>
+    </div>
+  </section>
+
+  <!-- ===================== P3 ===================== -->
+  <section class="screen" id="s3">
+    <div class="q-num">Pregunta 3 de 3</div>
+    <h2 class="q-title">¿Cuántas veces puedes publicar a la semana?</h2>
+    <p class="q-hint">Sé realista. Más vale sostener 3 que prometerte 7 y abandonar a la semana.</p>
+    <div class="opts" id="opts3"></div>
+    <div class="nav-row">
+      <button class="btn btn--ghost" data-back="2">← Atrás</button>
+      <button class="btn" id="n3" disabled>Ver mi plan →</button>
+    </div>
+  </section>
+
+  <!-- ===================== RESULTADO ===================== -->
+  <section class="screen" id="s4">
+    <div class="res-head">
+      <span class="res-badge" id="resBadge"></span>
+      <h2 id="resTitulo"></h2>
+      <p class="lead" id="resSub" style="margin-top:12px;"></p>
+    </div>
+
+    <div class="card">
+      <div class="card-k">Tu mezcla semanal</div>
+      <div class="mix" id="mix"></div>
+      <div class="mixnote" id="mixnote"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-k">Qué publicar en cada pilar</div>
+      <div id="pilares"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-k">Qué formato usar y para qué</div>
+      <div class="fmt">
+        <div class="fmt-c">
+          <div class="hd"><span class="em">🎬</span><strong>Reels</strong><span class="tag">Audiencia fría</span></div>
+          <p>Es lo que te lleva a personas que todavía no te siguen. Un buen Reel se mueve en audiencia fría y de ahí salen los seguidores nuevos. Si lo que buscas es alcance y crecer, aquí es donde se juega.</p>
+        </div>
+        <div class="fmt-c">
+          <div class="hd"><span class="em">🖼️</span><strong>Carruseles</strong><span class="tag">Confianza</span></div>
+          <p>Instagram les está dando muy buen alcance ahora mismo. Son ideales para contenido educativo: un tutorial, un paso a paso, algo informativo. Es el formato que te construye credibilidad y hace que te guarden.</p>
+        </div>
+        <div class="fmt-c">
+          <div class="hd"><span class="em">📱</span><strong>Historias</strong><span class="tag">Comunidad</span></div>
+          <p>Publica secuencias de historias, idealmente todos los días. Es lo que convierte seguidores en comunidad: la gente empieza a confiar en ti porque te ve seguido y te siente cerca.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule">
+      <div class="card-k">La regla que decide si tu contenido conecta</div>
+      <h3>Regla 5–50</h3>
+      <p>Antes de publicar algo de conexión, pásalo por este filtro doble. Si no cumple las dos, no va a conectar con nadie:</p>
+      <div class="two">
+        <div><b>5</b><span>Lo tiene que entender un niño de 5 años. Si necesitas explicarlo, está muy complicado.</span></div>
+        <div><b>50</b><span>Tiene que llamar la atención de 50 de cada 100 personas. Si solo le interesa a tu gremio, no es conexión.</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-k">Cómo funciona el recorrido</div>
+      <p style="font-size:15.5px;">
+        Las personas llegan a ti por la <strong style="color:var(--purple);">conexión</strong>, porque les hablaste de algo
+        que les pasa. Se quedan y te empiezan a creer por la <strong>autoridad</strong>, que es donde te ven como
+        profesional. Y te compran en la <strong style="color:var(--gold);">venta</strong>, que es un porcentaje pequeño
+        y siempre sale desde detrás de cámara, no como un anuncio.
+      </p>
+      <p style="font-size:15.5px; margin-top:12px;">
+        Ese es el orden. Si te saltas la conexión, nadie llega. Si te quedas solo en conexión, nadie te compra.
+      </p>
+    </div>
+
+    <div class="close">
+      <h2>¿Te armo esto completo <span class="serif accent">para tu marca?</span></h2>
+      <p>Este es el método. Aplicarlo a tu negocio, con tus temas y tu calendario, es lo que hago en la mentoría 1 a 1.</p>
+      <div class="btns">
+        <a class="btn btn--wa" id="waCta" href="#" target="_blank" rel="noopener">Escribirme por WhatsApp</a>
+        <button class="btn btn--ghost" id="reiniciar">Hacerlo otra vez</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>RM Marketing · Lcda. Raquel Mendoza</span>
+    <a id="waFoot" href="#" target="_blank" rel="noopener">@raquelmendoza.mkt</a>
+  </div>
+</footer>
+
+<script>
+/* ==================================================================
+   WHATSAPP — CONFIGURACIÓN
+   Para cambiar el número, edita solo WHATSAPP_NUMERO.
+   ================================================================== */
+var WHATSAPP_NUMERO = '584227163477';
+
+/* ==================================================================
+   CONTENIDO POR PERFIL
+   Para añadir o cambiar ideas, edita aquí. Tres por pilar.
+   ================================================================== */
+var NICHOS = {
+  inmobiliario: {
+    nombre: 'Asesor inmobiliario', icono: '🏡',
+    conexion: [
+      'El día que entregaste unas llaves y se te aguaron los ojos',
+      'Lo que de verdad cuesta mudarse, más allá del precio de la casa',
+      'Por qué te metiste en esto: qué hacías antes y qué te hizo cambiar'
+    ],
+    autoridad: [
+      'Cuánto necesitas realmente para la inicial de un inmueble',
+      '3 errores que comete todo el mundo al comprar sobre plano',
+      'Qué revisar en los documentos antes de firmar nada'
+    ],
+    venta: [
+      'Recorrido de una propiedad contando por qué te gusta a ti',
+      'Detrás de cámara de una captación: cómo trabajas en realidad',
+      'Un cliente contando cómo fue el proceso contigo'
+    ]
+  },
+  marca: {
+    nombre: 'Marca personal', icono: '✨',
+    conexion: [
+      'El momento en que casi tiras la toalla y qué te hizo seguir',
+      'Lo que te costó dinero aprender y nadie te advirtió',
+      'Una decisión que tomaste con miedo y volverías a tomar'
+    ],
+    autoridad: [
+      'Tu método explicado en pasos, con ejemplos reales',
+      'El error que ves repetirse en todo el mundo de tu sector',
+      'Un dato o resultado concreto y qué hiciste para lograrlo'
+    ],
+    venta: [
+      'Cómo trabajas por dentro: tu proceso, sin filtros',
+      'Para quién es tu servicio y para quién sinceramente no',
+      'El resultado de alguien que trabajó contigo, contado por esa persona'
+    ]
+  },
+  cm: {
+    nombre: 'Community manager o agencia', icono: '📈',
+    conexion: [
+      'Lo que nadie te cuenta de trabajar con clientes',
+      'El cliente que te pidió “algo que se viralice” y qué pasó',
+      'Cómo era tu vida antes de dedicarte a esto'
+    ],
+    autoridad: [
+      'Las métricas que sí importan y las que no significan nada',
+      'Cómo armas un calendario de contenido paso a paso',
+      'Auditoría en vivo de un perfil: qué cambiarías y por qué'
+    ],
+    venta: [
+      'Un día real trabajando con una cuenta',
+      'Qué incluye trabajar contigo y qué no',
+      'Antes y después de una cuenta que gestionaste'
+    ]
+  },
+  coach: {
+    nombre: 'Coach o mentor', icono: '🎯',
+    conexion: [
+      'El problema que tú también viviste antes de resolverlo',
+      'Una creencia que te frenó durante años',
+      'Qué le dirías a quien está empezando y está a punto de rendirse'
+    ],
+    autoridad: [
+      'Tu metodología explicada simple, en pasos',
+      'Desmontar un mito muy repetido en tu área',
+      'Un caso real: punto de partida, qué hicieron y resultado'
+    ],
+    venta: [
+      'Cómo es una sesión contigo por dentro',
+      'Para quién funciona tu programa y para quién no',
+      'Un testimonio contado por quien lo vivió'
+    ]
+  },
+  servicios: {
+    nombre: 'Profesional de servicios', icono: '💼',
+    conexion: [
+      'El caso que te marcó y te recordó por qué haces esto',
+      'Lo que la gente cree de tu profesión y es mentira',
+      'Cómo llegaste a dedicarte a esto'
+    ],
+    autoridad: [
+      'Responder la duda que te hacen todas las semanas',
+      'Qué hacer y qué no hacer en la situación típica de tu área',
+      'Explicar un término técnico como si fuera una conversación'
+    ],
+    venta: [
+      'Cómo es trabajar contigo: el proceso de principio a fin',
+      'En qué momento conviene buscarte y en cuál no hace falta',
+      'El resultado de un cliente, contado por él'
+    ]
+  },
+  tienda: {
+    nombre: 'Tienda o producto', icono: '🛍️',
+    conexion: [
+      'Por qué empezaste la marca y qué te costó al inicio',
+      'El día que todo salió mal y cómo lo resolviste',
+      'Lo que hay detrás de un pedido: el trabajo que no se ve'
+    ],
+    autoridad: [
+      'Cómo elegir bien dentro de tu categoría de producto',
+      'De qué está hecho y por qué importa esa diferencia',
+      'Errores de uso o cuidado que arruinan el producto'
+    ],
+    venta: [
+      'Preparando un pedido real, de principio a fin',
+      'Tu producto en uso, en la vida cotidiana',
+      'Clientes reales mostrando lo que compraron'
+    ]
+  },
+  otro: {
+    nombre: 'Tu sector', icono: '🧭',
+    conexion: [
+      'Cómo llegaste a dedicarte a esto y qué hacías antes',
+      'Lo más difícil de tu trabajo que nadie se imagina',
+      'Una historia tuya que cualquiera pueda entender, aunque no sea de tu sector'
+    ],
+    autoridad: [
+      'La pregunta que te hacen una y otra vez, respondida bien',
+      'El error más común que ves en tu área y cómo evitarlo',
+      'Un paso a paso sencillo de algo que tú haces a diario'
+    ],
+    venta: [
+      'Cómo trabajas por dentro, sin guion ni producción',
+      'Qué incluye lo que ofreces y para quién es',
+      'El resultado de alguien a quien ayudaste'
+    ]
+  }
+};
+
+var OBJETIVOS = {
+  seguidores: { nombre: 'crecer y llegar a gente nueva', foco: 'Tu prioridad son los <strong>Reels de conexión</strong>. Son los que viajan a audiencia fría y te traen caras nuevas. De cada dos piezas de conexión, que al menos una sea Reel.' },
+  clientes:   { nombre: 'que te escriban clientes', foco: 'Refuerza la <strong>autoridad</strong> en carruseles y sostén las historias a diario. La gente te escribe cuando te ve seguido y te cree. La venta funciona si antes hubo confianza.' },
+  comunidad:  { nombre: 'construir comunidad', foco: 'Las <strong>historias en secuencia, todos los días</strong>, son tu herramienta principal. No las cambies por más posts en el feed: la cercanía se construye ahí.' },
+  vender:     { nombre: 'vender un servicio o producto', foco: 'Aunque quieras vender, <strong>no subas el 20%</strong>. Lo que hace que te compren es el 80% anterior. Y cuando vendas, hazlo desde detrás de cámara, no como anuncio.' }
+};
+
+(function () {
+  'use strict';
+
+  var estado = { nicho: null, otro: '', objetivo: null, frec: null };
+
+  /* ---------------- Opciones ---------------- */
+  var P1 = [
+    { v: 'inmobiliario', ic: '🏡', t: 'Asesor inmobiliario', s: 'Vendo o alquilo propiedades' },
+    { v: 'marca',        ic: '✨', t: 'Marca personal',       s: 'Yo soy el producto' },
+    { v: 'cm',           ic: '📈', t: 'Community manager o agencia', s: 'Manejo redes de otros' },
+    { v: 'coach',        ic: '🎯', t: 'Coach o mentor',       s: 'Formo o acompaño personas' },
+    { v: 'servicios',    ic: '💼', t: 'Profesional de servicios', s: 'Abogado, médico, arquitecto, contador…' },
+    { v: 'tienda',       ic: '🛍️', t: 'Tienda o producto',    s: 'Vendo algo físico o digital' },
+    { v: 'otro',         ic: '🧭', t: 'Otro',                 s: 'Escríbeme a qué te dedicas' }
+  ];
+  var P2 = [
+    { v: 'seguidores', ic: '🚀', t: 'Crecer y llegar a gente nueva', s: 'Hoy me ven siempre los mismos' },
+    { v: 'clientes',   ic: '💬', t: 'Que me escriban clientes',      s: 'Tengo seguidores pero no consultas' },
+    { v: 'comunidad',  ic: '🤝', t: 'Construir comunidad',           s: 'Quiero que confíen en mí' },
+    { v: 'vender',     ic: '💰', t: 'Vender un servicio o producto', s: 'Ya tengo qué ofrecer' }
+  ];
+  var P3 = [
+    { v: 3, ic: '🌱', t: '3 veces por semana', s: 'Voy empezando, sin agobios' },
+    { v: 4, ic: '🌿', t: '4 veces por semana', s: 'Tengo algo de ritmo' },
+    { v: 5, ic: '🌳', t: '5 veces por semana', s: 'Le puedo dedicar tiempo' },
+    { v: 7, ic: '🔥', t: 'Todos los días',     s: 'Voy con todo' }
+  ];
+
+  function $(id) { return document.getElementById(id); }
+
+  function pintar(cont, lista, campo, alSeleccionar) {
+    cont.innerHTML = '';
+    lista.forEach(function (o) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'opt';
+      b.innerHTML = '<span class="ic">' + o.ic + '</span><span class="tx">' + o.t +
+                    (o.s ? '<small>' + o.s + '</small>' : '') + '</span>';
+      b.addEventListener('click', function () {
+        cont.querySelectorAll('.opt').forEach(function (x) { x.classList.remove('is-sel'); });
+        b.classList.add('is-sel');
+        estado[campo] = o.v;
+        alSeleccionar(o.v);
+      });
+      cont.appendChild(b);
+    });
+  }
+
+  /* ---------------- Navegación ---------------- */
+  var pantallas = ['s0', 's1', 's2', 's3', 's4'];
+  var actual = 0;
+
+  function ir(i) {
+    $(pantallas[actual]).classList.remove('is-on');
+    actual = i;
+    $(pantallas[actual]).classList.add('is-on');
+    $('barra').style.width = (i / 4 * 100) + '%';
+    $('paso').textContent = (i > 0 && i < 4) ? 'Pregunta ' + i + ' de 3' : '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  pintar($('opts1'), P1, 'nicho', function (v) {
+    $('otroWrap').classList.toggle('is-on', v === 'otro');
+    if (v === 'otro') { $('otroTxt').focus(); }
+    $('n1').disabled = false;
+  });
+  pintar($('opts2'), P2, 'objetivo', function () { $('n2').disabled = false; });
+  pintar($('opts3'), P3, 'frec',     function () { $('n3').disabled = false; });
+
+  $('empezar').addEventListener('click', function () { ir(1); });
+  $('n1').addEventListener('click', function () {
+    estado.otro = ($('otroTxt').value || '').trim();
+    ir(2);
+  });
+  $('n2').addEventListener('click', function () { ir(3); });
+  $('n3').addEventListener('click', function () { construir(); ir(4); });
+  document.querySelectorAll('[data-back]').forEach(function (b) {
+    b.addEventListener('click', function () { ir(parseInt(b.getAttribute('data-back'), 10)); });
+  });
+  $('reiniciar').addEventListener('click', function () {
+    document.querySelectorAll('.opt').forEach(function (x) { x.classList.remove('is-sel'); });
+    ['n1', 'n2', 'n3'].forEach(function (id) { $(id).disabled = true; });
+    $('otroTxt').value = ''; $('otroWrap').classList.remove('is-on');
+    estado = { nicho: null, otro: '', objetivo: null, frec: null };
+    ir(0);
+  });
+
+  /* ---------------- Reparto 40/40/20 ---------------- */
+  /* El método siempre es 40/40/20. Lo que cambia es cómo cae en la semana.
+     Con menos de 5 publicaciones, la venta pasa a ser quincenal para que
+     no se coma un tercio del calendario. */
+  function reparto(n) {
+    var ventaSemanal = n >= 5;
+    var paraPilares = ventaSemanal ? n - 1 : n;
+    var con = Math.ceil(paraPilares / 2);
+    var aut = paraPilares - con;
+    return { con: con, aut: aut, ven: 1, ventaSemanal: ventaSemanal };
+  }
+
+  /* ---------------- Resultado ---------------- */
+  function construir() {
+    var n = estado.frec || 5;
+    var r = reparto(n);
+    var nicho = NICHOS[estado.nicho] || NICHOS.otro;
+    var obj = OBJETIVOS[estado.objetivo] || OBJETIVOS.clientes;
+    var comoSeLlama = (estado.nicho === 'otro' && estado.otro) ? estado.otro : nicho.nombre;
+
+    $('resBadge').innerHTML = nicho.icono + ' ' + comoSeLlama;
+    $('resTitulo').textContent = 'Tu plan de ' + n + ' publicaciones a la semana';
+    $('resSub').innerHTML = 'Pensado para ' + obj.nombre + '. Esta es la mezcla que deberías sostener.';
+
+    var piezas = function (x) { return x + (x === 1 ? ' publicación' : ' publicaciones'); };
+    var cuentaVenta = r.ventaSemanal ? '1 publicación' : '1 cada 2 semanas';
+    $('mix').innerHTML =
+      '<div class="mix-c m-con"><div class="pc">40%</div><div class="nm">Conexión</div><div class="ct">' + piezas(r.con) + '</div></div>' +
+      '<div class="mix-c m-aut"><div class="pc">40%</div><div class="nm">Autoridad</div><div class="ct">' + piezas(r.aut) + '</div></div>' +
+      '<div class="mix-c m-ven"><div class="pc">20%</div><div class="nm">Venta</div><div class="ct">' + cuentaVenta + '</div></div>';
+
+    var nota = '<strong>Tu foco:</strong> ' + obj.foco;
+    if (!r.ventaSemanal) {
+      nota += '<br><br><strong>Con ' + n + ' por semana:</strong> la pieza de venta va cada dos semanas. La semana que no toca, súmale otra de conexión. Así la venta no se come tu calendario.';
+    }
+    nota += '<br><br>Y por encima de todo esto: <strong>historias en secuencia, todos los días</strong>. No cuentan dentro de las ' + n + ' y son las que construyen la comunidad.';
+    $('mixnote').innerHTML = nota;
+
+    function bloque(clase, titulo, porcentaje, cuantas, texto, ideas) {
+      return '<div class="pilar pilar--' + clase + '">' +
+        '<div class="pct">' + porcentaje + '% · ' + cuantas + '</div>' +
+        '<h3>' + titulo + '</h3>' +
+        '<p>' + texto + '</p>' +
+        '<ul class="ideas"><li>' + ideas.join('</li><li>') + '</li></ul>' +
+        '</div>';
+    }
+
+    $('pilares').innerHTML =
+      bloque('con', 'Conexión', 40, piezas(r.con) + ' a la semana',
+        'Aquí es donde llegas a personas nuevas. Los temas que mueven a cualquiera son siempre los mismos: <strong>dinero, amor, espiritualidad y desarrollo personal</strong>. Habla desde ahí, no desde tu profesión. Formato ideal: Reel.',
+        nicho.conexion) +
+      bloque('aut', 'Autoridad', 40, piezas(r.aut) + ' a la semana',
+        'Quien llegó por la conexión se queda aquí. Es donde educas, das datos y se te ve como profesional. Es lo que convierte a un curioso en alguien que te cree. Formato ideal: carrusel.',
+        nicho.autoridad) +
+      bloque('ven', 'Venta', 20, cuentaVenta,
+        'Poquito y siempre <strong>desde detrás de cámara</strong>. No un anuncio: tu proceso, tu día, cómo trabajas. La venta se siente natural cuando los dos pilares anteriores ya hicieron su trabajo.',
+        nicho.venta);
+
+    var msg = 'Hola Raquel, hice el quiz del plan de contenidos. Soy ' + comoSeLlama.toLowerCase() +
+              ' y quiero que me ayudes a aplicarlo a mi marca.';
+    $('waCta').href = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
+  }
+
+  $('waFoot').href = 'https://wa.me/' + WHATSAPP_NUMERO;
+  $('barra').style.width = '0%';
+})();
+</script>
+</body>
+</html>
