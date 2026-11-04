@@ -9,7 +9,7 @@ import marcas from './crece-marcas.json';
 // izquierda: íconos neón estilo Instagram que aparecen cuando nombra cada formato. Columna derecha:
 // barras amarillas fijas que se retiran y revelan el "para qué" cuando lo dice. Cierre: COMENTA YO
 // con la barra de comentario escribiéndose. Branding del manual: Poppins 800, rojo #C8102E, crema.
-// Título fijo arriba; tabla entre y 1150 y 1570 (bajo la barbilla, por encima del texto de Reels).
+// Título fijo arriba en grande (gancho visual); tabla entre y 1150 y 1570 (bajo la barbilla, por encima del texto de Reels).
 
 const FPS = 30;
 const W = 'work/crece';
@@ -19,6 +19,9 @@ const TINTA = '#141416';
 const CREMA = '#F4EFE7';
 const AMARILLO = '#F7D21E';
 const VERDE = '#1FB36B';
+const ZOOM = 1.35;
+const TX = 540 - 530 * ZOOM;
+const TY = 720 - 860 * ZOOM;
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const ease = Easing.bezier(0.22, 1, 0.36, 1);
 
@@ -155,9 +158,27 @@ const Titulo: React.FC = () => {
 	const frame = useCurrentFrame();
 	const q = interpolate(frame, [0, 10], [0, 1], {...clamp, easing: ease});
 	return (
-		<div style={{position: 'absolute', top: 250, left: 0, right: 0, display: 'flex', justifyContent: 'center', opacity: q, translate: `0px ${(1 - q) * -20}px`}}>
-			<div style={{background: CREMA, borderRadius: 22, padding: '14px 34px', boxShadow: '0 16px 40px rgba(0,0,0,0.3)', fontFamily: poppins, fontWeight: 800, fontSize: 64, color: TINTA, letterSpacing: '-0.01em'}}>
-				CRECE EN INSTAGRAM <span style={{color: ROJO}}>ASÍ</span>
+		<div
+			style={{
+				position: 'absolute',
+				top: 244,
+				left: 0,
+				right: 0,
+				textAlign: 'center',
+				opacity: q,
+				translate: `0px ${(1 - q) * -20}px`,
+				fontFamily: poppins,
+				fontWeight: 800,
+				fontSize: 104,
+				lineHeight: 0.98,
+				letterSpacing: '-0.02em',
+				color: '#FFFFFF',
+				textShadow: '0 6px 0 rgba(0,0,0,0.18), 0 10px 36px rgba(0,0,0,0.55)',
+			}}
+		>
+			<div>CRECE EN</div>
+			<div>
+				INSTAGRAM <span style={{color: ROJO}}>ASÍ</span>
 			</div>
 		</div>
 	);
@@ -230,8 +251,12 @@ export const CreceComponent: React.FC = () => {
 	return (
 		<AbsoluteFill style={{background: '#000'}}>
 			<AbsoluteFill style={{opacity: fin}}>
-				<Video src={staticFile(`${W}/base.mp4`)} style={{position: 'absolute', width: '100%', height: '100%'}} />
-				<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0) 52%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.2) 100%)'}} />
+				{/* Reencuadre: 1.35x y subido para que la cara quede más grande y alta (cara del original en
+				    ~(530, 860) -> ~(540, 720)); la tabla y el título no se mueven */}
+				<AbsoluteFill style={{transformOrigin: '0px 0px', scale: String(ZOOM), translate: `${TX}px ${TY}px`}}>
+					<Video src={staticFile(`${W}/base.mp4`)} style={{position: 'absolute', width: '100%', height: '100%'}} />
+				</AbsoluteFill>
+				<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.2) 100%)'}} />
 				<Tabla />
 				<Cta />
 				<Titulo />
