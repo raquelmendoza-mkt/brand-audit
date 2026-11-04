@@ -3,9 +3,8 @@
 
 Uso: python3 scripts/crece_base.py
 
-1. Voz: DeepFilterNet (quita el ruido) + EQ que baja la resonancia de la habitación (eco) y da
-   presencia + expansor suave que acorta las colas de reverberación + compresión ligera. No cambia
-   el timbre: no hay pitch ni efectos.
+1. Voz "natural": DeepFilterNet moderado (-a 18) + EQ suave contra la resonancia de la habitación
+   + compresión ligera. No cambia el timbre: no hay pitch ni efectos.
 2. Cortes: una pieza por frase (tiempos de faster-whisper, input/crece/original.mov.trans.json),
    con 0.08 s de aire antes y la cola real de la última palabra (hasta que la voz cae a -40 dB).
 Escribe public/work/crece/base.mp4 y src/crece-marcas.json (piezas con texto e inicio en el reel).
@@ -29,15 +28,17 @@ def run(*a):
 
 
 voz = f'{W}/voz.wav'
-if not os.path.exists(f'{W}/df/voz-raw.wav'):
-    run('ffmpeg', '-v', 'error', '-y', '-i', SRC, '-map', '0:a:0', '-ac', '1', '-ar', '48000', '-af', 'highpass=f=80', f'{W}/voz-raw.wav')
-    run(DF, '-D', '-o', f'{W}/df', f'{W}/voz-raw.wav')
-# Raquel prefiere este expansor suave: uno más fuerte (ratio 3, range 0.18) quitaba más eco pero
-# la voz se entendía peor
-run('ffmpeg', '-v', 'error', '-y', '-i', f'{W}/df/voz-raw.wav', '-af',
-    'highpass=f=90,equalizer=f=320:t=q:w=1.1:g=-3.5,equalizer=f=650:t=q:w=1.4:g=-1.5,equalizer=f=4200:t=q:w=1.0:g=2,'
-    'agate=threshold=0.015:ratio=1.6:attack=4:release=90:range=0.35,'
-    'acompressor=threshold=-22dB:ratio=2.5:attack=8:release=120:makeup=2', voz)
+# Limpieza "natural" (la que eligió Raquel entre 3 pruebas): DeepFilterNet con el recorte de ruido
+# limitado a 18 dB (-a 18; sin límite la voz quedaba metálica) + EQ suave contra la resonancia de
+# la habitación + compresión ligera. Sin expansor: cortaba las colas y la voz se entendía peor.
+if not os.path.exists(f'{W}/df18/voz-raw.wav'):
+    os.makedirs(f'{W}/df18', exist_ok=True)
+    if not os.path.exists(f'{W}/voz-raw.wav'):
+        run('ffmpeg', '-v', 'error', '-y', '-i', SRC, '-map', '0:a:0', '-ac', '1', '-ar', '48000', '-af', 'highpass=f=80', f'{W}/voz-raw.wav')
+    run(DF, '-D', '-a', '18', '-o', f'{W}/df18', f'{W}/voz-raw.wav')
+run('ffmpeg', '-v', 'error', '-y', '-i', f'{W}/df18/voz-raw.wav', '-af',
+    'highpass=f=90,equalizer=f=300:t=q:w=1.2:g=-2.5,equalizer=f=3800:t=q:w=1.0:g=1.5,'
+    'acompressor=threshold=-22dB:ratio=2:attack=10:release=150:makeup=1.5', voz)
 
 # Envolvente para encontrar la cola real de cada frase
 x = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', voz, '-ac', '1', '-ar', '16000', '-f', 's16le', '-'], capture_output=True, check=True).stdout, np.int16).astype(float)

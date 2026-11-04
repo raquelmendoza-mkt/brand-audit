@@ -43,7 +43,10 @@ de 3 `remotion still` en paralelo (más agotan la memoria).
 - **La voz siempre pegada a su toma**: nada de voz en off encima de otra imagen salvo que lo pida;
   medir la sincronía si hay dudas.
 - **Sin silencios**: deja solo el guión; quita pausas, cuentas regresivas y la voz de quien graba.
-- **Audio limpio**: pasa toda voz por DeepFilterNet (`acabado.sh limpiar-voz` o `vinedo_base.py`).
+- **Audio limpio pero natural**: pasa toda voz por DeepFilterNet MODERADO (`deep-filter -D -a 18`) +
+  EQ suave (-2.5 dB en 300 Hz, +1.5 dB en 3.8 kHz) + compresión ligera, como `scripts/crece_base.py`.
+  Raquel lo eligió entre 3 pruebas: sin límite (-a) o con expansor/gate la voz suena metálica o
+  se entiende peor. Ante la duda, mándale 2-3 muestras cortas y que elija ella.
 - **Texto clave detrás de la persona** (cifras, nombre del lugar, palabra del CTA) en reels hablados.
 - **Música**: movida (afro house / electro) y siempre por debajo de la voz con ducking; en estilos de
   lujo pregunta o usa solo efectos de sonido. Créditos de Higgsfield: **pregunta antes de gastarlos**
