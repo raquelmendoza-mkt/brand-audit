@@ -32,10 +32,11 @@ voz = f'{W}/voz.wav'
 if not os.path.exists(f'{W}/df/voz-raw.wav'):
     run('ffmpeg', '-v', 'error', '-y', '-i', SRC, '-map', '0:a:0', '-ac', '1', '-ar', '48000', '-af', 'highpass=f=80', f'{W}/voz-raw.wav')
     run(DF, '-D', '-o', f'{W}/df', f'{W}/voz-raw.wav')
-# El expansor (agate) baja las colas de eco 7 dB (medido) con el timbre a ±1 dB del original
+# Raquel prefiere este expansor suave: uno más fuerte (ratio 3, range 0.18) quitaba más eco pero
+# la voz se entendía peor
 run('ffmpeg', '-v', 'error', '-y', '-i', f'{W}/df/voz-raw.wav', '-af',
     'highpass=f=90,equalizer=f=320:t=q:w=1.1:g=-3.5,equalizer=f=650:t=q:w=1.4:g=-1.5,equalizer=f=4200:t=q:w=1.0:g=2,'
-    'agate=threshold=0.03:ratio=3:attack=2:release=55:range=0.18,'
+    'agate=threshold=0.015:ratio=1.6:attack=4:release=90:range=0.35,'
     'acompressor=threshold=-22dB:ratio=2.5:attack=8:release=120:makeup=2', voz)
 
 # Envolvente para encontrar la cola real de cada frase
