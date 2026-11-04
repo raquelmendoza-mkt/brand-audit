@@ -1,0 +1,369 @@
+{
+ "total": 18.484,
+ "frames": 555,
+ "piezas": [
+  {
+   "id": 0,
+   "a": 0.35,
+   "b": 1.95,
+   "t": 0.0,
+   "texto": "Reels para llegar a más personas.",
+   "palabras": [
+    [
+     0.43,
+     0.69,
+     "Reels"
+    ],
+    [
+     0.69,
+     0.91,
+     "para"
+    ],
+    [
+     0.91,
+     1.11,
+     "llegar"
+    ],
+    [
+     1.11,
+     1.25,
+     "a"
+    ],
+    [
+     1.25,
+     1.41,
+     "más"
+    ],
+    [
+     1.41,
+     1.89,
+     "personas."
+    ]
+   ]
+  },
+  {
+   "id": 1,
+   "a": 2.17,
+   "b": 4.67,
+   "t": 1.6,
+   "texto": "Trial Reels para llegar a audiencia que no te conoce.",
+   "palabras": [
+    [
+     2.25,
+     2.69,
+     "Trial"
+    ],
+    [
+     2.69,
+     3.07,
+     "Reels"
+    ],
+    [
+     3.07,
+     3.27,
+     "para"
+    ],
+    [
+     3.27,
+     3.43,
+     "llegar"
+    ],
+    [
+     3.43,
+     3.53,
+     "a"
+    ],
+    [
+     3.53,
+     3.91,
+     "audiencia"
+    ],
+    [
+     3.91,
+     4.03,
+     "que"
+    ],
+    [
+     4.03,
+     4.13,
+     "no"
+    ],
+    [
+     4.13,
+     4.21,
+     "te"
+    ],
+    [
+     4.21,
+     4.61,
+     "conoce."
+    ]
+   ]
+  },
+  {
+   "id": 2,
+   "a": 5.17,
+   "b": 7.07,
+   "t": 4.1,
+   "texto": "Carruseles para emitir confianza.",
+   "palabras": [
+    [
+     5.25,
+     5.77,
+     "Carruseles"
+    ],
+    [
+     5.77,
+     6.01,
+     "para"
+    ],
+    [
+     6.01,
+     6.35,
+     "emitir"
+    ],
+    [
+     6.35,
+     7.01,
+     "confianza."
+    ]
+   ]
+  },
+  {
+   "id": 3,
+   "a": 7.75,
+   "b": 9.48,
+   "t": 6.0,
+   "texto": "Historias para crear comunidad.",
+   "palabras": [
+    [
+     7.83,
+     8.35,
+     "Historias"
+    ],
+    [
+     8.35,
+     8.59,
+     "para"
+    ],
+    [
+     8.59,
+     8.85,
+     "crear"
+    ],
+    [
+     8.85,
+     9.23,
+     "comunidad."
+    ]
+   ]
+  },
+  {
+   "id": 4,
+   "a": 9.89,
+   "b": 13.19,
+   "t": 7.73,
+   "texto": "Publicar todos los días hace que crezcas más, totalmente falso.",
+   "palabras": [
+    [
+     9.97,
+     10.49,
+     "Publicar"
+    ],
+    [
+     10.49,
+     10.61,
+     "todos"
+    ],
+    [
+     10.61,
+     10.81,
+     "los"
+    ],
+    [
+     10.81,
+     10.93,
+     "días"
+    ],
+    [
+     10.93,
+     11.25,
+     "hace"
+    ],
+    [
+     11.25,
+     11.41,
+     "que"
+    ],
+    [
+     11.41,
+     11.71,
+     "crezcas"
+    ],
+    [
+     11.71,
+     12.05,
+     "más,"
+    ],
+    [
+     12.19,
+     12.61,
+     "totalmente"
+    ],
+    [
+     12.61,
+     13.13,
+     "falso."
+    ]
+   ]
+  },
+  {
+   "id": 5,
+   "a": 13.49,
+   "b": 17.03,
+   "t": 11.03,
+   "texto": "Publicar con una idea ganadora hace que crezcas más, totalmente cierto.",
+   "palabras": [
+    [
+     13.57,
+     14.09,
+     "Publicar"
+    ],
+    [
+     14.09,
+     14.23,
+     "con"
+    ],
+    [
+     14.23,
+     14.37,
+     "una"
+    ],
+    [
+     14.37,
+     14.53,
+     "idea"
+    ],
+    [
+     14.53,
+     14.95,
+     "ganadora"
+    ],
+    [
+     14.95,
+     15.39,
+     "hace"
+    ],
+    [
+     15.39,
+     15.51,
+     "que"
+    ],
+    [
+     15.51,
+     15.83,
+     "crezcas"
+    ],
+    [
+     15.83,
+     16.07,
+     "más,"
+    ],
+    [
+     16.17,
+     16.51,
+     "totalmente"
+    ],
+    [
+     16.51,
+     16.97,
+     "cierto."
+    ]
+   ]
+  },
+  {
+   "id": 6,
+   "a": 17.37,
+   "b": 21.285,
+   "t": 14.57,
+   "texto": "Comenta la palabra yo y te comparto un plan personalizado para tu tipo de negocio.",
+   "palabras": [
+    [
+     17.45,
+     17.81,
+     "Comenta"
+    ],
+    [
+     17.81,
+     17.91,
+     "la"
+    ],
+    [
+     17.91,
+     18.23,
+     "palabra"
+    ],
+    [
+     18.23,
+     18.49,
+     "yo"
+    ],
+    [
+     18.49,
+     18.71,
+     "y"
+    ],
+    [
+     18.71,
+     18.83,
+     "te"
+    ],
+    [
+     18.83,
+     19.17,
+     "comparto"
+    ],
+    [
+     19.17,
+     19.29,
+     "un"
+    ],
+    [
+     19.29,
+     19.45,
+     "plan"
+    ],
+    [
+     19.45,
+     20.11,
+     "personalizado"
+    ],
+    [
+     20.11,
+     20.35,
+     "para"
+    ],
+    [
+     20.35,
+     20.47,
+     "tu"
+    ],
+    [
+     20.47,
+     20.67,
+     "tipo"
+    ],
+    [
+     20.67,
+     20.81,
+     "de"
+    ],
+    [
+     20.81,
+     21.19,
+     "negocio."
+    ]
+   ]
+  }
+ ]
+}
