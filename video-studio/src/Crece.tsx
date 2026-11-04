@@ -178,7 +178,7 @@ const Titulo: React.FC = () => {
 		>
 			<div>CRECE EN</div>
 			<div>
-				INSTAGRAM <span style={{color: ROJO}}>ASÍ</span>
+				INSTAGRAM ASÍ
 			</div>
 		</div>
 	);
