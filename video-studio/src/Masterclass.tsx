@@ -9,7 +9,7 @@ import marcas from './masterclass-marcas.json';
 // Base sin pausas, voz natural y cambios de ángulo 1.0x/1.15x en HD: scripts/masterclass_base.py.
 // Paleta del flyer (morado sobre negro, la marca de Raquel) con Poppins 800 + Helvetica espaciada.
 // Fijo arriba: MASTERCLASS GRATIS + PARA REALTORS Y MARCAS PERSONALES (se oculta cuando sale el
-// flyer, que ya lo trae). Lo que dice aparece en la franja del pecho (y 1180-1520). Cierre: el flyer
+// flyer, que ya lo trae). Lo que dice aparece en la franja del pecho (y 1330-1560, bajo la barbilla). Cierre: el flyer
 // a pantalla completa + botón "APARTA TU LUGAR" con flechas al botón de registro del anuncio.
 
 const FPS = 30;
@@ -73,7 +73,7 @@ const Fila: React.FC<{readonly top: number; readonly children: React.ReactNode}>
 );
 
 // Tarjeta simple: ícono + título (+ subtítulo)
-const Tarjeta: React.FC<{readonly de: number; readonly a: number; readonly top?: number; readonly Ic: L.LucideIcon; readonly titulo: string; readonly sub?: string}> = ({de, a, top = 1230, Ic, titulo, sub}) => {
+const Tarjeta: React.FC<{readonly de: number; readonly a: number; readonly top?: number; readonly Ic: L.LucideIcon; readonly titulo: string; readonly sub?: string}> = ({de, a, top = 1400, Ic, titulo, sub}) => {
 	const v = useVentana(de, a);
 	if (!v.visible) return null;
 	return (
@@ -94,7 +94,7 @@ const Tarjeta: React.FC<{readonly de: number; readonly a: number; readonly top?:
 };
 
 // Chips que aparecen uno por uno (Mensajes, CRM, Pipeline, IA)
-const Chips: React.FC<{readonly de: number; readonly a: number; readonly top?: number; readonly items: {s: number; texto: string; Ic: React.ReactNode}[]}> = ({de, a, top = 1220, items}) => {
+const Chips: React.FC<{readonly de: number; readonly a: number; readonly top?: number; readonly items: {s: number; texto: string; Ic: React.ReactNode}[]}> = ({de, a, top = 1390, items}) => {
 	const v = useVentana(de, a);
 	if (!v.visible) return null;
 	return (
@@ -121,7 +121,7 @@ const Fecha: React.FC<{readonly de: number; readonly a: number}> = ({de, a}) => 
 	const v = useVentana(de, a);
 	if (!v.visible) return null;
 	return (
-		<Fila top={1190}>
+		<Fila top={1370}>
 			<div style={{scale: String(v.q), opacity: v.o, display: 'flex', alignItems: 'center', gap: 22}}>
 				<div style={{width: 150, borderRadius: 26, overflow: 'hidden', background: '#FFFFFF', boxShadow: '0 18px 44px rgba(0,0,0,0.45), 0 0 34px rgba(139,92,246,0.5)', textAlign: 'center'}}>
 					<div style={{background: `linear-gradient(135deg, ${MORADO2}, ${MORADO})`, color: '#FFFFFF', fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.2em', padding: '6px 0'}}>NOV</div>
@@ -143,7 +143,7 @@ const Invitado: React.FC<{readonly de: number; readonly a: number}> = ({de, a}) 
 	if (!v.visible) return null;
 	const sub = interpolate(v.frame, [F(5.02), F(5.02) + 10], [0, 1], clamp);
 	return (
-		<Fila top={1200}>
+		<Fila top={1370}>
 			<div style={{scale: String(v.q), opacity: v.o}}>
 				<Vidrio style={{padding: '14px 32px 14px 14px'}}>
 					<div style={{width: 130, height: 130, borderRadius: 65, overflow: 'hidden', border: `4px solid ${MORADO2}`, boxShadow: '0 0 26px rgba(139,92,246,0.7)', flexShrink: 0}}>
@@ -168,7 +168,7 @@ const Agente: React.FC<{readonly de: number; readonly a: number}> = ({de, a}) =>
 	const texto = '¡Hola! ¿En qué zona buscas tu casa?';
 	const n = Math.min(texto.length, Math.max(0, Math.floor((v.frame - v.fa - 10) / 1.3)));
 	return (
-		<Fila top={1190}>
+		<Fila top={1330}>
 			<div style={{scale: String(v.q), opacity: v.o, width: 880}}>
 				<div style={{background: 'rgba(250,248,255,0.97)', borderRadius: 34, padding: '20px 26px', boxShadow: '0 18px 44px rgba(0,0,0,0.45), 0 0 34px rgba(139,92,246,0.5)', display: 'flex', gap: 18, alignItems: 'center'}}>
 					<Circulo tam={84}>
@@ -197,7 +197,7 @@ const Agente: React.FC<{readonly de: number; readonly a: number}> = ({de, a}) =>
 };
 
 // Titular grande en el pecho (SISTEMATIZA TU NEGOCIO CON IA / CTA)
-const Titular: React.FC<{readonly de: number; readonly a: number; readonly linea1: string; readonly linea2: string; readonly top?: number}> = ({de, a, linea1, linea2, top = 1190}) => {
+const Titular: React.FC<{readonly de: number; readonly a: number; readonly linea1: string; readonly linea2: string; readonly top?: number}> = ({de, a, linea1, linea2, top = 1360}) => {
 	const v = useVentana(de, a, 10);
 	if (!v.visible) return null;
 	const q2 = interpolate(v.frame, [v.fa + 5, v.fa + 15], [0, 1], {...clamp, easing: Easing.out(Easing.back(1.6))});
@@ -225,7 +225,7 @@ const Titular: React.FC<{readonly de: number; readonly a: number; readonly linea
 };
 
 // Botón de registro con mano y flechas hacia el botón del anuncio
-const Boton: React.FC<{readonly de: number; readonly a: number; readonly texto: string; readonly top?: number}> = ({de, a, texto, top = 1300}) => {
+const Boton: React.FC<{readonly de: number; readonly a: number; readonly texto: string; readonly top?: number}> = ({de, a, texto, top = 1370}) => {
 	const v = useVentana(de, a);
 	if (!v.visible) return null;
 	const k = v.frame - v.fa;
