@@ -221,6 +221,34 @@ input[type="text"]:focus { outline: none; border-color: var(--purple); }
   background: var(--purple-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%236C47FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat;
 }
 
+/* Ganchos */
+.regla-base { margin: 22px 0; padding: 18px 20px; border-radius: 16px; background: var(--purple-tint); border-left: 3px solid var(--purple); }
+.regla-base span { display: block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple); }
+.regla-base strong { display: block; font-size: 17.5px; font-weight: 600; letter-spacing: -0.02em; color: #2A1D72; margin: 6px 0 8px; }
+.regla-base p { font-size: 14px; line-height: 1.6; color: #3D2C8F; }
+
+.ganchos { display: grid; gap: 12px; }
+.gancho { border: 1px solid var(--line); border-radius: 18px; padding: 22px; background: var(--mist); }
+.gancho .hd { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.gancho .nm { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--purple); }
+.gancho h4 { font-size: 17.5px; font-weight: 600; letter-spacing: -0.02em; }
+.gancho .sb { font-size: 13.5px; color: var(--soft); width: 100%; margin-top: 2px; }
+.gancho .pq { font-size: 14px; line-height: 1.6; color: var(--muted); margin: 12px 0 14px; }
+.gancho .pl { background: #fff; border: 1px dashed #CFC8E8; border-radius: 12px; padding: 13px 15px; font-size: 14.5px; font-weight: 500; color: var(--text); }
+.gancho .pl em { display: block; font-style: normal; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-bottom: 5px; }
+.gancho ul { list-style: none; margin-top: 12px; display: grid; gap: 7px; }
+.gancho ul li { position: relative; padding-left: 18px; font-size: 14.5px; line-height: 1.5; color: var(--text); }
+.gancho ul li::before { content: "—"; position: absolute; left: 0; color: var(--purple); }
+
+.check { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+.check ul { list-style: none; display: grid; gap: 10px; }
+.check li { position: relative; padding-left: 26px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.check li b { color: var(--text); font-weight: 600; }
+.check li::before {
+  content: ""; position: absolute; left: 0; top: 3px; width: 15px; height: 15px; border-radius: 4px;
+  border: 1.5px solid var(--purple); background: var(--purple-tint);
+}
+
 /* Pasos de investigación */
 .pasos { display: grid; gap: 16px; }
 .paso { display: flex; gap: 15px; align-items: flex-start; }
@@ -366,6 +394,31 @@ footer { background: var(--paper); border-top: 1px solid var(--line); padding: 2
     </div>
 
     <div class="card">
+      <div class="card-k">Los primeros 3 segundos</div>
+      <h3 style="margin-bottom:10px;">Sin gancho, el mejor contenido no se ve</h3>
+      <p style="font-size:15.5px;">
+        Da igual lo bueno que sea tu video: si los primeros 3 segundos no detienen el scroll, nadie
+        llega al resto. Estos son los 6 ganchos que puedes usar en cualquier pieza de tu plan.
+      </p>
+      <div class="regla-base">
+        <span>Regla base</span>
+        <strong>El gancho es una promesa. El desarrollo la paga.</strong>
+        <p>Si prometes una cifra, la desglosas. Si prometes polémica, la justificas. El clickbait sube las vistas y hunde la retención, que es lo que el algoritmo realmente mide.</p>
+      </div>
+      <div class="ganchos" id="ganchos"></div>
+      <div class="check">
+        <div class="card-k" style="margin-bottom:12px;">Los 5 filtros antes de publicar</div>
+        <ul>
+          <li><b>¿Dura menos de 3 segundos?</b> Si necesitas 6 palabras de contexto antes del gancho, córtalas.</li>
+          <li><b>¿Se entiende sin sonido?</b> Texto en pantalla o imagen que hable sola.</li>
+          <li><b>¿Funciona sin ver la imagen?</b> La frase sola tiene que detener.</li>
+          <li><b>¿El desarrollo paga la promesa?</b> Si prometes una cifra, la desglosas.</li>
+          <li><b>¿Le habla a UNA persona específica?</b> Si le habla a todos, no le habla a nadie.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-k">Antes de grabar: de dónde sale la idea</div>
       <h3 style="margin-bottom:10px;">No se trata de publicar mucho, sino de publicar con una idea ganadora</h3>
       <p style="font-size:15.5px; margin-bottom:22px;">
@@ -481,140 +534,63 @@ var WHATSAPP_NUMERO = '584227163477';
    Para añadir o cambiar ideas, edita aquí. Tres por pilar.
    ================================================================== */
 var NICHOS = {
-  inmobiliario: {
-    nombre: 'Asesor inmobiliario', icono: '🏡',
-    saludo: 'En el sector inmobiliario este método funciona muy bien, porque la gente no sigue propiedades: sigue a la persona que se las sabe explicar.',
-    conexion: [
-      '“¿Qué es mejor: comprar o rentar?”',
-      '“Cuánto dinero necesitas de verdad para mudarte”',
-      '“Lo que nadie te dice antes de comprar tu primera casa”'
-    ],
-    autoridad: [
-      '“3 errores que te pueden costar la casa”',
-      '“Cómo saber si el precio que te están dando es justo”',
-      '“Lo que tienes que revisar antes de firmar”'
-    ],
-    venta: [
-      '“Así trabajo yo cuando alguien me contrata”',
-      '“Un día conmigo mostrando propiedades”',
-      '“Lo que pasó con el cliente que me escribió hace tres meses”'
-    ]
-  },
-  marca: {
-    nombre: 'Marca personal', icono: '✨',
-    saludo: 'En marca personal este método se nota rapidísimo, porque el producto eres tú y todo empieza por la conexión.',
-    conexion: [
-      '“Lo que me costó caro aprender”',
-      '“Por qué dejé el trabajo que todos querían”',
-      '“El error que casi me hace renunciar”'
-    ],
-    autoridad: [
-      '“3 cosas que haría distinto si empezara hoy”',
-      '“Mi método explicado en 3 pasos”',
-      '“Lo que nadie te explica de esto”'
-    ],
-    venta: [
-      '“Así es trabajar conmigo”',
-      '“Para quién NO es lo que hago”',
-      '“De dónde partió esta persona y dónde está hoy”'
-    ]
-  },
-  cm: {
-    nombre: 'Community manager o agencia', icono: '📈',
-    saludo: 'Si manejas las redes de otros, aplicarte esto a ti es lo que te trae clientes: tu mejor portafolio es tu propio perfil.',
-    conexion: [
-      '“¿Por qué tu contenido no crece?”',
-      '“Lo que pasa cuando un cliente te pide algo viral”',
-      '“El día que perdí un cliente por esto”'
-    ],
-    autoridad: [
-      '“Las métricas que de verdad importan”',
-      '“Cómo armo un calendario de contenido en una hora”',
-      '“Audito este perfil en 60 segundos”'
-    ],
-    venta: [
-      '“Un día real manejando cuentas”',
-      '“Qué incluye trabajar conmigo”',
-      '“Antes y después de esta cuenta”'
-    ]
-  },
-  coach: {
-    nombre: 'Coach o mentor', icono: '🎯',
-    saludo: 'En formación este método es clave, porque nadie le compra un proceso a alguien que no siente cercano.',
-    conexion: [
-      '“¿Por qué siempre empiezas y lo dejas?”',
-      '“Lo que me tuvo estancada durante años”',
-      '“La frase que me cambió la forma de verlo”'
-    ],
-    autoridad: [
-      '“El paso que todo el mundo se salta”',
-      '“Mi método en 3 pasos”',
-      '“Por qué esto que te dijeron es mentira”'
-    ],
-    venta: [
-      '“Cómo es una sesión conmigo por dentro”',
-      '“Para quién funciona esto y para quién no”',
-      '“De dónde partió y dónde está hoy”'
-    ]
-  },
-  servicios: {
-    nombre: 'Profesional de servicios', icono: '💼',
-    saludo: 'En servicios profesionales esto es determinante: la gente contrata a quien le explica claro, no al que tiene más títulos.',
-    conexion: [
-      '“¿Cuánto te cuesta no resolverlo a tiempo?”',
-      '“El caso que no se me olvida”',
-      '“Lo que todo el mundo cree de mi profesión y es falso”'
-    ],
-    autoridad: [
-      '“La pregunta que me hacen todas las semanas”',
-      '“Qué hacer si te pasa esto”',
-      '“Te explico este término como si fuera una conversación”'
-    ],
-    venta: [
-      '“Así es el proceso conmigo, de principio a fin”',
-      '“Cuándo me necesitas y cuándo no hace falta”',
-      '“Lo que resolvimos con este cliente”'
-    ]
-  },
-  tienda: {
-    nombre: 'Tienda o producto', icono: '🛍️',
-    saludo: 'Con producto, este método es justo lo que separa a una tienda más de una marca que la gente sigue.',
-    conexion: [
-      '“¿Por qué pagar más por esto?”',
-      '“Cómo empecé esta marca con lo que tenía”',
-      '“El pedido que casi me hace cerrar”'
-    ],
-    autoridad: [
-      '“Cómo elegir el tuyo sin equivocarte”',
-      '“Por qué esto cuesta lo que cuesta”',
-      '“El error que te arruina el producto”'
-    ],
-    venta: [
-      '“Preparando un pedido de principio a fin”',
-      '“Esto es exactamente lo que recibes”',
-      '“Clientes mostrando el suyo”'
-    ]
-  },
-  otro: {
-    nombre: 'Tu sector', icono: '🧭',
-    saludo: 'Este método funciona igual en cualquier sector, porque la gente conecta con personas, no con profesiones.',
-    conexion: [
-      '“¿Vale la pena o no?” — sobre la decisión típica de tu sector',
-      '“Cómo llegué a dedicarme a esto”',
-      '“Lo más difícil de mi trabajo que nadie se imagina”'
-    ],
-    autoridad: [
-      '“La pregunta que más me hacen”',
-      '“El error más común y cómo evitarlo”',
-      '“Te explico paso a paso algo que hago a diario”'
-    ],
-    venta: [
-      '“Así trabajo yo”',
-      '“Qué incluye lo que ofrezco y para quién es”',
-      '“Lo que logró alguien que confió en mí”'
-    ]
-  }
+  inmobiliario: { nombre: 'Asesor inmobiliario', icono: '🏡', saludo: 'En el sector inmobiliario este método funciona muy bien, porque la gente no sigue propiedades: sigue a la persona que se las sabe explicar.' },
+  marca:        { nombre: 'Marca personal', icono: '✨', saludo: 'En marca personal este método se nota rapidísimo, porque el producto eres tú y todo empieza por la conexión.' },
+  cm:           { nombre: 'Community manager o agencia', icono: '📈', saludo: 'Si manejas las redes de otros, aplicarte esto a ti es lo que te trae clientes: tu mejor portafolio es tu propio perfil.' },
+  coach:        { nombre: 'Coach o mentor', icono: '🎯', saludo: 'En formación este método es clave, porque nadie le compra un proceso a alguien que no siente cercano.' },
+  servicios:    { nombre: 'Profesional de servicios', icono: '💼', saludo: 'En servicios profesionales esto es determinante: la gente contrata a quien le explica claro, no al que tiene más títulos.' },
+  tienda:       { nombre: 'Tienda o producto', icono: '🛍️', saludo: 'Con producto, este método es justo lo que separa a una tienda más de una marca que la gente sigue.' },
+  otro:         { nombre: 'Tu sector', icono: '🧭', saludo: 'Este método funciona igual en cualquier sector, porque la gente conecta con personas, no con profesiones.' }
 };
+
+/* ==================================================================
+   BIBLIOTECA DE GANCHOS — los 6 ganchos de guion
+   Tomados de la Biblioteca de Ganchos de RM Marketing IA.
+   ================================================================== */
+var GANCHOS = [
+  {
+    n: '01', nombre: 'Advertencia', sub: '“Cuidado con esto”',
+    porque: 'La negación activa el instinto de supervivencia. Decirle a alguien que NO haga algo detiene el scroll por puro miedo a estar equivocándose.',
+    plantilla: 'No [acción importante] sin antes revisar [detalle crítico].',
+    inmo: ['“No firmes la compra de tu propiedad sin revisar ESTO primero.”', '“No des ni un dólar de arras sin ver ESTE documento del vendedor.”'],
+    otros: ['“No firmes ese contrato sin leer esta cláusula.”', '“No inviertas un dólar en publicidad sin tener esto listo.”']
+  },
+  {
+    n: '02', nombre: 'Error caro', sub: 'La cifra que duele',
+    porque: 'Las cifras impactan más que los adjetivos. “Te puede salir caro” no detiene a nadie; “$3.000” sí.',
+    plantilla: 'Este error puede costarte [cifra específica] en [contexto].',
+    inmo: ['“Este error te puede costar $3.000 al comprar tu primera casa.”', '“Vender sin fotos profesionales te cuesta $4.200 en promedio.”'],
+    otros: ['“Este error en tu tienda online te hace perder 6 de cada 10 ventas.”', '“Cobrar por hora en vez de por proyecto te cuesta $900 al mes.”']
+  },
+  {
+    n: '03', nombre: 'Polémico', sub: 'Dices algo que “está mal”… y luego lo resuelves',
+    porque: 'El cerebro no puede dejar pasar una afirmación que contradice lo que da por sentado. La técnica clave es la pausa.',
+    plantilla: '[Creencia popular] es un error. (pausa) …si [condición].',
+    inmo: ['“Comprar casa hoy es un error… (pausa) si lo haces como todo el mundo.”', '“Bajar el precio no vende tu casa más rápido. Casi siempre pasa lo contrario.”'],
+    otros: ['“Publicar todos los días no sirve de nada.”', '“No necesitas más seguidores. Necesitas otra cosa.”']
+  },
+  {
+    n: '04', nombre: 'Información secreta', sub: '“Casi nadie sabe esto”',
+    porque: 'A todos nos gusta sentirnos parte de un grupo que maneja información privilegiada. Curiosidad más pertenencia.',
+    plantilla: 'Nadie te cuenta esto sobre [tu nicho / tu zona]…',
+    inmo: ['“Casi nadie sabe cuál es la zona que más se está revalorizando ahorita.”', '“Hay un mes del año en que los precios bajan. Y no es el que crees.”'],
+    otros: ['“Hay un horario en que tu publicación llega al triple. Casi nadie lo usa.”', '“Este dato de tu sector casi ningún cliente lo conoce…”']
+  },
+  {
+    n: '05', nombre: 'Storytelling', sub: 'Tu experiencia como autoridad',
+    porque: 'Es el mejor gancho para transmitir autoridad sin sonar arrogante. El cerebro se queda esperando el final de la historia.',
+    plantilla: '[X años] haciendo [tu profesión] me hicieron entender esto…',
+    inmo: ['“14 años vendiendo propiedades me enseñaron algo que cambió cómo asesoro.”', '“Cometí este error en mi primer año. No quiero que tú lo cometas.”'],
+    otros: ['“Mi primer mes facturé cero. Esto fue lo que cambió.”', '“Perdí mi cliente más grande por un correo mal escrito.”']
+  },
+  {
+    n: '06', nombre: 'Identificación directa', sub: 'Nombras a tu cliente',
+    porque: 'El cerebro reacciona cuando se siente nombrado. Es el mejor para tráfico calificado: no busca alcance masivo, busca al cliente correcto.',
+    plantilla: 'Si eres [perfil específico] y [situación o dolor], necesitas ver esto.',
+    inmo: ['“Si vas a comprar tu primera casa, este video es para ti.”', '“Si tu propiedad lleva más de 6 meses publicada y no pasa nada, mira esto.”'],
+    otros: ['“Si tienes un negocio y no sabes qué publicar, esto es para ti.”', '“Si vendes por WhatsApp y te dejan en visto, escucha esto.”']
+  }
+];
 
 var OBJETIVOS = {
   seguidores: { nombre: 'crecer y llegar a gente nueva', foco: 'Tu prioridad son los <strong>Reels de conexión</strong>. Son los que viajan a audiencia fría y te traen caras nuevas. De cada dos piezas de conexión, que al menos una sea Reel.' },
@@ -749,26 +725,34 @@ var OBJETIVOS = {
     nota += '<br><br>Y por encima de todo esto: <strong>historias en secuencia, todos los días</strong>. No cuentan dentro de las ' + n + ' y son las que construyen la comunidad.';
     $('mixnote').innerHTML = nota;
 
-    function bloque(clase, titulo, porcentaje, cuantas, texto, ideas) {
+    function bloque(clase, titulo, porcentaje, cuantas, texto) {
       return '<div class="pilar pilar--' + clase + '">' +
         '<div class="pct">' + porcentaje + '% · ' + cuantas + '</div>' +
         '<h3>' + titulo + '</h3>' +
         '<p>' + texto + '</p>' +
-        '<div class="ideas-k">Ganchos que puedes usar</div>' +
-        '<ul class="ideas"><li>' + ideas.join('</li><li>') + '</li></ul>' +
         '</div>';
     }
 
     $('pilares').innerHTML =
       bloque('con', 'Conexión', 40, piezas(r.con) + ' a la semana',
-        'Aquí es donde llegas a personas nuevas. Los temas que mueven a cualquiera son siempre los mismos: <strong>dinero, amor, espiritualidad y desarrollo personal</strong>. Habla desde ahí, no desde tu profesión. Formato ideal: Reel.',
-        nicho.conexion) +
+        'Aquí es donde llegas a personas nuevas. Los temas que mueven a cualquiera son siempre los mismos: <strong>dinero, amor, espiritualidad y desarrollo personal</strong>. Habla desde ahí, no desde tu profesión. Formato ideal: Reel.') +
       bloque('aut', 'Autoridad', 40, piezas(r.aut) + ' a la semana',
-        'Quien llegó por la conexión se queda aquí. Es donde educas, das datos y se te ve como profesional. Es lo que convierte a un curioso en alguien que te cree. Formato ideal: carrusel.',
-        nicho.autoridad) +
+        'Quien llegó por la conexión se queda aquí. Es donde educas, das datos y se te ve como profesional. Es lo que convierte a un curioso en alguien que te cree. Formato ideal: carrusel.') +
       bloque('ven', 'Venta', 20, cuentaVenta,
-        'Poquito y siempre <strong>desde detrás de cámara</strong>. No un anuncio: tu proceso, tu día, cómo trabajas. La venta se siente natural cuando los dos pilares anteriores ya hicieron su trabajo.',
-        nicho.venta);
+        'Poquito y siempre <strong>desde detrás de cámara</strong>. No un anuncio: tu proceso, tu día, cómo trabajas. La venta se siente natural cuando los dos pilares anteriores ya hicieron su trabajo.');
+
+    /* Ganchos: ejemplos del sector si es inmobiliario, genéricos si no. */
+    var esInmo = estado.nicho === 'inmobiliario';
+    $('ganchos').innerHTML = GANCHOS.map(function (g) {
+      var ej = esInmo ? g.inmo : g.otros;
+      return '<div class="gancho">' +
+        '<div class="hd"><span class="nm">' + g.n + '</span><h4>' + g.nombre + '</h4>' +
+        '<span class="sb">' + g.sub + '</span></div>' +
+        '<p class="pq">' + g.porque + '</p>' +
+        '<div class="pl"><em>Plantilla adaptable</em>' + g.plantilla + '</div>' +
+        '<ul><li>' + ej.join('</li><li>') + '</li></ul>' +
+        '</div>';
+    }).join('');
 
     var msg = 'Hola Raquel, hice el quiz del plan de contenidos. Soy ' + comoSeLlama.toLowerCase() +
               ' y quiero que me ayudes a aplicarlo a mi marca.';
