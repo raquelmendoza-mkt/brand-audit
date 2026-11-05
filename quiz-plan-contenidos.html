@@ -240,6 +240,8 @@ input[type="text"]:focus { outline: none; border-color: var(--purple); }
 .gancho ul li { position: relative; padding-left: 18px; font-size: 14.5px; line-height: 1.5; color: var(--text); }
 .gancho ul li::before { content: "—"; position: absolute; left: 0; color: var(--purple); }
 
+.gancho .truco { margin-top: 13px; padding: 12px 14px; border-radius: 12px; background: var(--gold-tint); border: 1px solid rgba(201,148,58,0.3); font-size: 13.5px; line-height: 1.55; color: #7A5A1E; }
+.gancho .truco b { color: #5E4416; font-weight: 600; }
 .check { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
 .check ul { list-style: none; display: grid; gap: 10px; }
 .check li { position: relative; padding-left: 26px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
@@ -398,7 +400,7 @@ footer { background: var(--paper); border-top: 1px solid var(--line); padding: 2
       <h3 style="margin-bottom:10px;">Sin gancho, el mejor contenido no se ve</h3>
       <p style="font-size:15.5px;">
         Da igual lo bueno que sea tu video: si los primeros 3 segundos no detienen el scroll, nadie
-        llega al resto. Estos son los 6 ganchos que puedes usar en cualquier pieza de tu plan.
+        llega al resto. Estos son los 7 ganchos que puedes usar en cualquier pieza de tu plan.
       </p>
       <div class="regla-base">
         <span>Regla base</span>
@@ -589,6 +591,14 @@ var GANCHOS = [
     plantilla: 'Si eres [perfil específico] y [situación o dolor], necesitas ver esto.',
     inmo: ['“Si vas a comprar tu primera casa, este video es para ti.”', '“Si tu propiedad lleva más de 6 meses publicada y no pasa nada, mira esto.”'],
     otros: ['“Si tienes un negocio y no sabes qué publicar, esto es para ti.”', '“Si vendes por WhatsApp y te dejan en visto, escucha esto.”']
+  },
+  {
+    n: '07', nombre: 'Comparación', sub: '“¿Qué es mejor: A o B?”',
+    porque: 'El cerebro no puede dejar una comparación sin resolver: elige un bando en el primer segundo y se queda a ver si acertó. Además es el gancho que más comentarios genera, porque cada quien defiende su opción, y eso empuja el alcance.',
+    plantilla: '¿Qué es mejor: [opción A] o [opción B]?',
+    inmo: ['“¿Qué es mejor: comprar una casa para vivir en ella o para alquilarla?”', '“¿Qué conviene más: comprar sobre plano o comprar listo para mudarte?”'],
+    otros: ['“¿Qué conviene más: cobrar por hora o cobrar por proyecto?”', '“¿Qué vende más: los Reels o los carruseles?”'],
+    truco: 'Toma partido al final. Si no das un veredicto claro, el video se siente vacío y la gente se va sin comentar.'
   }
 ];
 
@@ -751,6 +761,7 @@ var OBJETIVOS = {
         '<p class="pq">' + g.porque + '</p>' +
         '<div class="pl"><em>Plantilla adaptable</em>' + g.plantilla + '</div>' +
         '<ul><li>' + ej.join('</li><li>') + '</li></ul>' +
+        (g.truco ? '<div class="truco"><b>Truco:</b> ' + g.truco + '</div>' : '') +
         '</div>';
     }).join('');
 
