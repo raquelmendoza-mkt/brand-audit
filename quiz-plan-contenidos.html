@@ -211,6 +211,7 @@ input[type="text"]:focus { outline: none; border-color: var(--purple); }
 .pilar--aut .pct { color: var(--text); }
 .pilar--ven .pct { color: var(--gold); }
 .pilar p { font-size: 15px; margin: 10px 0 14px; }
+.ideas-k { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-bottom: 10px; }
 .ideas { list-style: none; display: grid; gap: 9px; }
 .ideas li {
   position: relative; padding-left: 26px; font-size: 15px; line-height: 1.55; color: var(--text);
@@ -219,6 +220,23 @@ input[type="text"]:focus { outline: none; border-color: var(--purple); }
   content: ""; position: absolute; left: 0; top: 7px; width: 14px; height: 14px; border-radius: 50%;
   background: var(--purple-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%236C47FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat;
 }
+
+/* Pasos de investigación */
+.pasos { display: grid; gap: 16px; }
+.paso { display: flex; gap: 15px; align-items: flex-start; }
+.paso .np {
+  flex: none; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--purple); color: #fff; display: grid; place-items: center;
+  font-size: 14px; font-weight: 600;
+}
+.paso strong { display: block; font-size: 16.5px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 5px; }
+.paso p { font-size: 14.5px; line-height: 1.6; }
+.aviso {
+  margin-top: 22px; padding: 18px 20px; border-radius: 16px;
+  background: var(--gold-tint); border: 1px solid rgba(201,148,58,0.3);
+  font-size: 14.5px; line-height: 1.65; color: #7A5A1E;
+}
+.aviso strong { color: #5E4416; font-weight: 600; }
 
 /* Formatos */
 .fmt { display: grid; gap: 12px; }
@@ -348,6 +366,50 @@ footer { background: var(--paper); border-top: 1px solid var(--line); padding: 2
     </div>
 
     <div class="card">
+      <div class="card-k">Antes de grabar: de dónde sale la idea</div>
+      <h3 style="margin-bottom:10px;">No se trata de publicar mucho, sino de publicar con una idea ganadora</h3>
+      <p style="font-size:15.5px; margin-bottom:22px;">
+        La mayoría se sienta a inventar desde cero y por eso se queda en blanco. No hace falta:
+        las ideas que funcionan ya están publicadas y midiéndose solas. Este es el proceso que yo uso.
+      </p>
+
+      <div class="pasos">
+        <div class="paso">
+          <span class="np">1</span>
+          <div>
+            <strong>Haz investigación de mercado</strong>
+            <p>Busca en Instagram y TikTok videos de tu tema que se hayan viralizado. No mires solo
+            cuentas grandes: fíjate en videos que explotaron en cuentas pequeñas, porque ahí el mérito
+            fue de la idea y no del tamaño de la cuenta.</p>
+          </div>
+        </div>
+        <div class="paso">
+          <span class="np">2</span>
+          <div>
+            <strong>Entiende por qué funcionó</strong>
+            <p>Mira el gancho de los primeros 3 segundos, qué promete, cómo está editado y en qué
+            momento se pone interesante. Eso es lo que vas a reutilizar: la estructura, no el contenido.</p>
+          </div>
+        </div>
+        <div class="paso">
+          <span class="np">3</span>
+          <div>
+            <strong>Adáptalo con IA a tu marca</strong>
+            <p>Llévale ese video a una inteligencia artificial como Claude o ChatGPT y pídele que
+            adapte la estructura a tu negocio, a tu cliente y a tu forma de hablar. En minutos tienes
+            un guion que es tuyo y que parte de algo que ya demostró funcionar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aviso">
+        <strong>Ojo: adaptar no es copiar.</strong> Copiar es repetir el mismo video con otra cara, y
+        eso no conecta con nadie. Adaptar es tomar la estructura que funcionó y contarla con tu
+        experiencia, tus ejemplos y tu voz. Lo que se replica es el formato; el fondo siempre es tuyo.
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-k">Qué formato usar y para qué</div>
       <div class="fmt">
         <div class="fmt-c">
@@ -421,128 +483,135 @@ var WHATSAPP_NUMERO = '584227163477';
 var NICHOS = {
   inmobiliario: {
     nombre: 'Asesor inmobiliario', icono: '🏡',
+    saludo: 'En el sector inmobiliario este método funciona muy bien, porque la gente no sigue propiedades: sigue a la persona que se las sabe explicar.',
     conexion: [
-      'El día que entregaste unas llaves y se te aguaron los ojos',
-      'Lo que de verdad cuesta mudarse, más allá del precio de la casa',
-      'Por qué te metiste en esto: qué hacías antes y qué te hizo cambiar'
+      '“¿Qué es mejor: comprar o rentar?”',
+      '“Cuánto dinero necesitas de verdad para mudarte”',
+      '“Lo que nadie te dice antes de comprar tu primera casa”'
     ],
     autoridad: [
-      'Cuánto necesitas realmente para la inicial de un inmueble',
-      '3 errores que comete todo el mundo al comprar sobre plano',
-      'Qué revisar en los documentos antes de firmar nada'
+      '“3 errores que te pueden costar la casa”',
+      '“Cómo saber si el precio que te están dando es justo”',
+      '“Lo que tienes que revisar antes de firmar”'
     ],
     venta: [
-      'Recorrido de una propiedad contando por qué te gusta a ti',
-      'Detrás de cámara de una captación: cómo trabajas en realidad',
-      'Un cliente contando cómo fue el proceso contigo'
+      '“Así trabajo yo cuando alguien me contrata”',
+      '“Un día conmigo mostrando propiedades”',
+      '“Lo que pasó con el cliente que me escribió hace tres meses”'
     ]
   },
   marca: {
     nombre: 'Marca personal', icono: '✨',
+    saludo: 'En marca personal este método se nota rapidísimo, porque el producto eres tú y todo empieza por la conexión.',
     conexion: [
-      'El momento en que casi tiras la toalla y qué te hizo seguir',
-      'Lo que te costó dinero aprender y nadie te advirtió',
-      'Una decisión que tomaste con miedo y volverías a tomar'
+      '“Lo que me costó caro aprender”',
+      '“Por qué dejé el trabajo que todos querían”',
+      '“El error que casi me hace renunciar”'
     ],
     autoridad: [
-      'Tu método explicado en pasos, con ejemplos reales',
-      'El error que ves repetirse en todo el mundo de tu sector',
-      'Un dato o resultado concreto y qué hiciste para lograrlo'
+      '“3 cosas que haría distinto si empezara hoy”',
+      '“Mi método explicado en 3 pasos”',
+      '“Lo que nadie te explica de esto”'
     ],
     venta: [
-      'Cómo trabajas por dentro: tu proceso, sin filtros',
-      'Para quién es tu servicio y para quién sinceramente no',
-      'El resultado de alguien que trabajó contigo, contado por esa persona'
+      '“Así es trabajar conmigo”',
+      '“Para quién NO es lo que hago”',
+      '“De dónde partió esta persona y dónde está hoy”'
     ]
   },
   cm: {
     nombre: 'Community manager o agencia', icono: '📈',
+    saludo: 'Si manejas las redes de otros, aplicarte esto a ti es lo que te trae clientes: tu mejor portafolio es tu propio perfil.',
     conexion: [
-      'Lo que nadie te cuenta de trabajar con clientes',
-      'El cliente que te pidió “algo que se viralice” y qué pasó',
-      'Cómo era tu vida antes de dedicarte a esto'
+      '“¿Por qué tu contenido no crece?”',
+      '“Lo que pasa cuando un cliente te pide algo viral”',
+      '“El día que perdí un cliente por esto”'
     ],
     autoridad: [
-      'Las métricas que sí importan y las que no significan nada',
-      'Cómo armas un calendario de contenido paso a paso',
-      'Auditoría en vivo de un perfil: qué cambiarías y por qué'
+      '“Las métricas que de verdad importan”',
+      '“Cómo armo un calendario de contenido en una hora”',
+      '“Audito este perfil en 60 segundos”'
     ],
     venta: [
-      'Un día real trabajando con una cuenta',
-      'Qué incluye trabajar contigo y qué no',
-      'Antes y después de una cuenta que gestionaste'
+      '“Un día real manejando cuentas”',
+      '“Qué incluye trabajar conmigo”',
+      '“Antes y después de esta cuenta”'
     ]
   },
   coach: {
     nombre: 'Coach o mentor', icono: '🎯',
+    saludo: 'En formación este método es clave, porque nadie le compra un proceso a alguien que no siente cercano.',
     conexion: [
-      'El problema que tú también viviste antes de resolverlo',
-      'Una creencia que te frenó durante años',
-      'Qué le dirías a quien está empezando y está a punto de rendirse'
+      '“¿Por qué siempre empiezas y lo dejas?”',
+      '“Lo que me tuvo estancada durante años”',
+      '“La frase que me cambió la forma de verlo”'
     ],
     autoridad: [
-      'Tu metodología explicada simple, en pasos',
-      'Desmontar un mito muy repetido en tu área',
-      'Un caso real: punto de partida, qué hicieron y resultado'
+      '“El paso que todo el mundo se salta”',
+      '“Mi método en 3 pasos”',
+      '“Por qué esto que te dijeron es mentira”'
     ],
     venta: [
-      'Cómo es una sesión contigo por dentro',
-      'Para quién funciona tu programa y para quién no',
-      'Un testimonio contado por quien lo vivió'
+      '“Cómo es una sesión conmigo por dentro”',
+      '“Para quién funciona esto y para quién no”',
+      '“De dónde partió y dónde está hoy”'
     ]
   },
   servicios: {
     nombre: 'Profesional de servicios', icono: '💼',
+    saludo: 'En servicios profesionales esto es determinante: la gente contrata a quien le explica claro, no al que tiene más títulos.',
     conexion: [
-      'El caso que te marcó y te recordó por qué haces esto',
-      'Lo que la gente cree de tu profesión y es mentira',
-      'Cómo llegaste a dedicarte a esto'
+      '“¿Cuánto te cuesta no resolverlo a tiempo?”',
+      '“El caso que no se me olvida”',
+      '“Lo que todo el mundo cree de mi profesión y es falso”'
     ],
     autoridad: [
-      'Responder la duda que te hacen todas las semanas',
-      'Qué hacer y qué no hacer en la situación típica de tu área',
-      'Explicar un término técnico como si fuera una conversación'
+      '“La pregunta que me hacen todas las semanas”',
+      '“Qué hacer si te pasa esto”',
+      '“Te explico este término como si fuera una conversación”'
     ],
     venta: [
-      'Cómo es trabajar contigo: el proceso de principio a fin',
-      'En qué momento conviene buscarte y en cuál no hace falta',
-      'El resultado de un cliente, contado por él'
+      '“Así es el proceso conmigo, de principio a fin”',
+      '“Cuándo me necesitas y cuándo no hace falta”',
+      '“Lo que resolvimos con este cliente”'
     ]
   },
   tienda: {
     nombre: 'Tienda o producto', icono: '🛍️',
+    saludo: 'Con producto, este método es justo lo que separa a una tienda más de una marca que la gente sigue.',
     conexion: [
-      'Por qué empezaste la marca y qué te costó al inicio',
-      'El día que todo salió mal y cómo lo resolviste',
-      'Lo que hay detrás de un pedido: el trabajo que no se ve'
+      '“¿Por qué pagar más por esto?”',
+      '“Cómo empecé esta marca con lo que tenía”',
+      '“El pedido que casi me hace cerrar”'
     ],
     autoridad: [
-      'Cómo elegir bien dentro de tu categoría de producto',
-      'De qué está hecho y por qué importa esa diferencia',
-      'Errores de uso o cuidado que arruinan el producto'
+      '“Cómo elegir el tuyo sin equivocarte”',
+      '“Por qué esto cuesta lo que cuesta”',
+      '“El error que te arruina el producto”'
     ],
     venta: [
-      'Preparando un pedido real, de principio a fin',
-      'Tu producto en uso, en la vida cotidiana',
-      'Clientes reales mostrando lo que compraron'
+      '“Preparando un pedido de principio a fin”',
+      '“Esto es exactamente lo que recibes”',
+      '“Clientes mostrando el suyo”'
     ]
   },
   otro: {
     nombre: 'Tu sector', icono: '🧭',
+    saludo: 'Este método funciona igual en cualquier sector, porque la gente conecta con personas, no con profesiones.',
     conexion: [
-      'Cómo llegaste a dedicarte a esto y qué hacías antes',
-      'Lo más difícil de tu trabajo que nadie se imagina',
-      'Una historia tuya que cualquiera pueda entender, aunque no sea de tu sector'
+      '“¿Vale la pena o no?” — sobre la decisión típica de tu sector',
+      '“Cómo llegué a dedicarme a esto”',
+      '“Lo más difícil de mi trabajo que nadie se imagina”'
     ],
     autoridad: [
-      'La pregunta que te hacen una y otra vez, respondida bien',
-      'El error más común que ves en tu área y cómo evitarlo',
-      'Un paso a paso sencillo de algo que tú haces a diario'
+      '“La pregunta que más me hacen”',
+      '“El error más común y cómo evitarlo”',
+      '“Te explico paso a paso algo que hago a diario”'
     ],
     venta: [
-      'Cómo trabajas por dentro, sin guion ni producción',
-      'Qué incluye lo que ofreces y para quién es',
-      'El resultado de alguien a quien ayudaste'
+      '“Así trabajo yo”',
+      '“Qué incluye lo que ofrezco y para quién es”',
+      '“Lo que logró alguien que confió en mí”'
     ]
   }
 };
@@ -561,13 +630,13 @@ var OBJETIVOS = {
 
   /* ---------------- Opciones ---------------- */
   var P1 = [
-    { v: 'inmobiliario', ic: '🏡', t: 'Asesor inmobiliario', s: 'Vendo o alquilo propiedades' },
-    { v: 'marca',        ic: '✨', t: 'Marca personal',       s: 'Yo soy el producto' },
-    { v: 'cm',           ic: '📈', t: 'Community manager o agencia', s: 'Manejo redes de otros' },
-    { v: 'coach',        ic: '🎯', t: 'Coach o mentor',       s: 'Formo o acompaño personas' },
-    { v: 'servicios',    ic: '💼', t: 'Profesional de servicios', s: 'Abogado, médico, arquitecto, contador…' },
-    { v: 'tienda',       ic: '🛍️', t: 'Tienda o producto',    s: 'Vendo algo físico o digital' },
-    { v: 'otro',         ic: '🧭', t: 'Otro',                 s: 'Escríbeme a qué te dedicas' }
+    { v: 'inmobiliario', ic: '🏡', t: 'Asesor inmobiliario' },
+    { v: 'marca',        ic: '✨', t: 'Marca personal' },
+    { v: 'cm',           ic: '📈', t: 'Community manager o agencia' },
+    { v: 'coach',        ic: '🎯', t: 'Coach o mentor' },
+    { v: 'servicios',    ic: '💼', t: 'Profesional de servicios' },
+    { v: 'tienda',       ic: '🛍️', t: 'Tienda o producto' },
+    { v: 'otro',         ic: '🧭', t: 'Otro' }
   ];
   var P2 = [
     { v: 'seguidores', ic: '🚀', t: 'Crecer y llegar a gente nueva', s: 'Hoy me ven siempre los mismos' },
@@ -663,7 +732,8 @@ var OBJETIVOS = {
 
     $('resBadge').innerHTML = nicho.icono + ' ' + comoSeLlama;
     $('resTitulo').textContent = 'Tu plan de ' + n + ' publicaciones a la semana';
-    $('resSub').innerHTML = 'Pensado para ' + obj.nombre + '. Esta es la mezcla que deberías sostener.';
+    $('resSub').innerHTML = '<strong>Excelente.</strong> ' + nicho.saludo +
+      ' Lo armé pensando en ' + obj.nombre + '.';
 
     var piezas = function (x) { return x + (x === 1 ? ' publicación' : ' publicaciones'); };
     var cuentaVenta = r.ventaSemanal ? '1 publicación' : '1 cada 2 semanas';
@@ -684,6 +754,7 @@ var OBJETIVOS = {
         '<div class="pct">' + porcentaje + '% · ' + cuantas + '</div>' +
         '<h3>' + titulo + '</h3>' +
         '<p>' + texto + '</p>' +
+        '<div class="ideas-k">Ganchos que puedes usar</div>' +
         '<ul class="ideas"><li>' + ideas.join('</li><li>') + '</li></ul>' +
         '</div>';
     }
