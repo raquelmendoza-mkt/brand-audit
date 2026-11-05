@@ -5,6 +5,7 @@ import {FunnelComposition} from './Funnel';
 import {PolemicoComposition} from './Polemico';
 import {ClaudeTrendComposition} from './ClaudeTrend';
 import {CreceComposition} from './Crece';
+import {MasterclassComposition} from './Masterclass';
 import {FelipeComposition} from './Felipe';
 import {DetallitosDyanComposition, PromoTextosComposition} from './PromoTextos';
 import {PropertyPromoComposition} from './PropertyPromo';
@@ -29,6 +30,7 @@ export const RemotionRoot: React.FC = () => {
 				<PolemicoComposition />
 				<ClaudeTrendComposition />
 				<CreceComposition />
+				<MasterclassComposition />
 				<FelipeComposition />
 				<RoomTourBosqueComposition />
 				<RoomTourBosqueOmniComposition />
