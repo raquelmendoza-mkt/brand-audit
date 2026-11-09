@@ -185,10 +185,27 @@ p{font-size:16px;color:var(--tinta-suave);text-align:center}
 
 /* portada */
 #portada{padding-top:104px;padding-bottom:56px;text-align:center}
-.saludo{font-family:var(--display);font-style:italic;font-size:21px;color:var(--tinta);margin-bottom:8px}
+.subtitulo{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(21px,5.6vw,27px);color:var(--tinta-suave);margin-top:4px;
+}
+.dedicatoria{
+  margin-top:38px;padding-top:30px;border-top:1px solid var(--linea);
+}
+.dedic-k{
+  font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--tinta-suave);margin-bottom:10px;
+}
+.dedic-nombre{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(29px,8.4vw,42px);line-height:1.12;color:var(--vino);
+}
 .pases{
   display:inline-block;margin-top:18px;padding:9px 20px;border:1px solid var(--linea);
   border-radius:999px;font-size:12.5px;letter-spacing:.05em;color:var(--tinta-suave);background:var(--papel);
+}
+.codigo{
+  margin-top:16px;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe);
 }
 .fecha-grande{display:flex;align-items:center;justify-content:center;gap:16px;margin:24px 0 6px}
 .fecha-grande .bl{text-align:center}
@@ -376,6 +393,7 @@ textarea{resize:vertical;min-height:76px}
 var CONFIG = {
   /* --- Lo que se ve en el sobre cerrado --- */
   tituloSobre:   "Boda Rosales Vera",
+  prefijoCodigo: "RV",
 
   /* --- Evento --- */
   evento:        "Andrea & Bory",
@@ -463,9 +481,9 @@ var INVITADOS = {
 
   <section id="portada">
     <div class="wrap">
-      <div class="saludo" id="saludo"></div>
       <div class="kicker" id="tipoEvento"></div>
       <h1 id="tituloEvento"></h1>
+      <div class="subtitulo" id="subtitulo"></div>
       <svg class="sprig" viewBox="0 0 360 76" aria-hidden="true"><use href="#sprig"/></svg>
       <div class="fecha-grande">
         <div class="bl"><div class="num" id="fDia">22</div><div class="et" id="fDiaSem">Martes</div></div>
@@ -474,7 +492,12 @@ var INVITADOS = {
         <div class="sep"></div>
         <div class="bl"><div class="num" id="fAnio">2026</div><div class="et" id="fCiudad">11:00 AM</div></div>
       </div>
-      <div><span class="pases" id="pases"></span></div>
+      <div class="dedicatoria" id="dedicatoria">
+        <div class="dedic-k">Para</div>
+        <div class="dedic-nombre" id="dedicNombre"></div>
+        <div><span class="pases" id="pases"></span></div>
+        <div class="codigo" id="codigo"></div>
+      </div>
     </div>
   </section>
 
@@ -554,6 +577,7 @@ var INVITADOS = {
         <p class="oculto"><label>No llenar: <input name="bot-field"></label></p>
         <input type="hidden" name="codigo-invitado" id="fCodigo" value="">
         <input type="hidden" name="pases-asignados" id="fPases" value="">
+        <input type="hidden" name="numero-invitacion" id="fNumero" value="">
         <input type="hidden" name="evento" value="Boda Rosales Vera · 22.12.2026">
 
         <div class="campo">
@@ -606,7 +630,8 @@ var INVITADOS = {
     <div class="wrap">
       <svg class="sprig" viewBox="0 0 360 76" aria-hidden="true"><use href="#sprig"/></svg>
       <h1 id="cierreTitulo"></h1>
-      <p style="margin-top:14px" id="cierreFecha"></p>
+      <div class="subtitulo" id="cierreSub"></div>
+      <p style="margin-top:16px" id="cierreFecha"></p>
       <div class="firma"><a id="firmaLink" target="_blank" rel="noopener"></a></div>
     </div>
   </section>
@@ -634,9 +659,26 @@ var INVITADOS = {
 
   /* ---------- 1. Invitado ---------- */
   var codigo = (params.get('i') || params.get('invitado') || '').trim().toLowerCase();
+  /* Si todavía hay un solo invitado en la lista (versión de prueba), se muestra
+     ese aunque el link no traiga ?i=, para poder enseñar la invitación tal cual.
+     En cuanto cargues la lista completa esto deja de aplicar solo. */
+  var claves = Object.keys(INVITADOS);
+  if (!codigo && claves.length === 1) codigo = claves[0];
   var inv = INVITADOS[codigo] || null;
   var nombreInv = inv ? inv.nombre : '';
   var pasesInv  = inv ? inv.pases  : 0;
+
+  /* número de invitación: el que traiga el invitado, o uno correlativo
+     según su posición en la lista (RV-001, RV-002, ...) */
+  var numeroInv = '';
+  if (inv){
+    if (inv.codigo){
+      numeroInv = inv.codigo;
+    } else {
+      var pos = Object.keys(INVITADOS).indexOf(codigo) + 1;
+      numeroInv = (CONFIG.prefijoCodigo || 'INV') + '-' + ('00' + pos).slice(-3);
+    }
+  }
 
   /* ---------- 2. Textos ---------- */
   var MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
@@ -648,9 +690,9 @@ var INVITADOS = {
   $('sobreFecha').textContent  = ('0'+f.getDate()).slice(-2) + ' · ' + ('0'+(f.getMonth()+1)).slice(-2) + ' · ' + f.getFullYear();
   $('sobreKicker').textContent = nombreInv ? 'Para ' + nombreInv : 'Te invitamos';
 
-  $('saludo').textContent       = nombreInv ? nombreInv + ',' : '';
   $('tipoEvento').textContent   = CONFIG.tipoEvento;
-  $('tituloEvento').textContent = CONFIG.evento;
+  $('tituloEvento').textContent = CONFIG.tituloSobre;
+  $('subtitulo').textContent    = CONFIG.evento;
   $('fDia').textContent    = ('0'+f.getDate()).slice(-2);
   $('fDiaSem').textContent = DIAS[f.getDay()];
   $('fMes').textContent    = ('0'+(f.getMonth()+1)).slice(-2);
@@ -680,20 +722,28 @@ var INVITADOS = {
     return '<div class="tono"><div class="pt" style="background:' + t.color + '"></div><div class="nm">' + t.nombre + '</div></div>';
   }).join('');
 
-  $('cierreTitulo').textContent = CONFIG.evento;
+  $('cierreTitulo').textContent = CONFIG.tituloSobre;
+  $('cierreSub').textContent    = CONFIG.evento;
   $('cierreFecha').textContent  = CONFIG.fechaTexto + ' de ' + CONFIG.anio + ' · ' + CONFIG.lugar;
   $('miniFecha').textContent    = 'Agradecemos tu confirmación antes del ' + CONFIG.confirmarAntes + '.';
   $('firmaLink').textContent    = CONFIG.firma;
   $('firmaLink').href           = CONFIG.firmaLink;
 
-  if (pasesInv > 0){
-    $('pases').textContent = pasesInv === 1
-      ? 'Hemos reservado 1 lugar para ti'
-      : 'Hemos reservado ' + pasesInv + ' lugares para ti';
-  } else { $('pases').style.display = 'none'; }
+  if (nombreInv){
+    $('dedicNombre').textContent = nombreInv;
+    $('codigo').textContent = 'Invitación n.º ' + numeroInv;
+    if (pasesInv > 0){
+      $('pases').textContent = pasesInv === 1
+        ? 'Hemos reservado 1 lugar para ti'
+        : 'Hemos reservado ' + pasesInv + ' lugares para ti';
+    } else { $('pases').style.display = 'none'; }
+  } else {
+    $('dedicatoria').style.display = 'none';
+  }
 
   $('fCodigo').value = codigo || '(sin link personalizado)';
   $('fPases').value  = pasesInv || '';
+  $('fNumero').value = numeroInv || '(sin número)';
   if (nombreInv) $('nombre').value = nombreInv;
 
   /* ---------- 3. Confeti ---------- */
@@ -811,7 +861,7 @@ var INVITADOS = {
 
   function resumen(){
     var d = new FormData(form), t = 'Boda Rosales Vera — Confirmación\n';
-    if (nombreInv) t += 'Invitación de: ' + nombreInv + (pasesInv ? ' (' + pasesInv + ' lugares)' : '') + '\n';
+    if (nombreInv) t += 'Invitación n.º ' + numeroInv + ' — ' + nombreInv + (pasesInv ? ' (' + pasesInv + ' lugares)' : '') + '\n';
     t += '\nNombre: ' + (d.get('nombre') || '')
       +  '\n¿Asiste?: ' + (d.get('asistencia') || '')
       +  '\nTeléfono: ' + (d.get('telefono') || '');
@@ -895,13 +945,14 @@ var INVITADOS = {
     $('admin').classList.add('on');
     var base = window.location.origin + window.location.pathname;
     var cont = $('listaInvitados'), out = '';
-    Object.keys(INVITADOS).forEach(function(k){
+    Object.keys(INVITADOS).forEach(function(k, idx){
       var g = INVITADOS[k];
+      var num = g.codigo || ((CONFIG.prefijoCodigo || 'INV') + '-' + ('00' + (idx+1)).slice(-3));
       var link = base + '?i=' + k;
       var msg  = 'Hola ' + g.nombre + ', te comparto nuestra invitación a la boda de Andrea & Bory. Ábrela aquí: ' + link;
       out += '<div class="inv-row">'
           +   '<div class="n">' + g.nombre + '</div>'
-          +   '<div class="p">' + g.pases + (g.pases===1?' lugar':' lugares') + ' · ' + k + '</div>'
+          +   '<div class="p">N.º ' + num + ' · ' + g.pases + (g.pases===1?' lugar':' lugares') + ' · ' + k + '</div>'
           +   '<div class="acc">'
           +     '<button data-copy="' + encodeURIComponent(link) + '">Copiar link</button>'
           +     '<button data-copy="' + encodeURIComponent(msg) + '">Copiar mensaje</button>'
