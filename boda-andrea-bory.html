@@ -434,6 +434,14 @@ var CONFIG = {
   ],
 
   /* --- WhatsApp de respaldo --- */
+  /* --- A dónde llegan las confirmaciones ---
+     "whatsapp" : el invitado toca el botón y se le abre WhatsApp con su
+                  respuesta ya escrita, dirigida al número de abajo.
+     "netlify"  : se guardan en el panel de Netlify (requiere tener
+                  activada la detección de formularios en el sitio).
+     En modo "whatsapp" igual se intenta guardar en Netlify por detrás,
+     así que si algún día lo activas empiezas a recibir las dos cosas. */
+  modoEnvio: "whatsapp",
   whatsapp: "584227163477",
 
   /* --- Música: pon aquí el nombre del archivo mp3 que subas junto al index.html.
@@ -621,6 +629,7 @@ var INVITADOS = {
         </div>
 
         <button class="btn" type="submit" id="btnEnviar">Enviar mi confirmación</button>
+        <div class="mini" id="avisoEnvio"></div>
         <div class="mini" id="miniFecha"></div>
 
         <div class="aviso mal oculto" id="errorBox">
@@ -744,6 +753,10 @@ var INVITADOS = {
   $('cierreSub').textContent    = CONFIG.evento;
   $('cierreFecha').textContent  = CONFIG.fechaTexto + ' de ' + CONFIG.anio + ' · ' + CONFIG.lugar;
   $('miniFecha').textContent    = 'Agradecemos tu confirmación antes del ' + CONFIG.confirmarAntes + '.';
+  if (CONFIG.modoEnvio === 'whatsapp'){
+    $('btnEnviar').textContent = 'Confirmar por WhatsApp';
+    $('avisoEnvio').textContent = 'Al tocar el botón se abre WhatsApp con tu respuesta ya escrita. Solo tienes que darle a enviar.';
+  }
   $('firmaLink').textContent    = CONFIG.firma;
   $('firmaLink').href           = CONFIG.firmaLink;
 
@@ -881,7 +894,8 @@ var INVITADOS = {
 
   function resumen(){
     var d = new FormData(form), t = 'Boda Rosales Vera — Confirmación\n';
-    if (nombreInv) t += 'Invitación n.º ' + numeroInv + ' — ' + nombreInv + (pasesInv ? ' (' + pasesInv + ' lugares)' : '') + '\n';
+    if (nombreInv) t += 'Invitación n.º ' + numeroInv + ' — ' + nombreInv
+      + (pasesInv ? ' (' + pasesInv + (pasesInv === 1 ? ' lugar' : ' lugares') + ')' : '') + '\n';
     t += '\nNombre: ' + (d.get('nombre') || '')
       +  '\n¿Asiste?: ' + (d.get('asistencia') || '')
       +  '\nTeléfono: ' + (d.get('telefono') || '');
@@ -889,31 +903,59 @@ var INVITADOS = {
     return t;
   }
 
+  /* Muestra la pantalla de agradecimiento */
+  function mostrarGracias(asiste, porWhatsapp){
+    form.classList.add('oculto');
+    $('gracias').classList.remove('oculto');
+    if (asiste && asiste.indexOf('Sí') === 0){
+      $('graciasTitulo').textContent = '¡Nos vemos pronto!';
+      $('graciasTexto').textContent = porWhatsapp
+        ? 'Se abrió WhatsApp con tu respuesta escrita. Dale a enviar y listo: te esperamos el ' + CONFIG.fechaTexto + ' en ' + CONFIG.lugar + '.'
+        : 'Tu confirmación quedó registrada. Te esperamos el ' + CONFIG.fechaTexto + ' en ' + CONFIG.lugar + '.';
+      lanzar(150);
+    } else {
+      $('graciasTitulo').textContent = 'Gracias por avisarnos';
+      $('graciasTexto').textContent = porWhatsapp
+        ? 'Se abrió WhatsApp con tu respuesta escrita. Dale a enviar para que nos llegue. Te vamos a extrañar.'
+        : 'Te vamos a extrañar. Gracias por tomarte el tiempo de responder.';
+    }
+    $('gracias').scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if (!form.checkValidity()){ form.reportValidity(); return; }
-    btn.disabled = true; btn.textContent = 'Enviando…';
     errorBox.classList.add('oculto');
 
+    var asiste = (new FormData(form)).get('asistencia');
     var destino = window.location.pathname || '/';
+
+    /* ---- Modo WhatsApp: se abre el chat con la respuesta escrita ---- */
+    if (CONFIG.modoEnvio === 'whatsapp'){
+      var url = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(resumen());
+      /* se intenta guardar también en Netlify, sin esperar ni molestar */
+      try {
+        fetch(destino, {
+          method:'POST',
+          headers:{'Content-Type':'application/x-www-form-urlencoded'},
+          body: new URLSearchParams(new FormData(form)).toString()
+        }).catch(function(){});
+      } catch(err){}
+      var w = window.open(url, '_blank');
+      if (!w){ window.location.href = url; }
+      mostrarGracias(asiste, true);
+      return;
+    }
+
+    /* ---- Modo Netlify ---- */
+    btn.disabled = true; btn.textContent = 'Enviando…';
     fetch(destino, {
       method: 'POST',
       headers: {'Content-Type':'application/x-www-form-urlencoded'},
       body: new URLSearchParams(new FormData(form)).toString()
     }).then(function(r){
       if (!r.ok) throw new Error('status ' + r.status);
-      var asiste = (new FormData(form)).get('asistencia');
-      form.classList.add('oculto');
-      $('gracias').classList.remove('oculto');
-      if (asiste && asiste.indexOf('Sí') === 0){
-        $('graciasTitulo').textContent = '¡Nos vemos pronto!';
-        $('graciasTexto').textContent  = 'Tu confirmación quedó registrada. Te esperamos el ' + CONFIG.fechaTexto + ' en ' + CONFIG.lugar + '.';
-        lanzar(150);
-      } else {
-        $('graciasTitulo').textContent = 'Gracias por avisarnos';
-        $('graciasTexto').textContent  = 'Te vamos a extrañar. Gracias por tomarte el tiempo de responder.';
-      }
-      $('gracias').scrollIntoView({behavior:'smooth', block:'center'});
+      mostrarGracias(asiste, false);
     }).catch(function(){
       btn.disabled = false; btn.textContent = 'Enviar mi confirmación';
       errorBox.classList.remove('oculto');
