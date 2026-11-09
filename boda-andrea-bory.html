@@ -452,7 +452,24 @@ var CONFIG = {
    tel   -> opcional, solo para el panel de envío (?admin=1)
    ================================================================= */
 var INVITADOS = {
-  "natalia-mendez": { nombre:"Natalia Méndez", pases:1, tel:"" }
+  "natalia-mendez":             { nombre:"Natalia Méndez",                                pases:1, tel:"" },
+  "angel-vera":                 { nombre:"Ángel Vera",                                    pases:1, tel:"" },
+  "nathaly-y-marta-mendez":     { nombre:"Nathaly Méndez y Marta de Méndez",              pases:2, tel:"" },
+  "ingrid-vera":                { nombre:"Ingrid Vera",                                   pases:1, tel:"" },
+  "mariangel-rodriguez":        { nombre:"Mariangel Rodríguez",                           pases:1, tel:"" },
+  "ligia-de-vera":              { nombre:"Ligia de Vera",                                 pases:1, tel:"" },
+  "familia-puerta-vera":        { nombre:"Ana Puerta, Ángel Vera y Massimo Vera",         pases:3, tel:"" },
+  "betsy-rivas":                { nombre:"Betsy Rivas",                                   pases:1, tel:"" },
+  "familia-rosales-valecillos": { nombre:"Pedro Rosales, Angélica Valecillos y Luis Rosales", pases:3, tel:"" },
+  "stefany-toledo":             { nombre:"Stefany Toledo",                                pases:1, tel:"" },
+  "leoreanny-y-naily":          { nombre:"Leoreanny Briceño y Naily Salcedo",             pases:2, tel:"" },
+  "irena-jablonskis":           { nombre:"Irena Jablonskis",                              pases:1, tel:"" },
+  "raquel-mendoza":             { nombre:"Raquel Mendoza",                                pases:1, tel:"" },
+  "liliana-vera":               { nombre:"Liliana Vera",                                  pases:1, tel:"" },
+  "lorena-tremont":             { nombre:"Lorena Tremont",                                pases:1, tel:"" },
+  "javier-van-arcken":          { nombre:"Javier Van Arcken",                             pases:1, tel:"" },
+  "gilberly-gudino":            { nombre:"Gilberly Gudiño",                               pases:1, tel:"" },
+  "gonzalo-y-tibisay":          { nombre:"Gonzalo Méndez y Tibisay",                      pases:2, tel:"" }
 };
 </script>
 
@@ -641,7 +658,8 @@ var INVITADOS = {
     <div class="wrap">
       <div class="kicker">Panel privado</div>
       <h2>Links por invitado</h2>
-      <p style="margin:14px 0 26px">Copia el link de cada quien y mándaselo. Cada link abre la invitación con su nombre.</p>
+      <p style="margin:14px 0 10px">Copia el link de cada quien y mándaselo. Cada link abre la invitación con su nombre.</p>
+      <p class="codigo" style="margin:0 0 26px" id="conteo"></p>
       <div id="listaInvitados"></div>
     </div>
   </section>
@@ -735,7 +753,7 @@ var INVITADOS = {
     if (pasesInv > 0){
       $('pases').textContent = pasesInv === 1
         ? 'Hemos reservado 1 lugar para ti'
-        : 'Hemos reservado ' + pasesInv + ' lugares para ti';
+        : 'Hemos reservado ' + pasesInv + ' lugares para ustedes';
     } else { $('pases').style.display = 'none'; }
   } else {
     $('dedicatoria').style.display = 'none';
@@ -744,7 +762,9 @@ var INVITADOS = {
   $('fCodigo').value = codigo || '(sin link personalizado)';
   $('fPases').value  = pasesInv || '';
   $('fNumero').value = numeroInv || '(sin número)';
-  if (nombreInv) $('nombre').value = nombreInv;
+  /* Solo se rellena el nombre cuando la invitación es de una sola persona.
+     En las de grupo se deja vacío para que escriba quien esté confirmando. */
+  if (nombreInv && pasesInv === 1) $('nombre').value = nombreInv;
 
   /* ---------- 3. Confeti ---------- */
   var cv = $('confeti'), ctx = cv.getContext('2d'), piezas = [], corriendo = false;
@@ -944,6 +964,8 @@ var INVITADOS = {
     });
     $('admin').classList.add('on');
     var base = window.location.origin + window.location.pathname;
+    var totalPersonas = Object.keys(INVITADOS).reduce(function(a,k){ return a + (INVITADOS[k].pases||0); }, 0);
+    $('conteo').textContent = Object.keys(INVITADOS).length + ' invitaciones · ' + totalPersonas + ' personas';
     var cont = $('listaInvitados'), out = '';
     Object.keys(INVITADOS).forEach(function(k, idx){
       var g = INVITADOS[k];
