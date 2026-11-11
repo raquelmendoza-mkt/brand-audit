@@ -855,7 +855,8 @@
         <div class="success-icon">✓</div>
         <h3>¡Tu guía está lista!</h3>
         <p>Gracias por registrarte. Haz clic abajo para descargar tu guía al instante.</p>
-        <a href="guia-primeros-compradores.pdf" download class="download-btn" id="downloadBtn">
+        <a href="https://drive.google.com/uc?export=download&amp;id=1iWqDfAIN6OPjLkOzm09lcuAZ-asB-Kv0"
+           class="download-btn" id="downloadBtn" target="_blank" rel="noopener">
           <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
@@ -863,6 +864,11 @@
           </svg>
           Descargar la guía aquí
         </a>
+        <p class="disclaimer" style="margin-top:18px;">
+          ¿Prefieres leerla en línea?
+          <a href="https://drive.google.com/file/d/1iWqDfAIN6OPjLkOzm09lcuAZ-asB-Kv0/view"
+             target="_blank" rel="noopener" style="color:var(--gold-400); text-decoration:underline;">Ábrela en tu navegador</a>
+        </p>
       </div>
     </div>
   </section>
@@ -925,26 +931,25 @@
 
     const body = new URLSearchParams(new FormData(form)).toString();
 
+    // Se registra el lead en Netlify. Si eso falla por configuración del sitio,
+    // la persona igual recibe la guía: nunca se le niega lo que vino a buscar.
     try {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body
       });
-
       if (!response.ok) {
-        throw new Error('Netlify respondió ' + response.status);
+        console.warn('El registro no se guardó. Netlify respondió ' + response.status +
+                     '. Revisa que la detección de formularios esté activada y vuelve a publicar.');
       }
-
-      formView.style.display = 'none';
-      successView.classList.add('show');
-      successView.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
-      console.error('Error enviando el formulario:', err);
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Obtener mi guía gratis';
-      alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+      console.warn('El registro no se pudo enviar:', err);
     }
+
+    formView.style.display = 'none';
+    successView.classList.add('show');
+    successView.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 </script>
 
