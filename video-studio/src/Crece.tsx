@@ -4,7 +4,7 @@ import {AbsoluteFill, Composition, Easing, interpolate, Sequence, staticFile, us
 import {helvetica, poppins} from './fonts';
 import marcas from './crece-marcas.json';
 
-// Reel "CRECE EN INSTAGRAM ASÍ". Base sin pausas y con la voz limpia: scripts/crece_base.py.
+// Reel "ESTÁS USANDO MAL INSTAGRAM" (antes "CRECE EN INSTAGRAM ASÍ"). Base sin pausas y con la voz limpia: scripts/crece_base.py.
 // Formato de la referencia "No se dice / Se dice": tabla de 6 filas sobre el pecho. Columna
 // izquierda: íconos neón estilo Instagram que aparecen cuando nombra cada formato. Columna derecha:
 // barras amarillas fijas que se retiran y revelan el "para qué" cuando lo dice. Cierre: COMENTA YO
@@ -19,6 +19,7 @@ const TINTA = '#141416';
 const CREMA = '#F4EFE7';
 const AMARILLO = '#F7D21E';
 const VERDE = '#1FB36B';
+const CORAL = '#F0605D'; // rojo coral del gancho "MAL INSTAGRAM"
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const ease = Easing.bezier(0.22, 1, 0.36, 1);
 
@@ -166,17 +167,16 @@ const Titulo: React.FC = () => {
 				translate: `0px ${(1 - q) * -20}px`,
 				fontFamily: poppins,
 				fontWeight: 800,
-				fontSize: 104,
+				fontSize: 98,
 				lineHeight: 0.98,
 				letterSpacing: '-0.02em',
 				color: '#FFFFFF',
 				textShadow: '0 6px 0 rgba(0,0,0,0.18), 0 10px 36px rgba(0,0,0,0.55)',
 			}}
 		>
-			<div>CRECE EN</div>
-			<div>
-				INSTAGRAM ASÍ
-			</div>
+			<div>ESTÁS USANDO</div>
+			<div style={{color: CORAL}}>MAL INSTAGRAM</div>
+			<div style={{marginTop: 16, display: 'inline-block', padding: '8px 26px', borderRadius: 999, background: 'rgba(24,24,26,0.78)', textShadow: 'none', fontFamily: helvetica, fontWeight: 500, fontSize: 38, letterSpacing: '0.01em', lineHeight: 1.1}}>Y probablemente no lo sabías.</div>
 		</div>
 	);
 };
