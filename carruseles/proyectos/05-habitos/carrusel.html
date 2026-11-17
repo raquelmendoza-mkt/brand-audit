@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carrusel · Hábitos: es solo…</title>
+<!--
+  Brief
+  Marca personal de Raquel. Desarrollo personal y mentalidad.
+  Formato de la referencia (eloilaraf): pantalla dividida, hábito malo arriba,
+  hábito bueno abajo, la misma frase centrada en ambas mitades.
+  Slides 1-4 con fotos de Drive (N arriba, N.N abajo), 5 frase de mentalidad
+  sobre negro, 6 cierre con foto de Raquel y «Sígueme» (como la referencia de isabelmelinn).
+-->
+<style>
+@font-face { font-family: 'Montserrat'; font-weight: 400; src: url('../../fonts/Montserrat-400.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 500; src: url('../../fonts/Montserrat-500.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 600; src: url('../../fonts/Montserrat-600.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 700; src: url('../../fonts/Montserrat-700.ttf'); }
+@font-face { font-family: 'Montserrat'; font-weight: 800; src: url('../../fonts/Montserrat-800.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-weight: 500; font-style: italic; src: url('../../fonts/PlayfairDisplay-500-italic.ttf'); }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #2a2a2e; }
+body { font-family: 'Montserrat', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #fff; }
+.deck { display: flex; width: max-content; }
+body.preview { padding: 40px; }
+body.preview .deck { zoom: 0.36; gap: 30px; }
+.slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; flex: none; background: #000; }
+
+/* Pantalla dividida */
+.half { position: absolute; left: 0; right: 0; height: 675px; overflow: hidden; display: grid; place-items: center; }
+.half.top { top: 0; }
+.half.bottom { bottom: 0; }
+.half img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.half::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.12); }
+.half.dim::after { background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 100%); }
+.half.dim img { filter: blur(1.5px); }
+.low .say { transform: translateY(110px); }
+.say { position: relative; z-index: 2; font-size: 50px; font-weight: 700; letter-spacing: -0.005em; text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.55), 0 0 30px rgba(0,0,0,0.35); }
+.handle { position: absolute; z-index: 3; right: 36px; bottom: 30px; font-size: 20px; font-weight: 600; opacity: 0.7; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+
+/* Frase de mentalidad */
+.quote-slide { background:
+  radial-gradient(ellipse 70% 50% at 50% 40%, rgba(255,255,255,0.07) 0%, transparent 70%), #070707; }
+.quote-slide::after { content: ''; position: absolute; inset: 0; opacity: 0.09; mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+.q { position: absolute; z-index: 2; left: 110px; right: 110px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; gap: 44px; }
+.q .small { font-size: 22px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+.q h2 { font-size: 92px; font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; }
+.q h2 em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 500; letter-spacing: -0.01em; }
+.q .line { width: 70px; height: 3px; background: #fff; opacity: 0.8; }
+.q p { font-size: 34px; font-weight: 400; line-height: 1.45; color: rgba(255,255,255,0.78); text-wrap: balance; }
+.q p b { color: #fff; font-weight: 700; }
+
+/* Cierre */
+.close img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.close::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0.55) 100%); }
+.close .txt { position: absolute; z-index: 2; left: 70px; right: 70px; top: 760px; text-align: center; text-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 0 34px rgba(0,0,0,0.4); }
+.close .txt b { display: block; font-size: 60px; font-weight: 700; margin-bottom: 30px; }
+.close .txt span { display: block; font-size: 44px; font-weight: 400; line-height: 1.2; }
+.close .txt strong { display: block; font-size: 46px; font-weight: 700; margin-top: 8px; }
+</style>
+</head>
+<body>
+<main class="deck">
+
+  <!-- 1 · Netflix / leer -->
+  <section class="slide" data-chrome="off" data-progress="off">
+    <div class="half top"><img src="img/1.jpg" alt=""><p class="say">Es solo 1 capítulo.</p></div>
+    <div class="half bottom dim"><img src="img/1.1.jpg" alt=""><p class="say">Es solo 1 capítulo.</p><span class="handle">@raquelmendoza.mkt</span></div>
+  </section>
+
+  <!-- 2 · Dormir / correr -->
+  <section class="slide low" data-chrome="off" data-progress="off">
+    <div class="half top"><img src="img/2.jpg" alt=""><p class="say">Son solo 30 minutos.</p></div>
+    <div class="half bottom"><img src="img/2.2.jpg" alt=""><p class="say">Son solo 30 minutos.</p><span class="handle">@raquelmendoza.mkt</span></div>
+  </section>
+
+  <!-- 3 · Scroll / crear contenido -->
+  <section class="slide" data-chrome="off" data-progress="off">
+    <div class="half top"><img src="img/3.jpg" alt=""><p class="say">Es solo 1 hora.</p></div>
+    <div class="half bottom"><img src="img/3.3.jpg" alt=""><p class="say">Es solo 1 hora.</p><span class="handle">@raquelmendoza.mkt</span></div>
+  </section>
+
+  <!-- 4 · Pizza / bowl -->
+  <section class="slide" data-chrome="off" data-progress="off">
+    <div class="half top"><img src="img/4.jpg" alt=""><p class="say">Listo en 15 minutos.</p></div>
+    <div class="half bottom"><img src="img/4.4.jpg" alt=""><p class="say">Listo en 15 minutos.</p><span class="handle">@raquelmendoza.mkt</span></div>
+  </section>
+
+  <!-- 5 · Mentalidad -->
+  <section class="slide quote-slide" data-chrome="off" data-progress="off">
+    <div class="q">
+      <span class="small">Mentalidad</span>
+      <h2>El tiempo es el mismo para <em>todos.</em></h2>
+      <div class="line"></div>
+      <p>Lo que cambia es <b>en qué lo inviertes.</b> Tus hábitos de hoy deciden hacia dónde vas y quién serás mañana. <b>Cada minuto cuenta.</b></p>
+    </div>
+    <span class="handle">@raquelmendoza.mkt</span>
+  </section>
+
+  <!-- 6 · Cierre -->
+  <section class="slide close" data-chrome="off" data-progress="off">
+    <img src="img/cierre.jpg" alt="" style="object-position:50% 20%">
+    <div class="txt">
+      <b>Nunca te rindas.</b>
+      <span>Sígueme para más contenido como este.</span>
+      <strong>@raquelmendoza.mkt</strong>
+    </div>
+  </section>
+
+</main>
+<script src="../../carrusel.js"></script>
+</body>
+</html>
