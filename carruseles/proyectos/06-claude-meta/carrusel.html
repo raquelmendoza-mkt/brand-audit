@@ -128,6 +128,45 @@ h2 { font-size: 86px; }
 .folder .files { position: absolute; top: 70px; left: 40px; right: 40px; display: flex; flex-direction: column; gap: 14px; }
 .folder .f { background: #fff; border-radius: 14px; padding: 16px 22px; display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 600; box-shadow: 0 6px 16px -10px rgba(15,15,15,0.2); }
 .folder .f .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--purple); }
+
+/* Centrado vertical global del contenido */
+.slide .content { top: 0 !important; bottom: 0 !important; height: 100%; justify-content: center; padding-top: 180px; padding-bottom: 120px; }
+.slide .content .apps { margin-top: 0; }
+/* Portada: centrado con icono */
+.slide:first-child .content { gap: 36px !important; }
+
+/* Animaciones */
+@keyframes float-a { 0%,100% { transform: translateY(0) rotate(-10deg); } 50% { transform: translateY(-16px) rotate(-7deg); } }
+@keyframes float-b { 0%,100% { transform: translateY(0) rotate(12deg); } 50% { transform: translateY(-14px) rotate(15deg); } }
+@keyframes pulse-c { 0%,100% { transform: translateX(-50%) rotate(-3deg) scale(1); } 50% { transform: translateX(-50%) rotate(3deg) scale(1.06); } }
+@keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes glow { 0%,100% { box-shadow: 0 10px 24px -14px rgba(91,63,212,0.5); } 50% { box-shadow: 0 16px 32px -14px rgba(91,63,212,0.85); } }
+.anim-float.a { animation: float-a 5s ease-in-out infinite; }
+.anim-float.b { animation: float-b 5.4s ease-in-out infinite; }
+.anim-pulse { animation: pulse-c 4.2s ease-in-out infinite; }
+.anim-drift { animation: drift 4.5s ease-in-out infinite; }
+.anim-glow { animation: glow 3s ease-in-out infinite; }
+
+/* Logos en iconos de la portada */
+.app3d img { width: 86%; height: 86%; object-fit: contain; display: block; }
+.app3d.claude img { width: 96%; }
+
+/* Píldora flotante */
+.pill { animation: drift 4s ease-in-out infinite; }
+
+/* Pasos del flow con animación sutil */
+.flow .step.on { animation: glow 2.5s ease-in-out infinite; }
+
+/* Verbos con entrada escalonada (perceptible al scroll pero también OK estático) */
+.verb { animation: drift 5s ease-in-out infinite; }
+.verb:nth-child(2) { animation-delay: 0.3s; }
+.verb:nth-child(3) { animation-delay: 0.6s; }
+.verb:nth-child(4) { animation-delay: 0.9s; }
+
+/* Cierre: separar sígueme */
+.cta-close { position: absolute; z-index: 10; left: 90px; right: 480px; bottom: 100px; font-size: 26px; font-weight: 700; color: var(--ink); }
+.cta-close::before { content: ''; display: block; width: 60px; height: 2px; background: var(--purple); margin-bottom: 18px; }
+
 </style>
 </head>
 <body>
@@ -138,19 +177,14 @@ h2 { font-size: 86px; }
     <div class="who"><img src="img/avatar.png" alt=""><span>@raquelmendoza.mkt</span><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span></div>
     <div class="content" style="top:250px;gap:36px">
       <span class="pill">Nuevo</span>
-      <h1>¿Y si <span class="c">Claude</span> lanzara tus <span class="c">Meta Ads</span> por ti?</h1>
+      <h1>¿Y si <span class="c">Claude</span> lanzara tus anuncios de <span class="c">Meta</span> por ti?</h1>
       <div class="apps">
-        <div class="app3d claude">
-          <svg class="svg-claude" viewBox="0 0 160 160" fill="none"><g transform="translate(80 80)"><g fill="#CC785C"><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(0)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(30)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(60)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(90)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(120)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(150)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(180)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(210)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(240)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(270)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(300)"/><rect x="-6" y="-56" width="12" height="36" rx="6" transform="rotate(330)"/></g></g></svg>
-        </div>
-        <div class="app3d center">
-          <svg class="svg-plus" viewBox="0 0 120 120" fill="none" stroke-width="12" stroke-linecap="round"><path d="M60 24v72M24 60h72"/></svg>
-        </div>
-        <div class="app3d meta">
-          <svg class="svg-meta" viewBox="0 0 160 160" fill="none"><path d="M80 44c-20 0-32 18-42 36S28 118 44 118c10 0 16-9 24-24s14-24 20-24 10 7 14 17l9 26c3 7 10 7 14 4 7-6 10-19 6-37S104 44 80 44z" fill="#0866FF"/></svg>
-        </div>
+        <div class="app3d claude anim-float a"><img src="img/claude-logo.png" alt=""></div>
+        <div class="app3d center anim-pulse"><svg class="svg-plus" viewBox="0 0 120 120" fill="none" stroke-width="12" stroke-linecap="round"><path d="M60 24v72M24 60h72"/></svg></div>
+        <div class="app3d meta anim-float b"><img src="img/meta-logo.png" alt=""></div>
       </div>
-    </div>
+      <p class="lead" style="margin-top:4px"><b>Ahora esto es posible.</b></p>
+        </div>
     <div class="foot"><span>Desliza →</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
   </section>
 
@@ -255,8 +289,9 @@ h2 { font-size: 86px; }
       <span class="pill">Tu turno</span>
       <h2>¿Quieres conectar <span class="c">Claude</span> con tus <span class="c">Meta Ads</span>?</h2>
       <p class="lead">Comenta <span class="kw">ADS</span> y te envío por privado el <b>paso a paso completo</b> para configurarlo con tu propia marca.</p>
-      <p class="lead" style="margin-top:14px"><b>Sígueme para más contenido como este.</b></p>
+      
     </div>
+    <p class="cta-close">Sígueme para más contenido como este.</p>
   </section>
 
 </main>
