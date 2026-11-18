@@ -167,6 +167,17 @@ h2 { font-size: 86px; }
 .cta-close { position: absolute; z-index: 10; left: 90px; right: 480px; bottom: 100px; font-size: 26px; font-weight: 700; color: var(--ink); }
 .cta-close::before { content: ''; display: block; width: 60px; height: 2px; background: var(--purple); margin-bottom: 18px; }
 
+
+/* Flow steps con animación cíclica (slide 5) */
+@keyframes step-glow { 0% { transform: translateY(0); background: #fff; color: var(--ink); border-color: var(--line); }
+  25% { transform: translateY(-8px); background: var(--purple); color: #fff; border-color: transparent; box-shadow: 0 16px 30px -14px rgba(91,63,212,0.6); }
+  75% { transform: translateY(0); background: #fff; color: var(--ink); border-color: var(--line); } 100% { transform: translateY(0); } }
+.anim-step-1 { animation: step-glow 4s ease-in-out infinite; animation-delay: 0s; }
+.anim-step-2 { animation: step-glow 4s ease-in-out infinite; animation-delay: 1s; }
+.anim-step-3 { animation: step-glow 4s ease-in-out infinite; animation-delay: 2s; }
+.anim-step-4 { animation: step-glow 4s ease-in-out infinite; animation-delay: 3s; }
+.flow .arrow { animation: drift 2s ease-in-out infinite; }
+
 </style>
 </head>
 <body>
@@ -252,13 +263,13 @@ h2 { font-size: 86px; }
       <h2>Y lo mejor: <span class="c">crea y lanza</span> tus anuncios.</h2>
       <p class="lead">Desde preparar la campaña hasta enviarla a <b>Meta Ads</b> para su publicación. <b>Tú revisas, autorizas y Claude ejecuta.</b></p>
       <div class="flow" style="margin-top:20px">
-        <span class="step">Preparar</span>
+        <span class="step anim-step-1">Preparar</span>
         <span class="arrow">→</span>
-        <span class="step">Revisar</span>
+        <span class="step anim-step-2">Revisar</span>
         <span class="arrow">→</span>
-        <span class="step">Autorizar</span>
+        <span class="step anim-step-3">Autorizar</span>
         <span class="arrow">→</span>
-        <span class="step on">Publicar</span>
+        <span class="step anim-step-4">Publicar</span>
       </div>
     </div>
     <div class="foot"><span>Paso 4 de 5</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
