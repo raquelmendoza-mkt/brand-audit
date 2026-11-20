@@ -8,8 +8,8 @@ import marcas from './taller-marcas.json';
 // Base sin pausas, voz natural y cambios de ángulo 1.0x/1.15x en HD: scripts/taller_base.py.
 // Morado de la marca (como el anuncio de la masterclass), Poppins 800 + Helvetica espaciada.
 // Fijo arriba todo el video: TALLER / IA QUE VENDE / 5 DE DICIEMBRE · VALENCIA + sello ÚLTIMA
-// EDICIÓN 2026 debajo. Sin música (Raquel la pone). Logos 3D (Claude, Venezuela) al nombrarlos; pizarra morada desde abajo con lo que se
-// aprende (deja la cara libre); cierre con botón RESERVA TU LUGAR y CUPOS LIMITADOS.
+// EDICIÓN 2026 debajo. Sin música (Raquel la pone). Logos 3D (Claude, Venezuela) al nombrarlos; los temas del taller uno por uno sobre el
+// pecho (la cara libre); cierre con botón RESERVA TU LUGAR y CUPOS LIMITADOS.
 
 const FPS = 30;
 const W = 'work/taller';
@@ -18,7 +18,6 @@ const MORADO = '#8B5CF6';
 const MORADO2 = '#B57BFF';
 const MORADO3 = '#6D28D9';
 const NOCHE = '#0D0A1A';
-const TINTA = '#16121F';
 const ROJO = '#EF4444';
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const ease = Easing.bezier(0.22, 1, 0.36, 1);
@@ -186,111 +185,68 @@ const Evento: React.FC = () => {
 	);
 };
 
-// ------------------------------------------------------------------ pizarra morada (sube desde abajo)
-const Trazo: React.FC<{readonly d: string; readonly p: number; readonly color?: string; readonly ancho?: number; readonly dash?: number}> = ({d, p, color = TINTA, ancho = 5, dash = 400}) => (
-	<path d={d} fill="none" stroke={color} strokeWidth={ancho} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={dash} strokeDashoffset={dash * (1 - p)} />
-);
+// ------------------------------------------------------------------ lo que se aprende, uno por uno
+// Cada tema aparece en su tarjeta cuando lo dice y deja paso al siguiente (sobre el pecho, la cara
+// libre). Al final, "Y ADEMÁS" con los temas extra del taller.
+const TEMAS: {de: number; a: number; n: number; icono: React.ReactNode; texto: React.ReactNode}[] = [
+	{
+		de: 11.95,
+		a: 14.19,
+		n: 1,
+		icono: (
+			<div style={{position: 'relative', width: 84, height: 70}}>
+				<Img src={staticFile(`${W}/claude.png`)} style={{position: 'absolute', width: 62, left: 0, top: 0}} />
+				<Img src={staticFile(`${W}/venezuela.png`)} style={{position: 'absolute', width: 50, right: 0, bottom: 0}} />
+			</div>
+		),
+		texto: (
+			<>
+				Claude desde <span style={{color: MORADO2}}>Venezuela</span>
+			</>
+		),
+	},
+	{de: 14.19, a: 16.63, n: 2, icono: <L.ShieldCheck size={50} color="#FFFFFF" strokeWidth={2} />, texto: <>Evita <span style={{color: MORADO2}}>bloqueos</span> de cuenta</>},
+	{de: 16.63, a: 18.2, n: 3, icono: <L.ListChecks size={50} color="#FFFFFF" strokeWidth={2} />, texto: <>Alternativas y <span style={{color: MORADO2}}>guías</span></>},
+];
+const EXTRAS: {s: number; icono: React.ReactNode; texto: string}[] = [
+	{s: 18.2, icono: <L.Megaphone size={30} color="#FFFFFF" strokeWidth={2.2} />, texto: 'Estrategia digital para marcas'},
+	{s: 18.75, icono: <L.Clapperboard size={30} color="#FFFFFF" strokeWidth={2.2} />, texto: 'Video marketing con IA'},
+	{s: 19.3, icono: <L.Sparkles size={30} color="#FFFFFF" strokeWidth={2.2} />, texto: 'Más herramientas de IA'},
+];
 
-// Íconos dibujados a mano (64x64)
-const DIBUJOS: Record<string, (p: number) => React.ReactNode> = {
-	escudo: (p) => (
-		<>
-			<Trazo d="M32 6 L54 14 V30 Q54 48 32 58 Q10 48 10 30 V14 Z" p={p} color={MORADO3} />
-			<Trazo d="M22 32 L29 39 L43 24" p={interpolate(p, [0.5, 1], [0, 1], clamp)} color={MORADO} dash={60} />
-		</>
-	),
-	lista: (p) => (
-		<>
-			<Trazo d="M14 6 H50 Q56 6 56 12 V52 Q56 58 50 58 H14 Q8 58 8 52 V12 Q8 6 14 6 Z" p={p} color={MORADO3} />
-			<Trazo d="M17 22 L21 26 L28 18 M34 22 H48 M17 38 L21 42 L28 34 M34 38 H48" p={interpolate(p, [0.4, 1], [0, 1], clamp)} color={MORADO} dash={160} />
-		</>
-	),
-};
-
-const Punto: React.FC<{readonly s: number; readonly n: number; readonly icono: React.ReactNode; readonly texto: React.ReactNode}> = ({s, n, icono, texto}) => {
-	const frame = useCurrentFrame();
-	if (frame < F(s)) return null;
-	const q = interpolate(frame, [F(s), F(s) + 12], [0, 1], {...clamp, easing: ease});
+const Tema: React.FC<{readonly t: (typeof TEMAS)[number]}> = ({t}) => {
+	const v = useVentana(t.de, t.a);
+	if (!v.visible) return null;
 	return (
-		<div style={{display: 'flex', alignItems: 'center', gap: 16, height: 54, opacity: q, translate: `${(1 - q) * 40}px 0px`}}>
-			<div style={{width: 44, height: 44, borderRadius: 22, background: MORADO, color: '#FFFFFF', fontFamily: poppins, fontWeight: 800, fontSize: 25, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>{n}</div>
-			<div style={{width: 62, height: 54, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>{icono}</div>
-			<span style={{fontFamily: poppins, fontWeight: 800, fontSize: 40, color: TINTA, lineHeight: 1, whiteSpace: 'nowrap'}}>{texto}</span>
-		</div>
+		<Fila top={1390}>
+			<div style={{scale: String(v.q), opacity: v.o}}>
+				<Vidrio style={{padding: '14px 30px 14px 16px'}}>
+					<div style={{width: 50, height: 50, borderRadius: 25, background: '#FFFFFF', color: MORADO3, fontFamily: poppins, fontWeight: 800, fontSize: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>{t.n}</div>
+					{t.n === 1 ? t.icono : <Circulo tam={76}>{t.icono}</Circulo>}
+					<span style={{fontFamily: poppins, fontWeight: 800, fontSize: 46, color: '#FFFFFF', lineHeight: 1.05, whiteSpace: 'nowrap'}}>{t.texto}</span>
+				</Vidrio>
+			</div>
+		</Fila>
 	);
 };
 
-const PANEL_TOP = 1215; // bajo la barbilla: la cara queda libre
-const Pizarra: React.FC = () => {
-	const frame = useCurrentFrame();
-	const a = F(11.05);
-	const b = F(19.95);
-	if (frame < a || frame >= b) return null;
-	const entra = interpolate(frame, [a, a + 10], [0, 1], {...clamp, easing: ease});
-	const sale = interpolate(frame, [b - 8, b], [0, 1], {...clamp, easing: Easing.in(Easing.cubic)});
-	const d = (s: number) => interpolate(frame, [F(s), F(s) + 22], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
+const Extras: React.FC = () => {
+	const v = useVentana(18.2, 19.95, 10);
+	if (!v.visible) return null;
 	return (
-		<div
-			style={{
-				position: 'absolute',
-				left: 0,
-				right: 0,
-				top: PANEL_TOP,
-				height: 1920 - PANEL_TOP,
-				background: '#FBFAFE',
-				borderTopLeftRadius: 56,
-				borderTopRightRadius: 56,
-				boxShadow: '0 -20px 60px rgba(0,0,0,0.35), 0 0 0 3px rgba(139,92,246,0.5)',
-				translate: `0px ${(1 - entra + sale) * (1920 - PANEL_TOP + 60)}px`,
-				overflow: 'hidden',
-			}}
-		>
-			<div style={{position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(109,40,217,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(109,40,217,0.07) 1px, transparent 1px)', backgroundSize: '54px 54px'}} />
-			<div style={{position: 'absolute', top: 26, left: 66, fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: MORADO3}}>VAS A APRENDER</div>
-			<div style={{position: 'absolute', top: 72, left: 52, right: 24, display: 'flex', flexDirection: 'column', gap: 10}}>
-				<Punto
-					s={11.95}
-					n={1}
-					icono={
-						<div style={{position: 'relative', width: 62, height: 54}}>
-							<Img src={staticFile(`${W}/claude.png`)} style={{position: 'absolute', width: 46, left: 0, top: 0}} />
-							<Img src={staticFile(`${W}/venezuela.png`)} style={{position: 'absolute', width: 38, right: 0, bottom: 0}} />
-						</div>
-					}
-					texto="Claude desde Venezuela"
-				/>
-				<Punto
-					s={14.19}
-					n={2}
-					icono={
-						<svg width={54} height={54} viewBox="0 0 64 64">
-							{DIBUJOS.escudo(d(14.19))}
-						</svg>
-					}
-					texto="Evitar bloqueos de cuenta"
-				/>
-				<Punto
-					s={16.63}
-					n={3}
-					icono={
-						<svg width={54} height={54} viewBox="0 0 64 64">
-							{DIBUJOS.lista(d(16.63))}
-						</svg>
-					}
-					texto="Alternativas y guías"
-				/>
-				<Punto s={18.11} n={4} icono={<L.Clapperboard size={46} color={MORADO3} strokeWidth={1.8} />} texto="Video marketing con IA" />
-				<Punto
-					s={19.0}
-					n={5}
-					icono={<L.Sparkles size={46} color={MORADO3} strokeWidth={1.8} />}
-					texto={
-						<>
-							Más herramientas <span style={{color: MORADO}}>de IA</span>
-						</>
-					}
-				/>
-			</div>
+		<div style={{position: 'absolute', top: 1330, left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, opacity: v.o}}>
+			<span style={{fontFamily: helvetica, fontWeight: 700, fontSize: 28, letterSpacing: '0.3em', color: '#FFFFFF', textShadow: '0 2px 12px rgba(0,0,0,0.7)', scale: String(v.q)}}>Y ADEMÁS</span>
+			{EXTRAS.map((e) => {
+				const q = pop(v.frame, e.s);
+				return v.frame >= F(e.s) ? (
+					<div key={e.texto} style={{scale: String(q)}}>
+						<Vidrio style={{padding: '10px 24px 10px 10px', gap: 12, borderRadius: 999}}>
+							<Circulo tam={54}>{e.icono}</Circulo>
+							<span style={{fontFamily: poppins, fontWeight: 800, fontSize: 36, color: '#FFFFFF', whiteSpace: 'nowrap'}}>{e.texto}</span>
+						</Vidrio>
+					</div>
+				) : null;
+			})}
 		</div>
 	);
 };
@@ -305,14 +261,6 @@ const Boton: React.FC<{readonly de: number; readonly a: number; readonly top: nu
 	const cupos = pop(v.frame, 24.67);
 	return (
 		<div style={{position: 'absolute', top, left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, opacity: v.o}}>
-			{v.frame >= F(24.67) ? (
-				<div style={{scale: String(cupos * (1 + 0.05 * Math.sin(k / 3.5))), display: 'flex', alignItems: 'center', gap: 10, background: `linear-gradient(135deg, #FF6B6B, ${ROJO})`, borderRadius: 999, padding: '8px 22px', boxShadow: '0 0 26px rgba(239,68,68,0.6)'}}>
-					<L.Flame size={30} color="#FFFFFF" fill="#FFFFFF" />
-					<span style={{fontFamily: poppins, fontWeight: 800, fontSize: 32, color: '#FFFFFF', letterSpacing: '0.05em'}}>CUPOS LIMITADOS</span>
-				</div>
-			) : (
-				<div style={{height: 50}} />
-			)}
 			<div
 				style={{
 					position: 'relative',
@@ -331,6 +279,14 @@ const Boton: React.FC<{readonly de: number; readonly a: number; readonly top: nu
 				<L.MousePointerClick size={54} color="#FFFFFF" strokeWidth={2.2} />
 				<div style={{position: 'absolute', top: 0, bottom: 0, left: brillo, width: 120, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent)', rotate: '18deg'}} />
 			</div>
+			{v.frame >= F(24.67) ? (
+				<div style={{scale: String(cupos * (1 + 0.05 * Math.sin(k / 3.5))), display: 'flex', alignItems: 'center', gap: 10, background: `linear-gradient(135deg, #FF6B6B, ${ROJO})`, borderRadius: 999, padding: '8px 22px', boxShadow: '0 0 26px rgba(239,68,68,0.6)'}}>
+					<L.Flame size={30} color="#FFFFFF" fill="#FFFFFF" />
+					<span style={{fontFamily: poppins, fontWeight: 800, fontSize: 32, color: '#FFFFFF', letterSpacing: '0.05em'}}>CUPOS LIMITADOS</span>
+				</div>
+			) : (
+				<div style={{height: 50}} />
+			)}
 			<div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 				{[0, 1, 2].map((i) => (
 					<L.ChevronDown key={i} size={60} color="#FFFFFF" strokeWidth={3} style={{marginTop: -28, opacity: 0.35 + 0.65 * Math.max(0, Math.sin((k - i * 5) / 6)), filter: 'drop-shadow(0 0 10px rgba(139,92,246,0.9))'}} />
@@ -392,8 +348,11 @@ export const TallerComponent: React.FC = () => {
 				<Gancho />
 				<Metodo />
 				<Evento />
-				<Pizarra />
-				<Boton de={22.19} a={60} top={1250} />
+				{TEMAS.map((t) => (
+					<Tema key={t.n} t={t} />
+				))}
+				<Extras />
+				<Boton de={22.19} a={60} top={1310} />
 
 				<Encabezado />
 			</AbsoluteFill>
@@ -410,11 +369,12 @@ export const TallerComponent: React.FC = () => {
 			<Sfx s={9.11} src="ping" volume={0.24} />
 			<Sfx s={10.05} src="impacto" volume={0.28} />
 			<Sfx s={11.0} src="whoosh" volume={0.36} />
-			<Sfx s={11.95} src="texto" volume={0.26} />
-			<Sfx s={14.19} src="texto" volume={0.26} />
-			<Sfx s={16.63} src="texto" volume={0.26} />
-			<Sfx s={18.11} src="pop" volume={0.24} />
-			<Sfx s={19.0} src="pop" volume={0.24} />
+			<Sfx s={11.95} src="pop" volume={0.26} />
+			<Sfx s={14.19} src="pop" volume={0.26} />
+			<Sfx s={16.63} src="pop" volume={0.26} />
+			<Sfx s={18.2} src="whoosh-corto" volume={0.28} />
+			<Sfx s={18.75} src="pop" volume={0.24} />
+			<Sfx s={19.3} src="pop" volume={0.24} />
 			<Sfx s={19.9} src="whoosh-2" volume={0.32} />
 			<Sfx s={22.19} src="click" volume={0.34} />
 			<Sfx s={24.67} src="notificacion" volume={0.26} />
