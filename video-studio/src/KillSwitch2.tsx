@@ -52,7 +52,7 @@ const BAJAR = 330;
 const PIZARRAS: [string, string][] = [
 	['usuarios', 'usuarios'],
 	['cookies', 'unvpn'],
-	['proton', 'kill'],
+	['proton', 'proton'],
 	['proxy', 'extension'],
 	['familiar', 'cuenta'],
 	['herramientas', 'flujos'],
@@ -229,65 +229,92 @@ const PizCookies: React.FC = () => {
 	);
 };
 
-// 3) Proton VPN (versión paga) -> KILL SWITCH
-const PizKill: React.FC = () => {
+// 3) Proton VPN: IP fija
+const PizProton: React.FC = () => {
 	const frame = useCurrentFrame();
 	const t0 = ini('proton');
-	const kill = ini('kill');
-	const on = at('kill', 49.5);
-	const enKill = frame >= F(kill);
-	const k = interpolate(frame, [F(on), F(on) + 8], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
 	const ps = dibuja(frame, t0 + 0.05, 16);
 	return (
 		<Pizarra
 			de={t0}
-			a={fin('kill')}
+			a={fin('proton')}
 			izquierda={
-				enKill ? (
-					<svg width={470} height={520} viewBox="0 0 470 520">
-						<rect x={45} y={150} width={380} height={190} rx={95} fill={k > 0.5 ? MORADO : 'transparent'} stroke={TINTA} strokeWidth={7} />
-						<circle cx={140 + 190 * k} cy={245} r={72} fill="#FFFFFF" stroke={TINTA} strokeWidth={7} />
-						<text x={235} y={420} textAnchor="middle" fontFamily={helvetica} fontWeight={700} fontSize={30} letterSpacing="8" fill={k > 0.5 ? MORADO : GRIS}>
-							{k > 0.5 ? 'ACTIVADO' : 'APAGADO'}
-						</text>
-					</svg>
-				) : (
-					<svg width={470} height={520} viewBox="0 0 470 520">
-						<Trazo d="M235 40 L400 100 V230 Q400 360 235 450 Q70 360 70 230 V100 Z" p={ps} dash={1200} />
-						<text x={235} y={290} textAnchor="middle" fontFamily={poppins} fontWeight={800} fontSize={110} fill={TINTA} opacity={ps}>
-							IP
-						</text>
-					</svg>
-				)
+				<svg width={470} height={520} viewBox="0 0 470 520">
+					<Trazo d="M235 40 L400 100 V230 Q400 360 235 450 Q70 360 70 230 V100 Z" p={ps} dash={1200} />
+					<text x={235} y={290} textAnchor="middle" fontFamily={poppins} fontWeight={800} fontSize={110} fill={TINTA} opacity={ps}>
+						IP
+					</text>
+				</svg>
 			}
 		>
 			<Etiqueta Ic={L.ShieldCheck} texto="OPCIÓN 2" />
-			{enKill ? (
-				<>
-					<Titulo size={100}>
-						Kill
-						<br />
-						<span style={{color: MORADO}}>Switch</span>
-					</Titulo>
-					<Renglon t={at('kill', 50.56)} Ic={L.Lock}>
-						Protege tu
-						<br />
-						misma IP
-					</Renglon>
-				</>
-			) : (
-				<>
-					<Titulo size={84}>
-						IP fija con
-						<br />
-						<span style={{color: MORADO}}>Proton VPN</span>
-					</Titulo>
-					<Renglon t={at('paga', 47.7)} Ic={L.CreditCard}>
-						En la versión paga
-					</Renglon>
-				</>
-			)}
+			<Titulo size={84}>
+				IP fija con
+				<br />
+				<span style={{color: MORADO}}>Proton VPN</span>
+			</Titulo>
 		</Pizarra>
+	);
+};
+
+// KILL SWITCH: la única escena sin su cara. Un teléfono con los ajustes de una app de VPN (modo
+// oscuro, como una app real) donde el Kill Switch se activa cuando lo dice.
+const KILL_DE = () => at('kill', 49.3);
+const EscenaKill: React.FC = () => {
+	const frame = useCurrentFrame();
+	const a = F(KILL_DE());
+	const b = F(fin('kill'));
+	if (frame < a || frame >= b) return null;
+	const e = interpolate(frame, [a, a + 8], [0, 1], {...clamp, easing: ease});
+	const s = interpolate(frame, [b - 6, b], [0, 1], clamp);
+	const on = interpolate(frame, [F(at('kill', 49.75)), F(at('kill', 49.75)) + 7], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
+	const ip = interpolate(frame, [F(at('kill', 50.6)), F(at('kill', 50.6)) + 8], [0, 1], clamp);
+	const filas: [L.LucideIcon, string, string][] = [
+		[L.Globe, 'Ubicación', 'Un solo país'],
+		[L.Network, 'Protocolo', 'Automático'],
+		[L.Wifi, 'IP', 'Siempre la misma'],
+	];
+	return (
+		<AbsoluteFill style={{opacity: 1 - s}}>
+			<AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 40%, #241248 0%, #0D0A1A 70%)'}} />
+			<div style={{position: 'absolute', top: 250, left: 0, right: 0, textAlign: 'center', opacity: e}}>
+				<span style={{fontFamily: poppins, fontWeight: 800, fontSize: 104, color: '#FFFFFF', letterSpacing: '-0.02em'}}>
+					KILL <span style={{color: MORADO2}}>SWITCH</span>
+				</span>
+			</div>
+			{/* Teléfono */}
+			<div style={{position: 'absolute', left: 540 - 280, top: 420, width: 560, height: 1110, borderRadius: 76, padding: 18, background: 'linear-gradient(145deg,#2b2b2f,#0d0d10)', boxShadow: '0 40px 90px rgba(0,0,0,0.6), inset 0 0 0 3px #3a3a40', scale: String(0.9 + 0.1 * e), translate: `0px ${(1 - e) * 80}px`}}>
+				<div style={{position: 'relative', width: '100%', height: '100%', borderRadius: 60, overflow: 'hidden', background: '#111113', padding: '70px 30px 30px'}}>
+					<div style={{position: 'absolute', top: 18, left: '50%', translate: '-50% 0px', width: 150, height: 38, borderRadius: 19, background: '#000'}} />
+					<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 58, color: '#FFFFFF', marginBottom: 6}}>Ajustes de VPN</div>
+					<div style={{fontFamily: helvetica, fontSize: 32, color: '#8E8E93', marginBottom: 36}}>Conexión segura</div>
+					{/* Fila Kill Switch */}
+					<div style={{background: '#1C1C1E', borderRadius: 22, padding: '34px 24px', display: 'flex', alignItems: 'center', gap: 18, boxShadow: on > 0.5 ? `0 0 0 3px ${MORADO2}` : 'none'}}>
+						<L.Power size={52} color={on > 0.5 ? MORADO2 : '#8E8E93'} strokeWidth={2.2} />
+						<div style={{flex: 1}}>
+							<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 44, color: '#FFFFFF'}}>Kill Switch</div>
+							<div style={{fontFamily: helvetica, fontSize: 26, color: '#8E8E93', lineHeight: 1.2}}>Corta internet si el VPN se cae</div>
+						</div>
+						<div style={{width: 110, height: 64, borderRadius: 32, flexShrink: 0, background: on > 0.5 ? MORADO : '#3A3A3C', position: 'relative'}}>
+							<div style={{position: 'absolute', top: 4, left: 4 + 46 * on, width: 56, height: 56, borderRadius: 28, background: '#FFFFFF'}} />
+						</div>
+					</div>
+					<div style={{marginTop: 26, background: '#1C1C1E', borderRadius: 22, overflow: 'hidden'}}>
+						{filas.map(([Ic, k, v], i) => (
+							<div key={k} style={{display: 'flex', alignItems: 'center', gap: 16, padding: '30px 24px', borderTop: i ? '1px solid #2C2C2E' : 'none'}}>
+								<Ic size={38} color="#8E8E93" strokeWidth={2} />
+								<span style={{flex: 1, fontFamily: helvetica, fontSize: 32, color: '#FFFFFF'}}>{k}</span>
+								<span style={{fontFamily: helvetica, fontSize: 28, color: i === 2 && ip > 0.5 ? MORADO2 : '#8E8E93', fontWeight: i === 2 && ip > 0.5 ? 700 : 400}}>{v}</span>
+							</div>
+						))}
+					</div>
+					<div style={{marginTop: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, opacity: ip, scale: String(0.8 + 0.2 * ip)}}>
+						<L.Lock size={40} color={MORADO2} strokeWidth={2.2} />
+						<span style={{fontFamily: helvetica, fontWeight: 700, fontSize: 38, color: MORADO2}}>IP protegida</span>
+					</div>
+				</div>
+			</div>
+		</AbsoluteFill>
 	);
 };
 
@@ -365,17 +392,41 @@ const PizFamiliar: React.FC = () => (
 	</Pizarra>
 );
 
+// Logos de herramientas de IA difuminados: se intuyen apps reales, pero no se distinguen (las
+// comparte Raquel por privado)
+const LOGOS: [string, string, string][] = [
+	['#10A37F', '#0B7A5E', 'circle'],
+	['#4285F4', '#9B72CB', 'star'],
+	['#FF6B35', '#F7931E', 'square'],
+	['#1E1E1E', '#4B4B4B', 'tri'],
+	['#00C2FF', '#0066FF', 'ring'],
+	['#E83E8C', '#7B2FF7', 'circle'],
+];
+const LogosDifuminados: React.FC = () => {
+	const frame = useCurrentFrame();
+	const t0 = ini('herramientas') + 0.15;
+	return (
+		<div style={{position: 'absolute', inset: 0, display: 'grid', gridTemplateColumns: 'repeat(3, 130px)', gap: 26, alignContent: 'center', justifyContent: 'center'}}>
+			{LOGOS.map(([c1, c2, forma], i) => {
+				const q = entra(frame, t0 + i * 0.12, 10);
+				return (
+					<div key={i} style={{width: 130, height: 130, borderRadius: 32, background: `linear-gradient(135deg, ${c1}, ${c2})`, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'blur(12px)', scale: String(q), boxShadow: '0 12px 26px rgba(0,0,0,0.25)'}}>
+						<div style={{width: 56, height: 56, background: '#FFFFFF', borderRadius: forma === 'circle' ? 28 : forma === 'ring' ? 28 : forma === 'square' ? 10 : 4, border: forma === 'ring' ? '10px solid #FFFFFF' : 'none', ...(forma === 'ring' ? {background: 'transparent'} : {}), clipPath: forma === 'tri' ? 'polygon(50% 0, 100% 100%, 0 100%)' : forma === 'star' ? 'polygon(50% 0,61% 38%,100% 50%,61% 62%,50% 100%,39% 62%,0 50%,39% 38%)' : 'none'}} />
+					</div>
+				);
+			})}
+		</div>
+	);
+};
+
 // 6) Alternativas a Claude
 const PizHerramientas: React.FC = () => {
-	const frame = useCurrentFrame();
 	return (
 		<Pizarra
 			de={ini('herramientas')}
 			a={fin('flujos')}
 			izquierda={
-				<div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-					<Img src={staticFile(`${W}/claude.png`)} style={{width: 300, scale: String(entra(frame, ini('herramientas') + 0.1, 12)), filter: 'drop-shadow(0 16px 24px rgba(0,0,0,0.25))'}} />
-				</div>
+				<LogosDifuminados />
 			}
 		>
 			<Etiqueta Ic={L.Sparkles} texto="ALTERNATIVAS" />
@@ -429,13 +480,18 @@ const Gancho: React.FC = () => {
 	const b = BLOQUES.find((x) => frame >= F(at('gancho', x.de)) && frame < F(Math.min(fg, at('gancho', x.a))));
 	if (!b) return null;
 	return (
-		<div style={{position: 'absolute', top: 250, left: 30, right: 30, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: 26, rowGap: 0}}>
+		<div style={{position: 'absolute', top: 260, left: 90, right: 90, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', columnGap: 22, rowGap: 10}}>
 			{b.palabras.map(([p, s, acento]) => {
 				const t = at('gancho', s);
 				if (frame < F(t)) return null;
-				const q = interpolate(frame, [F(t), F(t) + 6], [0, 1], {...clamp, easing: Easing.out(Easing.back(2))});
-				return (
-					<span key={p} style={{display: 'inline-block', scale: String(0.6 + 0.4 * q), opacity: q, fontFamily: poppins, fontWeight: 800, fontSize: acento ? 158 : 112, lineHeight: 1.02, letterSpacing: '-0.02em', color: acento ? MORADO2 : '#FFFFFF', textShadow: '0 10px 40px rgba(0,0,0,0.45)'}}>
+				const q = interpolate(frame, [F(t), F(t) + 6], [0, 1], {...clamp, easing: Easing.out(Easing.back(2.2))});
+				const golpe = interpolate(frame, [F(t), F(t) + 4, F(t) + 9], [1.35, 0.94, 1], clamp);
+				return acento ? (
+					<span key={p} style={{display: 'inline-block', scale: String(golpe), opacity: q, rotate: '-2deg', padding: '4px 24px 8px', borderRadius: 18, background: MORADO, boxShadow: '0 12px 34px rgba(0,0,0,0.45)', fontFamily: poppins, fontWeight: 800, fontSize: 108, lineHeight: 1.02, letterSpacing: '-0.02em', color: '#FFFFFF'}}>
+						{p}
+					</span>
+				) : (
+					<span key={p} style={{display: 'inline-block', scale: String(0.6 + 0.4 * q), opacity: q, fontFamily: poppins, fontWeight: 800, fontSize: 92, lineHeight: 1.05, letterSpacing: '-0.02em', color: '#FFFFFF', WebkitTextStroke: '3px rgba(13,10,26,0.85)', paintOrder: 'stroke fill', textShadow: '0 8px 30px rgba(0,0,0,0.55)'}}>
 						{p}
 					</span>
 				);
@@ -450,15 +506,72 @@ const LogosGancho: React.FC = () => {
 	const tc = at('gancho', 1.6);
 	const tv = at('gancho', 2.9);
 	const flota = (s: number) => Math.sin((frame - F(s)) / 10) * 8;
+	const qc = entra(frame, tc, 12);
 	return (
 		<>
-			{frame >= F(tc) ? <Img src={staticFile(`${W}/claude.png`)} style={{position: 'absolute', left: 540 - 210, top: 1150, width: 420, scale: String(entra(frame, tc, 12)), rotate: `${(1 - entra(frame, tc, 12)) * -50}deg`, translate: `0px ${flota(tc)}px`, filter: 'drop-shadow(0 24px 34px rgba(0,0,0,0.5))'}} /> : null}
-			{frame >= F(tv) ? <Img src={staticFile(`${W}/venezuela.png`)} style={{position: 'absolute', left: 760, top: 1060, width: 230, rotate: '8deg', scale: String(entra(frame, tv, 10)), translate: `0px ${flota(tv)}px`, filter: 'drop-shadow(0 18px 26px rgba(0,0,0,0.45))'}} /> : null}
+			{frame >= F(tc) ? (
+				<>
+					<div style={{position: 'absolute', left: -40, top: 1180, width: 520, height: 520, borderRadius: 300, background: 'radial-gradient(circle, rgba(181,123,255,0.55), rgba(181,123,255,0) 65%)', scale: String(qc)}} />
+					<Img src={staticFile(`${W}/claude.png`)} style={{position: 'absolute', left: 40, top: 1260, width: 360, scale: String(qc), rotate: `${(1 - qc) * -60 + Math.sin((frame - F(tc)) / 14) * 4}deg`, translate: `0px ${flota(tc)}px`, filter: 'drop-shadow(0 24px 34px rgba(0,0,0,0.5))'}} />
+				</>
+			) : null}
+			{frame >= F(tv) ? <Img src={staticFile(`${W}/venezuela.png`)} style={{position: 'absolute', left: 750, top: 1040, width: 230, rotate: '8deg', scale: String(entra(frame, tv, 10)), translate: `0px ${flota(tv)}px`, filter: 'drop-shadow(0 18px 26px rgba(0,0,0,0.45))'}} /> : null}
 		</>
 	);
 };
 
-// Tokio -> EE. UU. -> Singapur, rápido y justo cuando lo dice (encima de la cabeza)
+// Banderas dibujadas (estilo 3D con brillo)
+const Bandera: React.FC<{readonly pais: string; readonly ancho?: number}> = ({pais, ancho = 200}) => {
+	const alto = ancho * 0.66;
+	let cont: React.ReactNode = null;
+	if (pais === 'TOKIO') {
+		cont = (
+			<>
+				<rect width={300} height={200} fill="#FFFFFF" />
+				<circle cx={150} cy={100} r={60} fill="#BC002D" />
+			</>
+		);
+	} else if (pais === 'EE. UU.') {
+		cont = (
+			<>
+				{Array.from({length: 13}).map((_, i) => (
+					<rect key={i} y={(i * 200) / 13} width={300} height={200 / 13} fill={i % 2 ? '#FFFFFF' : '#B22234'} />
+				))}
+				<rect width={130} height={108} fill="#3C3B6E" />
+				{Array.from({length: 20}).map((_, i) => (
+					<circle key={i} cx={14 + (i % 5) * 25} cy={14 + Math.floor(i / 5) * 25} r={5} fill="#FFFFFF" />
+				))}
+			</>
+		);
+	} else {
+		cont = (
+			<>
+				<rect width={300} height={100} fill="#EF3340" />
+				<rect y={100} width={300} height={100} fill="#FFFFFF" />
+				<circle cx={70} cy={50} r={32} fill="#FFFFFF" />
+				<circle cx={84} cy={50} r={30} fill="#EF3340" />
+				{[0, 1, 2, 3, 4].map((i) => (
+					<circle key={i} cx={112 + 18 * Math.cos((i / 5) * Math.PI * 2 - Math.PI / 2)} cy={50 + 18 * Math.sin((i / 5) * Math.PI * 2 - Math.PI / 2)} r={5} fill="#FFFFFF" />
+				))}
+			</>
+		);
+	}
+	return (
+		<svg width={ancho} height={alto} viewBox="0 0 300 200" style={{borderRadius: ancho * 0.08, overflow: 'hidden', boxShadow: '0 16px 30px rgba(0,0,0,0.45)'}}>
+			<defs>
+				<linearGradient id="brillo" x1="0" y1="0" x2="0" y2="1">
+					<stop offset="0" stopColor="#FFFFFF" stopOpacity={0.45} />
+					<stop offset="0.45" stopColor="#FFFFFF" stopOpacity={0} />
+					<stop offset="1" stopColor="#000000" stopOpacity={0.22} />
+				</linearGradient>
+			</defs>
+			{cont}
+			<rect width={300} height={200} fill="url(#brillo)" />
+		</svg>
+	);
+};
+
+// Tokio -> EE. UU. -> Singapur, rápido y justo cuando lo dice (encima de la cabeza), con banderas
 const Paises: React.FC = () => {
 	const frame = useCurrentFrame();
 	if (frame < F(ini('tokio')) || frame >= F(fin('eeuu'))) return null;
@@ -470,19 +583,19 @@ const Paises: React.FC = () => {
 	const actual = [...items].reverse().find(([, , t]) => frame >= F(t) - 3);
 	const previo = frame < F(items[0][2]) - 3;
 	return (
-		<div style={{position: 'absolute', top: 280, left: 0, right: 0, textAlign: 'center'}}>
+		<div style={{position: 'absolute', top: 260, left: 60, right: 60, textAlign: 'center'}}>
 			{previo ? (
-				<div style={{fontFamily: poppins, fontWeight: 800, fontSize: 104, lineHeight: 1, color: '#FFFFFF', textShadow: '0 10px 40px rgba(0,0,0,0.45)', opacity: interpolate(frame, [F(ini('tokio')), F(ini('tokio')) + 6], [0, 1], clamp)}}>
+				<div style={{fontFamily: poppins, fontWeight: 800, fontSize: 100, lineHeight: 1.02, color: '#FFFFFF', textShadow: '0 10px 40px rgba(0,0,0,0.45)', opacity: interpolate(frame, [F(ini('tokio')), F(ini('tokio')) + 6], [0, 1], clamp)}}>
 					NO CAMBIES
 					<br />
-					<span style={{color: MORADO2}}>DE PAÍS</span>
+					<span style={{display: 'inline-block', marginTop: 8, padding: '0 22px 6px', borderRadius: 16, background: MORADO}}>DE PAÍS</span>
 				</div>
 			) : actual ? (
-				<div key={actual[1]} style={{scale: String(interpolate(frame, [F(actual[2]) - 3, F(actual[2]) + 4], [1.5, 1], {...clamp, easing: Easing.out(Easing.cubic)}))}}>
-					<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 34, letterSpacing: '0.35em', color: '#FFFFFF', textShadow: '0 2px 14px rgba(0,0,0,0.6)'}}>{actual[0]}</div>
-					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14}}>
-						<L.MapPin size={110} color="#FFFFFF" fill={MORADO2} strokeWidth={1.6} />
-						<span style={{fontFamily: poppins, fontWeight: 800, fontSize: 150, lineHeight: 1, color: MORADO2, textShadow: '0 10px 40px rgba(0,0,0,0.45)'}}>{actual[1]}</span>
+				<div key={actual[1]} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 26, scale: String(interpolate(frame, [F(actual[2]) - 3, F(actual[2]) + 4], [1.4, 1], {...clamp, easing: Easing.out(Easing.cubic)}))}}>
+					<Bandera pais={actual[1]} ancho={190} />
+					<div style={{textAlign: 'left'}}>
+						<div style={{fontFamily: helvetica, fontWeight: 700, fontSize: 32, letterSpacing: '0.35em', color: '#FFFFFF', textShadow: '0 2px 14px rgba(0,0,0,0.6)'}}>{actual[0]}</div>
+						<div style={{fontFamily: poppins, fontWeight: 800, fontSize: 108, lineHeight: 1, color: '#FFFFFF', textShadow: '0 10px 40px rgba(0,0,0,0.45)'}}>{actual[1]}</div>
 					</div>
 				</div>
 			) : null}
@@ -499,14 +612,8 @@ const Cta: React.FC = () => {
 	const q = entra(frame, at('cta', 100.0));
 	const letras = frame >= F(ia) ? Math.min(2, Math.floor((frame - F(ia)) / 4) + 1) : 0;
 	const enviado = frame >= F(ia) + 14;
-	const qia = interpolate(frame, [F(ia), F(ia) + 8], [1.8, 1], {...clamp, easing: Easing.out(Easing.cubic)});
 	return (
 		<>
-			{frame >= F(ia) ? (
-				<div style={{position: 'absolute', top: 470, left: 0, right: 0, textAlign: 'center'}}>
-					<span style={{display: 'inline-block', scale: String(qia), fontFamily: poppins, fontWeight: 800, fontSize: 200, lineHeight: 1, color: MORADO2, textShadow: '0 12px 44px rgba(0,0,0,0.5)'}}>IA</span>
-				</div>
-			) : null}
 			<div style={{position: 'absolute', top: 1400, left: 90, right: 90, scale: String(q)}}>
 				<div style={{display: 'flex', alignItems: 'center', gap: 18, background: '#FFFFFF', borderRadius: 999, padding: '12px 14px', boxShadow: '0 14px 36px rgba(0,0,0,0.35)'}}>
 					<div style={{width: 58, height: 58, borderRadius: 29, background: `linear-gradient(135deg, ${MORADO2}, ${MORADO})`}} />
@@ -584,7 +691,7 @@ export const KillSwitch2Component: React.FC = () => {
 				<Grande de={ini('baneo')} a={at('baneo', 37.98)} lineas={[['ACTIVIDAD', at('baneo', 36.76)], ['INUSUAL', at('baneo', 37.12), true]]} top={290} size={136} />
 				<Grande de={at('baneo', 37.98)} a={fin('baneo')} lineas={[['BANEO', at('baneo', 37.98), true]]} top={300} size={210} />
 				<Grande de={ini('bloquearon')} a={fin('bloquearon')} lineas={[['¿YA TE', at('bloquearon', 72.18)], ['BLOQUEARON?', at('bloquearon', 72.42), true]]} top={300} size={124} />
-				<Grande de={ini('cta')} a={DURACION} lineas={[['COMENTA', ini('cta')]]} top={300} size={150} />
+				<Grande de={ini('cta')} a={DURACION} lineas={[['COMENTA', ini('cta')], ['"IA"', at('cta', 100.94)]]} top={250} size={150} />
 				{conPersona ? (
 					<AbsoluteFill style={toma}>
 						<Persona />
@@ -605,10 +712,11 @@ export const KillSwitch2Component: React.FC = () => {
 				{/* ---------- Pizarras ---------- */}
 				<PizUsuarios />
 				<PizCookies />
-				<PizKill />
+				<PizProton />
 				<PizProxy />
 				<PizFamiliar />
 				<PizHerramientas />
+				<EscenaKill />
 			</AbsoluteFill>
 
 			{/* ---------- Efectos de sonido (sin música; el gancho va sin efectos) ---------- */}
@@ -627,9 +735,9 @@ export const KillSwitch2Component: React.FC = () => {
 			<Sfx t={at('eeuu', 32.56)} src="whoosh-3" volume={0.28} />
 			<Sfx t={at('eeuu', 33.7)} src="whoosh-2" volume={0.28} />
 			<Sfx t={at('baneo', 37.98)} src="impacto" volume={0.32} />
-			<Sfx t={at('paga', 47.7)} src="pop" volume={0.22} />
-			<Sfx t={at('kill', 49.5)} src="remotion/switch" volume={0.4} />
-			<Sfx t={at('kill', 50.56)} src="tic" volume={0.28} />
+			<Sfx t={KILL_DE() - 0.08} src="whoosh" volume={0.3} />
+			<Sfx t={at('kill', 49.75)} src="remotion/switch" volume={0.4} />
+			<Sfx t={at('kill', 50.6)} src="tic" volume={0.28} />
 			<Sfx t={at('proxy', 56.18)} src="tic" volume={0.28} />
 			<Sfx t={ini('extension') + 0.6} src="pop" volume={0.22} />
 			<Sfx t={at('mascara2', 67.14)} src="pop" volume={0.24} />

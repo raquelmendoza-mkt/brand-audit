@@ -24,35 +24,37 @@ W = 'public/work/killswitch'
 DF = '.models/bin/deep-filter'
 os.makedirs(f'{W}/df18', exist_ok=True)
 CARA = (580, 790)  # cara en las tomas a cámara (fuera del gancho)
+# Recortes a medida (ancho, alto, x, y): de 53 a 69 s del original hay sillas apiladas en el borde
+# derecho; se recorta a 964 px de ancho pegado a la izquierda y abajo (se ve más el pecho)
+RECORTE = {pid: (964, 1714, 0, 206) for pid in ('proxy', 'extension', 'mascara1', 'mascara2')}
 
 # (id, desde, hasta, zoom, texto)
 PIEZAS = [
     ('gancho', 0.00, 3.36, 1.0, '¿Cómo prevenir que te bloqueen tu cuenta de Claude si te encuentras en Venezuela?'),
     ('usuarios', 8.08, 10.84, 1.0, 'Muchos usuarios ya han manifestado que le han bloqueado su cuenta de Claude.'),
-    ('prevenir', 10.94, 12.70, 1.15, '¿Cómo podemos prevenir esto? Te muestro.'),
+    ('prevenir', 10.94, 12.70, 1.08, '¿Cómo podemos prevenir esto? Te muestro.'),
     ('cookies', 19.78, 24.28, 1.0, 'La primera opción es que puedas borrar todas las cookies de tu navegador que normalmente frecuentas Claude'),
-    ('unvpn', 24.26, 27.52, 1.15, 'y además utilices un solo VPN con una sola dirección IP.'),
+    ('unvpn', 24.26, 27.52, 1.0, 'y además utilices un solo VPN con una sola dirección IP.'),
     ('tokio', 28.40, 31.46, 1.0, 'no puedes utilizar uno ayer que sale que estás en Tokio,'),
     ('eeuu', 31.76, 34.24, 1.0, 'hoy que sales que estás en Estados Unidos y mañana en Singapur,'),
-    ('baneo', 34.30, 38.50, 1.15, 'porque esto hace de que Anthropic te detecte con una actividad inusual y te baneen.'),
+    ('baneo', 34.30, 38.50, 1.08, 'porque esto hace de que Anthropic te detecte con una actividad inusual y te baneen.'),
     ('proton', 43.68, 45.74, 1.0, 'Esto puedes hacerlo a través de ProtonVPN,'),
-    ('paga', 46.74, 48.28, 1.0, 'pero debes hacerlo en la versión paga.'),
-    ('kill', 48.42, 53.30, 1.15, 'Y si no, puedes utilizar Kill Switch, el cual protege la misma dirección IP cada vez que utilices VPN.'),
+    ('kill', 48.42, 53.30, 1.0, 'Y si no, puedes utilizar Kill Switch, el cual protege la misma dirección IP cada vez que utilices VPN.'),
     ('proxy', 53.58, 56.66, 1.0, 'Otra recomendación es que en vez de utilizar VPNs, utilices Proxys.'),
     ('extension', 56.64, 59.68, 1.0, 'Los Proxys los puedes realizar como una extensión de tu navegador web.'),
-    ('mascara1', 65.68, 66.28, 1.15, 'Es como que,'),
-    ('mascara2', 66.52, 69.54, 1.15, 'se coloca una máscara y siempre vas a aparecer en el mismo sitio.'),
+    ('mascara1', 65.68, 66.28, 1.0, 'Es como que,'),
+    ('mascara2', 66.52, 69.54, 1.0, 'se coloca una máscara y siempre vas a aparecer en el mismo sitio.'),
     ('bloquearon', 70.22, 73.42, 1.0, 'Pero supongamos que tú me dices, mira Raquel, ya me bloquearon, ¿qué hago?'),
-    ('familiar', 74.84, 79.48, 1.15, 'la otra alternativa que tienes es si posees un familiar que tenga una documentación del extranjero,'),
-    ('cuenta', 79.92, 83.60, 1.15, 'pueda él registrarse, abrir una nueva cuenta y te dé el acceso para que tú lo uses.'),
+    ('familiar', 74.84, 79.48, 1.0, 'la otra alternativa que tienes es si posees un familiar que tenga una documentación del extranjero,'),
+    ('cuenta', 79.92, 83.60, 1.0, 'pueda él registrarse, abrir una nueva cuenta y te dé el acceso para que tú lo uses.'),
     ('sinfamiliar1', 83.56, 84.64, 1.0, 'Pero si me dices,'),
     ('sinfamiliar2', 86.10, 87.26, 1.0, 'no cuento con otro familiar,'),
     ('solucion', 88.96, 90.68, 1.0, 'tranquilo que para todo hay solución.'),
-    ('herramientas', 90.72, 94.78, 1.15, 'Porque hay varias herramientas de inteligencia artificial que hacen el trabajo similar a Claude.'),
-    ('flujos', 95.04, 99.40, 1.15, 'De hecho, te pueden crear flujos automatizados con IA, páginas web, desarrollos y más.'),
+    ('herramientas', 90.72, 94.78, 1.08, 'Porque hay varias herramientas de inteligencia artificial que hacen el trabajo similar a Claude.'),
+    ('flujos', 95.04, 99.40, 1.0, 'De hecho, te pueden crear flujos automatizados con IA, páginas web, desarrollos y más.'),
     ('respaldo', 106.44, 110.38, 1.0, 'Sin embargo, recuerda siempre realizar el respaldo de tu cuenta actual de Claude.'),
     ('pierdas', 110.36, 113.50, 1.0, 'No vaya a ser de que pasen unas circunstancias y pierdas todo.'),
-    ('cta', 99.60, 103.92, 1.15, 'Así que comenta aquí la palabra IA y yo te voy a compartir estas herramientas al privado.'),
+    ('cta', 99.60, 106.12, 1.0, 'Así que comenta aquí la palabra IA y yo te voy a compartir estas herramientas al privado para que puedas emplearlas y tengas esta opción.'),
 ]
 MIN_PAUSA, AIRE, UMBRAL = 0.25, 0.06, -36
 # Frases dichas muy suave ("Kill Switch" ronda -37 dB): sin cortes internos o se come sílabas
@@ -107,14 +109,17 @@ def lufs_tramo(a, b):
 NIVELES = {pid: lufs_tramo(a, b) for pid, a, b, _, _ in PIEZAS}
 OBJ = float(np.median(list(NIVELES.values())))
 GANANCIA = {pid: max(-6.0, min(6.0, OBJ - v)) for pid, v in NIVELES.items()}
-COLA = 0.8  # el final no se corta de golpe: se congela el último fotograma 0.8 s en silencio
+COLA = 0.4  # respiro final (la frase ya termina completa: "...y tengas esta opción")
 
 fil, cad, marcas, t, k = [], '', [], 0.0, 0
 for pid, a, b, z, txt in PIEZAS:
     t_ini = t
     for ta, tb in ([[a, b]] if pid in SIN_CORTES else sin_pausas(a, b)):
         d = tb - ta
-        if z == 1.0:
+        if pid in RECORTE:
+            cw, ch, cx, cy = RECORTE[pid]
+            enc = f'crop={cw}:{ch}:{cx}:{cy},scale=1080:1920:flags=lanczos+accurate_rnd+full_chroma_int,cas=0.45'
+        elif z == 1.0:
             enc = 'scale=1080:1920'
         else:
             cw, ch = round(1080 / z / 2) * 2, round(1920 / z / 2) * 2
