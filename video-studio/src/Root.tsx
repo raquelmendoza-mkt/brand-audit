@@ -7,6 +7,7 @@ import {ClaudeTrendComposition} from './ClaudeTrend';
 import {CreceComposition} from './Crece';
 import {MasterclassComposition} from './Masterclass';
 import {TallerComposition} from './Taller';
+import {KillSwitchComposition} from './KillSwitch';
 import {FelipeComposition} from './Felipe';
 import {DetallitosDyanComposition, PromoTextosComposition} from './PromoTextos';
 import {PropertyPromoComposition} from './PropertyPromo';
@@ -33,6 +34,7 @@ export const RemotionRoot: React.FC = () => {
 				<CreceComposition />
 				<MasterclassComposition />
 				<TallerComposition />
+				<KillSwitchComposition />
 				<FelipeComposition />
 				<RoomTourBosqueComposition />
 				<RoomTourBosqueOmniComposition />

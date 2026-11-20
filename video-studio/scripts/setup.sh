@@ -42,7 +42,10 @@ fi
 if ! python3 -c "import mediapipe" 2>/dev/null; then
 	echo "Instalando MediaPipe..."
 	pip install -q mediapipe 2>/dev/null || pip install -q --break-system-packages mediapipe
-	command -v apt-get >/dev/null && ! ldconfig -p | grep -q libEGL.so.1 && apt-get install -y -q libegl1 libgles2 >/dev/null 2>&1 || true
+fi
+# MediaPipe necesita EGL (en contenedores nuevos puede faltar aunque MediaPipe ya esté instalado)
+if command -v apt-get >/dev/null && ! ldconfig -p | grep -q libEGL.so.1; then
+	apt-get install -y -q libegl1 libgles2 >/dev/null 2>&1 || (apt-get update -q >/dev/null 2>&1 && apt-get install -y -q libegl1 libgles2 >/dev/null 2>&1) || true
 fi
 SEG=.models/mediapipe/selfie_multiclass_256x256.tflite
 if [[ ! -f $SEG ]]; then
