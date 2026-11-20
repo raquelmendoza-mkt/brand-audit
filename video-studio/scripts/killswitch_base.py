@@ -95,6 +95,20 @@ def sin_pausas(a, b):
     return [t for t in tr if t[1] - t[0] > 0.05]
 
 
+def lufs_tramo(a, b):
+    r = subprocess.run(['ffmpeg', '-hide_banner', '-ss', str(a), '-to', str(b), '-i', voz, '-af', 'ebur128', '-f', 'null', '-'], capture_output=True, text=True).stderr
+    import re
+    v = re.findall(r'I:\s+(-?[\d.]+) LUFS', r)
+    return float(v[-1]) if v else -20.0
+
+
+# Nivel parejo entre frases: cada pieza se lleva al nivel medio (la de "Kill Switch" se dijo
+# más suave y se notaba el salto). Ganancia limitada a ±6 dB.
+NIVELES = {pid: lufs_tramo(a, b) for pid, a, b, _, _ in PIEZAS}
+OBJ = float(np.median(list(NIVELES.values())))
+GANANCIA = {pid: max(-6.0, min(6.0, OBJ - v)) for pid, v in NIVELES.items()}
+COLA = 0.8  # el final no se corta de golpe: se congela el último fotograma 0.8 s en silencio
+
 fil, cad, marcas, t, k = [], '', [], 0.0, 0
 for pid, a, b, z, txt in PIEZAS:
     t_ini = t
@@ -107,13 +121,14 @@ for pid, a, b, z, txt in PIEZAS:
             cx, cy = round(CARA[0] - CARA[0] / z), round(CARA[1] - CARA[1] / z)
             enc = f'crop={cw}:{ch}:{cx}:{cy},scale=1080:1920:flags=lanczos+accurate_rnd+full_chroma_int,cas=0.45'
         fil.append(f'[0:v]trim={ta:.3f}:{tb:.3f},setpts=PTS-STARTPTS,fps=30,{enc},setsar=1,format=yuv420p[v{k}]')
-        fil.append(f'[1:a]atrim={ta:.3f}:{tb:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=0.012,afade=t=out:st={max(0, d - 0.02):.3f}:d=0.02[a{k}]')
+        fil.append(f'[1:a]atrim={ta:.3f}:{tb:.3f},asetpts=PTS-STARTPTS,volume={GANANCIA[pid]:.2f}dB,afade=t=in:d=0.012,afade=t=out:st={max(0, d - 0.02):.3f}:d=0.02[a{k}]')
         cad += f'[v{k}][a{k}]'
         marcas.append({'id': pid, 'a': round(ta, 3), 't': round(t, 3), 'd': round(d, 3), 'zoom': z})
         t += d
         k += 1
-fil.append(f'{cad}concat=n={k}:v=1:a=1[v][a]')
+fil.append(f'{cad}concat=n={k}:v=1:a=1[vc][ac]')
+fil.append(f'[vc]tpad=stop_mode=clone:stop_duration={COLA}[v];[ac]apad=pad_dur={COLA}[a]')
 run('ffmpeg', '-v', 'error', '-y', '-i', SRC, '-i', voz, '-filter_complex', ';'.join(fil), '-map', '[v]', '-map', '[a]',
     '-c:v', 'libx264', '-crf', '11', '-preset', 'slow', '-c:a', 'aac', '-b:a', '320k', '-ar', '48000', f'{W}/base.mp4')
-json.dump({'total': round(t, 3), 'frames': round(t * 30), 'tramos': marcas}, open('src/killswitch-marcas.json', 'w'), indent=1)
-print(f'{t:.2f} s en {len(PIEZAS)} piezas ({k} tramos)')
+json.dump({'total': round(t + COLA, 3), 'voz': round(t, 3), 'frames': round((t + COLA) * 30), 'tramos': marcas}, open('src/killswitch-marcas.json', 'w'), indent=1)
+print(f'{t + COLA:.2f} s en {len(PIEZAS)} piezas ({k} tramos); ganancias: ' + ', '.join(f'{p} {g:+.1f}' for p, g in GANANCIA.items() if abs(g) > 1.5))
