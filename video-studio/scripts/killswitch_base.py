@@ -44,7 +44,7 @@ PIEZAS = [
     ('extension', 56.64, 59.68, 1.0, 'Los Proxys los puedes realizar como una extensión de tu navegador web.'),
     ('mascara1', 65.68, 66.28, 1.0, 'Es como que,'),
     ('mascara2', 66.52, 69.54, 1.0, 'se coloca una máscara y siempre vas a aparecer en el mismo sitio.'),
-    ('bloquearon', 70.22, 73.42, 1.0, 'Pero supongamos que tú me dices, mira Raquel, ya me bloquearon, ¿qué hago?'),
+    ('bloquearon', 70.72, 73.42, 1.0, 'Supongamos que tú me dices, mira Raquel, ya me bloquearon, ¿qué hago?'),
     ('familiar', 74.84, 79.48, 1.0, 'la otra alternativa que tienes es si posees un familiar que tenga una documentación del extranjero,'),
     ('cuenta', 79.92, 83.60, 1.0, 'pueda él registrarse, abrir una nueva cuenta y te dé el acceso para que tú lo uses.'),
     ('sinfamiliar1', 83.56, 84.64, 1.0, 'Pero si me dices,'),

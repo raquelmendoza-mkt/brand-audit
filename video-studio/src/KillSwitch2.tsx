@@ -491,7 +491,7 @@ const Gancho: React.FC = () => {
 						{p}
 					</span>
 				) : (
-					<span key={p} style={{display: 'inline-block', scale: String(0.6 + 0.4 * q), opacity: q, fontFamily: poppins, fontWeight: 800, fontSize: 92, lineHeight: 1.05, letterSpacing: '-0.02em', color: '#FFFFFF', WebkitTextStroke: '3px rgba(13,10,26,0.85)', paintOrder: 'stroke fill', textShadow: '0 8px 30px rgba(0,0,0,0.55)'}}>
+					<span key={p} style={{display: 'inline-block', scale: String(0.6 + 0.4 * q), opacity: q, fontFamily: poppins, fontWeight: 800, fontSize: 92, lineHeight: 1.05, letterSpacing: '-0.02em', color: '#FFFFFF', textShadow: '0 10px 40px rgba(0,0,0,0.4)'}}>
 						{p}
 					</span>
 				);
@@ -517,6 +517,20 @@ const LogosGancho: React.FC = () => {
 			) : null}
 			{frame >= F(tv) ? <Img src={staticFile(`${W}/venezuela.png`)} style={{position: 'absolute', left: 750, top: 1040, width: 230, rotate: '8deg', scale: String(entra(frame, tv, 10)), translate: `0px ${flota(tv)}px`, filter: 'drop-shadow(0 18px 26px rgba(0,0,0,0.45))'}} /> : null}
 		</>
+	);
+};
+
+// Antifaz (el proxy es "como una máscara"): caja morada con el icono en blanco, arriba a la derecha
+const Mascara: React.FC = () => {
+	const frame = useCurrentFrame();
+	const t = at('mascara2', 67.14);
+	if (frame < F(t) || frame >= F(fin('mascara2'))) return null;
+	const q = interpolate(frame, [F(t), F(t) + 8], [0, 1], {...clamp, easing: Easing.out(Easing.back(2.2))});
+	const out = interpolate(frame, [F(fin('mascara2')) - 4, F(fin('mascara2'))], [1, 0], clamp);
+	return (
+		<div style={{position: 'absolute', right: 80, top: 390, width: 140, height: 140, borderRadius: 32, background: MORADO, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 14px 36px rgba(0,0,0,0.45)', scale: String(q), opacity: out, rotate: `${8 + Math.sin((frame - F(t)) / 9) * 4}deg`}}>
+			<L.VenetianMask size={92} color="#FFFFFF" strokeWidth={2} />
+		</div>
 	);
 };
 
@@ -713,6 +727,7 @@ export const KillSwitch2Component: React.FC = () => {
 				<PizUsuarios />
 				<PizCookies />
 				<PizProton />
+				<Mascara />
 				<PizProxy />
 				<PizFamiliar />
 				<PizHerramientas />
