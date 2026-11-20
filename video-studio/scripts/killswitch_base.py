@@ -30,7 +30,7 @@ RECORTE = {pid: (964, 1714, 0, 206) for pid in ('proxy', 'extension', 'mascara1'
 
 # (id, desde, hasta, zoom, texto)
 PIEZAS = [
-    ('gancho', 0.00, 3.36, 1.0, '¿Cómo prevenir que te bloqueen tu cuenta de Claude si te encuentras en Venezuela?'),
+    ('gancho', 0.00, 3.54, 1.0, '¿Cómo prevenir que te bloqueen tu cuenta de Claude si te encuentras en Venezuela?'),
     ('usuarios', 8.08, 10.84, 1.0, 'Muchos usuarios ya han manifestado que le han bloqueado su cuenta de Claude.'),
     ('prevenir', 10.94, 12.70, 1.08, '¿Cómo podemos prevenir esto? Te muestro.'),
     ('cookies', 19.78, 24.28, 1.0, 'La primera opción es que puedas borrar todas las cookies de tu navegador que normalmente frecuentas Claude'),
